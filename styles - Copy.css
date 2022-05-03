@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
+
+/* Most of the styling of the "h" tags is here. Size and shape of element*/
+.section .step {
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.15em;
+    font-weight: 700;
+    height: 36px;
+    line-height: 35px;
+    
+/*Zero margin-top and padding-top to counter the spacing created by the .section class*/
+    margin: 0px 0px 15px 14px;
+    min-width: 380px;
+    padding-left: 24px;
+    padding-top: 0px;
+    position: relative;
+    width: 47%;
+}
+
+/* For the h3 tags where you want to navigate directly to the tag, I had to add a space above*/
+.section h3.step {
+    font-size: 17px;
+    margin: 80px 0px 15px 14px;
+}
+
+/* The before pseudo-element is for the styling of the oval where the number will be included*/
+.step::before {
+    border: 2px solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    font-family: serif;
+    font-size: 2.1em;
+    font-weight: normal;
+    height: 46px;
+    left: -17px;
+    line-height: 43px;
+    padding-left: 2px;
+    position: absolute;
+    text-align: center;
+    top: -4px;
+    width: 34px;
+}
+
+/* All of the number classes are for the specific color, image, and number included in the elements*/
+.one {
+    background-color: #596492;
+    background-image: url(Images/step_1.png);
+}
+
+.one::before {
+    content: "1";
+    background-color: #596492;
+}
+
+.two {
+    background-color: #4A967C;
+    background-image: url(Images/step_2.png);
+}
+
+.two::before {
+    content: "2";
+    background-color: #4A967C
+}
+
+.three {
+    background-color: #3298AE;
+    background-image: url(Images/step_3.png);
+}
+
+.three::before {
+    content: "3";
+    background-color: #3298AE
+}
+
+.four {
+    background-color: #AC5E30;
+    background-image: url(Images/step_4.png);
+}
+
+.four::before {
+    content: "4";
+    background-color: #AC5E30
+}
+
+.five {
+    background-color: #788952;
+    background-image: url(Images/step_5.png);
+}
+
+.five::before {
+    content: "5";
+    background-color: #788952
+}
+
+/* tablets */
+/* Because of the min-width included originally in the .step class, the media queries aren't doing anything */
+
+@media screen and (max-width: 960px) {
+    .step {
+        /* width: 48%; */
+        /*        min-width: 600px;*/
+        /*
+        height: 50px;
+        line-height: 50px;
+        padding-left: 30px;
+        font-size: 2em
+*/
+    }
+
+    /*
+    .step::before {
+        font-size: 55px;
+        height: 75px;
+        width: 50px;
+    }
+*/
+}
+
+/* smartphones  */
+
+@media screen and (max-width: 480px) {
+    .step {
+        /*
+        width: 75%;
+        min-width: 400px;
+        font-size: 1.2em;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 30px;
+        margin-left: 20px
+*/
+    }
+    /*
+    .step::before {
+        width: 37px;
+        font-size: .75em;
+        font-size: 2.4rem;
+        height: 55px;
+        top: -7px;
+        left: -19px;
+        padding: 6px 0px;
+    }
+*/
+}

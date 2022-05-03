@@ -1,0 +1,2031 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     95639,       2023]
+NotebookOptionsPosition[     89306,       1901]
+NotebookOutlinePosition[     91401,       1952]
+CellTagsIndexPosition[     91073,       1940]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Slope Fields", "DemoTitle",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400522730542519*^9, 
+   3.400522739283828*^9}},ExpressionUUID->"4a994cc3-e8f3-4bc8-b931-\
+fc4a7db9e207"],
+
+Cell["", "InitializationSection",ExpressionUUID->"dcd43fc2-828a-4983-8828-93acb8f2ffd9"],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection",ExpressionUUID->"29ddf814-4fc0-468f-abeb-ffd73ddf5ff5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xincr", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"xmax", "-", "xmin"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"xpart", "-", "1"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"yincr", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"ymax", "-", "ymin"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"ypart", "-", "1"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"dirvec", " ", "[", "ComplexInfinity", "]"}], ":=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"dirvec", "[", "Indeterminate", "]"}], ":=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+      "The", " ", "next", " ", "line", " ", "is", " ", "based", " ", "on", 
+       " ", 
+       RowBox[{"Euler", "'"}], "s", " ", "linear", " ", "element", " ", 
+       "formula", " ", "h"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        FractionBox["H", 
+         RowBox[{"2", 
+          SqrtBox[
+           RowBox[{"1", "+", 
+            RowBox[{
+             SuperscriptBox["f", "2"], 
+             RowBox[{"(", 
+              RowBox[{
+               SubscriptBox["x", "0"], ",", 
+               SubscriptBox["y", "0"]}], ")"}]}]}]]}]], " ", "for", " ", "a", 
+        " ", "segment", " ", "of", " ", "length", " ", "H", " ", "with", " ", 
+        "midpoint", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["x", "0"], ",", " ", 
+          SubscriptBox["y", "0"]}], ")"}], " ", "and", " ", "endpoints", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["x", "0"], "-", "h"}], ",", " ", 
+          RowBox[{
+           SubscriptBox["y", "0"], "-", "hM"}]}], ")"}], " ", "and", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["x", "0"], "+", "h"}], ",", " ", 
+          RowBox[{
+           SubscriptBox["y", "0"], "+", "hM"}]}], ")"}], "for", " ", "M"}], 
+       " ", "=", " ", 
+       RowBox[{"f", 
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["x", "0"], ",", " ", 
+          SubscriptBox["y", "0"]}], ")"}], " ", "being", " ", "the", " ", 
+        "slope", " ", "of", " ", "the", " ", 
+        RowBox[{"segment", "."}]}]}]}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"dirvec", "[", "x_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "x"}], "}"}], "/", 
+      RowBox[{"Sqrt", "[", 
+       RowBox[{"1", "+", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"x", "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"ymax", "-", "ymin"}], ")"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"xmax", "-", "xmin"}], ")"}]}], ")"}]}], ")"}], "^", 
+         "2"}]}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"pts", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"N", "[", 
+          RowBox[{"{", 
+           RowBox[{"r", ",", "s"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"r", ",", "xmin", ",", "xmax", ",", "xincr"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"s", ",", "ymin", ",", "ymax", ",", "yincr"}], "}"}]}], 
+        "]"}], ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"dir", "=", 
+     RowBox[{
+      RowBox[{"f", "/.", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"x", "\[Rule]", 
+          RowBox[{"pts", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ",", 
+         RowBox[{"y", "\[Rule]", 
+          RowBox[{"pts", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], "}"}]}], "//", 
+      "Quiet"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"newdir", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{"dirvec", ",", "dir"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"endpts", "=", 
+     RowBox[{"pts", "+", 
+      RowBox[{
+       RowBox[{"xincr", "/", "4"}], "*", "newdir"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"frontpts", "=", 
+     RowBox[{"pts", "-", 
+      RowBox[{
+       RowBox[{"xincr", "/", "4"}], "*", "newdir"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{"Now", " ", "find", " ", "an", " ", "exact", " ", "solution"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"ff", "=", 
+     RowBox[{"f", "/.", 
+      RowBox[{"y", "\[Rule]", 
+       RowBox[{"y", "[", "x", "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"soln", "=", 
+     RowBox[{"Quiet", "@", 
+      RowBox[{"DSolve", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"y", "'"}], "[", "x", "]"}], "\[Equal]", "ff"}], ",", 
+          RowBox[{
+           RowBox[{"y", "[", "xinit", "]"}], "\[Equal]", "yinit"}]}], "}"}], 
+        ",", 
+        RowBox[{"y", "[", "x", "]"}], ",", "x"}], "]"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"soln", "\[NotEqual]", 
+       RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"table", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"soln", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1", ",", "2"}], "]"}], "]"}], "/.", 
+          RowBox[{
+           RowBox[{"C", "[", "1", "]"}], "\[Rule]", "xinit"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"curve", "=", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Evaluate", "[", "table", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}]}], ";"}], 
+      "\[IndentingNewLine]", ",", 
+      RowBox[{"curve", "=", 
+       RowBox[{"{", "}"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", " ", 
+     RowBox[{
+      RowBox[{"Graphics", "[", 
+       RowBox[{"Map", "[", 
+        RowBox[{"Line", ",", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"frontpts", ",", "endpts"}], "}"}], "]"}]}], "]"}], "]"}], 
+      ",", 
+      RowBox[{"If", "[", 
+       RowBox[{"ptflg", ",", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"Point", "[", "pts", "]"}], "]"}], ",", 
+        RowBox[{"{", "}"}]}], "]"}], ",", 
+      RowBox[{"If", "[", 
+       RowBox[{"solflg", ",", "curve", ",", 
+        RowBox[{"{", "}"}]}], "]"}], " ", ",", 
+      RowBox[{"If", "[", 
+       RowBox[{"solflg", ",", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"PointSize", "[", "Medium", "]"}], ",", 
+            RowBox[{"Point", "[", 
+             RowBox[{"{", 
+              RowBox[{"xinit", ",", "yinit"}], "}"}], "]"}]}], "}"}], ",", 
+          RowBox[{"{", "}"}]}], "]"}], ",", 
+        RowBox[{"{", "}"}]}], "]"}], ",", 
+      RowBox[{"Axes", "\[Rule]", "Automatic"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xmin", ",", "xmax"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"ymin", ",", "ymax"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"AspectRatio", "\[Rule]", 
+       RowBox[{"1.5", "/", "GoldenRatio"}]}], ",", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"Grid", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"Style", "[", 
+            RowBox[{"Framed", "[", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<slope field for \>\"", ",", 
+                RowBox[{"y", "'"}], ",", "\"\< = \>\"", ",", 
+                RowBox[{"StringForm", "[", 
+                 RowBox[{"\"\<``\>\"", ",", "f"}], "]"}]}], "}"}], "]"}], 
+             "]"}], "]"}], "}"}], ",", 
+          RowBox[{"{", "}"}]}], "}"}], "]"}]}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"350", ",", "350"}], "}"}]}], ",", 
+      RowBox[{"ImagePadding", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"25", ",", "10"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"25", ",", "55"}], "}"}]}], "}"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ",", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f", ",", 
+       RowBox[{"x", "-", "y"}], ",", "\"\<f(x,y) = \>\""}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"x", "-", "y"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"x", "-", "y"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"y", "-", "x"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"y", "-", "x"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"x", "+", "y"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"x", "+", "y"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"1", "/", "y"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"1", "/", "y"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"1", "/", "x"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"1", "/", "x"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"x", "/", "y"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"x", "/", "y"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "x"}], "/", "y"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{
+          RowBox[{"-", "x"}], "/", "y"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "y"}], "/", "x"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{
+          RowBox[{"-", "y"}], "/", "x"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"x", "^", "2"}], "y"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{
+          RowBox[{"x", "^", "2"}], "y"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"y", "-", "1"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"y", "-", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"y", "^", "2"}], "-", "1"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{
+          RowBox[{"y", "^", "2"}], "-", "1"}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"y", "+", "x"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"y", "-", "x"}], ")"}]}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"y", "+", "x"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"y", "-", "x"}], ")"}]}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Sin", "[", "y", "]"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"Sin", "[", "y", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Cos", "[", "x", "]"}], "\[Rule]", 
+        RowBox[{"TraditionalForm", "[", 
+         RowBox[{"Cos", "[", "x", "]"}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ControlType", "\[Rule]", "PopupMenu"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "Delimiter", ",", 
+   "\[IndentingNewLine]", "\"\<x axis values:\>\"", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"xmin", ",", 
+       RowBox[{"-", "2"}]}], "}"}], ",", 
+     RowBox[{"-", "8"}], ",", 
+     RowBox[{"-", "1"}], ",", "1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"xmax", ",", "2"}], " ", "}"}], ",", "1", ",", "8", ",", "1", 
+     ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<y axis values:\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ymin", ",", 
+       RowBox[{"-", "3"}]}], " ", "}"}], ",", 
+     RowBox[{"-", "10"}], ",", 
+     RowBox[{"-", ".5"}], ",", ".01", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ymax", ",", "3"}], " ", "}"}], ",", ".5", ",", "10", ",", 
+     ".01", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<number of sample points:\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"xpart", ",", "15", ",", "\"\<x axis\>\""}], "}"}], ",", "4", 
+     ",", "20", ",", "1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ypart", ",", "15", ",", "\"\<y axis\>\""}], "}"}], ",", "4", 
+     ",", "20", ",", "1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "Delimiter", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ptflg", ",", "False", ",", 
+       RowBox[{"Tooltip", "[", 
+        RowBox[{
+        "\"\<display points\>\"", ",", 
+         "\"\<Show the midpoint of each segment.\>\""}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"True", ",", "False"}], "}"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"solflg", ",", "False", ",", 
+       RowBox[{"Tooltip", "[", 
+        RowBox[{
+        "\"\<show exact solution\>\"", ",", 
+         "\"\<Graph a function solving the differential equation and the \
+initial condiions.\>\""}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"True", ",", " ", "False"}], "}"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "the", " ", "next", " ", "two", " ", "lines", " ", "can", " ", "be", 
+       " ", "used", " ", "instead", " ", "of", " ", "the", " ", "popup", " ", 
+       "menues", " ", "for", " ", "initial", " ", "values"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+      "input", " ", "will", " ", "be", " ", "limited", " ", "to", " ", 
+       "numeric", " ", "values", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xinit", ",", "1", ",", "\"\<initial x value \>\""}], "}"}],
+          ",", " ", 
+         RowBox[{
+          RowBox[{"InputField", "[", 
+           RowBox[{"#1", ",", "Number", ",", 
+            RowBox[{"FieldSize", "\[Rule]", "5"}], ",", 
+            RowBox[{"Enabled", "\[Rule]", "solflg"}]}], "]"}], "&"}]}], 
+        "}"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"yinit", ",", "1", ",", "\"\<initial y value \>\""}], "}"}], 
+       ",", " ", 
+       RowBox[{
+        RowBox[{"InputField", "[", 
+         RowBox[{"#1", ",", "Number", ",", 
+          RowBox[{"FieldSize", "\[Rule]", "5"}], ",", 
+          RowBox[{"Enabled", "\[Rule]", "solflg"}]}], "]"}], "&"}]}], "}"}], 
+     ","}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"xinit", ",", "1", ",", "\"\<initial x value\>\""}], " ", "}"}],
+      ",", " ", "xmin", ",", "xmax", ",", ".1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Enabled", "\[Rule]", "solflg"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"yinit", ",", "1", " ", ",", "\"\<initial y value\>\""}], "}"}],
+      ",", "ymin", ",", "ymax", ",", ".1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Enabled", "\[Rule]", "solflg"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", "Manipulate"}], ",", 
+   RowBox[{"AutorunSequencing", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "3", ",", "5", ",", "7"}], "}"}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400522743876919*^9, 3.400522748133946*^9}, {
+   3.400526510685382*^9, 3.400526556607257*^9}, {3.400526625513507*^9, 
+   3.400526654404132*^9}, {3.400526925935382*^9, 3.400526932091632*^9}, {
+   3.400527024497882*^9, 3.400527111810382*^9}, {3.400527152716632*^9, 
+   3.400527191341632*^9}, {3.400527371544757*^9, 3.400527371622882*^9}, {
+   3.400601147798172*^9, 3.400601148662591*^9}, {3.4006011789402103`*^9, 
+   3.400601277323825*^9}, {3.40079961316253*^9, 3.4007997024163313`*^9}, {
+   3.400799862835813*^9, 3.400799883329438*^9}, {3.401037329153488*^9, 
+   3.4010373331847124`*^9}, {3.4010423147288313`*^9, 3.401042417292644*^9}, {
+   3.401042461824464*^9, 3.401042503621874*^9}, {3.401470318722107*^9, 
+   3.401470318815857*^9}, 3.4014704436744328`*^9, {3.4015400637109613`*^9, 
+   3.4015400753984613`*^9}, {3.4015401104140863`*^9, 
+   3.4015401242422113`*^9}},ExpressionUUID->"64febf05-69a6-4d5a-a2f4-\
+4f4e54c1fdbf"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`f$$ = $CellContext`x - $CellContext`y, \
+$CellContext`ptflg$$ = False, $CellContext`solflg$$ = 
+    False, $CellContext`xinit$$ = 1, $CellContext`xmax$$ = 
+    2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+    15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+    3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], $CellContext`x - $CellContext`y, 
+       "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+       TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[$CellContext`x + $CellContext`y], $CellContext`y^(-1) -> 
+       TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+       TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+       TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+       TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+       TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+       TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + $CellContext`y -> 
+       TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+       TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+       TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+         Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+         Cos[$CellContext`x]]}}, {
+      Hold["x axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xmin$$], -2}, -8, -1, 1}, {{
+       Hold[$CellContext`xmax$$], 2}, 1, 8, 1}, {
+      Hold["y axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`ymin$$], -3}, -10, -0.5, 0.01}, {{
+       Hold[$CellContext`ymax$$], 3}, 0.5, 10, 0.01}, {
+      Hold["number of sample points:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xpart$$], 15, "x axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ypart$$], 15, "y axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ptflg$$], False, 
+       Tooltip["display points", "Show the midpoint of each segment."]}, {
+      True, False}}, {{
+       Hold[$CellContext`solflg$$], False, 
+       Tooltip[
+       "show exact solution", 
+        "Graph a function solving the differential equation and the initial \
+condiions."]}, {True, False}}, {{
+       Hold[$CellContext`xinit$$], 1, "initial x value"}, 
+      Dynamic[$CellContext`xmin$$], 
+      Dynamic[$CellContext`xmax$$], 0.1}, {{
+       Hold[$CellContext`yinit$$], 1, "initial y value"}, 
+      Dynamic[$CellContext`ymin$$], 
+      Dynamic[$CellContext`ymax$$], 0.1}}, Typeset`size$$ = {
+    350., {172., 178.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`f$96832$$ = 
+    False, $CellContext`xmin$96833$$ = 0, $CellContext`xmax$96834$$ = 
+    0, $CellContext`ymin$96835$$ = 0, $CellContext`ymax$96836$$ = 
+    0, $CellContext`xpart$96837$$ = 0, $CellContext`ypart$96838$$ = 
+    0, $CellContext`ptflg$96839$$ = False, $CellContext`solflg$96840$$ = 
+    False, $CellContext`xinit$96841$$ = 0, $CellContext`yinit$96842$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`f$$ = $CellContext`x - $CellContext`y, \
+$CellContext`ptflg$$ = False, $CellContext`solflg$$ = 
+        False, $CellContext`xinit$$ = 1, $CellContext`xmax$$ = 
+        2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+        15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+        3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$96832$$, False], 
+        Hold[$CellContext`xmin$$, $CellContext`xmin$96833$$, 0], 
+        Hold[$CellContext`xmax$$, $CellContext`xmax$96834$$, 0], 
+        Hold[$CellContext`ymin$$, $CellContext`ymin$96835$$, 0], 
+        Hold[$CellContext`ymax$$, $CellContext`ymax$96836$$, 0], 
+        Hold[$CellContext`xpart$$, $CellContext`xpart$96837$$, 0], 
+        Hold[$CellContext`ypart$$, $CellContext`ypart$96838$$, 0], 
+        Hold[$CellContext`ptflg$$, $CellContext`ptflg$96839$$, False], 
+        Hold[$CellContext`solflg$$, $CellContext`solflg$96840$$, False], 
+        Hold[$CellContext`xinit$$, $CellContext`xinit$96841$$, 0], 
+        Hold[$CellContext`yinit$$, $CellContext`yinit$96842$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`xincr = ($CellContext`xmax$$ - \
+$CellContext`xmin$$)/($CellContext`xpart$$ - 
+         1); $CellContext`yincr = ($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`ypart$$ - 1); $CellContext`dirvec[
+         ComplexInfinity] := {0, 1}; $CellContext`dirvec[Indeterminate] := {0,
+          0}; $CellContext`dirvec[
+          Pattern[$CellContext`x$, 
+           Blank[]]] := {1, $CellContext`x$}/Sqrt[
+         1 + ($CellContext`x$/(($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`xmax$$ - $CellContext`xmin$$)))^2]; \
+$CellContext`pts = Flatten[
+          Table[
+           
+           N[{$CellContext`r, $CellContext`s}], {$CellContext`r, \
+$CellContext`xmin$$, $CellContext`xmax$$, $CellContext`xincr}, \
+{$CellContext`s, $CellContext`ymin$$, $CellContext`ymax$$, \
+$CellContext`yincr}], 1]; $CellContext`dir = Quiet[
+          
+          ReplaceAll[$CellContext`f$$, {$CellContext`x -> 
+            Part[$CellContext`pts, All, 1], $CellContext`y -> 
+            Part[$CellContext`pts, All, 2]}]]; $CellContext`newdir = 
+        Map[$CellContext`dirvec, $CellContext`dir]; $CellContext`endpts = \
+$CellContext`pts + ($CellContext`xincr/
+           4) $CellContext`newdir; $CellContext`frontpts = $CellContext`pts - \
+($CellContext`xincr/4) $CellContext`newdir; $CellContext`ff = 
+        ReplaceAll[$CellContext`f$$, $CellContext`y -> \
+$CellContext`y[$CellContext`x]]; $CellContext`soln = Quiet[
+          
+          DSolve[{Derivative[
+             1][$CellContext`y][$CellContext`x] == $CellContext`ff, \
+$CellContext`y[$CellContext`xinit$$] == $CellContext`yinit$$}, 
+           $CellContext`y[$CellContext`x], $CellContext`x]]; 
+       If[$CellContext`soln != {}, $CellContext`table = Table[
+            ReplaceAll[
+             Part[$CellContext`soln, 1, 1, 2], 
+             C[1] -> $CellContext`xinit$$]]; $CellContext`curve = Plot[
+            
+            Evaluate[$CellContext`table], {$CellContext`x, \
+$CellContext`xmin$$, $CellContext`xmax$$}]; Null, $CellContext`curve = {}]; 
+       Show[
+         Graphics[
+          Map[Line, 
+           Transpose[{$CellContext`frontpts, $CellContext`endpts}]]], 
+         If[$CellContext`ptflg$$, 
+          Graphics[
+           Point[$CellContext`pts]], {}], 
+         If[$CellContext`solflg$$, $CellContext`curve, {}], 
+         If[$CellContext`solflg$$, 
+          Graphics[{
+            PointSize[Medium], 
+            Point[{$CellContext`xinit$$, $CellContext`yinit$$}]}, {}], {}], 
+         Axes -> Automatic, 
+         PlotRange -> {{$CellContext`xmin$$, $CellContext`xmax$$}, \
+{$CellContext`ymin$$, $CellContext`ymax$$}}, AspectRatio -> 1.5/GoldenRatio, 
+         PlotLabel -> Grid[{{
+             Style[
+              Framed[
+               Row[{"slope field for ", 
+                 Derivative[1][$CellContext`y], " = ", 
+                 StringForm["``", $CellContext`f$$]}]]]}, {}}], 
+         ImageSize -> {350, 350}, ImagePadding -> {{25, 10}, {25, 55}}]), 
+      "Specifications" :> {{{$CellContext`f$$, $CellContext`x - \
+$CellContext`y, "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+          TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[$CellContext`x + $CellContext`y], \
+$CellContext`y^(-1) -> 
+          TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+          TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+          TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+          TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+          TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+          TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + \
+$CellContext`y -> TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+          TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+          TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+            Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+            Cos[$CellContext`x]]}, ControlType -> PopupMenu}, Delimiter, 
+        "x axis values:", {{$CellContext`xmin$$, -2}, -8, -1, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, {{$CellContext`xmax$$, 2}, 1, 8, 1, 
+         Appearance -> "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "y axis values:", {{$CellContext`ymin$$, -3}, -10, -0.5, 0.01, 
+         Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ymax$$, 3}, 0.5, 10, 0.01, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "number of sample points:", {{$CellContext`xpart$$, 15, "x axis"}, 4, 
+         20, 1, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ypart$$, 15, "y axis"}, 4, 20, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, 
+        Delimiter, {{$CellContext`ptflg$$, False, 
+          Tooltip["display points", "Show the midpoint of each segment."]}, {
+         True, False}}, {{$CellContext`solflg$$, False, 
+          Tooltip[
+          "show exact solution", 
+           "Graph a function solving the differential equation and the \
+initial condiions."]}, {
+         True, False}}, {{$CellContext`xinit$$, 1, "initial x value"}, 
+         Dynamic[$CellContext`xmin$$], 
+         Dynamic[$CellContext`xmax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> 
+         Dynamic[$CellContext`solflg$$]}, {{$CellContext`yinit$$, 1, 
+          "initial y value"}, 
+         Dynamic[$CellContext`ymin$$], 
+         Dynamic[$CellContext`ymax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> Dynamic[$CellContext`solflg$$]}}, 
+      "Options" :> {
+       TrackedSymbols :> Manipulate, AutorunSequencing -> {1, 3, 5, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{642., {202., 208.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->222501020,ExpressionUUID->"0baa0cba-c0e7-4663-8b52-68ea2e930e10"]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection",ExpressionUUID->"86ce9990-b62e-48d2-8fb9-9be5da0b2d14"],
+
+Cell[TextData[{
+ "This Demonstration generates a slope field for a number of differential \
+equations. You have the option to plot a particular solution passing through \
+one point. You can control the ",
+ Cell[BoxData[
+  FormBox["x", TraditionalForm]], "InlineMath",ExpressionUUID->
+  "a6706b20-72c2-425a-bf96-44ae67e563d5"],
+ " and ",
+ Cell[BoxData[
+  FormBox["y", TraditionalForm]], "InlineMath",ExpressionUUID->
+  "b528fb56-3bd2-4bc6-adf1-fd6ec84b8480"],
+ " axes as well as the number of segments plotted. You can display the \
+midpoints of the segments."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400522756268559*^9, 3.4005229195458193`*^9}, {
+   3.400526569857257*^9, 3.400526593638507*^9}, {3.4010425768257647`*^9, 
+   3.401042645607455*^9}},ExpressionUUID->"976a025f-143c-4a71-a685-\
+a696b9bcceaf"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection",ExpressionUUID->"dd870f61-c1d2-4b86-9dac-b5b4d0589abd"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`f$$ = $CellContext`x - $CellContext`y, \
+$CellContext`ptflg$$ = True, $CellContext`solflg$$ = 
+    True, $CellContext`xinit$$ = 0., $CellContext`xmax$$ = 
+    2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+    15, $CellContext`yinit$$ = 0.5, $CellContext`ymax$$ = 
+    3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], $CellContext`x - $CellContext`y, 
+       "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+       TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[$CellContext`x + $CellContext`y], $CellContext`y^(-1) -> 
+       TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+       TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+       TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+       TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+       TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+       TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + $CellContext`y -> 
+       TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+       TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+       TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+         Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+         Cos[$CellContext`x]]}}, {
+      Hold["x axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xmin$$], -2}, -8, -1, 1}, {{
+       Hold[$CellContext`xmax$$], 2}, 1, 8, 1}, {
+      Hold["y axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`ymin$$], -3}, -10, -0.5, 0.01}, {{
+       Hold[$CellContext`ymax$$], 3}, 0.5, 10, 0.01}, {
+      Hold["number of sample points:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xpart$$], 15, "x axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ypart$$], 15, "y axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ptflg$$], True, 
+       Tooltip["display points", "Show the midpoint of each segment."]}, {
+      True, False}}, {{
+       Hold[$CellContext`solflg$$], True, 
+       Tooltip[
+       "show exact solution", 
+        "Graph a function solving the differential equation and the initial \
+condiions."]}, {True, False}}, {{
+       Hold[$CellContext`xinit$$], 0., "initial x value"}, 
+      Dynamic[$CellContext`xmin$$], 
+      Dynamic[$CellContext`xmax$$], 0.1}, {{
+       Hold[$CellContext`yinit$$], 0.5, "initial y value"}, 
+      Dynamic[$CellContext`ymin$$], 
+      Dynamic[$CellContext`ymax$$], 0.1}}, Typeset`size$$ = {
+    350., {173., 177.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`f$96950$$ = 
+    False, $CellContext`xmin$96951$$ = 0, $CellContext`xmax$96952$$ = 
+    0, $CellContext`ymin$96953$$ = 0, $CellContext`ymax$96954$$ = 
+    0, $CellContext`xpart$96955$$ = 0, $CellContext`ypart$96956$$ = 
+    0, $CellContext`ptflg$96957$$ = False, $CellContext`solflg$96958$$ = 
+    False, $CellContext`xinit$96959$$ = 0, $CellContext`yinit$96960$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`f$$ = $CellContext`x - $CellContext`y, \
+$CellContext`ptflg$$ = True, $CellContext`solflg$$ = 
+        True, $CellContext`xinit$$ = 0., $CellContext`xmax$$ = 
+        2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+        15, $CellContext`yinit$$ = 0.5, $CellContext`ymax$$ = 
+        3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$96950$$, False], 
+        Hold[$CellContext`xmin$$, $CellContext`xmin$96951$$, 0], 
+        Hold[$CellContext`xmax$$, $CellContext`xmax$96952$$, 0], 
+        Hold[$CellContext`ymin$$, $CellContext`ymin$96953$$, 0], 
+        Hold[$CellContext`ymax$$, $CellContext`ymax$96954$$, 0], 
+        Hold[$CellContext`xpart$$, $CellContext`xpart$96955$$, 0], 
+        Hold[$CellContext`ypart$$, $CellContext`ypart$96956$$, 0], 
+        Hold[$CellContext`ptflg$$, $CellContext`ptflg$96957$$, False], 
+        Hold[$CellContext`solflg$$, $CellContext`solflg$96958$$, False], 
+        Hold[$CellContext`xinit$$, $CellContext`xinit$96959$$, 0], 
+        Hold[$CellContext`yinit$$, $CellContext`yinit$96960$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`xincr = ($CellContext`xmax$$ - \
+$CellContext`xmin$$)/($CellContext`xpart$$ - 
+         1); $CellContext`yincr = ($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`ypart$$ - 1); $CellContext`dirvec[
+         ComplexInfinity] := {0, 1}; $CellContext`dirvec[Indeterminate] := {0,
+          0}; $CellContext`dirvec[
+          Pattern[$CellContext`x$, 
+           Blank[]]] := {1, $CellContext`x$}/Sqrt[
+         1 + ($CellContext`x$/(($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`xmax$$ - $CellContext`xmin$$)))^2]; \
+$CellContext`pts = Flatten[
+          Table[
+           
+           N[{$CellContext`r, $CellContext`s}], {$CellContext`r, \
+$CellContext`xmin$$, $CellContext`xmax$$, $CellContext`xincr}, \
+{$CellContext`s, $CellContext`ymin$$, $CellContext`ymax$$, \
+$CellContext`yincr}], 1]; $CellContext`dir = Quiet[
+          
+          ReplaceAll[$CellContext`f$$, {$CellContext`x -> 
+            Part[$CellContext`pts, All, 1], $CellContext`y -> 
+            Part[$CellContext`pts, All, 2]}]]; $CellContext`newdir = 
+        Map[$CellContext`dirvec, $CellContext`dir]; $CellContext`endpts = \
+$CellContext`pts + ($CellContext`xincr/
+           4) $CellContext`newdir; $CellContext`frontpts = $CellContext`pts - \
+($CellContext`xincr/4) $CellContext`newdir; $CellContext`ff = 
+        ReplaceAll[$CellContext`f$$, $CellContext`y -> \
+$CellContext`y[$CellContext`x]]; $CellContext`soln = Quiet[
+          
+          DSolve[{Derivative[
+             1][$CellContext`y][$CellContext`x] == $CellContext`ff, \
+$CellContext`y[$CellContext`xinit$$] == $CellContext`yinit$$}, 
+           $CellContext`y[$CellContext`x], $CellContext`x]]; 
+       If[$CellContext`soln != {}, $CellContext`table = Table[
+            ReplaceAll[
+             Part[$CellContext`soln, 1, 1, 2], 
+             C[1] -> $CellContext`xinit$$]]; $CellContext`curve = Plot[
+            
+            Evaluate[$CellContext`table], {$CellContext`x, \
+$CellContext`xmin$$, $CellContext`xmax$$}]; Null, $CellContext`curve = {}]; 
+       Show[
+         Graphics[
+          Map[Line, 
+           Transpose[{$CellContext`frontpts, $CellContext`endpts}]]], 
+         If[$CellContext`ptflg$$, 
+          Graphics[
+           Point[$CellContext`pts]], {}], 
+         If[$CellContext`solflg$$, $CellContext`curve, {}], 
+         If[$CellContext`solflg$$, 
+          Graphics[{
+            PointSize[Medium], 
+            Point[{$CellContext`xinit$$, $CellContext`yinit$$}]}, {}], {}], 
+         Axes -> Automatic, 
+         PlotRange -> {{$CellContext`xmin$$, $CellContext`xmax$$}, \
+{$CellContext`ymin$$, $CellContext`ymax$$}}, AspectRatio -> 1.5/GoldenRatio, 
+         PlotLabel -> Grid[{{
+             Style[
+              Framed[
+               Row[{"slope field for ", 
+                 Derivative[1][$CellContext`y], " = ", 
+                 StringForm["``", $CellContext`f$$]}]]]}, {}}], 
+         ImageSize -> {350, 350}, ImagePadding -> {{25, 10}, {25, 55}}]), 
+      "Specifications" :> {{{$CellContext`f$$, $CellContext`x - \
+$CellContext`y, "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+          TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[$CellContext`x + $CellContext`y], \
+$CellContext`y^(-1) -> 
+          TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+          TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+          TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+          TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+          TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+          TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + \
+$CellContext`y -> TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+          TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+          TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+            Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+            Cos[$CellContext`x]]}, ControlType -> PopupMenu}, Delimiter, 
+        "x axis values:", {{$CellContext`xmin$$, -2}, -8, -1, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, {{$CellContext`xmax$$, 2}, 1, 8, 1, 
+         Appearance -> "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "y axis values:", {{$CellContext`ymin$$, -3}, -10, -0.5, 0.01, 
+         Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ymax$$, 3}, 0.5, 10, 0.01, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "number of sample points:", {{$CellContext`xpart$$, 15, "x axis"}, 4, 
+         20, 1, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ypart$$, 15, "y axis"}, 4, 20, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, 
+        Delimiter, {{$CellContext`ptflg$$, True, 
+          Tooltip["display points", "Show the midpoint of each segment."]}, {
+         True, False}}, {{$CellContext`solflg$$, True, 
+          Tooltip[
+          "show exact solution", 
+           "Graph a function solving the differential equation and the \
+initial condiions."]}, {
+         True, False}}, {{$CellContext`xinit$$, 0., "initial x value"}, 
+         Dynamic[$CellContext`xmin$$], 
+         Dynamic[$CellContext`xmax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> 
+         Dynamic[$CellContext`solflg$$]}, {{$CellContext`yinit$$, 0.5, 
+          "initial y value"}, 
+         Dynamic[$CellContext`ymin$$], 
+         Dynamic[$CellContext`ymax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> Dynamic[$CellContext`solflg$$]}}, 
+      "Options" :> {
+       TrackedSymbols :> Manipulate, AutorunSequencing -> {1, 3, 5, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{642., {202., 208.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->196679090,ExpressionUUID->"9b2e5d21-e657-4cb0-b244-bef96302ec67"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection",ExpressionUUID->"20bcb260-9e25-4b5c-9f89-ed6c4a16a160"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`f$$ = $CellContext`x/$CellContext`y, \
+$CellContext`ptflg$$ = False, $CellContext`solflg$$ = 
+    False, $CellContext`xinit$$ = 1, $CellContext`xmax$$ = 
+    2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+    15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+    3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], $CellContext`x/$CellContext`y, 
+       "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+       TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[$CellContext`x + $CellContext`y], $CellContext`y^(-1) -> 
+       TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+       TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+       TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+       TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+       TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+       TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + $CellContext`y -> 
+       TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+       TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+       TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+         Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+         Cos[$CellContext`x]]}}, {
+      Hold["x axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xmin$$], -2}, -8, -1, 1}, {{
+       Hold[$CellContext`xmax$$], 2}, 1, 8, 1}, {
+      Hold["y axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`ymin$$], -3}, -10, -0.5, 0.01}, {{
+       Hold[$CellContext`ymax$$], 3}, 0.5, 10, 0.01}, {
+      Hold["number of sample points:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xpart$$], 15, "x axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ypart$$], 15, "y axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ptflg$$], False, 
+       Tooltip["display points", "Show the midpoint of each segment."]}, {
+      True, False}}, {{
+       Hold[$CellContext`solflg$$], False, 
+       Tooltip[
+       "show exact solution", 
+        "Graph a function solving the differential equation and the initial \
+condiions."]}, {True, False}}, {{
+       Hold[$CellContext`xinit$$], 1, "initial x value"}, 
+      Dynamic[$CellContext`xmin$$], 
+      Dynamic[$CellContext`xmax$$], 0.1}, {{
+       Hold[$CellContext`yinit$$], 1, "initial y value"}, 
+      Dynamic[$CellContext`ymin$$], 
+      Dynamic[$CellContext`ymax$$], 0.1}}, Typeset`size$$ = {
+    350., {173., 177.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`f$97068$$ = 
+    False, $CellContext`xmin$97069$$ = 0, $CellContext`xmax$97070$$ = 
+    0, $CellContext`ymin$97071$$ = 0, $CellContext`ymax$97072$$ = 
+    0, $CellContext`xpart$97073$$ = 0, $CellContext`ypart$97074$$ = 
+    0, $CellContext`ptflg$97075$$ = False, $CellContext`solflg$97076$$ = 
+    False, $CellContext`xinit$97077$$ = 0, $CellContext`yinit$97078$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`f$$ = $CellContext`x/$CellContext`y, \
+$CellContext`ptflg$$ = False, $CellContext`solflg$$ = 
+        False, $CellContext`xinit$$ = 1, $CellContext`xmax$$ = 
+        2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+        15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+        3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$97068$$, False], 
+        Hold[$CellContext`xmin$$, $CellContext`xmin$97069$$, 0], 
+        Hold[$CellContext`xmax$$, $CellContext`xmax$97070$$, 0], 
+        Hold[$CellContext`ymin$$, $CellContext`ymin$97071$$, 0], 
+        Hold[$CellContext`ymax$$, $CellContext`ymax$97072$$, 0], 
+        Hold[$CellContext`xpart$$, $CellContext`xpart$97073$$, 0], 
+        Hold[$CellContext`ypart$$, $CellContext`ypart$97074$$, 0], 
+        Hold[$CellContext`ptflg$$, $CellContext`ptflg$97075$$, False], 
+        Hold[$CellContext`solflg$$, $CellContext`solflg$97076$$, False], 
+        Hold[$CellContext`xinit$$, $CellContext`xinit$97077$$, 0], 
+        Hold[$CellContext`yinit$$, $CellContext`yinit$97078$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`xincr = ($CellContext`xmax$$ - \
+$CellContext`xmin$$)/($CellContext`xpart$$ - 
+         1); $CellContext`yincr = ($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`ypart$$ - 1); $CellContext`dirvec[
+         ComplexInfinity] := {0, 1}; $CellContext`dirvec[Indeterminate] := {0,
+          0}; $CellContext`dirvec[
+          Pattern[$CellContext`x$, 
+           Blank[]]] := {1, $CellContext`x$}/Sqrt[
+         1 + ($CellContext`x$/(($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`xmax$$ - $CellContext`xmin$$)))^2]; \
+$CellContext`pts = Flatten[
+          Table[
+           
+           N[{$CellContext`r, $CellContext`s}], {$CellContext`r, \
+$CellContext`xmin$$, $CellContext`xmax$$, $CellContext`xincr}, \
+{$CellContext`s, $CellContext`ymin$$, $CellContext`ymax$$, \
+$CellContext`yincr}], 1]; $CellContext`dir = Quiet[
+          
+          ReplaceAll[$CellContext`f$$, {$CellContext`x -> 
+            Part[$CellContext`pts, All, 1], $CellContext`y -> 
+            Part[$CellContext`pts, All, 2]}]]; $CellContext`newdir = 
+        Map[$CellContext`dirvec, $CellContext`dir]; $CellContext`endpts = \
+$CellContext`pts + ($CellContext`xincr/
+           4) $CellContext`newdir; $CellContext`frontpts = $CellContext`pts - \
+($CellContext`xincr/4) $CellContext`newdir; $CellContext`ff = 
+        ReplaceAll[$CellContext`f$$, $CellContext`y -> \
+$CellContext`y[$CellContext`x]]; $CellContext`soln = Quiet[
+          
+          DSolve[{Derivative[
+             1][$CellContext`y][$CellContext`x] == $CellContext`ff, \
+$CellContext`y[$CellContext`xinit$$] == $CellContext`yinit$$}, 
+           $CellContext`y[$CellContext`x], $CellContext`x]]; 
+       If[$CellContext`soln != {}, $CellContext`table = Table[
+            ReplaceAll[
+             Part[$CellContext`soln, 1, 1, 2], 
+             C[1] -> $CellContext`xinit$$]]; $CellContext`curve = Plot[
+            
+            Evaluate[$CellContext`table], {$CellContext`x, \
+$CellContext`xmin$$, $CellContext`xmax$$}]; Null, $CellContext`curve = {}]; 
+       Show[
+         Graphics[
+          Map[Line, 
+           Transpose[{$CellContext`frontpts, $CellContext`endpts}]]], 
+         If[$CellContext`ptflg$$, 
+          Graphics[
+           Point[$CellContext`pts]], {}], 
+         If[$CellContext`solflg$$, $CellContext`curve, {}], 
+         If[$CellContext`solflg$$, 
+          Graphics[{
+            PointSize[Medium], 
+            Point[{$CellContext`xinit$$, $CellContext`yinit$$}]}, {}], {}], 
+         Axes -> Automatic, 
+         PlotRange -> {{$CellContext`xmin$$, $CellContext`xmax$$}, \
+{$CellContext`ymin$$, $CellContext`ymax$$}}, AspectRatio -> 1.5/GoldenRatio, 
+         PlotLabel -> Grid[{{
+             Style[
+              Framed[
+               Row[{"slope field for ", 
+                 Derivative[1][$CellContext`y], " = ", 
+                 StringForm["``", $CellContext`f$$]}]]]}, {}}], 
+         ImageSize -> {350, 350}, ImagePadding -> {{25, 10}, {25, 55}}]), 
+      "Specifications" :> {{{$CellContext`f$$, $CellContext`x/$CellContext`y, 
+          "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+          TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[$CellContext`x + $CellContext`y], \
+$CellContext`y^(-1) -> 
+          TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+          TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+          TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+          TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+          TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+          TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + \
+$CellContext`y -> TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+          TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+          TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+            Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+            Cos[$CellContext`x]]}, ControlType -> PopupMenu}, Delimiter, 
+        "x axis values:", {{$CellContext`xmin$$, -2}, -8, -1, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, {{$CellContext`xmax$$, 2}, 1, 8, 1, 
+         Appearance -> "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "y axis values:", {{$CellContext`ymin$$, -3}, -10, -0.5, 0.01, 
+         Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ymax$$, 3}, 0.5, 10, 0.01, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "number of sample points:", {{$CellContext`xpart$$, 15, "x axis"}, 4, 
+         20, 1, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ypart$$, 15, "y axis"}, 4, 20, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, 
+        Delimiter, {{$CellContext`ptflg$$, False, 
+          Tooltip["display points", "Show the midpoint of each segment."]}, {
+         True, False}}, {{$CellContext`solflg$$, False, 
+          Tooltip[
+          "show exact solution", 
+           "Graph a function solving the differential equation and the \
+initial condiions."]}, {
+         True, False}}, {{$CellContext`xinit$$, 1, "initial x value"}, 
+         Dynamic[$CellContext`xmin$$], 
+         Dynamic[$CellContext`xmax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> 
+         Dynamic[$CellContext`solflg$$]}, {{$CellContext`yinit$$, 1, 
+          "initial y value"}, 
+         Dynamic[$CellContext`ymin$$], 
+         Dynamic[$CellContext`ymax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> Dynamic[$CellContext`solflg$$]}}, 
+      "Options" :> {
+       TrackedSymbols :> Manipulate, AutorunSequencing -> {1, 3, 5, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{642., {202., 208.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->294476260,ExpressionUUID->"b20ead61-e6ca-4241-81a4-37d01a34e8f8"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`f$$ = $CellContext`x^2 $CellContext`y, \
+$CellContext`ptflg$$ = False, $CellContext`solflg$$ = 
+    True, $CellContext`xinit$$ = 0.8000000000000007, $CellContext`xmax$$ = 
+    2, $CellContext`xmin$$ = -5, $CellContext`xpart$$ = 
+    15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+    3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], $CellContext`x^2 $CellContext`y, 
+       "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+       TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[$CellContext`x + $CellContext`y], $CellContext`y^(-1) -> 
+       TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+       TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+       TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+       TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+       TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+       TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + $CellContext`y -> 
+       TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+       TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+       TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+         Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+         Cos[$CellContext`x]]}}, {
+      Hold["x axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xmin$$], -5}, -8, -1, 1}, {{
+       Hold[$CellContext`xmax$$], 2}, 1, 8, 1}, {
+      Hold["y axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`ymin$$], -3}, -10, -0.5, 0.01}, {{
+       Hold[$CellContext`ymax$$], 3}, 0.5, 10, 0.01}, {
+      Hold["number of sample points:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xpart$$], 15, "x axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ypart$$], 15, "y axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ptflg$$], False, 
+       Tooltip["display points", "Show the midpoint of each segment."]}, {
+      True, False}}, {{
+       Hold[$CellContext`solflg$$], True, 
+       Tooltip[
+       "show exact solution", 
+        "Graph a function solving the differential equation and the initial \
+condiions."]}, {True, False}}, {{
+       Hold[$CellContext`xinit$$], 0.8000000000000007, "initial x value"}, 
+      Dynamic[$CellContext`xmin$$], 
+      Dynamic[$CellContext`xmax$$], 0.1}, {{
+       Hold[$CellContext`yinit$$], 1, "initial y value"}, 
+      Dynamic[$CellContext`ymin$$], 
+      Dynamic[$CellContext`ymax$$], 0.1}}, Typeset`size$$ = {
+    350., {173., 177.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`f$97186$$ = 
+    False, $CellContext`xmin$97187$$ = 0, $CellContext`xmax$97188$$ = 
+    0, $CellContext`ymin$97189$$ = 0, $CellContext`ymax$97190$$ = 
+    0, $CellContext`xpart$97191$$ = 0, $CellContext`ypart$97192$$ = 
+    0, $CellContext`ptflg$97193$$ = False, $CellContext`solflg$97194$$ = 
+    False, $CellContext`xinit$97195$$ = 0, $CellContext`yinit$97196$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`f$$ = $CellContext`x^2 $CellContext`y, \
+$CellContext`ptflg$$ = False, $CellContext`solflg$$ = 
+        True, $CellContext`xinit$$ = 0.8000000000000007, $CellContext`xmax$$ = 
+        2, $CellContext`xmin$$ = -5, $CellContext`xpart$$ = 
+        15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+        3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$97186$$, False], 
+        Hold[$CellContext`xmin$$, $CellContext`xmin$97187$$, 0], 
+        Hold[$CellContext`xmax$$, $CellContext`xmax$97188$$, 0], 
+        Hold[$CellContext`ymin$$, $CellContext`ymin$97189$$, 0], 
+        Hold[$CellContext`ymax$$, $CellContext`ymax$97190$$, 0], 
+        Hold[$CellContext`xpart$$, $CellContext`xpart$97191$$, 0], 
+        Hold[$CellContext`ypart$$, $CellContext`ypart$97192$$, 0], 
+        Hold[$CellContext`ptflg$$, $CellContext`ptflg$97193$$, False], 
+        Hold[$CellContext`solflg$$, $CellContext`solflg$97194$$, False], 
+        Hold[$CellContext`xinit$$, $CellContext`xinit$97195$$, 0], 
+        Hold[$CellContext`yinit$$, $CellContext`yinit$97196$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`xincr = ($CellContext`xmax$$ - \
+$CellContext`xmin$$)/($CellContext`xpart$$ - 
+         1); $CellContext`yincr = ($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`ypart$$ - 1); $CellContext`dirvec[
+         ComplexInfinity] := {0, 1}; $CellContext`dirvec[Indeterminate] := {0,
+          0}; $CellContext`dirvec[
+          Pattern[$CellContext`x$, 
+           Blank[]]] := {1, $CellContext`x$}/Sqrt[
+         1 + ($CellContext`x$/(($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`xmax$$ - $CellContext`xmin$$)))^2]; \
+$CellContext`pts = Flatten[
+          Table[
+           
+           N[{$CellContext`r, $CellContext`s}], {$CellContext`r, \
+$CellContext`xmin$$, $CellContext`xmax$$, $CellContext`xincr}, \
+{$CellContext`s, $CellContext`ymin$$, $CellContext`ymax$$, \
+$CellContext`yincr}], 1]; $CellContext`dir = Quiet[
+          
+          ReplaceAll[$CellContext`f$$, {$CellContext`x -> 
+            Part[$CellContext`pts, All, 1], $CellContext`y -> 
+            Part[$CellContext`pts, All, 2]}]]; $CellContext`newdir = 
+        Map[$CellContext`dirvec, $CellContext`dir]; $CellContext`endpts = \
+$CellContext`pts + ($CellContext`xincr/
+           4) $CellContext`newdir; $CellContext`frontpts = $CellContext`pts - \
+($CellContext`xincr/4) $CellContext`newdir; $CellContext`ff = 
+        ReplaceAll[$CellContext`f$$, $CellContext`y -> \
+$CellContext`y[$CellContext`x]]; $CellContext`soln = Quiet[
+          
+          DSolve[{Derivative[
+             1][$CellContext`y][$CellContext`x] == $CellContext`ff, \
+$CellContext`y[$CellContext`xinit$$] == $CellContext`yinit$$}, 
+           $CellContext`y[$CellContext`x], $CellContext`x]]; 
+       If[$CellContext`soln != {}, $CellContext`table = Table[
+            ReplaceAll[
+             Part[$CellContext`soln, 1, 1, 2], 
+             C[1] -> $CellContext`xinit$$]]; $CellContext`curve = Plot[
+            
+            Evaluate[$CellContext`table], {$CellContext`x, \
+$CellContext`xmin$$, $CellContext`xmax$$}]; Null, $CellContext`curve = {}]; 
+       Show[
+         Graphics[
+          Map[Line, 
+           Transpose[{$CellContext`frontpts, $CellContext`endpts}]]], 
+         If[$CellContext`ptflg$$, 
+          Graphics[
+           Point[$CellContext`pts]], {}], 
+         If[$CellContext`solflg$$, $CellContext`curve, {}], 
+         If[$CellContext`solflg$$, 
+          Graphics[{
+            PointSize[Medium], 
+            Point[{$CellContext`xinit$$, $CellContext`yinit$$}]}, {}], {}], 
+         Axes -> Automatic, 
+         PlotRange -> {{$CellContext`xmin$$, $CellContext`xmax$$}, \
+{$CellContext`ymin$$, $CellContext`ymax$$}}, AspectRatio -> 1.5/GoldenRatio, 
+         PlotLabel -> Grid[{{
+             Style[
+              Framed[
+               Row[{"slope field for ", 
+                 Derivative[1][$CellContext`y], " = ", 
+                 StringForm["``", $CellContext`f$$]}]]]}, {}}], 
+         ImageSize -> {350, 350}, ImagePadding -> {{25, 10}, {25, 55}}]), 
+      "Specifications" :> {{{$CellContext`f$$, $CellContext`x^2 \
+$CellContext`y, "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+          TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[$CellContext`x + $CellContext`y], \
+$CellContext`y^(-1) -> 
+          TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+          TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+          TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+          TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+          TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+          TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + \
+$CellContext`y -> TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+          TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+          TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+            Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+            Cos[$CellContext`x]]}, ControlType -> PopupMenu}, Delimiter, 
+        "x axis values:", {{$CellContext`xmin$$, -5}, -8, -1, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, {{$CellContext`xmax$$, 2}, 1, 8, 1, 
+         Appearance -> "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "y axis values:", {{$CellContext`ymin$$, -3}, -10, -0.5, 0.01, 
+         Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ymax$$, 3}, 0.5, 10, 0.01, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "number of sample points:", {{$CellContext`xpart$$, 15, "x axis"}, 4, 
+         20, 1, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ypart$$, 15, "y axis"}, 4, 20, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, 
+        Delimiter, {{$CellContext`ptflg$$, False, 
+          Tooltip["display points", "Show the midpoint of each segment."]}, {
+         True, False}}, {{$CellContext`solflg$$, True, 
+          Tooltip[
+          "show exact solution", 
+           "Graph a function solving the differential equation and the \
+initial condiions."]}, {
+         True, False}}, {{$CellContext`xinit$$, 0.8000000000000007, 
+          "initial x value"}, 
+         Dynamic[$CellContext`xmin$$], 
+         Dynamic[$CellContext`xmax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> 
+         Dynamic[$CellContext`solflg$$]}, {{$CellContext`yinit$$, 1, 
+          "initial y value"}, 
+         Dynamic[$CellContext`ymin$$], 
+         Dynamic[$CellContext`ymax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> Dynamic[$CellContext`solflg$$]}}, 
+      "Options" :> {
+       TrackedSymbols :> Manipulate, AutorunSequencing -> {1, 3, 5, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{642., {202., 208.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->787004227,ExpressionUUID->"b81250db-5634-4ce4-8011-d14ef1530608"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`f$$ = 
+    Sin[$CellContext`y], $CellContext`ptflg$$ = False, $CellContext`solflg$$ =
+     True, $CellContext`xinit$$ = -0.8999999999999999, $CellContext`xmax$$ = 
+    2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+    15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+    3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], 
+       Sin[$CellContext`y], "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+       TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+       TraditionalForm[$CellContext`x + $CellContext`y], $CellContext`y^(-1) -> 
+       TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+       TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+       TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+       TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+       TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+       TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + $CellContext`y -> 
+       TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+       TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+       TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+         Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+         Cos[$CellContext`x]]}}, {
+      Hold["x axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xmin$$], -2}, -8, -1, 1}, {{
+       Hold[$CellContext`xmax$$], 2}, 1, 8, 1}, {
+      Hold["y axis values:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`ymin$$], -3}, -10, -0.5, 0.01}, {{
+       Hold[$CellContext`ymax$$], 3}, 0.5, 10, 0.01}, {
+      Hold["number of sample points:"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`xpart$$], 15, "x axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ypart$$], 15, "y axis"}, 4, 20, 1}, {{
+       Hold[$CellContext`ptflg$$], False, 
+       Tooltip["display points", "Show the midpoint of each segment."]}, {
+      True, False}}, {{
+       Hold[$CellContext`solflg$$], True, 
+       Tooltip[
+       "show exact solution", 
+        "Graph a function solving the differential equation and the initial \
+condiions."]}, {True, False}}, {{
+       Hold[$CellContext`xinit$$], -0.8999999999999999, "initial x value"}, 
+      Dynamic[$CellContext`xmin$$], 
+      Dynamic[$CellContext`xmax$$], 0.1}, {{
+       Hold[$CellContext`yinit$$], 1, "initial y value"}, 
+      Dynamic[$CellContext`ymin$$], 
+      Dynamic[$CellContext`ymax$$], 0.1}}, Typeset`size$$ = {
+    350., {173., 177.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`f$97304$$ = 
+    False, $CellContext`xmin$97305$$ = 0, $CellContext`xmax$97306$$ = 
+    0, $CellContext`ymin$97307$$ = 0, $CellContext`ymax$97308$$ = 
+    0, $CellContext`xpart$97309$$ = 0, $CellContext`ypart$97310$$ = 
+    0, $CellContext`ptflg$97311$$ = False, $CellContext`solflg$97312$$ = 
+    False, $CellContext`xinit$97313$$ = 0, $CellContext`yinit$97314$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`f$$ = 
+        Sin[$CellContext`y], $CellContext`ptflg$$ = 
+        False, $CellContext`solflg$$ = 
+        True, $CellContext`xinit$$ = -0.8999999999999999, $CellContext`xmax$$ = 
+        2, $CellContext`xmin$$ = -2, $CellContext`xpart$$ = 
+        15, $CellContext`yinit$$ = 1, $CellContext`ymax$$ = 
+        3, $CellContext`ymin$$ = -3, $CellContext`ypart$$ = 15}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$97304$$, False], 
+        Hold[$CellContext`xmin$$, $CellContext`xmin$97305$$, 0], 
+        Hold[$CellContext`xmax$$, $CellContext`xmax$97306$$, 0], 
+        Hold[$CellContext`ymin$$, $CellContext`ymin$97307$$, 0], 
+        Hold[$CellContext`ymax$$, $CellContext`ymax$97308$$, 0], 
+        Hold[$CellContext`xpart$$, $CellContext`xpart$97309$$, 0], 
+        Hold[$CellContext`ypart$$, $CellContext`ypart$97310$$, 0], 
+        Hold[$CellContext`ptflg$$, $CellContext`ptflg$97311$$, False], 
+        Hold[$CellContext`solflg$$, $CellContext`solflg$97312$$, False], 
+        Hold[$CellContext`xinit$$, $CellContext`xinit$97313$$, 0], 
+        Hold[$CellContext`yinit$$, $CellContext`yinit$97314$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`xincr = ($CellContext`xmax$$ - \
+$CellContext`xmin$$)/($CellContext`xpart$$ - 
+         1); $CellContext`yincr = ($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`ypart$$ - 1); $CellContext`dirvec[
+         ComplexInfinity] := {0, 1}; $CellContext`dirvec[Indeterminate] := {0,
+          0}; $CellContext`dirvec[
+          Pattern[$CellContext`x$, 
+           Blank[]]] := {1, $CellContext`x$}/Sqrt[
+         1 + ($CellContext`x$/(($CellContext`ymax$$ - \
+$CellContext`ymin$$)/($CellContext`xmax$$ - $CellContext`xmin$$)))^2]; \
+$CellContext`pts = Flatten[
+          Table[
+           
+           N[{$CellContext`r, $CellContext`s}], {$CellContext`r, \
+$CellContext`xmin$$, $CellContext`xmax$$, $CellContext`xincr}, \
+{$CellContext`s, $CellContext`ymin$$, $CellContext`ymax$$, \
+$CellContext`yincr}], 1]; $CellContext`dir = Quiet[
+          
+          ReplaceAll[$CellContext`f$$, {$CellContext`x -> 
+            Part[$CellContext`pts, All, 1], $CellContext`y -> 
+            Part[$CellContext`pts, All, 2]}]]; $CellContext`newdir = 
+        Map[$CellContext`dirvec, $CellContext`dir]; $CellContext`endpts = \
+$CellContext`pts + ($CellContext`xincr/
+           4) $CellContext`newdir; $CellContext`frontpts = $CellContext`pts - \
+($CellContext`xincr/4) $CellContext`newdir; $CellContext`ff = 
+        ReplaceAll[$CellContext`f$$, $CellContext`y -> \
+$CellContext`y[$CellContext`x]]; $CellContext`soln = Quiet[
+          
+          DSolve[{Derivative[
+             1][$CellContext`y][$CellContext`x] == $CellContext`ff, \
+$CellContext`y[$CellContext`xinit$$] == $CellContext`yinit$$}, 
+           $CellContext`y[$CellContext`x], $CellContext`x]]; 
+       If[$CellContext`soln != {}, $CellContext`table = Table[
+            ReplaceAll[
+             Part[$CellContext`soln, 1, 1, 2], 
+             C[1] -> $CellContext`xinit$$]]; $CellContext`curve = Plot[
+            
+            Evaluate[$CellContext`table], {$CellContext`x, \
+$CellContext`xmin$$, $CellContext`xmax$$}]; Null, $CellContext`curve = {}]; 
+       Show[
+         Graphics[
+          Map[Line, 
+           Transpose[{$CellContext`frontpts, $CellContext`endpts}]]], 
+         If[$CellContext`ptflg$$, 
+          Graphics[
+           Point[$CellContext`pts]], {}], 
+         If[$CellContext`solflg$$, $CellContext`curve, {}], 
+         If[$CellContext`solflg$$, 
+          Graphics[{
+            PointSize[Medium], 
+            Point[{$CellContext`xinit$$, $CellContext`yinit$$}]}, {}], {}], 
+         Axes -> Automatic, 
+         PlotRange -> {{$CellContext`xmin$$, $CellContext`xmax$$}, \
+{$CellContext`ymin$$, $CellContext`ymax$$}}, AspectRatio -> 1.5/GoldenRatio, 
+         PlotLabel -> Grid[{{
+             Style[
+              Framed[
+               Row[{"slope field for ", 
+                 Derivative[1][$CellContext`y], " = ", 
+                 StringForm["``", $CellContext`f$$]}]]]}, {}}], 
+         ImageSize -> {350, 350}, ImagePadding -> {{25, 10}, {25, 55}}]), 
+      "Specifications" :> {{{$CellContext`f$$, 
+          Sin[$CellContext`y], "f(x,y) = "}, {$CellContext`x - $CellContext`y -> 
+          TraditionalForm[$CellContext`x - $CellContext`y], -$CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[-$CellContext`x + $CellContext`y], $CellContext`x + \
+$CellContext`y -> 
+          TraditionalForm[$CellContext`x + $CellContext`y], \
+$CellContext`y^(-1) -> 
+          TraditionalForm[$CellContext`y^(-1)], $CellContext`x^(-1) -> 
+          TraditionalForm[$CellContext`x^(-1)], $CellContext`x/$CellContext`y -> 
+          TraditionalForm[$CellContext`x/$CellContext`y], \
+(-$CellContext`x)/$CellContext`y -> 
+          TraditionalForm[(-$CellContext`x)/$CellContext`y], \
+((-1)/$CellContext`x) $CellContext`y -> 
+          TraditionalForm[((-1)/$CellContext`x) $CellContext`y], \
+$CellContext`x^2 $CellContext`y -> 
+          TraditionalForm[$CellContext`x^2 $CellContext`y], -1 + \
+$CellContext`y -> TraditionalForm[-1 + $CellContext`y], -1 + $CellContext`y^2 -> 
+          TraditionalForm[-1 + $CellContext`y^2], (-$CellContext`x + \
+$CellContext`y)^(-1) ($CellContext`x + $CellContext`y) -> 
+          TraditionalForm[(-$CellContext`x + $CellContext`y)^(-1) \
+($CellContext`x + $CellContext`y)], Sin[$CellContext`y] -> TraditionalForm[
+            Sin[$CellContext`y]], Cos[$CellContext`x] -> TraditionalForm[
+            Cos[$CellContext`x]]}, ControlType -> PopupMenu}, Delimiter, 
+        "x axis values:", {{$CellContext`xmin$$, -2}, -8, -1, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, {{$CellContext`xmax$$, 2}, 1, 8, 1, 
+         Appearance -> "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "y axis values:", {{$CellContext`ymin$$, -3}, -10, -0.5, 0.01, 
+         Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ymax$$, 3}, 0.5, 10, 0.01, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, Delimiter, 
+        "number of sample points:", {{$CellContext`xpart$$, 15, "x axis"}, 4, 
+         20, 1, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`ypart$$, 15, "y axis"}, 4, 20, 1, Appearance -> 
+         "Labeled", ImageSize -> Tiny}, 
+        Delimiter, {{$CellContext`ptflg$$, False, 
+          Tooltip["display points", "Show the midpoint of each segment."]}, {
+         True, False}}, {{$CellContext`solflg$$, True, 
+          Tooltip[
+          "show exact solution", 
+           "Graph a function solving the differential equation and the \
+initial condiions."]}, {
+         True, False}}, {{$CellContext`xinit$$, -0.8999999999999999, 
+          "initial x value"}, 
+         Dynamic[$CellContext`xmin$$], 
+         Dynamic[$CellContext`xmax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> 
+         Dynamic[$CellContext`solflg$$]}, {{$CellContext`yinit$$, 1, 
+          "initial y value"}, 
+         Dynamic[$CellContext`ymin$$], 
+         Dynamic[$CellContext`ymax$$], 0.1, Appearance -> "Labeled", 
+         ImageSize -> Tiny, Enabled -> Dynamic[$CellContext`solflg$$]}}, 
+      "Options" :> {
+       TrackedSymbols :> Manipulate, AutorunSequencing -> {1, 3, 5, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{642., {202., 208.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->295257493,ExpressionUUID->"cb121937-3bd1-43b2-93fb-b94232e629b2"]
+}, Closed]],
+
+Cell["", "DetailsSection",ExpressionUUID->"90d87cf1-15af-446d-b43d-7e5f2331cf02"],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection",ExpressionUUID->"9795bc48-b3d5-4e88-ac4d-58e60bb2078a"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Resize Images",ExpressionUUID->"2ee5bf93-9c11-4e82-b146-11aa5f106976"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.400527241763507*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "ResizeImages",ExpressionUUID->"6ba48d04-4c22-41f5-8f96-8c20cc8c0ece"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Rotate and Zoom in 3D",ExpressionUUID->
+    "7037f373-cd24-4e2c-b6d7-b3697432d703"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "RotateAndZoomIn3D",ExpressionUUID->"0616db8d-0005-4852-971e-b531f55cf635"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Drag Locators",ExpressionUUID->"316a0cbb-c396-41e1-abdc-f52d2ece6da0"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.40052498041903*^9, 3.400524981023224*^9}, 
+   3.400800161282343*^9, 3.4008003241942453`*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "DragLocators",ExpressionUUID->"b5a42cc8-2c1e-4d0b-942e-bb7fd4da09ef"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Create and Delete Locators",ExpressionUUID->
+    "3b657a81-7a19-4b4d-b601-15b0451b8f10"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400800187722085*^9, 3.4008001887541943`*^9}},
+ FontFamily->"Verdana",
+ CellTags->
+  "CreateAndDeleteLocators",ExpressionUUID->"10811791-92f6-45e1-94b5-\
+03fc8dce66f9"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Slider Zoom",ExpressionUUID->"76aa0d10-e50d-430c-abf8-0024f76d04f3"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4008001898583508`*^9, 3.400800192042218*^9}, {
+   3.400800257754367*^9, 3.400800259138255*^9}, 3.400800364314336*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "SliderZoom",ExpressionUUID->"06df9edb-1388-4617-9007-f3ad36cfd059"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Gamepad Controls",ExpressionUUID->
+    "ec70681b-f09d-40dc-9ae5-355294b29f59"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "GamepadControls",ExpressionUUID->"7b0140fa-17b4-44f2-9bb3-716c4f590461"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Automatic Animation",ExpressionUUID->
+    "f98e6913-53b4-4696-82f9-f759fc9e7e6b"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.400800440482374*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "AutomaticAnimation",ExpressionUUID->"1be07583-57ae-489e-9fe7-e9a38ab92491"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Bookmark Animation",ExpressionUUID->
+    "8a88de69-4e89-4391-98f1-c756e0af5b4a"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "BookmarkAnimation",ExpressionUUID->"c2841d4e-efae-4278-b4e0-c83e22436700"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection",ExpressionUUID->"ed87cac3-78ec-4b8a-a054-56fc45d0809c"],
+
+Cell["calculus", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4005245678051434`*^9, 3.400524569958082*^9}, {
+   3.400527290107257*^9, 3.400527290169757*^9}},
+ CellID->1201872365,ExpressionUUID->"285f7fc9-f57b-4ff2-97bd-c8b0da6bc76e"],
+
+Cell["differential equation", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400524570619926*^9, 3.400524581717749*^9}, {
+   3.400527291435382*^9, 3.400527308154132*^9}},
+ CellID->637654873,ExpressionUUID->"83bebd15-5da1-4017-a7c1-3c3530afce08"],
+
+Cell["initial value problem", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4005245835237494`*^9, 3.40052459286738*^9}, {
+   3.400527294294757*^9, 3.400527305685382*^9}},
+ CellID->1122051981,ExpressionUUID->"4a902db7-5d92-4c15-bf8f-5f3933df88cb"],
+
+Cell["slope field", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.40052459338791*^9, 3.400524600317354*^9}, {
+   3.400527295607257*^9, 3.400527301904132*^9}},
+ CellID->1273740360,ExpressionUUID->"15955c5b-93fe-4bb5-b065-ef4ea9a1d35f"],
+
+Cell["direction field", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400524600923871*^9, 3.400524603827807*^9}, {
+   3.400527296779132*^9, 3.400527299122882*^9}},
+ CellID->1637237224,ExpressionUUID->"a9411270-68f8-4610-8307-5ee34cfaa432"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection",ExpressionUUID->"d8bd89ee-d121-42e2-9215-c49a76eae97a"],
+
+Cell[TextData[ButtonBox["Slope Field",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://mathworld.wolfram.com/SlopeField.html"], 
+   None}]], "RelatedLinks",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400527440497882*^9, 3.400527446669757*^9}},
+ CellID->77770573,ExpressionUUID->"2bf070ee-e092-405f-ba5f-f45df441e7bd"],
+
+Cell[TextData[ButtonBox["Vector Field",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://mathworld.wolfram.com/VectorField.html"], 
+   None}]], "RelatedLinks",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.400527456654132*^9, 3.400527466857257*^9}},
+ CellID->372247877,ExpressionUUID->"b013bde5-8cf9-45ff-bad6-fbe574baba02"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection",ExpressionUUID->"7149a5da-39c7-4673-b03e-9386aa976662"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Charles E. Oelsner",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Charles+E.+\
+Oelsner"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Charles+E.+Oelsner"]
+}], "Author",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4005232053117657`*^9, 3.400523211325172*^9}, {
+   3.400527311685382*^9, 
+   3.400527312951007*^9}},ExpressionUUID->"c3add99c-1bf3-4b3f-bc26-\
+9e07e1a01111"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{1920, 997},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"d98650c5-93d4-43ae-b95d-f35000849cce"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "AutomaticAnimation"->{
+  Cell[83846, 1757, 1596, 35, 22, "ControlSuggestions",ExpressionUUID->"1be07583-57ae-489e-9fe7-e9a38ab92491",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[85445, 1794, 1004, 24, 22, "ControlSuggestions",ExpressionUUID->"c2841d4e-efae-4278-b4e0-c83e22436700",
+   CellTags->"BookmarkAnimation"]},
+ "CreateAndDeleteLocators"->{
+  Cell[81369, 1692, 853, 21, 22, "ControlSuggestions",ExpressionUUID->"10811791-92f6-45e1-94b5-03fc8dce66f9",
+   CellTags->"CreateAndDeleteLocators"]},
+ "DragLocators"->{
+  Cell[80770, 1674, 596, 16, 22, "ControlSuggestions",ExpressionUUID->"b5a42cc8-2c1e-4d0b-942e-bb7fd4da09ef",
+   CellTags->"DragLocators"]},
+ "GamepadControls"->{
+  Cell[83352, 1743, 491, 12, 22, "ControlSuggestions",ExpressionUUID->"7b0140fa-17b4-44f2-9bb3-716c4f590461",
+   CellTags->"GamepadControls"]},
+ "ResizeImages"->{
+  Cell[79473, 1640, 491, 11, 22, "ControlSuggestions",ExpressionUUID->"6ba48d04-4c22-41f5-8f96-8c20cc8c0ece",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[79967, 1653, 800, 19, 22, "ControlSuggestions",ExpressionUUID->"0616db8d-0005-4852-971e-b531f55cf635",
+   CellTags->"RotateAndZoomIn3D"]},
+ "SliderZoom"->{
+  Cell[82225, 1715, 1124, 26, 22, "ControlSuggestions",ExpressionUUID->"06df9edb-1388-4617-9007-f3ad36cfd059",
+   CellTags->"SliderZoom"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"AutomaticAnimation", 89736, 1913},
+ {"BookmarkAnimation", 89908, 1916},
+ {"CreateAndDeleteLocators", 90085, 1919},
+ {"DragLocators", 90256, 1922},
+ {"GamepadControls", 90419, 1925},
+ {"ResizeImages", 90582, 1928},
+ {"RotateAndZoomIn3D", 90747, 1931},
+ {"SliderZoom", 90910, 1934}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 184, 4, 74, "DemoTitle",ExpressionUUID->"4a994cc3-e8f3-4bc8-b931-fc4a7db9e207"],
+Cell[754, 28, 88, 0, 275, "InitializationSection",ExpressionUUID->"dcd43fc2-828a-4983-8828-93acb8f2ffd9"],
+Cell[CellGroupData[{
+Cell[867, 32, 84, 0, 189, "ManipulateSection",ExpressionUUID->"29ddf814-4fc0-468f-abeb-ffd73ddf5ff5"],
+Cell[CellGroupData[{
+Cell[976, 36, 18202, 471, 70, "Input",ExpressionUUID->"64febf05-69a6-4d5a-a2f4-4f4e54c1fdbf"],
+Cell[19181, 509, 11742, 215, 422, "Output",ExpressionUUID->"0baa0cba-c0e7-4663-8b52-68ea2e930e10",
+ CellID->222501020]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30969, 730, 91, 0, 169, "ManipulateCaptionSection",ExpressionUUID->"86ce9990-b62e-48d2-8fb9-9be5da0b2d14"],
+Cell[31063, 732, 835, 18, 53, "ManipulateCaption",ExpressionUUID->"976a025f-143c-4a71-a685-a696b9bcceaf"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[31935, 755, 83, 0, 130, "ThumbnailSection",ExpressionUUID->"dd870f61-c1d2-4b86-9dac-b5b4d0589abd"],
+Cell[32021, 757, 11746, 215, 423, "Output",ExpressionUUID->"9b2e5d21-e657-4cb0-b244-bef96302ec67",
+ CellID->196679090]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[43804, 977, 83, 0, 130, "SnapshotsSection",ExpressionUUID->"20bcb260-9e25-4b5c-9f89-ed6c4a16a160"],
+Cell[43890, 979, 11743, 215, 423, "Output",ExpressionUUID->"b20ead61-e6ca-4241-81a4-37d01a34e8f8",
+ CellID->294476260],
+Cell[55636, 1196, 11817, 216, 423, "Output",ExpressionUUID->"b81250db-5634-4ce4-8011-d14ef1530608",
+ CellID->787004227],
+Cell[67456, 1414, 11801, 217, 423, "Output",ExpressionUUID->"cb121937-3bd1-43b2-93fb-b94232e629b2",
+ CellID->295257493]
+}, Closed]],
+Cell[79272, 1634, 81, 0, 249, "DetailsSection",ExpressionUUID->"90d87cf1-15af-446d-b43d-7e5f2331cf02"],
+Cell[CellGroupData[{
+Cell[79378, 1638, 92, 0, 114, "ControlSuggestionsSection",ExpressionUUID->"9795bc48-b3d5-4e88-ac4d-58e60bb2078a"],
+Cell[79473, 1640, 491, 11, 22, "ControlSuggestions",ExpressionUUID->"6ba48d04-4c22-41f5-8f96-8c20cc8c0ece",
+ CellTags->"ResizeImages"],
+Cell[79967, 1653, 800, 19, 22, "ControlSuggestions",ExpressionUUID->"0616db8d-0005-4852-971e-b531f55cf635",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[80770, 1674, 596, 16, 22, "ControlSuggestions",ExpressionUUID->"b5a42cc8-2c1e-4d0b-942e-bb7fd4da09ef",
+ CellTags->"DragLocators"],
+Cell[81369, 1692, 853, 21, 22, "ControlSuggestions",ExpressionUUID->"10811791-92f6-45e1-94b5-03fc8dce66f9",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[82225, 1715, 1124, 26, 22, "ControlSuggestions",ExpressionUUID->"06df9edb-1388-4617-9007-f3ad36cfd059",
+ CellTags->"SliderZoom"],
+Cell[83352, 1743, 491, 12, 22, "ControlSuggestions",ExpressionUUID->"7b0140fa-17b4-44f2-9bb3-716c4f590461",
+ CellTags->"GamepadControls"],
+Cell[83846, 1757, 1596, 35, 22, "ControlSuggestions",ExpressionUUID->"1be07583-57ae-489e-9fe7-e9a38ab92491",
+ CellTags->"AutomaticAnimation"],
+Cell[85445, 1794, 1004, 24, 22, "ControlSuggestions",ExpressionUUID->"c2841d4e-efae-4278-b4e0-c83e22436700",
+ CellTags->"BookmarkAnimation"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[86486, 1823, 85, 0, 146, "SearchTermsSection",ExpressionUUID->"ed87cac3-78ec-4b8a-a054-56fc45d0809c"],
+Cell[86574, 1825, 249, 4, 22, "SearchTerms",ExpressionUUID->"285f7fc9-f57b-4ff2-97bd-c8b0da6bc76e",
+ CellID->1201872365],
+Cell[86826, 1831, 259, 4, 22, "SearchTerms",ExpressionUUID->"83bebd15-5da1-4017-a7c1-3c3530afce08",
+ CellID->637654873],
+Cell[87088, 1837, 261, 4, 22, "SearchTerms",ExpressionUUID->"4a902db7-5d92-4c15-bf8f-5f3933df88cb",
+ CellID->1122051981],
+Cell[87352, 1843, 249, 4, 22, "SearchTerms",ExpressionUUID->"15955c5b-93fe-4bb5-b065-ef4ea9a1d35f",
+ CellID->1273740360],
+Cell[87604, 1849, 254, 4, 22, "SearchTerms",ExpressionUUID->"a9411270-68f8-4610-8307-5ee34cfaa432",
+ CellID->1637237224]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[87895, 1858, 86, 0, 131, "RelatedLinksSection",ExpressionUUID->"d8bd89ee-d121-42e2-9215-c49a76eae97a"],
+Cell[87984, 1860, 327, 7, 22, "RelatedLinks",ExpressionUUID->"2bf070ee-e092-405f-ba5f-f45df441e7bd",
+ CellID->77770573],
+Cell[88314, 1869, 330, 7, 22, "RelatedLinks",ExpressionUUID->"b013bde5-8cf9-45ff-bad6-fbe574baba02",
+ CellID->372247877]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[88681, 1881, 80, 0, 129, "AuthorSection",ExpressionUUID->"7149a5da-39c7-4673-b03e-9386aa976662"],
+Cell[88764, 1883, 514, 14, 22, "Author",ExpressionUUID->"c3add99c-1bf3-4b3f-bc26-9e07e1a01111"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+

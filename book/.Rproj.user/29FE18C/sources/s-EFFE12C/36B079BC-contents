@@ -1,0 +1,555 @@
+---
+title: 'Lesson 5: Visualizing Data'
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    css: styles.css
+---
+
+```{r, include=FALSE}
+library(mosaic)
+```
+
+##Opening Story
+
+<center><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&playerId=kaltura_player&entry_id=0_98gn5bxl&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_348cg6el" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player"></iframe></center>
+
+## Identifying Patterns
+
+As we saw in the opening video, Craig's boss wanted him to create charts and graphs in order to help the team better understand their data. It can be hard to really understand what is going on by just looking at a list of numbers. Creating graphics such as charts and graphs to represent a set of data can make it much easier to understand. This is true because humans have an amazing ability to identify patterns in images. The following image is a great example. The tigers in the picture are hidden by the grass and the camouflaging stripes of the tigers. In spite of this, the human eye quickly locates the two tigers crouching in the grass. 
+
+\
+
+<center>
+![A tiger crouching in the grass](./Lesson5/images/Tigers.jpg) 
+</center>
+<!-- https://commons.wikimedia.org/wiki/File:Tigers_(Panthera_tigris)_in_the_grass_(female_with_young)_(19797510646).jpg -->
+
+\
+
+
+> *Data visualization* is the science of communicating important patterns from data through the use of graphics. 
+
+Figuratively speaking, the goal of a graphic is to help people quickly identify the "tiger in the grass." In other words, the goal of a good graphic is to reveal important patterns in data. 
+
+Graphics can be very helpful as part of the Quantitative Reasoning Process. They provide a tool for examining data that enables a more powerful decision on the part of the user. To do this, graphics must communicate the truth data has to offer on a situation of interest. 
+
+<hr>
+
+### Example 1
+In 1995 a team of American researchers began a study on Alzheimer's disease[^1]. Alzheimer's is a serious disease resulting in memory loss that most typically occurs in adults aged 65 and older. Individuals affected with the disease progressively lose the ability to function with normal daily tasks until they eventually die from the disease.  
+
+Before beginning their study, the researchers needed to find a geographic location where they could find enough elderly participants to carry out the study. Use the following graphic to find a location where the study could be carried out.
+
+
+
+
+
+
+<center>
+![Image of the US shaded by county showing life expectancy of males at birth in 1995](./Lesson5/images/UScountiesLifeExpect.png)](http://vizhub.healthdata.org/us-health-map/)
+</center>
+
+**Solution**
+
+The researchers need a population that is old enough and healthy enough to observe possible factors that contribute to the development of Alzheimer's disease. We notice the above graphic readily communicates which counties have the longest life expectancy by showing them in dark blue.
+
+The graphic shows several counties showing dark blue. A detailed examination of each of the counties shows Cache County, Utah as having one of the longest life expediencies in the USA at 77.5 years (for males). 
+
+The researchers eventually selected Cache County Utah because, as they stated, "The elderly of Cache County have a longer life expectancy, higher educational attainment, and lower incidence of chronic disease (which can complicate the diagnosis of dementia) than other similar populations."[^1]
+
+
+<hr>
+
+Example 1 is a good illustration of how graphics can improve our ability to understand data. Looking at the graphic helps us get an overall impression of life expectancy data throughout the United States. If we didn't use a graphic, we would need to look at a list of life expectancies for each county in the United States. This would be a very long list of data and without using a graphic it would be much harder to get a good overall idea of what the data tells us.
+
+<hr>
+
+## Common Graphical Tools
+
+While only the imagination limits what a good graphic can be, there are several types of graphics that are commonly used to communicate information. Learning how and when to use these common graphical tools will benefit you both as a student and as an employee.
+
+### Bar Charts 
+
+When data has several categories, the number of observations in each category can be visually summarized with a bar chart. 
+
+#### Example 2
+
+Use a graphic to compare the number of Freshman, Sophomores, Junior, and Seniors at BYU-Idaho in 2001 and 2011. What information does the chart provide?
+
+**Solution**
+
+A bar chart is a good graphic to use for this data because the data has four categories: freshman, sophomore, junior, and senior. The data we need to make this chart are publicly available data on the [BYU-Idaho Enrollment Statistics](http://www2.byui.edu/IR/stats/index.htm) website). Using the data we can create the following graphic.
+
+```{r, echo=FALSE}
+classRank <- 	rbind(
+  Freshmen = c(3971,	4568),
+  Sophomores = c(3220, 2955),
+  Juniors =	c(1313, 3309),
+  Seniors	= c(150, 2477))
+colnames(classRank) <- c("Fall 2001","Fall 2011")
+
+barplot(classRank, beside=TRUE, col=c("#5E9CD3","#EB7D3C","#A5A5A5","#FDBF2D"), main="BYU-I Enrollments", ylim=c(0,6000), space=c(.1,1), border="white", yaxt='n')
+mylines <- seq(0,5000,500)
+abline(h=mylines, col='gray')
+barplot(classRank, beside=TRUE, col=c("#5E9CD3","#EB7D3C","#A5A5A5","#FDBF2D"), main="", ylim=c(0,6000), space=c(.1,1), border="white", yaxt='n', add=TRUE, legend=TRUE, args.legend = list(x="topleft", box.col='white', bg='white', horiz=TRUE))
+axis(2, at=seq(0,5000,1000), line=TRUE, las=2)
+abline(h=0)
+```
+
+The graphic shows that there were relatively few Juniors and almost no Seniors during the Fall 2001 semester. This makes sense when you note that in the Fall of 2001, the two-year junior college known as Ricks College officially transitioned to become the four-year university BYU-Idaho. This graphic demonstrates how the number of Juniors and Seniors increased to be similar to the number of Sophomores just ten years later. Interestingly, in the Fall of 2011 the number of incoming Freshman was still much greater than any of the Sophomore, Junior, or Senior classes. This shows how a good graphic will often lead to new questions. In this case, the new question deals with why there are so many Freshman not continuing into their sophomore year at BYU-Idaho.
+
+<hr>
+
+#### Excel Instructions - Bar Charts {.tabset .tabset-fade}
+
+Click on each of the five steps below to learn how to make the BYU-Idaho Enrollments bar chart:
+
+#####Step 1  
+Open a "New Workbook" in Excel.
+
+<center>
+![](./Lesson5/Week 5/Barplot1.png)
+</center>
+
+<hr>
+
+#####Step 2 
+Enter the data as found on the [BYU-Idaho Enrollment Statistics](http://www2.byui.edu/IR/stats/index.htm) website.
+
+<center>
+![](./Lesson5/Week 5/Barplot2.png)
+</center>
+
+<hr>
+
+
+#####Step 3  
+
+* [1] Highlight the data table you created. 
+* [2] Select the "Insert" tab in the top menu. 
+* [3] Select the "Barplot" icon.
+* [4] Select the "Clustered Column" icon.
+
+<center>
+![](./Lesson5/Week 5/Barplot3.png)
+</center>
+
+<hr>
+
+
+#####Step 4  
+Select the "Chart Design" tab in the top menu.
+    - Select the "Switch Row/Column" icon.
+    
+<center>
+![](./Lesson5/Week 5/Barplot4.png)
+</center>
+
+
+<hr>
+
+#####Step 5
+
+Give the chart a title.
+
+<center>
+![](./Lesson5/Week 5/Barplot5.png)
+</center>
+
+<hr>
+
+### Pie Charts
+
+The pie chart is a sometimes useful alternative to the bar chart. Like the bar chart it is for displaying data that has several categories. Unlike the bar chart, the pie chart more readily displays the percentage of the whole "pie", or data set, that belongs to each "slice", or category, in the data.
+
+#### Example 3
+
+According to a 2016 [official news release](https://www.lds.org/church/temples/find-a-temple?lang=eng&sort=name&sort-direction=up) of the LDS Church, in the fall of 2016 there were `r 152 + 4 + 14 + 11` LDS Temples. The article states that there were "152 operating, 4 under renovation, 14 under construction, 11 announced." Create a pie chart that depicts this information. 
+
+**Solution**
+
+The following pie chart depicts this information and readily communicates that most temples are currently operating, but a very small percentage are under renovation.
+
+<center>
+![Image of a pie chart depicting the temple information above](./Lesson5/Week 5/Temples.png)
+</center>
+
+<hr>
+
+#### Excel Instructions - Pie Charts {.tabset .tabset-fade}
+
+To make the above pie chart:
+
+#####Step 1
+
+Open a "New Workbook" in Excel.
+
+<center>
+![](./Lesson5/Week 5/Barplot1.png)
+</center>
+
+<hr>
+
+
+#####Step 2
+
+Enter the data as found on the [LDS Church news release](https://www.lds.org/church/temples/find-a-temple?lang=eng&sort=name&sort-direction=up).
+
+<center>
+![](./Lesson5/Week 5/Piechart2.png)
+</center>
+
+<hr>
+
+#####Step 3
+
+* [1] Highlight the data table you created. 
+* [2] Select the "Insert" tab in the top menu. 
+* [3] Select the "Piechart" icon.
+* [4] Select the "Pie" icon.
+
+<center>
+![](./Lesson5/Week 5/Piechart3.png)
+</center>
+
+<hr>
+
+#####Step4
+
+Give the chart a title.
+
+<center>
+![](./Lesson5/Week 5/Piechart4.png)
+</center>
+
+<hr>
+
+
+### Time Series Plots
+
+We are often interested in looking at patterns and trends in data over time. This is usually done with time series plots. These plots reveal important information about growth, decay, or repeating (cyclical) patterns.
+
+#### Example 4
+
+Create a graphic that shows the first 15 years of growth of the on-campus BYU-Idaho enrollments since BYU-Idaho officially began in the Fall semester of 2001. 
+
+**Solution**
+
+A time series plot is perfect in this situation because we want to see how the number of on-campus students at BYU-Idaho has *changed over time*. We will use the total of  part-time and full-time students that were living on campus during that semester. The data was taken from the [BYU-Idaho Housing](http://www.byui.edu/housing/owners) website, under the "Historical" link.
+
+<center>
+![A time series plot depicting enrollment figures at BYU-I by semester starting in Fall 2001 and going until Fall 2015](./Lesson5/Week 5/BYUIEnrollments.png)
+</center>
+
+\
+
+Notice in the graphic that the Spring semester is not officially part of the data until 2008. Also, note the cyclical pattern within each year that typically the Spring semester has the lowest enrollments of a given year. The overall growth of the university is also visible in the graph showing "a steady, upward course"[^2]. 
+
+<hr>
+
+#### Excel Instructions - Time Series {.tabset .tabset-fade}
+
+To make the above time series plot:
+
+#####Step 1
+
+Download the [BYUIEnrollments.xlsx](./Lesson5/Week 5/BYUIEnrollments.xlsx) data set and open it in Excel.
+
+<center>
+![](./Lesson5/Week 5/TimePlot1.png)
+</center>
+
+<hr>
+
+#####Step 2
+
+Highlight the `Term` and `Enrollment` columns of the data set. (Be sure to highlight all the way to the bottom of the data that goes to row 38.)
+
+<center>
+![](./Lesson5/Week 5/TimePlot2.png)
+</center>
+
+<hr>
+
+#####Step 3
+
+Then,
+
+* [1] Select the "Insert" tab in the top menu. 
+* [2] Select the "Line Chart" icon.
+* [3] Select the "Line" icon.
+
+<center>
+![](./Lesson5/Week 5/TimePlot3.png)
+</center>
+
+<hr>
+
+#####Step 4
+
+Edit the chart title and change the styling of the chart if you want.
+
+<center>
+![](./Lesson5/Week 5/TimePlot4.png)
+</center>
+
+<hr>
+
+### Scatter Plots
+
+The scatter plot is similar to a time series plot, but it does not require time to be part of the plot. It provides a visual understanding of how two different measurements are related.
+
+#### Example 5
+
+The US Department of Education has put together a useful resource called the [College Scorecard](https://collegescorecard.ed.gov/) for college bound students to make important decisions about where to attend college. An important consideration for college students is the amount of student loan debt they may take on during college. Use the information provided by the College Scorecard to determine whether students who attend bigger universities end up with more debt? 
+
+**Solution**
+
+The scatter plot below represents the data from the College Scorecard website. Notice that the horizontal axis represents the median debt of student graduates. The vertical axis represents the number of undergraduates enrolled. 
+
+<center>
+![A scatter plot depicting enrollment figures compared to median debt of student graduates, also included are BYU, BYU-I, and BYU-H's label in the scatter plot](./Lesson5/Week 5/CollegeDebt.png)
+</center>
+
+<br>
+
+We want to use this graph to answer the question: Do students who attend bigger universities end up with more debt? If this were the case, we would expect to see the data points follow a linear pattern with large values on the horizontal axis corresponding to large values of the vertical axis. This is not the case. There really isn't a pattern to the data.
+
+Since there is not a pattern in the data, we know there is not any correlation between the size of the university and the median debt load of its graduates. It is interesting to note that all three Brigham Young University schools are on the lower end of the median student loan debt spectrum. However, BYU-Idaho, has the highest median student loan debt of the three while being in the middle for the number of undergraduates enrolled.
+
+Clearly there are other factors that are not considered here that would provide better explanations of what brings on student debt.
+
+<hr>
+
+#### Excel Intructions - Scatter Plots {.tabset .tabset-fade}
+
+To make the above scatter plot:
+
+#####Step 1
+
+Download the [CollegeDebt.xlsx](./Lesson5/Week 5/CollegeDebt.xlsx) data set and open it in Excel.
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt1.png)
+</center>
+
+<hr>
+
+#####Step 2
+
+Since there are 2,953 rows in this data set, highlighting the data is done as follows.
+    - First, click on the `B` column label, which is above the `Graduates' Median Debt` entry. This will highlight the entire `B` column.
+    - Second, hold down `Shift` and click on the `C` column label, which is above the `Number of Undergraduates` entry. This will expand the selection to include the `C` column.
+   
+<center>
+![](./Lesson5/Week 5/CollegeDebt2a.png)
+</center>
+
+<hr>
+
+#####Step 3
+
+Once the data is selected [1], then 
+
+* [2] Select "Insert".
+* [3] Select the "Scatterplot" icon and the "Scatter" option.
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt2b.png)
+</center>
+
+<hr>
+
+#####Step 4
+
+This is a scatter plot and it would be sufficient to stop here. 
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3a.png)
+</center>
+
+<hr>
+
+#####Step 5 **[Bonus Step]** {.tabset .tabset-fade}
+
+The following instructions teach how to label individual data points on the graph.
+
+
+######Step 5A
+To add the BYU colleges to the plot, right click on the plot and choose "Select Data..." from the menu. 
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3b.png)
+</center>
+
+<hr>
+
+######Step 5B
+
+A new window will appear entitled "Select Data Source."
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3c.png)
+</center>
+
+<hr>
+
+######Step 5C 
+
+Click the `+` sign and enter the following information exactly as shown.
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3d.png)
+</center>
+
+<hr>
+
+######Step 5D 
+
+Note that the information for Brigham Young University-Hawaii has appeared. Now, click the `+` sign *again* and enter the following information exactly as shown.
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3e.png)
+</center>
+
+<hr>
+
+######Step 5E
+
+The information for Brigham Young University-Idaho has appeared. Again, click the `+` sign and enter the following information exactly as shown, then press `OK`.
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3f.png)
+</center>
+
+<hr>
+
+######Step 5F 
+Finally, select the "Quick Layout" tab in the top left menu and select the first option.
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3g.png)
+</center>
+
+<hr>
+
+######Step 5G 
+
+To complete the process use the "Quick Styles" menu to find a style you like, then double click on the different elements of the chart to complete the finishing touches.
+
+<center>
+![](./Lesson5/Week 5/CollegeDebt3h.png)
+</center>
+
+<hr>
+
+##Practice Reading Graphs
+
+<div>
+<iframe width=780 height=650 frameborder="0" src="./Lesson5/Storyline/Lesson5Interactive 1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+<hr>
+
+###Bicycle Safety Example
+
+Graphics are a helpful tool that can be used in Step 3 of the Quantitative Reasoning Process. Consider the following example.
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./Lesson1/images/step1.png")
+```
+
+Anita has three teenage children that ride their bike to school every day.  They ride 1.3 miles down a road that has a bike lane, but no sidewalk. The city wants to add a turning lane to the middle of the road. To make the turning lane fit in the space they have, the city will need to narrow the bike lane. Anita is concerned for the safety of her children and wants to look at some research on how the width of the bike lane affects safety.
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./Lesson1/images/step2.png")
+```
+
+After looking at some studies, Anita found a research study that gave some data using the following variables:
+
+* The distance from the cyclist to the center line on the road.
+* The distance from the cyclist to a passing car.
+
+In order to apply the data she found to the situation in her neighborhood, Anita has to make some important assumptions. 
+
+* She will assume that the closer a cyclist is to a passing car the less safe it is for the cyclist. 
+* She will assume that the narrower the bike lane is, the narrower the road must be. This means the distance from the center line on the road to the cyclist will be smaller.
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./Lesson1/images/step3.png")
+```
+
+The following data is given in the research study Anita found: [^3]
+
+|Distance from Cyclist to Center Line |	Distance from Cyclist to Car|
+|--|--|
+|12.8|	5.5|
+|12.9|	6.2|
+|12.9|	6.3|
+|13.6|	7.0|
+|14.5|	7.8|
+|14.6|	8.3|
+|15.1|	7.1|
+|17.5|	10.0|
+|19.5|	10.8|
+|20.8|	11.0|
+
+Because this data relates two different variables, Anita decided to make a scatter plot of the data. 
+
+<br>
+<center>
+![A scatter plot depicting distance from cyclist to car compared to distance from cyclist to center line](./Lesson5/images/wk5.cyclist copy.png)
+
+</center>
+<br>
+
+Because there is a pattern in this data, Anita was able to notice that when the distance from the cyclist to the center line is smaller, so is the distance from the cyclist to a passing car.
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./Lesson1/images/step4.png")
+```
+
+Anita was able to conclude that the scatter plot showed the road would be less safe if they narrowed the road to make room for the new sidewalk.  This would have to decrease the distance form the cyclist to the center line and the graphs shows this means the distance between the cyclist and a passing car would then be smaller. Anita's assumption is that this makes the road less safe for her children as they ride their bikes to school.
+
+Based on the data, her graph, and her conclusion that the addition of a turning lane was going to make the car less safe, Anita decided to attend a city council meeting and express her concerns.
+
+The city council listened respectfully to Anita's concerns. Anita's neighbors shared her concerns and also attended the meeting. As a result, the city decided to change their plans for making a narrow bicycle lane.  This meant that they had to change their plans for the turning lane, but they were able to modify their plans in a way that still accommodated traffic.
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./Lesson1/images/step5.png")
+```
+
+In this situation Anita decision led to her desired outcome. As she reflected on the progress she made, she realized that having data to back up her concerns was helpful when she presented to the city council. 
+
+<hr>
+
+####Another Example
+Although Anita's story is fictional, similar situations are quite common in real-life.  In December 2016, the city of Missoula, Montana considered reducing some two-lane streets to one lane with a bicycle lane [^4]. Some city residents were supportive of the change because it would improve safety for bicyclists and pedestrians, would slow traffic in a residential area, gives more room for parking, and reduce crashes. The city has data on the amount of traffic on the street and found that a one-lane road could accommodate the current traffic without impacting vehicle flow.
+
+Other city residents were opposed to the change, however.  In particular, business owners were concerned about the impact reduced traffic might have on their businesses. Other opponents are concerned that the change is overly concerned about cyclists when cyclists are a very small portion of the traffic on the street.
+
+The city council is taking comments from members of the community and concerned citizens could definitely use data and graphics, similar to the one used by Anita, to support their position.
+
+<hr>
+
+##Lesson Checklist
+
+After completing this lesson you should be able to do the following:
+
+* Create bar charts, pie charts, time series plots, and scatter plots of data in Excel.
+* Interpret the information provided in bar charts, pie charts, time series plots, and scatter plots.
+* Identify the type of chart (bar chart, pie chart, time series, scatter plot) that would be most appropriate for a given scenario.
+* Make a contextual conclusion from a given chart (bar chart, pie chart, time series, scatter plot).
+
+
+
+
+
+
+
+[^1]: http://www.usu.edu/epicenter/htm/studies/memorystudy
+[^2]: http://www2.byui.edu/Presentations/Transcripts/Devotionals/2001_09_18_Eyring.htm
+[^3]: http://www.statsci.org/data/general/cyclist.html
+[^4]: http://www.missoulacurrent.com/government/2016/12/streets-single-lane/

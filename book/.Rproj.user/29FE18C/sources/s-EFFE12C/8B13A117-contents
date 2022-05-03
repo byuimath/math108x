@@ -1,0 +1,455 @@
+---
+title: 'Lesson 3: Tools for Building Better Budgets and More'
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    css: styles.css
+---
+
+##Opening Story
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&playerId=kaltura_player&entry_id=0_9vx0557j&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_i3ncuaan" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player"></iframe></center>
+
+
+##Budgeting
+
+As we saw in the video, different people have different approaches to budgeting. Budgeting is an important tool for maintaining financial health. In order to make any informed decision involving our finances we need to have a budget. Consider the council given by President Thomas S. Monson: 
+
+<div style="margin-left: 2em;">
+"Perhaps no counsel has been repeated more often than how to *manage wisely our income*...Too many in the Church have failed to avoid unnecessary debt. They have little, if any, financial reserve. The solution is to budget, to live within our means, and to save some for the future."[^1] 
+</div>
+
+President Spencer W. Kimball said, "Every family should have a budget...We have to know approximately what we may receive and we certainly must know what we are going to spend."[^2] 
+
+In this lesson we will be learning some computation tools that can help us build a budget. These tools will allow us to carefully consider the income we receive and what expenses we have. However, these tools will be helpful for more than just budgeting. 
+
+<center>
+
+![Apply Quantitative Tools](./Lesson3/images/step3.png)
+
+</center>
+
+Step 3 in the Quantitative Reasoning Process is to apply quantitative tools.  Applying quantitative tools allows us to do calculations that help make an informed decision. Some common quantitative tools include percentages and units connected to numbers. Most of the numbers we encounter outside of the classroom come in connection with words and units rather than in disconnected  math equations. It is important to be able translate English words into math symbols to build equations. 
+
+<hr>
+
+##English-to-Math Translations
+
+Understanding how to translate English words into mathematical equations is essential to problem solving. Some common English-to-math translations are found in the following table.
+
+|English Word|Math Symbol|English Example| Math Example|
+|---------------|:---------------:|:---------------:|:---------------:|
+|sum of|$+$|The sum of seven and nine| $7 + 9$|
+|difference of| $-$| The difference of thirteen and six|$13-6$|
+|product of| $\times \text{ or } \cdot$|The product of five and two| $5\times 2$|
+|quotient of| $\div \text{ or }/$|The quotient of eight and four|$\frac{8}{4}$
+|is (are, was, were, will be)|$=$|Sixteen is the sum of 7 and 9|$16=7+9$|
+|of|$\times \text{ or } \cdot$|Two-thirds of 99|$\frac{2}{3}\times 99$|
+|per| $\div \text{ or }/$ |Ten miles per hour |$\frac{10 \text{ miles}}{\text{hour}}$|
+|percent| divided by 100 (per = divide; cent = 100)|Nine percent|$\frac{9}{100}$|
+|a percentage more than| $\times$ (1$+$percentage written as a decimal)|Twenty percent more than thirteen| $13\times(1+0.20)$|
+|a percentage less than| $\times$ (1$-$percentage written as a decimal)|Twenty percent less than thirteen| $13\times(1-0.20)$|
+
+Let's look at some examples of converting English words to mathematical symbols.
+
+###English-to-Math Examples {.tabset}
+
+####Example 1
+Translate the English words "The sales tax is 6% of the original price" to math symbols.
+
+**Solution**  
+The key words in this sentence are "is", "%", and "of". By changing "is" to =, "%" to division by 100, and "of" to $\times$ we get:
+
+$$\text{The sales tax}= \frac{6}{100} \times \text{the original price}.$$
+<hr>
+
+####Example 2
+Translate the English words "The mortgage on my new home is 10% more than the mortgage on my old home" to math symbols.
+
+**Solution**
+The key words in the sentence are "is" and "10% more than." Using the information in the table, we change the sentence to:
+
+$$\text{new mortgage} = \text{old mortgage}\times(1+0.10).$$
+
+<hr>
+
+####Example 3
+Translate the English words "The sum of my power bill and my phone bill is eight percent of my income" to math symbols.
+
+**Solution**
+The key words in the sentence are "sum of," "is," "percent," and "of." Using the information in the table we change the sentence to:
+
+$$\text{power bill} + \text{phone bill} = \frac{8}{100} \times \text{income}.$$
+
+
+Once we understand how to translate English words to mathematical symbols we can use the mathematical equations to do helpful calculations. Here are some examples:
+
+<hr>
+
+
+###Solving Examples {.tabset}
+
+####Example 4
+The sales tax is 6% of the original price. The original price is $10.00. Find the sales tax.
+
+**Solution**  
+First we convert the English sentence to math symbols (see Example 1): 
+$$\text{sales tax} = \frac{6}{100} \times \text{original price}$$ 
+
+Since we know the original price is $10 the equation gives us a way to find the sales tax.
+
+$$\text{sales tax} = \frac{6}{100} \times \$10.$$ 
+
+Now change the fraction to a decimal:
+
+$$\text{sales tax}= 0.06\times \$10.$$ 
+
+Finally, multiply out the right side of the equation
+
+$$\text{sales tax}=\$0.60$$
+
+<hr>
+
+####Example 5
+The sales tax is 6% of the original price. We know the sales tax is $0.90. Find the original price.
+
+**Solution**  
+Like the previous problem, we start by converting the English sentence to math symbols:
+$$\text{sales tax} = \frac{6}{100} \times \text{original price}$$ 
+
+Since we know sales tax is $0.90, we can solve for the original price.
+
+$$\$0.90 = 0.06 \times \text{original price}.$$ 
+
+Divide both sides of the equation by 0.06 to isolate the "original price:"
+
+$$\frac{\$0.90}{0.06} = \text{original price}.$$ 
+
+Divide the left side of the equation:
+
+$$\$15.00 =\text{original price}.$$
+
+<hr>
+
+####Example 6
+After sales tax, the final price of a sweater is 5% more than the price on the price tag.  The price tag on a sweater is $35, what is the final price of the sweater?
+
+**Solution**  
+"The final price is 5% more than the price tag." This sentence translates to the mathematical equation:
+
+$$\text{final price} = \text{price tag}\times(1+0.05)$$
+
+Since the price tag is $35, this gives us the equation we need to find the final price:
+
+$$
+\begin{align}
+\text{final price} &= \$35\times(1.05)\\
+&=\$36.75\\
+\end{align}
+$$
+
+<hr>
+
+####Example 7
+After sales tax, the final price of a sweater is 5% more than the price on the price tag. If the final price was $15.25, find the price on the price tag.
+
+**Solution**  
+Using the same equation as in Example 6:
+
+$$\text{final price} = \text{price tag}\times(1+0.05)$$
+
+Since the final price was $15.25, we can substitute the value for the final price and solve for the price tag:
+
+$$
+\begin{align}
+\$15.25 &= 1.05 \times \text{price tag}\\
+\frac{\$15.25}{1.05} &= \text{price tag}\\
+\$14.52 &= \text{price tag}\\
+\end{align}
+$$
+
+<hr>
+
+###Example 8 {.tabset}
+Sometimes people purchase items that are on sale to keep their expenses within their planned budget. 
+
+<center>
+![Sales Ad displaying Take an Additional 30% Off Sitewide!](./Lesson3/images/wk3.sale.jpg)
+</center>
+
+Suppose we need to purchase a new printer with an original purchase price of $64.99. The sales price is 30% less than the original price of $64.99. Find the sales price and the dollar amount saved.
+
+This example shows there can be more than one way to solve a problem.
+
+####Solution 1
+
+This sentence translates to the following equation: 
+
+$$
+\begin{align}
+\text{sales price} &= (1-0.30) \times \text{original price}\\
+\text{sales price} &= 0.70 \times \$64.99\\ 
+\text{sales price} &= \$45.49\\
+\end{align}
+$$
+
+The total dollars saved would be the difference between the original price and the sales price.
+
+$$
+\text{Dollars saved} = \text{original price} - \text{sales price}
+$$
+
+Substituting the dollar amounts that we know into the math equation yields the following:
+
+$$
+\begin{align}
+\text{Dollars saved} &= \$64.99 - \$45.49\\
+&= $19.50\\
+\end{align}
+$$
+<hr>
+
+####Solution 2
+
+We could also say that the savings will be 30% of the original cost. The words in this sentence translate to:
+$$
+\begin{align}
+\text{savings} &= 0.30 \times \text{original cost}\\ 
+&= 0.30*\$64.99 \\
+&=\$19.50\\
+\end{align}
+$$
+
+The sales price will be the original price minus the dollars saved.
+
+$$
+\begin{align}
+\text{Sales price} &= \$64.99 -\$19.50\\
+&= \$45.49
+\end{align}
+$$
+
+<hr>
+
+###Give it a Try
+
+<div>
+<iframe width=780 height=500 frameborder="0" src="./Lesson3/Storyline/Lesson3.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+<hr>
+
+##Units and Unit Conversions
+
+The units connected to a number tell us what the number counts or measures. Consider the following examples: 10 doors, $500, 80 mph, 10 K. The units are respectively doors, dollars, miles per hour (or miles/hour), and kilometers.
+<br>
+<br>
+<br>
+<br>
+
+<div>
+<iframe width=780 height=350 frameborder="0" src="./Lesson3/Storyline/Lesson3.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(1.15);-moz-transform-scale(1.15);" align="center"></iframe>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+Sometimes we need to convert an amount of something with one unit to an equivalent amount expressed with different units. We want to change the way we express things so that the actual amount or quantity stays the same but the units change.
+
+<hr>
+
+####Example 9    
+The race car drove 85,800 feet in 5 minutes. Find how fast it was traveling in miles per hour.
+
+**Solution**
+We will need to change the units, but the actual distance and time the car traveled should not change. We will just be expressing them in different units. We are going to use the multiplicative identity property to change the units. The multiplicative identity property tells us that if you multiply a quantity by 1, the quantity does not change. 
+
+We know that 60 minutes = 1 hour. Even though the numbers are different and the units are different the quantity of time is exactly the same. If we stack this equality relationship as a fraction, we get 
+
+$$\frac{60 \text{ minutes}}{1 \text{ hour}} =1.$$ 
+
+We can even change to numerator and denominator to get 
+
+$$\frac{1 \text{ hour}}{60 \text{ minutes}} = 1.$$ 
+
+Now we will use this relationship, called a unit conversion rate, to change our units from minutes to hours.
+
+$$\frac{85,800 \text{ feet}}{5 \text{ minutes}} \times \frac{60 \text{ minutes}}{1 \text{ hour}}$$
+
+When we multiply two fractions we multiply the two numerators and multiply the two denominators to get the product of the fractions. 
+
+Now we have  
+
+$$\frac{85,800 \text{ feet} \times 60 \text{ minutes}}{5 \text{ minutes} \times 1 \text{ hour}}.$$
+
+We have the units "minutes"/"minutes" which is equal to 1. We can now cancel the unit "minutes" in the numerator and in the denominator because multiplying by 1 does not change the quantity of time.
+
+$$\frac{85,800 \text{ feet} \times 60}{5 \times 1 \text{ hour}}  = \frac{5,148,000 \text{ feet}}{5 \text{ hours}} = \frac{1,029,600 \text{ feet}}{1 \text{ hour}}$$
+
+We have our time unit correct so we only need to change our distance unit from feet to miles. There are 5280 feet in one mile so we will either use 1 mile/5280 feet or 5280 feet/1 mile as our unit conversion tool.  Because "feet" is in the numerator of the fraction we want to change we will want "feet" in the denominator of the unit conversion tool. This way we can have "feet"/ "feet" and we can cancel the unit "feet."
+
+$$
+\begin{align}
+\frac{1,029,600 \text{ feet}}{1 \text{ hour}} \times \frac{1 \text{ mile}}{5280 \text{ feet}} &= \frac{1,029,600 \text{ feet} \times 1 \text{ mile}}{1 \text{ hour} \times 5280 \text{ feet}}\\
+&=\frac{1,029,600 \text{ miles}}{5280 \text{ hours}}\\
+&=\frac{195 \text{ miles}}{1 \text{ hour}}\\
+\end{align}
+$$
+
+Thus the race car was traveling at a speed of 195 miles per hour.
+
+<hr>
+
+<div>
+<iframe width=780 height=440 frameborder="0" src="./Lesson3/Storyline/Lesson3.Interactive3 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+
+<hr>
+
+##Budgeting
+
+The purpose of budgeting is to help us make wise decisions about how to use the resoruces we have. In the following video Henry J. Eyring, President of BYU-Idaho, provides some advice and council to BYU-Idaho students on using money wisely.
+
+###President Eyring Video
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&playerId=kaltura_player&entry_id=0_pnntgl1n&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_p8h7a62k" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player"></iframe></center>
+
+<hr>
+
+
+We frequently use unit conversions when we build a budget. We want to know about money in different time frames. Usually we want a monthly budget, but sometimes it makes more sense to look at a yearly budget, or a weekly budget. College students sometimes plan their budgets around semesters. Budgeting is much more effective when we use the same time frame for all of our income and expenses. When we change the time frame for expenses or income it is called *prorating*.
+
+###An Example Budget
+
+Let's look at how the tools we have learned in this lesson can be used as part of the Quantitative Reasoning Process.
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./lesson1/images/step1.png")
+```
+
+Heidi is a BYU-Idaho student who has not been using a budget. On a recent visit to a restaurant, her card was declined when she tried to pay for her meal. Her roommate was kind and paid for her meal, but Heidi was embarrassed and wants to improve her finances. She has decided to create a budget.
+
+<hr>
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./lesson1/images/step2.png")
+```
+
+A budget is a mathematical model of our finances. It is an itemized plan for how we will use our money.In order to create and use an effective budget we need to know two important things: 
+
+1. The amount of money we have **coming in**, and 
+2. The amount of money we have **going out**. 
+
+These are our key variables. We typically refer to the money we have coming in as *income* and the money we spend as *expenses*.
+
+Heidi will also need to make assumptions about her income and her expenses. In this case she will be making the following assumptions:  
+
+* Her only income will be from her part time job.
+* Her pay rate at her part time job will stay the same.
+* Her expenses will be fairly constant each month.
+
+<hr>
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./lesson1/images/step3.png")
+```
+
+Heidi needs to consider each of her two key variables: how much money is she spending and how much money is coming in. 
+
+####Heidi's income  
+Heidi works for 20 hours each week. Her job pays $11.90 per hour. Heidi uses the following unit conversion to compute her total monthly income.
+
+$$ \frac{$11.90}{1 
+\text{ hour of work}}\times\frac{20 \text{ hours of work}}{1 \text{ week}}\times\frac{4 \text{ weeks}}{1 \text{ month}}$$
+
+Notice that the "hours of work" unit  and the "weeks" unit will divide to be 1, so the units will be left as dollars ($) per month. When Heidi multiplied the top of the fractions and the bottom of the fractions she got:
+
+$$\$952\text{ per month}$$
+
+####Heidi's expenses
+
+Heidi pays 10% of her income for tithing each month. Additionally, based on her past spending she estimates that she spends about $60 dollars a week for groceries, $1620 a year on car repairs, $500 a month on rent, and every other Saturday she spends $25 for dinner and a movie with friends. We will use the following table to summarize her monthly expenses.
+
+
+
+| Heidi's Expenses | Time Conversions| Monthly Expense|
+|------------------|------------------|-----------------|
+|Tithing|0.10$\times$ $952 per month|$95.20/month|
+|Groceries|\$60/week $\times$ 4 weeks/1 month| $240/month|
+|Car Repairs|\$1620/year $\times$ 1 year/12 months|$135/month|
+|Rent|No time conversion needed|$500/month|
+|Entertainment|$25/2 Saturdays $\times$ 4 Saturdays/1 month|$50/month|
+||**Total Monthly Expenses**|$1020.20/month|
+
+<hr>
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./lesson1/images/step4.png")
+```
+
+After doing her calculations, Heidi realized that she was spending more money than she was making.  This helped her understand why her card was declined at the restaurant. Based on her calculations she realized that she either needs to increase her income or decrease her expenses.
+
+After considering her options, Heidi realized that she couldn't get more hours at work and didn't have time to work another job. So her best option would be to cut her expenses. She decided to decrease the amount she spent on groceries per week to $50 and to cut her entertainment spending down to $20 per month. When she redid the calculations, she got the following result:
+
+| Heidi's Expenses | Time Conversions| Monthly Expense|
+|------------------|------------------|-----------------|
+|Tithing|0.10$\times$ $952 per month|$95.20/month|
+|Groceries|\$50/week $\times$ 4 weeks/1 month| $200/month|
+|Car Repairs|\$1800/year $\times$ 1 year/12 months|$135/month|
+|Rent|No time conversion needed|$500/month|
+|Entertainment|No time conversion needed |$20/month|
+||**Total Monthly Expenses**|$950.20/month|
+
+Heidi realized that this would lead to her spending being less than her earnings which would put her in a better financial situation. In 2 Nephi 9:51, we are counseled about the choices we make with our money, "Wherefore, do not spend money for that which is of no worth, nor your labor for that which cannot satisfy."[^3] Once we have used the computational tools to understand and calculate our expenses and income, we are in a good position to interpret the information and make an informed decision about how we want to spend our money. We can set budgeting goals and then track our spending to see if we are meeting our goals. President N. Eldon Tanner of the Quorum of the Twelve (1962-1982) stated, "I'm convinced that it is not the amount of money that an individual earns that brings peace of mind, as much as having control of your money."[^4] President Heber J. Grant said, "If there is any one thing that will bring peace,it is to live within our means.If there is any one thing that is grinding, it is to have debts and obligations that one cannot meet."[^5]
+
+
+<hr>
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("./lesson1/images/step5.png")
+```
+
+Now that Heidi has made a decision about her budget, it is important that she take some time to reflect and evaluate her decision. She should ask if her budget is reasonable. Will she be able to stick to the smaller entertainment budget? She also should evaluate her assumptions and make sure they are appropriate and reasonable.
+
+It will also be helpful for Heidi to reflect and evaluate her budget after using it for a few months. Having experience living by the budget will help her make sure that the decisions she made are effective. It is likely she will find areas where the budget needs to be adjusted.
+
+<hr>
+
+###Practice
+<div>
+<iframe width=780 height=700 frameborder="0" src="./Lesson3/Storyline/Lesson3.Interactive4 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+<hr>
+
+##Conclusion  
+Are you using a budget? If not, we encourage you to apply the Quantitative Reasoning Process to your personal situation. If so, now might be a good time to reevaluate your budget and determine if there are improvements that can be made. Living on a budget can help improve your financial situation, no matter how much money you have. As Barbara B. Smith, former General Relief Society President said, "Living on a budget is not a chore. It need not even be a deprivation. Budgeting should be a great learning experience."[^6]
+
+<hr>
+
+##Lesson Checklist
+
+By the end of this lesson you should be able to do the following:
+
+* Understand the mathematical meaning of keywords such as per, of, is, more than, and less than.
+* Identify the units involved in solving a problem.
+* Use appropriate units and unit conversions to solve a problem.
+* Solve problems using percentages.
+* Create a monthly budget by using unit conversions to prorate costs.
+
+[^1]: Thomas S. Monson. [Guiding Principles of Personal and Family Welfare](https://www.lds.org/ensign/1986/09/guiding-principles-of-personal-and-family-welfare?lang=eng). Ensign Magazine, Sept. 1986.
+[^2]: Spencer W. Kimball. As quoted in [One for the Money](https://www.lds.org/bc/content/shared/content/english/pdf/language-materials/33293_eng.pdf)
+[^3]: [2nd Nephi 9:51](https://www.lds.org/scriptures/bofm/2-ne/9.51?lang=eng#50)
+[^4]: N. Eldon Tanner. [Constancy Amid Change](https://www.lds.org/general-conference/1979/10/constancy-amid-change?lang=eng&_r=1). General Conference, October 1979.
+[^5]: [President Heber J. Grant](https://www.lds.org/manual/teachings-heber-j-grant/chapter-13?lang=eng#4-35970_000_017), Gospel Standards, comp. G. Homer Durham [1941], page 111
+[^6]: Sister Barbara B. Smith, General Relief Society President. [Reach for the Stars](https://www.lds.org/general-conference/1981/04/reach-for-the-stars?lang=eng). General conference, April 1981.
+
+<center>
+&copy; 2017 Brigham Young University - Idaho
+</center>
+

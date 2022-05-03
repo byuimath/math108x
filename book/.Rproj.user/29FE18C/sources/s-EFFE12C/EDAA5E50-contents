@@ -1,0 +1,326 @@
+---
+title: 'Lesson 2: Logical Reasoning'
+output:
+  html_document:
+    fig_caption: no
+    theme: journal
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+    css: styles.css
+---
+
+##Opening Story 
+
+As you watch this video, notice the different advertisements and media encountered by individuals in the video. Think about how often you encounter advertisements and media that try to inflence the choices you make. (Note: This is a temporary version of the video and background music hasn't been added yet. You won't hear any sound until about halfway through the video.)
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&playerId=kaltura_player&entry_id=0_hhwszpep&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_6wc2t7oi" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player"></iframe></center>
+
+##Making Choices
+Every day we make many choices. We choose which products to buy, which candidate will get our vote, how we will take care of our health, what to do with our money, and even what we will believe. 
+
+To make good decisions using quantitative reasoning we need to be familiar with the tools of the Quantitative Reasoning Process. We also need to understand some of the pitfalls that can misdirect us when we try to reason through decisions.
+
+> *Logical Reasoning* is the process of analyzing and evaluating arguments in order to draw valid conclusions.
+
+Logical reasoning is key to making good decisions in all aspects of our lives. Last week, we introduced the Quantitative Reasoning model.  Recall that the purpose of the model was to help you make informed decisions that are based on sound reasoning with quantitative evidence.
+
+<center>
+![Quantitative Reasoning Model](../lesson1/Images/qrprocess.png)
+</center>
+
+People frequently use logical reasoning to try to influence our decisions. When logical reasoning is used to support a specific conclusion, we call it a *logical argument*. Sometimes we use logical arguments to persuade someone to make a choice with a particular outcome. Logical arguments present reasons for accepting a conclusion.
+
+###Propositions and Conditional Statements
+Logical arguments are created by combining together one or more *propositions* and *conditional statements*. 
+
+####Propositions
+
+> A *proposition* is a statement that is either true or false.
+
+The following statements are all propositions:
+
+<center>
+"The sun is the center of our solar system."  
+
+"Mammals have hair."  
+
+"Snakes are mammals."  
+
+"Caleb got an A on the exam."  
+
+</center>
+
+Notice that each of these statements are either true or false.  "The sun is the center of our solar system" is an example of a true proposition, while "Snakes are mammals" is an example of a false proposition. Both are propositions because they are statements that are either true or false.
+
+Only statements can be propositions. For example, "Is it raining?" is not a proposition because it is a question instead of a statement.  "Hey you! Come here!" is not a proposition because it is a command and has no truth value.
+
+####Conditional Statements
+Conditional statements are a particular type of proposition.
+
+> A *conditional statement* is a proposition with an if-then structure.
+
+The following statements are all conditional statements:
+
+<center>
+"If the basketball team wins this game, then they will go to the state championship."  
+
+"If you take out student loans, then you will have to repay them after you graduate."  
+
+"If ye love me, keep my commandments."  
+
+</center>
+
+Conditional statements are made up of two parts: the "if" part and the "then" part. 
+
+> The "if" part of a conditional statement is called an assumption.
+
+> The "then" part of a conditional statement is called a conclusion.
+
+Not all conditional statements use the if-then wording. 
+
+####Example 1
+"All dogs are mammals" could be a conditional statement.  We could reword it as "If an animal is a dog, then it is a mammal."  The assumption of this conditional statement is "If an animal is a dog" and the conclusion is "then it is a mammal."
+
+####Example 2
+"You are tired in the morning whenever you state out late" is a conditional statement because it could be reworded as "If you stay out late, then you will be tired in the morning."In this example the assumption is  "If you stay out late" and the conclusion is  "then you will be tired in the morning." 
+
+```{r, echo = FALSE, out.width = "48%"}
+knitr::include_graphics("../lesson1/Images/step2.png")
+```
+
+Notice that the second step of the quantitative reasoning process is to "identify variables and assumptions." Understanding the argument structure of a conditional statement helps us do this.  For example, in the last lesson we saw Lucas and Amanda make the assumption that their expenses would stay fairly constant until Lucas finished school. The conclusions and decisions that we made last week were based on this assumption. We could write this as a conditional statement:
+
+<center>
+"If Lucas and Amanda's expenses stay fairly constant until Lucas finishes school, then their decision about student loans will be appropriate."
+
+</center>
+
+When making decisions it is important to identify the assumptions we are using.  If Lucas and Amanda's health insurance suddenly increased, their expenses would not remain constant. This would then affect the decision they made using the Quantitative Reasoning Process.
+
+Conditional statements show up in a variety of mediums including technical mediums such as computer codes and financial equations, and message-based mediums such as the scriptures, advertisements, and political messages. In message-based mediums, assumptions are not always stated directly. Sometimes it is assumed that everyone believes the same thing. 
+
+Think about the time when people believed the world was flat. That assumption led to logical thinking such as: If the world is flat, then it must have an edge. If there is an edge, then we could fall off the edge of the world. If we try to sail across the ocean, we will fall off the edge of the world.
+
+<center>
+![Flat World](./images/wk2.flatworld.jpg)
+</center>
+
+###Truth Values of Conditional Statements
+Every proposition has a truth value. Since conditional statements are one type of proposition, this means every conditional statement is either true or false. 
+
+Consider the following conditional statement:
+
+<center>
+"If Anthony takes this pill, then his headache will go away."
+
+</center>
+
+Is this conditional statement true or false?
+
+Without having more information there isn't really a clear answer. The only way we can *know* if the statement is true or false is to have Anthony take the pill and see whether or not his headache goes away. If Anthony doesn't take the pill, then the best we can do is to *assume* the statement is true.
+
+**This is always the case.** In order to determine the truth value of a conditional statement, we need to know the truth value of the assumption and the truth value of the conclusion.  
+
+In this example, there are four different possibilities:
+
+* Anthony took the pill and his headache went away.
+* Anthony took the pill and his headache did not go away.
+* Anthony did not take the pill and his headache went away.
+* Anthony did not take the pill and his headache did not go away.
+
+Only one of these possibilities would make the conditional statement false.  If Anthony took the pill and his headache did not go away, then the conditional statement was false. 
+
+The conditional statement can only be true if Anthony took the pill and his headache went away. 
+
+If Anthony didn't take the pill, then we have no way of knowing if his headache would have gone away. In this situation we follow the same "innocent until proven guilty" strategy that is used in a court of law. Because Anthony didn't take the pill we have no way of knowing if it would have made his headache go away. Therefore, we give the claim the benefit of the doubt and assume the conditional statement is true. 
+
+This example demonstrates three important principles about the truth value of conditional statements:
+
+* A conditional statement is FALSE when the assumption is true and the conclusion is false. 
+* A conditional statement is TRUE when the assumption is true and the conclusion is true.
+* A conditional statement is *assumed* to be TRUE when the assumption is false. (The conclusion could be either true or false.) Because the assumption is false, there is no way to tell whether the conditional statement is true, so we give the benefit of the doubt and assume the conditional statement to be true.
+
+Conditional statements are called *conditional* because their truth value depends on the truth of the assumption. The assumption tells us the *conditions* that have to be true for the conclusion to be guaranteed to be true.
+
+> In a true conditional statement, if the assumption is true then the conclusion is guaranteed to always be true.
+
+It is important to understand that the Quantitative Reasoning Process will lead to a conclusion that is based on a conditional statement. When we make a decision using the Quantitative Reasoning Process, it is only guaranteed to be a good decision if the assumptions we used are found to be true.
+
+If our assumptions are false, then our conclusion may or may not be accurate. **Anytime we make an informed decision using quantitative reasoning, it is important to be aware that our conclusion is only guaranteed to be true if the assumptions we made are accurate and true.**
+
+Let's look at a few other examples of conditional statements.
+
+####Example 3
+Under what conditions would the following conditional statement be false?
+
+<center>
+"If the basketball team wins this game, then they will go to the state championship."
+
+</center>
+
+**Answer:** As stated in the principle given above, a conditional statement is false if the assumption is true and the conclusion is false. In this example that would mean that the basketball team wins this game (so the assumption is true) but they don't get to go to the state championship (the conclusion is false).
+
+####Example 4
+Using the same conditional statement from example 1, let's say that the basketball team loses the game, but they still end up getting to go to the state championship. Is the conditional statement true or false?
+
+**Answer:** The conditional statement as a whole is assumed to be true. In this case, the assumption of the conditional statement is false (they didn't win the game), so the conclusion may or may not be true (they might get to go to the state championship and they might not). Either way, the conditional statement is assumed to be **true** because the assumption is false. We don't know what would have happened if they had won the game, so we give the benefit of the doubt to the original conditional statement and assume the statement to be true.
+
+<div>
+<iframe width=780 height=500 frameborder="0" src="./Storyline/Lesson2.Content1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+###Conditional Statements in the Scriptures
+Looking for logical structures can help us better understand all types of logical arguments, including those found in the scriptures. Many of the conditional statements found in the scriptures are promises. If we do our part to make the assumption true, the conclusion is guaranteed to follow.
+
+Here are some examples:
+
+####Example 5
+> Then said Jesus to those Jews which believed on him, If ye continue in my word, then are ye my disciples indeed;[^1]
+
+The assumption in this scripture is "if you continue in my word" and the conclusion is "then are ye my disciples indeed." Because we know this scripture is true, this tells us if we continue to read, study, and follow the words of the Savior, then we are guaranteed to be His disciples.
+
+
+####Example 6
+> If ye love me, keep my commandments.[^2]
+
+The assumption in this scripture is "if ye love me" and the conclusion is "keep my commandments". Because we know this scripture is true, we know if we love the Savior, we will keep his commandments. 
+
+####Example 7
+> Then if our hearts have been hardened, yea, if we have hardened our hearts against the word, insomuch that it has not been found in us, then will our state be awful, for then we shall be condemned.[^3]
+
+The assumption in this scripture is "if we have hardened our hearts against the word" and the conclusion is "then will our state be awful, for then we shall be condemned." Because we know this scripture is true, we know if we harden our hearts against the word, we are guaranteed to be condemned.
+
+####Example 8
+In addition to finding conditional statements in the scriptures, we often see them in the words of the prophets. Consider the following statement made by President Gordon B. Hinckley:
+
+> "If we will give...service [to others], our days will be filled with joy and gladness."[^4]
+
+The assumption in this statement is "if we will give service to others" and the conclusion is "our days will be filled with joy and gladness."  This promise from a prophet guarantees that we will have days filled with joy and gladness if we give service to others. Those who do not choose to serve others may or may not find that same joy and gladness. It is possible they will, but it is only guaranteed to those who give service to others.
+
+####Activity
+Find a scripture or gospel quote that uses a conditional statement. Conduct a similar analysis and see what you learn about that quote by considering the logical structure of the argument. You will be asked to share this scripture in your preparation homework.
+
+
+##Strength of Arguments
+As we have seen so far in this lesson logical reasoning is an essential part of the Quantitative Reasoning Process. It is essential that we clearly understand the assumptions we are making and realize that our conclusions are only guaranteed to be accurate if our assumptions are true. Additionally, it is important to understand persuasive logical arguments we are presented with in the new, social media, and the internet. 
+
+In the opening video for this lesson you saw several ads and commercials that used faulty reasoning. Logical arguments that use faulty reasoning are very common. We call this type of argument logical fallacies.
+
+> A logical fallacy is an argument that is based on an error in reasoning. 
+
+In particular, we will discuss four types of logical fallacies. There are many others, but these four are some of the most common:
+
+* Improper generalization
+* Appeal to emotion
+* Personal attacks
+* Alternative explanations
+
+###Improper Generalization
+
+The weight loss ad from the introductory video is a great example of an argument that includes the improper generalization fallacy.
+
+<center>
+![](./images/billboard.jpg)
+</center>
+
+The advertisement implies that because this program is worked for others, it will work for you too.  The ad is not just congratulating the individual on their weight loss. It is inviting us to join them in weight loss through this program. 
+
+> The improper generalization fallacy refers to an argument that concludes that because one individual or group experiences a certain result, then everyone should experience the similar results.
+
+The weight loss program may have worked for the individual in the ad, but that doesn't mean it will work for everyone. In addition to using an improper generalization fallacy, this ad also uses someone famous to further appeal to the audience and make the weight loss program seem even more appealing. The advertisers are trying to get you to spend your money on their program.
+
+###Appeal to Emotion
+
+Another common fallacy is an appeal to emotion
+
+> The appeal to emotion fallacy is an argument that claims something is true because of an emotional reason unrelated to the argument.
+
+The animal shelter ad shown in the introductory video is a good example of this.
+
+<center>
+![](./images/mag_Adopt_cropped.png)
+</center>
+
+</center>
+
+This ad includes a picture of a dog and a tagline that says: "Adopt today! A pet is waiting for you."  The image and the words combine to provide an emotional appeal to encourage pet adoption. Note that the advertisers are trying to influence your actions by appealing to your emotions. 
+
+Another example of an appeal to emotion is shown in the following ad for Michelin tires.
+
+<br>
+
+<center>
+![Michelin Tires ad](./images/wk2.tires.jpg)
+</center>
+
+<br>
+
+Including a baby in this advertisement connects to your emotions by appealing to your desire to protect children. Rather than telling you why Michelin tires are better than other tires, it implies that Michelin tires will help you keep your baby safe. Note, however, that it gives no evidence for this claim. 
+
+###Personal Attacks
+In the introductory video you heard a political ad promoting Debbie Williams  as the mayor of Garden City.  This ad is an example of a personal attack. The argument presented did not provide any logical reasons to vote for Debbie Williams; it just attacked Bryce Phillips, the current mayor of Garden City.  The attacks were of a personal nature rather than attacking his policies.  
+
+> A personal attack fallacy is an argument that is based on attacking the person making the argument, rather than critiquing the argument on its own merits.
+
+Here is another example of a political ad that uses a personal attack.
+
+<br>
+
+<center>
+![Political Ad](./images/wk2.political.png)
+</center>
+
+<br>
+
+This ad is from a State Senator election in Montana in 2014. Notice that, among other things, the ad claims "Tonya Shellnutt opposes holding rapists and abusers accountable for their crimes." This is clearly an exaggeration that portrays Ms. Shellnutt in a poor light. It is unlikely that Ms. Shellnutt wants rapists and abusers to have no consequences for their actions,  and equally unlikely that she would like Montana women and families to be in danger. The ad attacks Ms. Shellnutt personally because of her position on a particular piece of legislature, instead of addressing the actual law to which it refers.
+
+###Alternative Explanations
+Did you know that more drownings occur in months where ice cream consumption is high?  This must mean that ice cream consumption causes drowning, right?
+
+Rather than making that conclusion, we should consider whether there is an alternative explanation.
+
+> The alternative explanation fallacy refers to an argument where a conclusion is made without adequately considering other explanations that might explain the observed effect.
+
+In this example, we should consider the weather. People tend to eat ice cream more often in warmer weather. And people go swimming more when the weather is warmer.  So the increase in drowning deaths is most likely due to an increase in the number of people swimming during warmer weather.  It has nothing to do with ice cream.
+
+We saw another example in the introductory video where the newspaper headline claimed:  "Soda a Day Leads to Heart Attacks in Men."[^5] Researchers found a correlation between soda drinking and heart attacks. But just knowing there is a correlation does not mean the researchers can conclude that drinking a soda every day causes the heart attack. There may be other alternative explanations.
+
+
+Another historical example relates to smoking and lung cancer. Prior to the 1900s, lung cancer was very rare. However, as smoking became more popular, doctors noticed an increase in the occurrence of lung cancer. In the 1920s and 1930s, doctors starting noticing a correlation between smoking and lung cancer. However many alternative explanations were suggested, especially by the tobacco industry. In the 1960s, only about one-third of US doctors believed that lung cancer was caused by smoking. Before concluding that smoking *causes* lung cancer, doctors had to rule out any possible alternative explanations. This took many carefully designed scientific studies over many years. Some of those studies looked at the prevalence of smoking in different areas of the world and compared it to the prevalence of lung cancer in that area. In this example, researchers were eventually able to eliminate alternative explanations and show that most cases of lung cancer are indeed caused by smoking.
+
+Some references:    
+
+* http://tobaccocontrol.bmj.com/content/21/2/87.full  
+* https://www.gapminder.org/videos/lung-cancer-statistics/  
+
+##Conclusion
+This lesson highlights the importance of understanding logical arguments when making decisions. In the Quantitative Reasoning Process we make assumptions. It is important to keep in mind that the validity of the decisions we make are conditional. If the assumptions are true, it is guaranteed that our conclusions are true. 
+
+We also need to be aware of logical fallacies when we examine logical arguments. Logical fallacies such as improper generalizations, appeals to emotion, personal attacks, and alternative explanations can lead to invalid conclusions.
+
+##Lesson Checklist
+
+By the end of this lesson you should be able to do the following:
+
+* Identify conditional statements.
+* Identify scriptural conditional statements
+* Identify the assumptions and conclusions of a conditional statement
+* Determine the truth of a conditional statement.
+* Identify key assumptions used in a given model of a real-world situation.
+* Identify potential flaws in quantitative reasoning, including
+    + improper generalization.
+    + alternative explanations.
+    + appeals to emotion.
+    + personal attacks.
+
+
+[^1]: [John 8:31](https://www.lds.org/scriptures/nt/john/8.31?lang=eng#29)
+[^2]: [John 14:15](https://www.lds.org/scriptures/nt/john/14.15?lang=eng#14)
+[^3]: [Alma 12:13](https://www.lds.org/scriptures/bofm/alma/12.13?lang=eng#12) 
+[^4]: Gordon B. Hinckley. [Giving Ourselves to the Service of the Lord](https://www.lds.org/ensign/1987/03/giving-ourselves-to-the-service-of-the-lord?lang=eng). Ensign, March 1987.
+[^5]: CBS News. [Soda a Day May Lead to Heart Attacks in Men](http://www.cbsnews.com/news/soda-a-day-may-lead-to-heart-attacks-in-men/). July 25, 2013.

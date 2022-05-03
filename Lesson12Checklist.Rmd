@@ -1,0 +1,13 @@
+---
+title: "Lesson 12 Checklist"
+---
+
+By the end of this lesson, you should be able to:
+
+* Define probability.
+* For a given event, give the sample space of the event.
+* For a given event, give a probability model for the event.
+* Explain the difference between empirical and theoretical probabilities. 
+* Create a 95% confidence interval for the percentage of individuals in a population who have a particular characteristic.
+* Interpret a confidence interval.
+* Determine whether two confidence intervals overlap and make an appropriate conclusion.

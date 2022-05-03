@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lesson 6: Visualizing Data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit I
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson1.html">Lesson 1</a>
+    </li>
+    <li>
+      <a href="Lesson2.html">Lesson 2</a>
+    </li>
+    <li>
+      <a href="Lesson3.html">Lesson 3</a>
+    </li>
+    <li>
+      <a href="Lesson4.html">Lesson 4</a>
+    </li>
+    <li>
+      <a href="Lesson5.html">Lesson 5</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit II
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson6.html">Lesson 6</a>
+    </li>
+    <li>
+      <a href="Lesson7.html">Lesson 7</a>
+    </li>
+    <li>
+      <a href="Lesson8.html">Lesson 8</a>
+    </li>
+    <li>
+      <a href="Lesson9.html">Lesson 9</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit III
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson10.html">Lesson 10</a>
+    </li>
+    <li>
+      <a href="Lesson11.html">Lesson 11</a>
+    </li>
+    <li>
+      <a href="Lesson12.html">Lesson 12</a>
+    </li>
+    <li>
+      <a href="Lesson13.html">Lesson 13</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 6: Visualizing Data</h1>
+
+</div>
+
+
+<div id="opening-story" class="section level2">
+<h2>Opening Story</h2>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_98gn5bxl&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_348cg6el" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
+</iframe>
+<p>Lesson 6 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTtpTvKhD4muzJatRn7tH9s95HY8TvJHnXzYaA6ts3kzZ6IPXnclcdPFevSSiZQLvgo4fTISfLM06Dt/pub">(2:12 mins, L6 Opening Story Transcript)</a></p>
+</center>
+</div>
+<div id="identifying-patterns" class="section level2">
+<h2>Identifying Patterns</h2>
+<p>As we saw in the opening video, Craig’s boss wanted him to create charts and graphs in order to help the team better understand their data. It can be hard to really understand what is going on by just looking at a list of numbers. Creating graphics such as charts and graphs to represent a set of data can make it much easier to understand. This is true because humans have an amazing ability to identify patterns in images. The following image is a great example. The tigers in the picture are hidden by the grass and the camouflaging stripes of the tigers. In spite of this, the human eye quickly locates the two tigers crouching in the grass.</p>
+<p><br />
+</p>
+<center>
+<img src="Lesson6/Images/Tigers.jpg" alt="A tiger crouching in the grass" />
+</center>
+<!-- https://commons.wikimedia.org/wiki/File:Tigers_(Panthera_tigris)_in_the_grass_(female_with_young)_(19797510646).jpg -->
+<p><br />
+</p>
+<blockquote>
+<p><em>Data visualization</em> is the science of communicating important patterns from data through the use of graphics.</p>
+</blockquote>
+<p>Figuratively speaking, the goal of a graphic is to help people quickly identify the “tiger in the grass.” In other words, the goal of a good graphic is to reveal important patterns in data.</p>
+<p>Graphics can be very helpful as part of the Quantitative Reasoning Process. They provide a tool for examining data that enables a more powerful decision on the part of the user. To do this, graphics must communicate the truth data has to offer on a situation of interest.</p>
+<hr>
+<div id="example-1" class="section level3">
+<h3>Example 1</h3>
+<p>In 1995 a team of American researchers began a study on Alzheimer’s disease<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Alzheimer’s is a serious disease resulting in memory loss that most typically occurs in adults aged 65 and older. Individuals affected with the disease progressively lose the ability to function with normal daily tasks until they eventually die from the disease.</p>
+<p>Before beginning their study, the researchers needed to find a geographic location where they could find enough elderly participants to carry out the study. Use the following graphic to find a location where the study could be carried out.</p>
+<center>
+<img src="Lesson6/Images/UScountiesLifeExpect.png" alt="Image of the US shaded by county showing life expectancy of males at birth in 1995" />](data from healthdata.org)
+</center>
+<p><strong>Solution</strong></p>
+<p>The researchers need a population that is old enough and healthy enough to observe possible factors that contribute to the development of Alzheimer’s disease. We notice the above graphic readily communicates which counties have the longest life expectancy by showing them in dark blue.</p>
+<p>The graphic shows several counties showing dark blue. A detailed examination of each of the counties shows Cache County, Utah as having one of the longest life expediencies in the USA at 77.5 years (for males).</p>
+<p>The researchers eventually selected Cache County Utah because, as they stated, “The elderly of Cache County have a longer life expectancy, higher educational attainment, and lower incidence of chronic disease (which can complicate the diagnosis of dementia) than other similar populations.”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<hr>
+<p>Example 1 is a good illustration of how graphics can improve our ability to understand data. Looking at the graphic helps us get an overall impression of life expectancy data throughout the United States. If we didn’t use a graphic, we would need to look at a list of life expectancies for each county in the United States. This would be a very long list of data and without using a graphic it would be much harder to get a good overall idea of what the data tells us.</p>
+<hr>
+</div>
+</div>
+<div id="common-graphical-tools" class="section level2">
+<h2>Common Graphical Tools</h2>
+<p>While only the imagination limits what a good graphic can be, there are several types of graphics that are commonly used to communicate information. Learning how and when to use these common graphical tools will benefit you both as a student and as an employee.</p>
+<div id="bar-charts" class="section level3">
+<h3>Bar Charts</h3>
+<p>When data has several categories, the number of observations in each category can be visually summarized with a bar chart.</p>
+<div id="example-2" class="section level4">
+<h4>Example 2</h4>
+<p>Use a graphic to compare the number of Freshman, Sophomores, Junior, and Seniors at BYU-Idaho in 2001 and 2011. What information does the chart provide?</p>
+<p><strong>Solution</strong></p>
+<p>A bar chart is a good graphic to use for this data because the data has four categories: freshman, sophomore, junior, and senior.</p>
+<!-- The data we need to make this chart are publicly available data on the [BYU-Idaho Enrollment Statistics](http://www2.byui.edu/IR/stats/index.htm) website). Using the data we can create the following graphic. -->
+<p><img src="Lesson6_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The graphic shows that there were relatively few Juniors and almost no Seniors during the Fall 2001 semester. This makes sense when you note that in the Fall of 2001, the two-year junior college known as Ricks College officially transitioned to become the four-year university BYU-Idaho. This graphic demonstrates how the number of Juniors and Seniors increased to be similar to the number of Sophomores just ten years later. Interestingly, in the Fall of 2011 the number of incoming Freshman was still much greater than any of the Sophomore, Junior, or Senior classes. This shows how a good graphic will often lead to new questions. In this case, the new question deals with why there are so many Freshman not continuing into their sophomore year at BYU-Idaho.</p>
+<hr>
+</div>
+<div id="excel-instructions---bar-charts" class="section level4 tabset tabset-fade">
+<h4>Excel Instructions - Bar Charts</h4>
+<p>Click on each of the five steps below to learn how to make the BYU-Idaho Enrollments bar chart:</p>
+<div id="step-1" class="section level5">
+<h5>Step 1</h5>
+<p>Open a “New Workbook” in Excel.</p>
+<center>
+<img src="Lesson6/Week%206/Barplot1.png" />
+</center>
+<hr>
+</div>
+<div id="step-2" class="section level5">
+<h5>Step 2</h5>
+<!-- Enter the data as found on the [BYU-Idaho Enrollment Statistics](http://www2.byui.edu/IR/stats/index.htm) website. -->
+<p>Enter the data as shown in the screenshot below.</p>
+<center>
+<img src="Lesson6/Week%206/Barplot2.png" />
+</center>
+<hr>
+</div>
+<div id="step-3" class="section level5">
+<h5>Step 3</h5>
+<ul>
+<li>[1] Highlight the data table you created.</li>
+<li>[2] Select the “Insert” tab in the top menu.</li>
+<li>[3] Select the “Barplot” icon.</li>
+<li>[4] Select the “Clustered Column” icon.</li>
+</ul>
+<center>
+<img src="Lesson6/Week%206/Barplot3.png" />
+</center>
+<hr>
+</div>
+<div id="step-4" class="section level5">
+<h5>Step 4</h5>
+<p>Select the “Chart Design” tab in the top menu. - Select the “Switch Row/Column” icon.</p>
+<center>
+<img src="Lesson6/Week%206/Barplot4.png" />
+</center>
+<hr>
+</div>
+<div id="step-5" class="section level5">
+<h5>Step 5</h5>
+<p>Give the chart a title.</p>
+<center>
+<img src="Lesson6/Week%206/Barplot5.png" />
+</center>
+<hr>
+</div>
+</div>
+</div>
+<div id="pie-charts" class="section level3">
+<h3>Pie Charts</h3>
+<p>The pie chart is a sometimes useful alternative to the bar chart. Like the bar chart it is for displaying data that has several categories. Unlike the bar chart, the pie chart more readily displays the percentage of the whole “pie”, or data set, that belongs to each “slice”, or category, in the data.</p>
+<div id="example-3" class="section level4">
+<h4>Example 3</h4>
+<p>According to a 2016 official news release of The Church of Jesus Christ of Latter-day Saints, in the fall of 2016 there were 181 temples. The article states that there were “152 operating, 4 under renovation, 14 under construction, 11 announced.” Create a pie chart that depicts this information.</p>
+<p><strong>Solution</strong></p>
+<p>The following pie chart depicts this information and readily communicates that most temples are currently operating, but a very small percentage are under renovation.</p>
+<center>
+<img src="Lesson6/Week%206/Temples.png" alt="Image of a pie chart depicting the temple information above" />
+</center>
+<hr>
+</div>
+<div id="excel-instructions---pie-charts" class="section level4 tabset tabset-fade">
+<h4>Excel Instructions - Pie Charts</h4>
+<p>To make the above pie chart:</p>
+<div id="step-1-1" class="section level5">
+<h5>Step 1</h5>
+<p>Open a “New Workbook” in Excel.</p>
+<center>
+<img src="Lesson6/Week%206/Barplot1.png" />
+</center>
+<hr>
+</div>
+<div id="step-2-1" class="section level5">
+<h5>Step 2</h5>
+<p>Enter the data as found on the <a href="https://www.lds.org/church/temples/find-a-temple?lang=eng&amp;sort=name&amp;sort-direction=up">LDS Church news release</a>.</p>
+<center>
+<img src="Lesson6/Week%206/Piechart2.png" />
+</center>
+<hr>
+</div>
+<div id="step-3-1" class="section level5">
+<h5>Step 3</h5>
+<ul>
+<li>[1] Highlight the data table you created.</li>
+<li>[2] Select the “Insert” tab in the top menu.</li>
+<li>[3] Select the “Piechart” icon.</li>
+<li>[4] Select the “Pie” icon.</li>
+</ul>
+<center>
+<img src="Lesson6/Week%206/Piechart3.png" />
+</center>
+<hr>
+</div>
+<div id="step4" class="section level5">
+<h5>Step4</h5>
+<p>Give the chart a title.</p>
+<center>
+<img src="Lesson6/Week%206/Piechart4.png" />
+</center>
+<hr>
+</div>
+</div>
+</div>
+<div id="time-series-plots" class="section level3">
+<h3>Time Series Plots</h3>
+<p>We are often interested in looking at patterns and trends in data over time. This is usually done with time series plots. These plots reveal important information about growth, decay, or repeating (cyclical) patterns.</p>
+<div id="example-4" class="section level4">
+<h4>Example 4</h4>
+<p>Create a graphic that shows the first 15 years of growth of the on-campus BYU-Idaho enrollments since BYU-Idaho officially began in the Fall semester of 2001.</p>
+<p><strong>Solution</strong></p>
+<p>A time series plot is perfect in this situation because we want to see how the number of on-campus students at BYU-Idaho has <em>changed over time</em>. We will use the total of part-time and full-time students that were living on campus during that semester. The data was taken from the <a href="http://www.byui.edu/housing/owners">BYU-Idaho Housing</a> website, under the “Historical” link.</p>
+<center>
+<img src="Lesson6/Week%206/BYUIEnrollments.png" alt="A time series plot depicting enrollment figures at BYU-I by semester starting in Fall 2001 and going until Fall 2015" />
+</center>
+<p><br />
+</p>
+<p>Notice in the graphic that the Spring semester is not officially part of the data until 2008. Also, note the cyclical pattern within each year that typically the Spring semester has the lowest enrollments of a given year. The overall growth of the university is also visible in the graph showing “a steady, upward course”<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<hr>
+</div>
+<div id="excel-instructions---time-series" class="section level4 tabset tabset-fade">
+<h4>Excel Instructions - Time Series</h4>
+<p>To make the above time series plot:</p>
+<div id="step-1-2" class="section level5">
+<h5>Step 1</h5>
+<p>Download the <a href="./Lesson6/Week%206/BYUIEnrollments.xlsx">BYUIEnrollments.xlsx</a> data set and open it in Excel.</p>
+<center>
+<img src="Lesson6/Week%206/TimePlot1.png" />
+</center>
+<hr>
+</div>
+<div id="step-2-2" class="section level5">
+<h5>Step 2</h5>
+<p>Highlight the <code>Term</code> and <code>Enrollment</code> columns of the data set. (Be sure to highlight all the way to the bottom of the data that goes to row 38.)</p>
+<center>
+<img src="Lesson6/Week%206/TimePlot2.png" />
+</center>
+<hr>
+</div>
+<div id="step-3-2" class="section level5">
+<h5>Step 3</h5>
+<p>Then,</p>
+<ul>
+<li>[1] Select the “Insert” tab in the top menu.</li>
+<li>[2] Select the “Line Chart” icon.</li>
+<li>[3] Select the “Line” icon.</li>
+</ul>
+<center>
+<img src="Lesson6/Week%206/TimePlot3.png" />
+</center>
+<hr>
+</div>
+<div id="step-4-1" class="section level5">
+<h5>Step 4</h5>
+<p>Edit the chart title and change the styling of the chart if you want.</p>
+<center>
+<img src="Lesson6/Week%206/TimePlot4.png" />
+</center>
+<hr>
+</div>
+</div>
+</div>
+<div id="scatter-plots" class="section level3">
+<h3>Scatter Plots</h3>
+<p>The scatter plot is similar to a time series plot, but it does not require time to be part of the plot. It provides a visual understanding of how two different measurements are related.</p>
+<div id="example-5" class="section level4">
+<h4>Example 5</h4>
+<p>The US Department of Education has put together a useful resource called the <a href="https://collegescorecard.ed.gov/">College Scorecard</a> for college bound students to make important decisions about where to attend college. An important consideration for college students is the amount of student loan debt they may take on during college. Use the information provided by the College Scorecard to determine whether students who attend bigger universities end up with more debt.</p>
+<p><strong>Solution</strong></p>
+<p>The scatter plot below represents the data from the College Scorecard website. Notice that the horizontal axis represents the median debt of student graduates. The vertical axis represents the number of undergraduates enrolled.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt.png" alt="A scatter plot depicting enrollment figures compared to median debt of student graduates, also included are BYU, BYU-I, and BYU-H’s label in the scatter plot" />
+</center>
+<p><br></p>
+<p>We want to use this graph to answer the question: Do students who attend bigger universities end up with more debt? If this were the case, we would expect to see the data points follow a linear pattern with large values on the horizontal axis corresponding to large values of the vertical axis. This is not the case. There really isn’t a pattern to the data.</p>
+<p>Since there is not a pattern in the data, we know there is not any correlation between the size of the university and the median debt load of its graduates. It is interesting to note that all three Brigham Young University schools are on the lower end of the median student loan debt spectrum. However, BYU-Idaho, has the highest median student loan debt of the three while being in the middle for the number of undergraduates enrolled.</p>
+<p>Clearly there are other factors that are not considered here that would provide better explanations of what brings on student debt.</p>
+<hr>
+</div>
+<div id="excel-intructions---scatter-plots" class="section level4 tabset tabset-fade">
+<h4>Excel Intructions - Scatter Plots</h4>
+<p>To make the above scatter plot:</p>
+<div id="step-1-3" class="section level5">
+<h5>Step 1</h5>
+<p>Download the <a href="./Lesson6/Week%206/CollegeDebt.xlsx">CollegeDebt.xlsx</a> data set and open it in Excel.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt1.png" />
+</center>
+<hr>
+</div>
+<div id="step-2-3" class="section level5">
+<h5>Step 2</h5>
+<p>Since there are 2,953 rows in this data set, highlighting the data is done as follows. - First, click on the <code>B</code> column label, which is above the <code>Graduates' Median Debt</code> entry. This will highlight the entire <code>B</code> column. - Second, hold down <code>Shift</code> and click on the <code>C</code> column label, which is above the <code>Number of Undergraduates</code> entry. This will expand the selection to include the <code>C</code> column.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt2a.png" />
+</center>
+<hr>
+</div>
+<div id="step-3-3" class="section level5">
+<h5>Step 3</h5>
+<p>Once the data is selected [1], then</p>
+<ul>
+<li>[2] Select “Insert”.</li>
+<li>[3] Select the “Scatterplot” icon and the “Scatter” option.</li>
+</ul>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt2b.png" />
+</center>
+<hr>
+</div>
+<div id="step-4-2" class="section level5">
+<h5>Step 4</h5>
+<p>This is a scatter plot and it would be sufficient to stop here.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3a.png" />
+</center>
+<hr>
+</div>
+<div id="step-5-bonus-step" class="section level5 tabset tabset-fade">
+<h5>Step 5 <strong>[Bonus Step]</strong></h5>
+<p>The following instructions teach how to label individual data points on the graph.</p>
+<div id="step-5a" class="section level6">
+<h6>Step 5A</h6>
+<p>To add the BYU colleges to the plot, right click on the plot and choose “Select Data…” from the menu.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3b.png" />
+</center>
+<hr>
+</div>
+<div id="step-5b" class="section level6">
+<h6>Step 5B</h6>
+<p>A new window will appear entitled “Select Data Source.”</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3c.png" />
+</center>
+<hr>
+</div>
+<div id="step-5c" class="section level6">
+<h6>Step 5C</h6>
+<p>Click the <code>+</code> sign and enter the following information exactly as shown.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3d.png" />
+</center>
+<hr>
+</div>
+<div id="step-5d" class="section level6">
+<h6>Step 5D</h6>
+<p>Note that the information for Brigham Young University-Hawaii has appeared. Now, click the <code>+</code> sign <em>again</em> and enter the following information exactly as shown.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3e.png" />
+</center>
+<hr>
+</div>
+<div id="step-5e" class="section level6">
+<h6>Step 5E</h6>
+<p>The information for Brigham Young University-Idaho has appeared. Again, click the <code>+</code> sign and enter the following information exactly as shown, then press <code>OK</code>.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3f.png" />
+</center>
+<hr>
+</div>
+<div id="step-5f" class="section level6">
+<h6>Step 5F</h6>
+<p>Finally, select the “Quick Layout” tab in the top left menu and select the first option.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3g.png" />
+</center>
+<hr>
+</div>
+<div id="step-5g" class="section level6">
+<h6>Step 5G</h6>
+<p>To complete the process use the “Quick Styles” menu to find a style you like, then double click on the different elements of the chart to complete the finishing touches.</p>
+<center>
+<img src="Lesson6/Week%206/CollegeDebt3h.png" />
+</center>
+<hr>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="practice-reading-graphs" class="section level2">
+<h2>Practice Reading Graphs</h2>
+<div>
+<center>
+<iframe width="780" height="650" frameborder="0" src="./Lesson6/Storyline/Lesson 6Interactive 1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+<p>L06 - Interactive 1: Practice Reading Graphs<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSxegR8D7UGy3e9BUZI1zeV62w8H0S5313pyXhEHM_hB9oUVO9sraSRrOt5qrig-b_Ra0WPZ4-tnq38/pub">(L06-1 ADA Interactive Transcript)</a></p>
+</center>
+</div>
+<hr>
+<div id="bicycle-safety-example" class="section level3">
+<h3>Bicycle Safety Example</h3>
+<p>Graphics are a helpful tool that can be used in Step 3 of the Quantitative Reasoning Process. Consider the following example.</p>
+<hr>
+<h4 class="step one">
+Understand the Problem
+</h4>
+<p>Anita has three teenage children that ride their bikes to school every day. They ride 1.3 miles down a road that has a bike lane, but no sidewalk. The city wants to add a turning lane to the middle of the road. To make the turning lane fit in the space they have, the city will need to narrow the bike lane. Anita is concerned for the safety of her children and wants to look at some research on how the width of the bike lane affects safety.</p>
+<hr>
+<h4 class="step two">
+Identify Variables &amp; Assumptions
+</h4>
+<p>After looking at some studies, Anita found a research study that gave some data using the following variables:</p>
+<ul>
+<li>The distance from the cyclist to the center line on the road.</li>
+<li>The distance from the cyclist to a passing car.</li>
+</ul>
+<p>In order to apply the data she found to the situation in her neighborhood, Anita has to make some important assumptions.</p>
+<ul>
+<li>She will assume that the closer a cyclist is to a passing car the less safe it is for the cyclist.</li>
+<li>She will assume that the narrower the bike lane is, the narrower the road must be. This means the distance from the center line on the road to the cyclist will be smaller.</li>
+</ul>
+<hr>
+<h4 class="step three">
+Apply Quantitative Tools
+</h4>
+<p>The following data is given in the research study Anita found: <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<table>
+<thead>
+<tr class="header">
+<th>Distance from Cyclist to Center Line</th>
+<th>Distance from Cyclist to Car</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12.8</td>
+<td>5.5</td>
+</tr>
+<tr class="even">
+<td>12.9</td>
+<td>6.2</td>
+</tr>
+<tr class="odd">
+<td>12.9</td>
+<td>6.3</td>
+</tr>
+<tr class="even">
+<td>13.6</td>
+<td>7.0</td>
+</tr>
+<tr class="odd">
+<td>14.5</td>
+<td>7.8</td>
+</tr>
+<tr class="even">
+<td>14.6</td>
+<td>8.3</td>
+</tr>
+<tr class="odd">
+<td>15.1</td>
+<td>7.1</td>
+</tr>
+<tr class="even">
+<td>17.5</td>
+<td>10.0</td>
+</tr>
+<tr class="odd">
+<td>19.5</td>
+<td>10.8</td>
+</tr>
+<tr class="even">
+<td>20.8</td>
+<td>11.0</td>
+</tr>
+</tbody>
+</table>
+<p>Because this data relates two different variables, Anita decided to make a scatter plot of the data.</p>
+<br>
+<center>
+<p><img src="Lesson6/Images/wk6.cyclist%20copy.png" alt="A scatter plot depicting distance from cyclist to car compared to distance from cyclist to center line" /></p>
+</center>
+<p><br></p>
+<p>Because there is a pattern in this data, Anita was able to notice that when the distance from the cyclist to the center line is smaller, so is the distance from the cyclist to a passing car.</p>
+<hr>
+<h4 class="step four">
+Make an Informed Decision
+</h4>
+<p>Anita was able to conclude that the scatter plot showed the road would be less safe if they narrowed the road to make room for the new sidewalk. This would have to decrease the distance form the cyclist to the center line and the graphs shows this means the distance between the cyclist and a passing car would then be smaller. Anita’s assumption is that this makes the road less safe for her children as they ride their bikes to school.</p>
+<p>Based on the data, her graph, and her conclusion that the addition of a turning lane was going to make the road less safe, Anita decided to attend a city council meeting and express her concerns.</p>
+<p>The city council listened respectfully to Anita’s concerns. Anita’s neighbors shared her concerns and also attended the meeting. As a result, the city decided to change their plans for making a narrow bicycle lane. This meant that they had to change their plans for the turning lane, but they were able to modify their plans in a way that still accommodated traffic.</p>
+<hr>
+<h4 class="step five">
+Evaluate Your Reasoning
+</h4>
+<p>In this situation Anita decision led to her desired outcome. As she reflected on the progress she made, she realized that having data to back up her concerns was helpful when she presented to the city council.</p>
+<hr>
+<div id="another-example" class="section level4">
+<h4>Another Example</h4>
+<p>Although Anita’s story is fictional, similar situations are quite common in real-life. In December 2016, the city of Missoula, Montana considered reducing some two-lane streets to one lane with a bicycle lane <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Some city residents were supportive of the change because it would improve safety for bicyclists and pedestrians, would slow traffic in a residential area, give more room for parking, and reduce crashes. The city has data on the amount of traffic on the street and found that a one-lane road could accommodate the current traffic without impacting vehicle flow.</p>
+<p>Other city residents were opposed to the change, however. In particular, business owners were concerned about the impact reduced traffic might have on their businesses. Other opponents are concerned that the change is overly concerned about cyclists when cyclists are a very small portion of the traffic on the street.</p>
+<p>The city council is taking comments from members of the community and concerned citizens could definitely use data and graphics, similar to the one used by Anita, to support their position.</p>
+<hr>
+</div>
+</div>
+</div>
+<div id="lesson-checklist" class="section level2">
+<h2>Lesson Checklist</h2>
+<p>After completing this lesson you should be able to do the following:</p>
+<ul>
+<li>Create bar charts, pie charts, time series plots, and scatter plots of data in Excel.</li>
+<li>Interpret the information provided in bar charts, pie charts, time series plots, and scatter plots.</li>
+<li>Identify the type of chart (bar chart, pie chart, time series, scatter plot) that would be most appropriate for a given scenario.</li>
+<li>Make a contextual conclusion from a given chart (bar chart, pie chart, time series, scatter plot).</li>
+</ul>
+<center>
+© 2020 Brigham Young University - Idaho
+</center>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>information from an article posted on www.usu.edu<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>information from an article posted on www.usu.edu<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p><a href="http://www2.byui.edu/Presentations/Transcripts/Devotionals/2001_09_18_Eyring.htm" class="uri">http://www2.byui.edu/Presentations/Transcripts/Devotionals/2001_09_18_Eyring.htm</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p><a href="http://www.statsci.org/data/general/cyclist.html" class="uri">http://www.statsci.org/data/general/cyclist.html</a><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p><a href="http://www.missoulacurrent.com/government/2016/12/streets-single-lane/" class="uri">http://www.missoulacurrent.com/government/2016/12/streets-single-lane/</a><a href="#fnref5" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+---
+title: 'Excel Case Study Files'
+output:
+  html_document:
+    theme: journal
+    toc: no
+---
+
+The following links are the most recent version of the Excel Case Study files used for FDMAT 108.
+
+* [Budgeting Case Study](http://www.byuimath.com/FDMAT108/ExcelFiles/BudgetingCaseStudy.xlsx)
+
+* [Craig's Report Case Study](http://www.byuimath.com/FDMAT108/ExcelFiles/CraigsReportCaseStudy.xlsx)
+
+* [Car Loan Case Study](http://www.byuimath.com/FDMAT108/ExcelFiles/CarLoanCaseStudy.xlsx)
+
+* [Home Loan Case Study](http://www.byuimath.com/FDMAT108/ExcelFiles/HomeLoanCaseStudy.xlsx)
+
+* [Trendlines Case Study](http://www.byuimath.com/FDMAT108/ExcelFiles/TrendlineCaseStudy.xlsx) 
+
+The following links are the most recent versions of the Excel Class Activity files used for FDMAT 108.
+
+* [Lesson 4A Budgeting Practice Class Activity](http://www.byuimath.com/FDMAT108/ExcelFiles/Lesson4AClassActivity.xlsx)
+
+* [Lesson 6A Charts & Graphs Class Activity](http://www.byuimath.com/FDMAT108/ExcelFiles/Lesson6AClassActivity.xlsx)
+
+* [Lesson 7A Excel Functions Class Activity](http://www.byuimath.com/FDMAT108/ExcelFiles/Lesson7AClassActivity.xlsx)
+
+* [Lesson 7B Student Loans Class Activity](http://www.byuimath.com/FDMAT108/ExcelFiles/Lesson7BClassActivity.xlsx)
+
+* [Lesson 10A Trendlines Practice Class Activity](http://www.byuimath.com/FDMAT108/ExcelFiles/Lesson10AClassActivity.xlsx)
+
+<center>
+&copy; 2018 Brigham Young University - Idaho
+</center>

@@ -1,0 +1,10 @@
+---
+title: "Lesson 9 Checklist"
+---
+
+By the end of this lesson, you should be able to:
+
+* define the term rate of change as the slope of a curve at a given point
+* understand the difference between constant and variable rates of change
+* define compound interest
+* understand the connection between rate of change and accrued savings (or debt).

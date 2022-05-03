@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lesson 12: Probability and Confidence Intervals</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit I
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson1.html">Lesson 1</a>
+    </li>
+    <li>
+      <a href="Lesson2.html">Lesson 2</a>
+    </li>
+    <li>
+      <a href="Lesson3.html">Lesson 3</a>
+    </li>
+    <li>
+      <a href="Lesson4.html">Lesson 4</a>
+    </li>
+    <li>
+      <a href="Lesson5.html">Lesson 5</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit II
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson6.html">Lesson 6</a>
+    </li>
+    <li>
+      <a href="Lesson7.html">Lesson 7</a>
+    </li>
+    <li>
+      <a href="Lesson8.html">Lesson 8</a>
+    </li>
+    <li>
+      <a href="Lesson9.html">Lesson 9</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit III
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson10.html">Lesson 10</a>
+    </li>
+    <li>
+      <a href="Lesson11.html">Lesson 11</a>
+    </li>
+    <li>
+      <a href="Lesson12.html">Lesson 12</a>
+    </li>
+    <li>
+      <a href="Lesson13.html">Lesson 13</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 12: Probability and Confidence Intervals</h1>
+
+</div>
+
+
+<div id="opening-story" class="section level2">
+<h2>Opening Story</h2>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_ki390ctt&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_yrnocy04" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
+</iframe>
+<p>Lesson 12 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTd0J9oOlMFXV5b4IQy7dfzI8AupLn4Ro0eXodnsexOvV9K8z8SrhyK6uLe82i5bAdu8C51jUXSPgrh/pub">(2:27 mins, L12 Opening Story Transcript)</a></p>
+</center>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In the introductory video we saw Lucas, Amanda, and Craig interacting on a rather ordinary day. Notice how often they used numbers to predict or to make comparisons.</p>
+<ul>
+<li><p>Lucas and Amanda used customer ratings to compare different headphones and predict which ones would have the best quality.</p></li>
+<li><p>Craig used information about the number of people who interviewed to make a prediction on the likelihood that he would get the job.</p></li>
+<li><p>Lucas, Amanda, and Craig used statistics to compare two candidates for governor and predict who might win the election.</p></li>
+</ul>
+<p>All of us commonly use quantitative information to make informal prediction and comparisons, like those we saw Lucas, Craig, and Amanda making. In this lesson we will use probabilities, confidence intervals, and margins of error to help us make better predictions and comparisons. These topics provide us with valuable quantitative tools that can be used as part of the Quantitative Reasoning Process.</p>
+<hr>
+</div>
+<div id="probability" class="section level2">
+<h2>Probability</h2>
+<p>In order to make an accurate prediction or comparison we need to understand how likely it is that a certain outcome will occur.</p>
+<blockquote>
+<p>The <em>probability</em> of an event is a measurement between 0 and 1 of how likely an event is to happen. An event with a probability of 0 will never happen. An event with a probability of 1 is certain to happen.</p>
+</blockquote>
+<p>Although some events have a probability of 0 (like rolling a 7 on a standard six-sided die) or a probability of 1 (like the sun rising in the morning), most events have a probability somewhere between 0 and 1.</p>
+<p>Because probabilities are always a number between 0 and 1, we can report these numbers as percentages. For example, we know 0.4 is the same thing as 40%. So we could say the probability of something happening is 0.4 or that there is a 40% chance it could happen.</p>
+<p>Most of us have encountered probabilities often enough that we have a pretty good intuitive sense for what they mean. If we are told there is a 90% chance it will rain today, we know it probably will rain. However, if there is only a 10% chance of rain, we know it probably will not rain.</p>
+<p>There are several equivalent ways to think about or explain probabilities:</p>
+<ul>
+<li>If the probability of getting a cold is 0.3, we could also say,</li>
+<li>there is a 30% chance you will get a cold, or</li>
+<li>we expect 3 out of every 10 people to get a cold, or</li>
+<li>out of a group of 100 people, around 30 of them will get a cold.</li>
+</ul>
+<hr>
+<div id="informal-use-of-probabilities" class="section level3">
+<h3>Informal Use of Probabilities</h3>
+<p>We commonly use probabilities in a very informal way. For example, if we are walking on a sidewalk on a winter day and see a patch of ice ahead, we subconsciously realize that the probability we will slip is higher if we walk across the ice than the probability we will slip if we walk around the patch of ice. We then adjust our path and walk around the ice rather than over it. In making that decision, we compared probabilities and assessed the risk of slipping, but we did so without even realizing we were doing it.</p>
+<p>Informal probabilities are an important part of the assumptions we make in the Quantitative Reasoning Process. When we make an assumption, we automatically accept some risk that the assumption might not be true. The probability that the assumption is not true plays a role in the decision we make.</p>
+<p>For example, if we are making a decision about taking out student loans and make the assumption that we will get a job paying $90,000 per year as soon as we graduate, we need to realize this assumption has a low probability of being true. Although some graduates in very high demand fields may be offered $90,000 per year upon graduation, for most graduates there is a low probability of being offered a salary that high. In 2016, the average starting salary of new bachelor’s degree holders in the United States was $50,556.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> If we base our student loan decision on the assumption that our starting salary will be $90,000 per year, we have a high risk of the assumption being false and as a consequence we could make a poor decision.</p>
+<p>As we create assumptions, we need to informally assess the probability that they are true. Notice, in the example above we did not ever compute a probability, but by comparing our salary assumption to national data about salaries, we were able to informally conclude the the probability was low. This type of informal assessment can be done by looking at historical information, studies, surveys, and other data that helps us determine the likelihood that our assumption is true.</p>
+Decisions made using the quantitative reasoning process are only as good as our assumptions. If we make assumptions with a low probability of being true, then the probability we will make a good decision is also low.
+<hr>
+</div>
+<div id="computing-probabilities-from-historical-data" class="section level3">
+<h3>Computing Probabilities From Historical Data</h3>
+<p>One way to assess how likely it is that something will happen in the future is to look at what has happened in the past. Although there are no guarantees that what happened in the past will happen in the future, looking at past behavior gives us some sense of the likelihood of a particular outcome. Using information about the past allows us to compute probabilities.</p>
+<div id="example-1" class="section level4">
+<h4>Example 1</h4>
+<p>For the 2017 season, the National Basketball Association (NBA) player with the best free throw percentage was C.J. McCollum from the Portland Trail Blazers. McCollum made 283 of the 310 free throws he attempted during the season. Find and interpret the probability that McCollum will make the next free throw he attempts.</p>
+<p><strong>Solution</strong></p>
+<p>Based on the historical information provided, we compute the percentage of free throw shots McCollum made:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{Probability of Making a Free Throw} &amp;= \frac{\text{number of free throws made successfully}}{\text{total number of free throws attempted}}\\
+&amp;=\frac{283}{310}\\
+&amp;=0.913\\
+\end{align}
+\]</span></p>
+<p>The probability that McCollum will make his next free throw is 0.913 or 91.3%. Because this number is close to 1 or 100% it means that McCollum is very likely to make his next free throw.</p>
+<hr>
+<center>
+<div>
+<iframe width="780" height="375" frameborder="0" src="./Lesson12/Storyline/Lesson12.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L12 - Interactive 1: Example 1<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTE1p4VgmQix8dT3v0KIh1axgQ3ZgOk-HsE-0Dc2jAOX2UhbJpSpz-A7P9I3xux90AO9HeKOHJBWzLS/pub">(L12-1 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+<p>Here is an example where historical information was used to compute probabilities in order to make a decision using the Quantitative Reasoning Process.</p>
+<h4 class="step one">
+Understand the Problem
+</h4>
+<p>Skylar owns a small convenience store. He knows most of his customers come into the store planning to make one small purchase. In order to increase his sales and his profits, he wants to encourage customers to purchase more items. He heard that where items are positioned in a store can entice customers to purchase items that they were not planning to buy. So he decides to create a plan for the arrangement of the items in his store, with the hope of increasing his sales.</p>
+<hr>
+<h4 class="step two">
+Identify Variables &amp; Assumptions
+</h4>
+<p>Skylar identifies the following variables:</p>
+<ul>
+<li>Number of customers</li>
+<li>Number of items purchased by each customer</li>
+<li>Total monthly sales</li>
+<li>Total monthly profit</li>
+</ul>
+<p>He makes the following assumptions:</p>
+<ul>
+<li>Rearranging the placement of items in his store will increase the number of items each customer purchases.</li>
+<li>If customers purchase more items, his sales will go up.</li>
+<li>If his sales go up, his profits will increase.</li>
+</ul>
+<p>As Skylar evaluates his assumptions he determines the second and third assumption have a very high probability of being true. However, he realizes he doesn’t have much information about the first assumption. He is basing it entirely on something he has heard, but he thinks it makes sense. So he informally determines that the first assumption had a medium probability of being true. He decides to look at historical information to get a better sense of whether that assumption is accurate.</p>
+<hr>
+<h4 class="step three">
+Apply Quantitative Tools
+</h4>
+<p>Skylar looked back over his sales receipts for the previous month. He had 7,215 customers during the month. Many customers purchased one item, but several customers purchased 2 or 3 items. The most items purchased by a single customer at one time was 11. Using the information from his sales receipts, he made the following table showing how many customers purchased a certain number of items.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Items Purchased</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Number of Customers</td>
+<td>2670</td>
+<td>1587</td>
+<td>1010</td>
+<td>505</td>
+<td>289</td>
+<td>216</td>
+<td>361</td>
+<td>144</td>
+<td>215</td>
+<td>145</td>
+<td>73</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Skylar realized he could use this historical information to compute probabilities.</p>
+<hr>
+<p><span class="math display">\[
+\text{Probability a customer purchases } n \text{ items}=\frac{\text{Number of customers purchasing }n\text{ items}}{\text{Total number of customers}}
+\]</span> <br> Using this formula, he found the following probabilities:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Items Purchased</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probability</td>
+<td>0.37</td>
+<td>0.22</td>
+<td>0.14</td>
+<td>0.07</td>
+<td>0.04</td>
+<td>0.03</td>
+<td>0.05</td>
+<td>0.02</td>
+<td>0.03</td>
+<td>0.02</td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p>He graphed this data using a bar chart. This visualization gave him a better sense of what was going on:</p>
+<center>
+<img src="Lesson12/Images/ProbabilityModelBefore.png" alt="bar chart of a probability model for items purchased per customer" />
+</center>
+<p>He noticed that the probability that a customer purchased 1, 2, or 3 items was <span class="math inline">\(0.37+0.22+0.14=0.73\)</span>. This meant 73% of his customers purchased 3 or fewer items. He also computed the probability that customers purchased 8 or more items: <span class="math inline">\(0.02+0.03+0.02+0.01=0.08\)</span>. Only 8% of his customers purchased 8 or more items.</p>
+<p>Skylar carefully considered the changes he could make to the placement of items in his store. He found that the most commonly purchased item was soda. He couldn’t move the soda because it needed to be stored in refrigerators at the back of the store. But he realized the aisle that led most directly to the soda held motor oil, oil filters, and spark plugs. He realized these were not items that customers would buy on impulse. He moved those items to a less convenient aisle. He filled one side of the aisle leading to the soda with candy and gum and the other side of the aisle with donuts and other baked goods. He thought customers were likely to grab these items as they walked to the refrigerators in the back of the store.</p>
+<p>One month after making these changes, Skylar again examined his sales receipts. Doing a similar computation to the previous month, he found the following probabilities:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Items Purchased</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probability</td>
+<td>0.26</td>
+<td>0.18</td>
+<td>0.14</td>
+<td>0.13</td>
+<td>0.07</td>
+<td>0.06</td>
+<td>0.05</td>
+<td>0.04</td>
+<td>0.03</td>
+<td>0.03</td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p>In order to compare, Skylar created a new side-by-side bar chart that compared the probability model before he rearranged the store to the probability model after the rearrangement.</p>
+<center>
+<img src="Lesson12/Images/ProbabilityModelAfter.png" alt="barplot of before/after comparison of probability model for number of items purchased per customer" />
+</center>
+<p>This graph showed a lot of information, so it took careful examination in order for Skylar to really see what it was telling him. After studying the graph for awhile, he realized that the blue bars were taller than the orange bars for 1-2 items. But then for 4-7 items the orange bars were higher. Because the blue bars represented probabilities before the store was rearranged, he realized this meant that after the rearrangement the probability a customer purchases only 1 or 2 items went down, and the probability a customer purchases 4 to 7 items went up.</p>
+<p>He verified what he saw in the graph by comparing probabilities:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Number of Items</th>
+<th>Probability Before Rearrangement</th>
+<th>Probability After Rearrangement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1-3</td>
+<td>73%</td>
+<td>58%</td>
+</tr>
+<tr class="even">
+<td>4-7</td>
+<td>19%</td>
+<td>31%</td>
+</tr>
+<tr class="odd">
+<td>8-11</td>
+<td>8%</td>
+<td>11%</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 class="step four">
+Make an Informed Decision
+</h4>
+<p>Based on these probability calculations, Skylar concluded that rearranging the store did increase the probability a customer would purchase more items. He also saw a small increase in total sales.</p>
+<p>Skylar decided to continue to evaluate what items customers purchased as an impulse buy. He ordered several small items that might entice customers and put them in strategic locations where customers would encounter them near popular items.</p>
+<hr>
+<h4 class="step five">
+Evaluate Your Reasoning
+</h4>
+<p>After three months, Skylar computed the list of probabilities again. He found that the probability of a customer only purchasing one item had gone back up to 0.31. Skylar realized the new candy and baked good aisle was most effective when it was new to customers. As customers become accustomed to the aisle, they stopped making as many impulse purchases. He decided to rearrange the store regularly hoping to continue to encourage customers to purchase multiple items.</p>
+<p>He also noticed that customers could only comfortably carry about 6 or 7 items in their hands. He wondered if the reason so few customers purchased 8 or more items was because it was difficult to carry that many items. Skylar purchased some small baskets to make it convenient for customers to shop.</p>
+<hr>
+</div>
+</div>
+<div id="sample-spaces-and-probability-models" class="section level3">
+<h3>Sample Spaces and Probability Models</h3>
+<p>In this example, we saw how Skylar used historical data to compute probabilities and to make a decision about rearranging his store. Skylar’s example is a good illustration of some vocabulary that is commonly used when discussing probabilities.</p>
+<p>When we compute probabilities, we often use the term <em>event</em>. The dictionary defined the word event as “a thing that happens.” We use probabilities to measure the likelihood that “things that happen” (events) will occur. In Skylar’s example, the “event” was a customer purchase of a certain number of items. We describe the probability for an event occurring using a sample space and a probability model.</p>
+<blockquote>
+<p>The <em>sample space</em> of an event is a list of all the possible outcomes of an event.</p>
+</blockquote>
+<p>In Skylar’s case, the sample space was the list of possible outcomes when a customer makes a purchase. They could just purchase one item, or two items, or three items, and so on. But based on historical data, no one ever purchased more than 11 items. So Skylar’s sample space was:</p>
+<p><span class="math display">\[\{1,2,3,4,5,6,7,8,9,10,11\}.\]</span></p>
+<p>Notice that we describe sample spaces by making a list of the possible outcomes.</p>
+<blockquote>
+<p>A <em>probability model</em> for an event consists of the sample space along with the probability of each possible outcome.</p>
+</blockquote>
+<p>The tables (and bar charts) that Skylar made represented a probability model:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Items Purchased</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probability</td>
+<td>0.37</td>
+<td>0.22</td>
+<td>0.14</td>
+<td>0.07</td>
+<td>0.04</td>
+<td>0.03</td>
+<td>0.05</td>
+<td>0.02</td>
+<td>0.03</td>
+<td>0.02</td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p>This table is a probability model because it lists the sample space (all the possible outcomes) and the probability of each outcome.</p>
+<hr>
+<center>
+<div>
+<iframe width="780" height="375" frameborder="0" src="./Lesson12/Storyline/Lesson12.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L12- Interactive 2: Sample Spaces and Probability Models<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQNpg-1IjAr5aneYgHylEkFmpWXc5I-wtbbFHRE8jJa1DkpF8Pfa79WU8A4IhuDq06Jjl6doVW1OR_4/pub">(L12-2 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+<div id="empirical-and-theoretical-probabilities" class="section level3 tabset tabset-fade">
+<h3 class="tabset tabset-fade">Empirical and Theoretical Probabilities</h3>
+<p>There are two types of probabilities that we can compute: empirical and theoretical.</p>
+<blockquote>
+<p>An <em>empirical probability</em> is determined by historical data or by trying the event many times and computing how often the desired outcome occurs.</p>
+</blockquote>
+<blockquote>
+<p>A <em>theoretical probability</em> is determined by using your knowledge of the situation and mathematical formulas to predict how often the desired outcome will occur in the future.</p>
+</blockquote>
+<p>Empirical probabilities are computed based on what <em>has</em> happened. Theoretical probabilities are computed based on what <em>could</em> happen. In Skylar’s case he used empirical probabilities because he based his calculations on what customers had purchased in the past.</p>
+<p>One common example of a theoretical probability is tossing a coin. When we toss a coin there are two possible outcomes: heads and tails. Because the coin is equally likely to land on either side, we know we have a 50% chance of getting heads and a 50% chance of getting tails. This is a theoretically probability because instead of tossing a coin repeatedly and seeing what happens, we used the structure of the coin to determine the likelihood of each outcome.</p>
+<p>When computing empirical probabilities it is important to have a very large number of trials. For example, let’s toss a coin 10 times and see what happens.</p>
+<p><br> <br></p>
+<center>
+<img src="Lesson12/Images/CoinToss.png" alt="picture of 10 pennies some on heads, some on tails" />
+</center>
+<p><br> <br></p>
+<p>Notice we got 7 tails and 3 heads. This is not an unusual result, even for a equally weighted fair coin. However, if we used this outcome to compute an empirical probability we would say there is a 70% chance of getting tails and a 30% chance of getting heads. This isn’t even close to the theoretical probability we would expect.</p>
+<p><strong>In order for an empirical probability to be accurate, it must be based on a very large number of trials.</strong></p>
+<p>Simple, classic examples, like coins and dice can help us learn about probability.</p>
+<div id="example-2---tossing-a-coin" class="section level4">
+<h4>Example 2 - Tossing a Coin</h4>
+<p>Consider an event where you toss two coins and look at whether they are heads or tails. Give the sample space and a probability model for this situation. Determine if you used theoretical or empirical probabilities.</p>
+<p><strong>Solution</strong></p>
+<p>When we toss the two coins we can represent the possible outcomes with the following tree diagram:</p>
+<center>
+<img src="Lesson12/Images/CoinTree.PNG" alt="image of a penny tree diagram" />
+</center>
+<p><em>Sample Space:</em></p>
+<p>The sample space of this event is a list of all possible outcomes. Looking at our tree diagram, the four branches of the tree tell us the possible outcomes. If we use H for heads and T for tails, we could write the sample space as:</p>
+<p><span class="math display">\[ S =\{\text{HH},\text{HT},\text{TH},\text{TT}\}.\]</span></p>
+<p><em>Probability Model:</em></p>
+<p>Since there are four possible outcomes that are each equally likely to occur, we assign them each a probability of 1 out of 4, or <span class="math inline">\(\frac{1}{4}=0.25\)</span>. The probability model could be represented by the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Possible Outcome</th>
+<th>HH</th>
+<th>HT</th>
+<th>TH</th>
+<th>TT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probabilities</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>0.25</td>
+</tr>
+</tbody>
+</table>
+<p><em>What type of probability:</em></p>
+The probabilities in our probability model are theoretical probabilities because we computed them based on our understanding of what <em>could</em> occur when we toss a coin twice.
+<hr>
+</div>
+<div id="example-3---rolling-dice" class="section level4">
+<h4>Example 3 - Rolling Dice</h4>
+<p>Consider an event where you roll a pair of dice and observe the sum of the numbers on the two dice. Give the sample space and a probability model for this situation. Describe the difference between an empirical and a theoretical probability in this situation.</p>
+<p><strong>Solution</strong></p>
+<p>When we toss the two dice and add the numbers on the dice, we can represent what could happen with the following chart:</p>
+<center>
+<img src="Lesson12/Images/TossDice2.PNG" />
+</center>
+<p><em>Sample Space:</em></p>
+<p>The sample space of this event is a list of all possible outcomes. Looking at our chart we can see that the sum of the dice can be anything between 2 and 12. We can write the sample space as:</p>
+<p><span class="math display">\[ S =\{2,3,4,5,6,7,8,9,10,11,12\}.\]</span></p>
+<p><em>Probability Model:</em></p>
+<p>There are 36 possible outcomes that are each equally likely to occur. Because they are equally likely, we can count how many times each sum occurs to build our probability model.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Possible Outcome</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+<th align="center">12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probabilities</td>
+<td align="center"><span class="math inline">\(\frac{1}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{5}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{6}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{5}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{36}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We can also write the probabilities as decimals instead of fractions. This gives us the same probability model represented in a slightly different way.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Possible Outcome</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+<th align="center">12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probabilities</td>
+<td align="center">0.028</td>
+<td align="center">0.056</td>
+<td align="center">0.083</td>
+<td align="center">0.111</td>
+<td align="center">0.139</td>
+<td align="center">0.167</td>
+<td align="center">0.139</td>
+<td align="center">0.111</td>
+<td align="center">0.083</td>
+<td align="center">0.056</td>
+<td align="center">0.028</td>
+</tr>
+</tbody>
+</table>
+<p>From this chart, we see the most likely outcome is a sum of 7 which occurs 16.7% of the time. The least likely outcomes are 2 and 12, which each occur only 2.78% of the time.</p>
+<p><em>What type of probability?:</em></p>
+<p>The probabilities in our probability model are theoretical probabilities because we computed them based on our understanding of what <em>could</em> occur when we toss two dice.</p>
+<hr>
+</div>
+</div>
+<div id="customer-ratings" class="section level3">
+<h3>Customer Ratings</h3>
+<p>When we looked at empirical probabilities we saw the importance of basing our probabilities on a large number of trials. Let’s return to the example of customer ratings given in the introductory video. Lucas and Amanda were shopping for headphones for a birthday gift. They used customer ratings to compare between different pairs of headphones. Many people look at customer ratings when they make a purchase online. These ratings allow us to look at information provided by a large number of previous customers and use that information to make a decision about what to purchase. These ratings are a type of empirical probability based on historical data.</p>
+<center>
+<strong>Item #1</strong><br />
+<img src="Lesson12/Images/customerrating.png" alt="image of Item 1’s customer ratings" />
+</center>
+<p><br></p>
+<p>Lucas and Amanda were looking at ratings similar to the one shown above. Notice that 71% of the customers rated Item #1 with 5 stars. But there is <em>variability</em> in the ratings. Not everyone had the same opinion about this item. Some people gave it a 5 star rating, while other people gave it a 1 star rating. There is a big difference between 1 star and 5 star ratings. Because the most common rating was 5 stars, we probably trust the five star rating most. In this example, 71% is an empirical probability based on asking 2798 people their opinion of the item.</p>
+<p>Compare the customer ratings for Item #1 shown above with the rating for Item #2 shown below.</p>
+<center>
+<strong>Item #2</strong><br />
+<img src="Lesson12/Images/customerrating3.png" alt="image of Item 2’s customer ratings" />
+</center>
+<p><br></p>
+<p>Notice that the both items have 71% of individuals giving a 5-star rating. However, we would be less <em>confident</em> in the rating given for Item #2. The first item was rated by 2,798 people while the second item was only rated by 7 people. We can trust information more when it is confirmed by large number of people with the same opinion.</p>
+<p>This example shows that we can’t just look at the percentage of people who gave a 5-star rating. We also need to consider variability in the ratings and the number of people who gave a rating. This is important anytime we look at statistics. We can take variability and the number of trials into account by using a margin of error.</p>
+<hr>
+</div>
+</div>
+<div id="estimating-with-confidence" class="section level2">
+<h2>Estimating with Confidence</h2>
+<p>In the introductory video we heard Craig, Lucas, and Amanda having a conversation about a political poll. A news report stated that 51% of the voters were going to vote for Andrews. But this percentage was based on a sample. The news agency had not contacted all registered voters and asked them how they planned to vote. They only contacted some of them. The news agency knew the answer based on their sample could be different from the true percentage for all the registered voters, the entire population. So in addition to giving the percentage of voters planning to vote for Andrews, the news report also gave a <em>margin of error</em>.</p>
+<p>Statisticians distinguish between two types of numbers: “parameters” and “statistics”.</p>
+<blockquote>
+<p>A <strong>parameter</strong> is a number based on a survey of the entire population.</p>
+</blockquote>
+<blockquote>
+<p>A <strong>statistic</strong> is a number based on a survey of just a sample of the population.</p>
+</blockquote>
+<p>The percentage reported in the news “51% of voters” is an example of a <em>statistic</em>. It is based on a sample of the population, so it is a statistic rather than a parameter. Statistics are used because it is difficult, time consuming, and expensive to contact every individual in a large population. Instead, just a sample of the population is contacted. We assume that the value of a statistic is not exactly equal to the true percentage (parameter) from the population. This where the margin of error comes in.</p>
+<blockquote>
+<p>Statistics are used to estimate the true percentage (the parameter) for the whole population. The margin of error helps us measure how far our statistic might be from the true percentage (the parameter).</p>
+</blockquote>
+In the introductory video Lucas said the margin of error for the voter study was 3%. By first subtracting the margin of error from the percentage found in the sample, then adding the margin of error to the percentage found in the sample, we obtain an interval that we can be quite confident includes the true percentage (the parameter) for the whole population. We call this interval of numbers a <em>confidence interval</em>.
+<hr>
+<div id="confidence-intervals" class="section level3 tabset tabset-fade">
+<h3 class="tabset tabset-fade">95% Confidence Intervals</h3>
+<p>News organizations and polling companies often report a statistic along with the margin of error. We can use this information to find the confidence interval.</p>
+<p><span class="math display">\[
+\text{confidence interval} = \text{the statistic } \pm \text{ the margin of error}
+\]</span></p>
+<p>Use this formula to find the confidence of intervals for the political poll in the introductory video.</p>
+<center>
+<div>
+<iframe width="780" height="580" frameborder="0" src="./Lesson12/Storyline/Lesson12.PoliticalPoll - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L12 - Interactive 3: 95% Confidence Intervals<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSefbbhViG6WGK4bVmZIsjkoHSd50CB1Qk-uqYwLENdrVxIH0LNT7bOyrGyKCL02gJoz2ZXo48RbO_i/pub">(L12-3 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+<p>When reading this type of news report, it is important to realize that the percentage provided is a <em>statistic</em>, not the true percentage for the whole population (not the parameter). The following examples demonstrate how to convert a published statistic and margin of error into a confidence interval.</p>
+<div id="example-4---grocery-bags" class="section level4">
+<h4>Example 4 - Grocery Bags</h4>
+<p>A Gallup poll<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> conducted the week of March 1-5, 2017 asked individuals: “Which of these does LESS harm to the environment: using paper shopping bags or using plastic shopping bags?”</p>
+<p>Give a 95% confidence interval for the percentage of U.S. adults who believe paper bags are better for the environment than plastic bags. Interpret the meaning of the confidence interval.</p>
+<p><strong>Solution</strong></p>
+<p>Gallup reported that they asked this question to 1018 U.S. adults, age 18 and older and 73% said paper shopping bags were less harmful to the environment.</p>
+<p>The 73% number is a <strong>statistic</strong> because it was computed by talking to a sample of adults living in the United States (if Gallup had asked all adults in the U.S. this question, then the number would be a parameter). Gallup stated: “The margin of sampling error is 4 percentage points at the 95% confidence level.”</p>
+<p>We can use this margin of error to compute the 95% confidence interval:</p>
+<p><span class="math display">\[ 
+\begin{align}
+\text{confidence interval} &amp;= \text{the statistic } \pm \text{ the margin of error}\\
+ &amp;= 73\% \pm 4\%\\
+&amp;= (73\%-4\%, 73\%+4\%)\\
+&amp;= (69\%, 77\%)\\
+\end{align}
+\]</span></p>
+<p>This shows our 95% confidence interval is <span class="math inline">\((69\%, 77\%)\)</span>. This means we are 95% certain that the true percentage of adults in the United States who think using paper grocery bags is better for the environment than using plastic grocery bags is between 69% and 77%</p>
+<hr>
+</div>
+<div id="example-5---bathroom-cleanliness" class="section level4">
+<h4>Example 5 - Bathroom Cleanliness</h4>
+<p>The Bradley Corporation conducted a study<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> on customers views of the connection between bathroom cleanliness in a business and the quality of the business’ products and services. Based on a sample of 1042 American adults, they found “that 88% [of American adults] believe that if a restaurant has unclean restrooms, the likelihood is that the kitchen is also unclean”. The margin of error in the study was 3%.</p>
+<p>Find a 95% confidence interval for the percentage of Americans who believe there is a connection between the cleanliness of a bathroom and a kitchen in a restaurant. Interpret the meaning of the confidence interval.</p>
+<p><strong>Solution</strong></p>
+<p>The 88% number reported by the Bradley Corporation is a <strong>statistic</strong> because it was computed by talking to a sample of American adults (if they had asked all American adults this question, then their number would be a parameter).</p>
+<p>We can use the margin of error to compute a 95% confidence interval:</p>
+<p><span class="math display">\[ 
+\begin{align}
+\text{confidence interval} &amp;= \text{the statistic } \pm \text{ the margin of error}\\
+&amp;= 88\% \pm 3\%\\
+&amp;= (88\%-3\%, 88\%+3\%)\\
+&amp;= (85\%, 91\%)\\
+\end{align}
+\]</span></p>
+<p>This shows our 95% confidence interval is <span class="math inline">\((85\%, 91\%)\)</span>. This means we are 95% certain that the true percentage of American adults who think there is a connection between the cleanliness of a bathroom and a kitchen in a restaurant is between 85% and 91%. This provides good statistical evidence that unclean restrooms can give a negative message about a restaurant.</p>
+<hr>
+</div>
+<div id="example-6---technology-use" class="section level4">
+<h4>Example 6 - Technology Use</h4>
+<p>In 2016, the Pew Research Center conducted a study on the use of technology by U.S. adults age 65 and older.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> They found that 42% of adults 65 and older own a smartphone. This is a significant increase from the results of a similar study conducted in 2011 that found that only 11% of adults 65 and older owned a smartphone. The margin of error in the 2016 study was 4.1%.</p>
+<p>Find a 95% confidence interval for the percentage of U.S. adults age 65 and older who own a smartphone. Interpret the meaning of the confidence interval.</p>
+<p><strong>Solution</strong></p>
+<p>The 42% number reported by the Pew study is a <strong>statistic</strong> because it was computed by talking to a sample of U.S. adults age 65 and older (if they had asked all U.S. adults age 65 and older this question, then the number would be a parameter).</p>
+<p>We can use the margin of error to compute a 95% confidence interval:</p>
+<p><span class="math display">\[ 
+\begin{align}
+\text{confidence interval} &amp;= \text{the statistic } \pm \text{ the margin of error}\\
+ &amp;= 42\% \pm 4.1\%\\
+&amp;= (42\%-4.1\%, 42\%+4.1\%)\\
+&amp;= (37.9\%, 46.1\%)\\
+\end{align}
+\]</span></p>
+<p>The 95% confidence interval is <span class="math inline">\((37.9\%, 46.1\%)\)</span>. This means we are 95% certain that the true percentage of U.S. adults age 65 and older who own a smartphone is between 37.9% and 46.1%. Because this interval is higher than the data from the 2011 survey conducted 5 years prior to this study, we know that smartphone use among older Americans is increasing. However, this interval shows that still fewer than half of older Americans own a smartphone.</p>
+<hr>
+</div>
+</div>
+<div id="computing-95-confidence-intervals" class="section level3 tabset tabset-fade">
+<h3 class="tabset tabset-fade">Computing 95% Confidence Intervals</h3>
+<p>In the previous examples we were given the margin of error so we could use it to find the confidence interval. But what if we are not given a margin of error?</p>
+<p>The formula we will use in this class is a simplified version of the formula used by statisticians, but it gives a good approximation and will help us gain a better understanding of confidence intervals and margin of error.</p>
+<blockquote>
+<p>To estimate the percentage of a population with a certain characteristic based on a sample, we use the following formula. The variable <span class="math inline">\(x\)</span> represents the number of people in the sample with the characteristic and the variable <span class="math inline">\(n\)</span> represents the total number of people in the sample: <span class="math display">\[
+\text{Confidence Interval} = \frac{x}{n}\pm \frac{1}{\sqrt{n}}
+\]</span></p>
+</blockquote>
+<p>The following examples show how to use this formula to compute a confidence interval.</p>
+<div id="example-7---election-results" class="section level4">
+<h4>Example 7 - Election Results</h4>
+<p>A school district is holding a special election to pass a school bond. The purpose of the bond is to raise construction funds to pay for a new elementary school. The bond would be paid for by collecting additional property taxes over the next 10 years.</p>
+<p>To assess support for the bond, the local newspaper asks a sample of 200 registered voters how they plan to vote on the bond. Seventy-two of those in the sample indicate that they plan to vote in favor of the bond. Find and interpret a 95% confidence interval for this situation.</p>
+<p><strong>Solution</strong></p>
+<p>The sample was of 200 registered voters so <span class="math inline">\(n=200\)</span>.<br />
+Seventy-two people said they would vote in favor of the bond so <span class="math inline">\(x=72\)</span>.<br />
+Using the confidence interval formula we get: <span class="math display">\[
+\begin{align}
+\text{Confidence Interval} &amp;= \frac{x}{n}\pm\frac{1}{\sqrt{n}}\\
+&amp;= \frac{72}{200}\pm\frac{1}{\sqrt{200}}\\
+&amp;= 0.36\pm0.07\\
+&amp;= (0.36-0.07, 0.36+0.07)\\
+&amp;= (0.29, 0.43)\\
+\end{align}
+\]</span></p>
+<p>This confidence interval tells us we are 95% certain that the true percentage of voters who will vote in favor of the bond is between 29% and 43%. From this sample, it appears that the bond will fail to be approved.</p>
+<hr>
+</div>
+<div id="example-8---potential-customers" class="section level4">
+<h4>Example 8 - Potential Customers</h4>
+<p>Lisa and Conner are a married couple who want to start a new restaurant in Rexburg. To determine if their restaurant would be successful, they decide to conduct a survey to see what percentage of Rexburg residents would visit their restaurant at least once a month.</p>
+<p>They surveyed 110 Rexburg residents and 27 of them indicated they would visit the new restaurant at least once per month. Find and interpret a 95% confidence interval for this situation.</p>
+<p><strong>Solution</strong>:</p>
+<p>The sample was 110 potential customers so <span class="math inline">\(n=110\)</span>.<br />
+Twenty-seven people said they would visit at least once per month so <span class="math inline">\(x=27\)</span>.<br />
+Using the confidence interval formula we get: <span class="math display">\[
+\begin{align}
+\text{Confidence Interval} &amp;= \frac{x}{n}\pm\frac{1}{\sqrt{n}}\\
+&amp;= \frac{27}{110}\pm\frac{1}{\sqrt{110}}\\
+&amp;= 0.245\pm 0.095\\
+&amp;= (0.245-0.095, 0.245+0.095)\\
+&amp;= (0.15, 0.34)\\
+\end{align}
+\]</span></p>
+<p>This confidence interval tells us we are 95% certain that the true percentage of Rexburg residents who will visit the new restaurant at least once per month is between 15% and 34%. The confidence interval gives Lisa and Conner an estimate of how many monthly customers to expect.</p>
+<hr>
+</div>
+</div>
+<div id="sample-size-and-margin-of-error" class="section level3">
+<h3>Sample Size and Margin of Error</h3>
+<p>The margin of error is used to give us a better understanding of how close we expect a statistic to be to the true percentage (parameter) it is designed to estimate.</p>
+<p>If you have a very large margin of error, it is easy to make an accurate prediction. For example, without even doing any mathematical calculations it is easy to predict that the percentage of BYU-Idaho students who are from Idaho is between 0% and 100%.</p>
+<p>Here is another example from a Garfield cartoon <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>:</p>
+<p><img src="Lesson12/Images/Garfield.jpg" alt="Garfield cartoon showing that with a large margin of error it is easy to make an accurate prediction" /></p>
+<p><br> In order to be useful, confidence intervals need to be narrow, which means the margin of error needs to be small. One way to shrink the margin of error is to increase the sample size. Notice that the <span class="math inline">\(\frac{1}{\sqrt{n}}\)</span> in the 95% confidence interval formula tells us the margin of error. Let’s compute the margin of error for several different sample sizes:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Sample Size (<span class="math inline">\(n\)</span>)</th>
+<th>Margin of Error (<span class="math inline">\(\frac{1}{\sqrt{n}}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>32 percentage points</td>
+</tr>
+<tr class="even">
+<td>100</td>
+<td>10 percentage points</td>
+</tr>
+<tr class="odd">
+<td>500</td>
+<td>4.5 percentage points</td>
+</tr>
+<tr class="even">
+<td>1000</td>
+<td>3.1 percentage points</td>
+</tr>
+<tr class="odd">
+<td>5000</td>
+<td>1.4 percentage points</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the bigger the sample size, the smaller the margin of error. This makes sense because the more individuals you survey, the better sense you have for what is going on in the population. Although collecting data from a larger sample improves the margin of error, it also makes the survey more expensive and time consuming to complete. When designing a survey we have to balance the need to sample enough people to adequately reduce the margin of error while still keeping the size of the sample manageable.</p>
+<center>
+<div>
+<iframe width="780" height="600" frameborder="0" src="./Lesson12/Storyline/Lesson12.Interactive4 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L12 - Interactive 4: Sample Size and Margin of Error<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSqp61vuXrjgH7OENq7LQMc5Kr_XRGyP-sVAfGZjEj3_1qPD7FE3kx7beBL9pMskM28ivRIo_69nM8H/pub">(L12-4 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+<div id="comparing-confidence-intervals" class="section level3">
+<h3>Comparing Confidence Intervals</h3>
+<p>In the introductory video, we heard Craig explain to Lucas and Amanda why the margin of error mattered in a political poll. The follow explanation expands on that example.</p>
+<center>
+<div>
+<iframe width="780" height="600" frameborder="0" src="./Lesson12/Storyline/Lesson12.PoliticalPollb - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L12 - Interactive 5: Comparing Confidence Intervals<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQu23N5YN7DVVB30-Z9nSXrvTc-_LLaeywMf29jUhIbm9A3ujgwkv22uR2UPOlf7FtMYjNwVqXvV8MK/pub">(L12-5 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+<p>From this example, we see that when two statistics are close to one another, we might not have enough evidence to say the true values for the population (the parameters) are different from one another.</p>
+<p>Here is anther example:</p>
+<div id="example-8---well-being-and-student-loans" class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Example 8 - Well-being and Student Loans</h4>
+<p>The Gallup Poll organization conducted a poll<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> to determine the long-term effects of student loans on the well-being of college graduates. They based their information on a survey of 29,560 college graduates who graduated between 1990 and 2014. Gallup stated the study had a margin of error of 1.4% at the 95% confidence level.</p>
+<p>Based on the results of their study, Gallup compared the well-being of graduates in five areas: purpose, social, financial, community, and physical. The following chart gives the percentage of graduates who were “thriving” in each of these five areas based on the amount of student loan debt they had at the time of graduation.</p>
+<center>
+<img src="http://content.gallup.com/origin/gallupinc/GallupSpaces/Production/Cms/POLL/jgijauagjk293vjf7l-j6w.png" alt="image of debt data given above" />
+</center>
+<p>Use the above information to answer the following questions:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Is there a statistical difference between the percentage of graduates with no student loan debt who are thriving financially and the percentage of graduates with over $50,000 in student loan debt who are thriving financially? Explain.</li>
+<li>Is there a statistical difference between the percentage of graduates with no student loan debt who are thriving socially and the percentage of graduates with over $50,000 in student loan debt who are thriving socially? Explain.</li>
+</ol>
+<div id="part-a-financial-well-being" class="section level5">
+<h5>Part A: Financial Well-being</h5>
+<p><strong>Solution</strong></p>
+<p><em>No Student Loan Debt</em></p>
+<p>Among graduates in the survey with no student loan debt, 40% were thriving financially. Because we know the margin of error was 1.4%, we can find the confidence interval:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{confidence interval} &amp;= 40\% \pm 1.4\% \\
+&amp;=(40-1.4, 40+1.4)\\
+&amp;=(38.6, 41.4)\\
+\end{align}
+\]</span></p>
+<p>We are 95% confident that the true percentage of graduates with not student loan debt who are thriving financially is between 38.6% and 41.4%.</p>
+<p><em>Over $50,000 in Student Loan Debt</em></p>
+<p>Among graduates in the survey with over $50,000 in student loan debt, 25% were thriving financially. Because the margin of error was 1.4%, we can find the confidence interval:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{confidence interval} &amp;= 25\% \pm 1.4\% \\
+&amp;=(25-1.4, 25+1.4)\\
+&amp;=(23.6, 26.4)\\
+\end{align}
+\]</span></p>
+<p>We are 95% confident that the true percentage of graduates with over $50,000 in student loan debt who are thriving financially is between 23.6% and 26.4%.</p>
+<p><em>Is there a difference?</em></p>
+<p>Let’s graph these intervals on a number line:</p>
+<center>
+<img src="Lesson12/Images/ThrivingFinancially.PNG" alt="image of the graphed intervals on the number line" />
+</center>
+<p>Because these two confidence intervals do not overlap, there is enough statistical evidence to conclude that the percentage of students who are thriving financially is greater among students with no student loan debt than it is among students with over $50,000 in student loan debt.</p>
+<hr>
+</div>
+<div id="part-b-social-well-being" class="section level5">
+<h5>Part B: Social Well-being</h5>
+<p><strong>Solution</strong></p>
+<p><em>No Student Loan Debt</em></p>
+<p>Among graduates in the survey with no student loan debt, 47% were thriving socially. Because the margin of error was 1.4%, we can find the confidence interval:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{confidence interval} &amp;= 47\% \pm 1.4\% \\
+&amp;=(47-1.4, 47+1.4)\\
+&amp;=(45.6, 48.4)\\
+\end{align}
+\]</span></p>
+<p>We are 95% confident that the true percentage of graduates with no student loan debt who are thriving socially is between 45.6% and 48.4%.</p>
+<p><em>Over $50,000 in Student Loan Debt</em></p>
+<p>Among graduates in the survey with over $50,000 in student loan debt, 45% were thriving socially. Because the margin of error was 1.4%, we can find the confidence interval:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{confidence interval} &amp;= 45\% \pm 1.4\% \\
+&amp;=(45-1.4, 45+1.4)\\
+&amp;=(43.6, 46.4)\\
+\end{align}
+\]</span></p>
+<p>We are 95% confident that the true percentage of graduates with over $50,000 in student loan debt who are thriving socially is between 43.6% and 46.4%.</p>
+<p><em>Is there a difference?</em></p>
+<p>Let’s graph these two confidence intervals:</p>
+<center>
+<img src="Lesson12/Images/ThrivingSocially.PNG" />
+</center>
+<p>These two confidence intervals <em>do</em> overlap. This means we cannot say there is a statistical difference in the percentage of students who are thriving socially between the two groups.</p>
+<hr>
+</div>
+</div>
+<div id="section" class="section level4">
+<h4></h4>
+<p>As these examples show, we have to be careful when comparing statistics obtained from a sample. It is easy to mistakenly conclude that because one statistic is larger than another statistic, the corresponding parameter is also larger than the other parameter. If the confidence intervals overlap, we do not have enough statistical evidence to say the parameters are different from one another.</p>
+<hr>
+<center>
+<div>
+<iframe width="780" height="580" frameborder="0" src="./Lesson12/Storyline/Lesson12.Interactive5 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L12 - Interactive 6: Well-being and Student Loans<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSiF_0MwGixCaJeQecvqo1ohK2wYMK9h3wXughe2OBmxNdCQH4v-RWWZRxcILsMLbwM-Iwtq9ZqNlty/pub">(L12-6 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+</div>
+</div>
+<div id="lesson-checklist" class="section level2">
+<h2>Lesson Checklist</h2>
+<p>By the end of this lesson, you should be able to:</p>
+<ul>
+<li>Define probability.</li>
+<li>For a given event, give the sample space of the event.</li>
+<li>For a given event, give a probability model for the event.</li>
+<li>Explain the difference between empirical and theoretical probabilities.</li>
+<li>Create a 95% confidence interval for the percentage of individuals in a population who have a particular characteristic.</li>
+<li>Interpret a confidence interval.</li>
+<li>Determine whether two confidence intervals overlap and make an appropriate conclusion.</li>
+</ul>
+<center>
+© 2020 Brigham Young University - Idaho
+</center>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="http://time.com/money/collection-post/3829776/heres-what-the-average-grad-makes-right-out-of-college/" class="uri">http://time.com/money/collection-post/3829776/heres-what-the-average-grad-makes-right-out-of-college/</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="http://www.gallup.com/poll/207503/americans-say-paper-bags-eco-friendly-plastic.aspx" class="uri">http://www.gallup.com/poll/207503/americans-say-paper-bags-eco-friendly-plastic.aspx</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.bradleycorp.com/handwashing/2017handwashingsurvey" class="uri">https://www.bradleycorp.com/handwashing/2017handwashingsurvey</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="http://www.pewinternet.org/2017/05/17/tech-adoption-climbs-among-older-adults/" class="uri">http://www.pewinternet.org/2017/05/17/tech-adoption-climbs-among-older-adults/</a><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://garfield.com/comic" class="uri">https://garfield.com/comic</a> Published 12 March 1999.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="http://www.gallup.com/poll/174317/student-debt-linked-worse-health-less-wealth.aspx" class="uri">http://www.gallup.com/poll/174317/student-debt-linked-worse-health-less-wealth.aspx</a><a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,695 @@
+---
+title: 'Lesson 11: Solving Systems of Equations'
+output:
+  html_document:
+    fig_caption: false
+    theme: default
+    toc: yes
+    toc_float: yes
+    css: styles.css
+---
+
+## Opening Story 
+
+```{r, echo=FALSE}
+source("nicecurve.R")
+```
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&playerId=kaltura_player&entry_id=0_19bwxfok&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_7wzzn5xq" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player"></iframe>
+
+Lesson 11 - Opening story<br> [(1:03 mins, L11 Opening Story Transcript)](https://docs.google.com/document/d/e/2PACX-1vTbucQBINEYm6sXCJST5fvH-cHqSn0qjaZlHVz8D8O6JkDMQgkKOnycZuxk-OBdIATNG6z7FTetPh55/pub)
+
+
+</center>
+
+
+## Introduction
+
+Sophia and Emmy need to make a decision where they must compare two options. We often face situations with different options where we can use the Quantitative Reasoning Process to compare our options. There are several different quantitative tools we can use to make this type of comparison. One tool we look at in this lesson is a *system of equations*.  
+
+> A *system of equations* is a list of two or more equations that use the same input and output variables.
+
+We can use graphs or algebra to solve for the values of the variables that satisfy both equations. Let's start by looking at how Sophia and Emmy use a system of equations to decide between renting the monster truck or renting the boat.
+
+
+<hr>
+
+<h4 class="step one">
+Understand the Problem
+</h4>
+
+Sophia and Emmy need to find a way back to their hotel from the jungle. They are faced with a decision where they need to compare the cost of two different things, renting the monster truck or renting the motor boat. 
+
+
+<hr>
+
+<h4 class="step two">
+Identify Variables & Assumptions
+</h4>
+
+
+We identify the following variables:
+
+* The number of kilometers Sophia and Emmy need to travel 
+* The total cost of transportation out of the jungle
+
+We can use the following assumptions:
+
+* Sophia and Emmy can drive either the truck or the boat.
+* Sophia can use her emergency credit card that was not swallowed by the black caiman. 
+
+We can set up two equations that are related to each other because the variables are the same in both cases: the total cost of transportation out of the jungle and the number of kilometers. With either the monster truck or the motor boat we are focused on money and distance. 
+
+
+
+<hr>
+
+<h4 class="step three">
+Apply Quantitative Tools 
+</h4>
+
+We can model each scenario with a mathematical equation. 
+
+The total cost, $y$, of the truck is \$37.50 + \$0.88 $\times$ kilometers: $y=37.50+0.88x$  
+The total cost, $y$, of the boat is \$60.00 +\$0.19 $\times$ kilometers: $y=60+0.19x$  
+
+The input value, $x$, in each of the equations is the number of kilometers they travel. The output value $y$, is the total cost of transportation.
+
+As we learned in Chapter 7 the two equations in this example are linear equations. The rate of change (or slope) in each equation is constant. When we plot this type equation we get a straight line. 
+
+Let's look more carefully at the graph of the two lines representing the Emmy and Sophia's situation. The blue line represents the cost of the monster truck as the kilometers increase. The red line represents the cost of the boat as the kilometers increase.
+
+```{r, echo=FALSE}
+nicecurve(37.50+0.88*x,main="How to Get Out of the Jungle",-2,70,xaxis=seq(0,60,10),yaxis=seq(-10,100,10))
+curve(60+0.19*x,add=TRUE,lwd=2,col="firebrick")
+points(0,37.50,pch=16,cex=1.3,col="steelblue")
+points(0,60,pch=16,cex=1.3,col="firebrick")
+text(55,97,"Monster Truck",col="steelblue")
+text(55,65,"Boat",col="firebrick")
+```
+
+We can see from the graph that the two lines cross at around 33 kilometers on the $x$-axis and just above \$65 on the $y$-axis. 
+
+If Sophia and Emmy travel less than 33 kilometers then the truck is the least expensive. If they travel more than 33 kilometers then the boat is the least expensive.
+
+<hr>
+
+
+<h4 class="step four">
+Make an Informed Decision
+</h4>
+
+Sophia and Emmy need more information to make an informed decision. They really need to know the distance from their jungle position back to town. 
+
+After asking for more information, they find that the dirt road back to the hotel is about 40 kilometers long and the river trip is 38 kilometers. Use the equations we built to compute the cost of each rental vehicle.
+
+<hr>
+
+<center>
+<div>
+<iframe width=780 height=600 frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+L11 - Interactive 1: Make an Informed Decision<br> [(L11-1 ADA Interactive Transcript)](https://docs.google.com/document/d/e/2PACX-1vTWUh_XS2ojcBKHATWBbBO00vtK0MQDau3PT4f82hpUiLd0xLVzjZUXT8QrUhQHvglZlWHWd_pCAL4L/pub)
+
+
+</center>
+
+
+
+<hr>
+
+<h4 class="step five">
+Evaluate Your Reasoning
+</h4>
+
+Sophia and Emmy tie the boat up at the town marina and ask directions to their hotel. After finding out that they have 5 kilometers still to walk they rethink their decision. 
+
+Sophia and Emmy have realized that they made an incorrect assumption in their application of the Quantitative Reasoning process.  The mistakenly assumed that both modes of transportation would get them back to their hotel. But since they didn't realize that travel by boat would also require a 5 kilometer walk, they made a decision that didn't turn out to be the best.
+
+Because the difference in price between the rentals was relatively small, they now wish they had rented the monster truck and driven straight to the hotel. 
+
+<hr>
+
+The remainder of this lesson will focus on the powerful quantitative tool, systems of equations, that we used to understand Sophia and Emmy's situation.  
+
+There are several different techniques that can be used to solve systems of equations. We will look at two of them: solving systems of equations with graphs and solving systems of equations with algebra.
+
+<hr>
+
+## Solving Systems with Graphs
+
+The graph of an equation represents all the points that satisfy the equation. When we are solving a system of equations we want to find a point that satisfies all of the equations in the system. This means that if you graph both equations in a system of two equations on a graph you can find the solution to the system by finding all points where the graphs intersect.  An intersection point satisfies both equations so it represents the solution we are looking for.
+
+### Example 1 
+
+Graph the following two equations to solve the system of equations:
+
+$$
+\begin{align}
+3x+2y&=5\\
+x-y&=0\\
+\end{align}
+$$
+**Solution**
+
+We want to find a point $(x,y)$ that satisfies both equations. This means the point we are looking for will be the point where the two graphs intersect. If we solve each equation for $y$, we will see that they fit the pattern of a linear function and we will be able to graph the lines.
+
+Equation 1:
+$$
+\begin{align}
+3x+2y&=5\\
+2y&=-3x+5\\
+y&=\frac{-3}{2}x+\frac{5}{2}
+\end{align}
+$$
+Equation 2:
+
+
+$$
+\begin{align}
+x-y&=0\\
+-y&=-x\\
+y&=x\\
+\end{align}
+$$
+
+
+Equation 1 can be represented with a line with a $y$-intercept of $\frac{5}{2}$ and a slope of $\frac{-3}{2}$. Equation 2 gives the graph of a line with a $y$-intercept of 0 and a slope of 1. If we plot both lines on the same graph, they look like this:
+
+```{r, echo=FALSE}
+nicecurve(-3/2*x+5/2,-6,6,main="Example 1",ylim=c(-6,6),xaxis=seq(-5,5,1),yaxis=seq(-5,5,1))
+curve(1*x, add=TRUE,lwd=2,col="firebrick")
+```
+
+The solution to the system of equations is represented on the graph by the point where the two lines intersect. By looking at the graph of these two lines, we can see that they cross at the point $(1,1)$. This means $x=1, y=1$ is the solution to the system of equations.
+
+**Check Our Answer**
+
+We can verify that $x=1, y=1$ is the solution to the system by checking that $(1,1)$ is exactly the point where they cross. We do this by substituting in these values for $x$ and $y$ in both equations and making sure that both mathematical statements are true.
+
+Equation 1:
+
+$$
+\begin{align}
+3x+2y&=5\\
+3(1)+2(1)&=5\\
+3+2&=5\\
+5&=5\\
+\text{True}&\text{ Statement}
+\end{align}
+$$
+
+Equation 2:
+
+$$
+\begin{align}
+x-y&=0\\
+1-1&=0\\
+0&=0\\
+\text{True}&\text{ Statement}
+\end{align}
+$$
+
+The point $(1,1)$ is the only point where the two lines cross *and* the values $x=1, y=1$ is the only set of $x, y$ values that will yield true statements for both equations. When we get a single unique solution like this, we say that the system of equations is *independent*.
+
+<hr>
+
+
+
+### Example 2
+
+Graph the following two equations to solve the system of equations:
+
+$$
+\begin{align}
+-x+2y&=4\\
+-3x+6y&=-18\\
+\end{align}
+$$
+
+**Solution**
+
+If we solve each equation for $y$, we can see that each one fits the pattern of a linear function and can graph the lines.
+
+Equation 1:
+
+$$
+\begin{align}
+-x+2y&=4\\
+2y&=x+4\\
+y&=\frac{x+4}{2}\\
+y&=\frac{1}{2}x+\frac{4}{2}\\
+y&=\frac{1}{2}x+2\\
+\end{align}
+$$
+The first equation can be graphed as a line with a slope of 1/2 and a $y$-intercept of 2.
+
+Equation 2:
+
+$$
+\begin{align}
+-3x+6y&=-18\\
+6y&=3x-18\\
+y&=\frac{3x-18}{6}\\
+y&=\frac{3}{6}x-\frac{18}{6}\\
+y&=\frac{1}{2}x-3\\
+\end{align}
+$$
+
+The second equation can be graphed as a line with a slope of 1/2 and a $y$-intercept of -3.
+
+It we plot both lines on the same graph, they look like this:
+
+```{r, echo=FALSE}
+nicecurve(1/2*x+2,-6,6,main="Example 2",ylim=c(-6,6),xaxis=seq(-5,5,1),yaxis=seq(-5,5,1))
+curve(1/2*x-3, add=TRUE,lwd=2,col="firebrick")
+```
+
+
+From the graph it looks like the lines are parallel, which means they will never cross. We can see from the equations that the lines are parallel because the two lines have the same slope. This means that there is no $x,y$ pair that will satisfy both equations and thus there is no solution to this system of linear equations.  When there is no solution to a system of equations we say that the system of equations is *inconsistent*. 
+
+<hr>
+
+<center>
+<div>
+<iframe width=780 height=425 frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+L11 - Interactive 2: Example 2<br> [(L11-2 ADA Interactive Transcript)](https://docs.google.com/document/d/e/2PACX-1vSOUCaBXKVA1g2jygkhZJXuuFjBptGEodMjnXmKy7PhtebMTCVCvJm-U8zgGDE94z-CgV_RW0yjbSVu/pub)
+
+
+</center>
+
+<hr>
+
+## Solving Systems with Algebra
+
+Graphing systems of equations helps us to visualize the system and the solutions but unless the equations and solutions are fairly simple it can be difficult to obtain accurate results.  We can also solve systems of equations using techniques of algebra. The *Substitution Method* is one way to solve a system of equations. To solve a system of equations using the substitution method we eliminate one variable from one of the equations by substituting an expression for that variable from the other equation.
+
+### Example 3
+
+Use the substitution method to solve the system of equations:
+
+$$
+\begin{align}
+2x-y&=-5\\
+3x+5y&=12\\
+\end{align}
+$$
+
+**Solution**
+
+To solve this system using the substitution method, we first solve the first equation for $y$:
+
+$$
+\begin{align}
+2x-y&=-5\\
+-y&=-2x-5\\
+y&=2x+5\\
+\end{align}
+$$
+
+Now, we substitute the expression $2x+5$ in for the $y$ in the other equation:
+
+$$
+\begin{align}
+3x+5y&=12\\
+3x+5(2x+5)&=12\\
+\end{align}
+$$
+
+Because we have an equation with only $x$'s in it, we can solve for $x$:
+
+$$
+\begin{align}
+3x+5(2x+5)&=12\\
+3x+10x+25&=12\\
+13x+25&=12\\
+13x&=12-25\\
+13x&=-13\\
+x&=\frac{-13}{13}\\
+x&=-1\\
+\end{align}
+$$
+We know $x=-1$ so we can substitute this value for the $x$ in the $y$-expression we found earlier, $y=2x+5$:
+
+$$
+\begin{align}
+y&=2x+5\\
+y&=2(-1)+5\\
+y&=-2+5\\
+y&=3
+\end{align}
+$$
+
+We have found the solution to this system of equations to be $x=-1, y=3$. Because there is a single solution to this system of equations, it is independent. The graph of these two equations verifies this solution because the lines intersect at the point $(-1,3)$.
+
+```{r, echo=FALSE}
+nicecurve(2*x+5,-6,6,main="Example 3",ylim=c(-6,6),xaxis=seq(-5,5,1),yaxis=seq(-5,5,1))
+curve((12-3*x)/5, add=TRUE,lwd=2,col="firebrick")
+```
+
+<hr>
+
+### Example 4
+
+Use the substitution method to solve the system of equations:
+
+$$
+\begin{align}
+6x-9y&=-13\\
+18x-3y&=1\\
+\end{align}
+$$
+**Solution**
+
+We need to solve for one of the variables in one of the equations. We will solve for $y$ in the second equation:
+
+$$
+\begin{align}
+18x-3y&=1\\
+-3y&=-18x+1\\
+y&=\frac{-18x+1}{-3}\\
+y&=\frac{-18}{-3}x+\frac{1}{-3}\\
+y&=6x-\frac{1}{3}
+\end{align}
+$$
+Now that we know $y$ in terms of $x$, we can substitute this into the first equation:
+
+$$
+\begin{align}
+6x-9y&=-13\\
+6x-9(6x-\frac{1}{3})&=-13\\
+6x-54x+\frac{9}{3}&=-13\\
+-48x+3&=-13\\
+-48x&=-13-3\\
+-48x&=-16\\
+x&=\frac{-16}{-48}\\
+x&=\frac{1}{3}\\
+\end{align}
+$$
+
+We can now substitute $\frac{1}{3}$ in for $x$ in any of the equations to find $y$:
+
+$$
+\begin{align}
+y&=6x-\frac{1}{3}\\
+y&=6(\frac{1}{3})-\frac{1}{3}\\
+y&=\frac{6}{3}-\frac{1}{3}\\
+y&=\frac{6-1}{3}\\
+y&=\frac{5}{3}\\
+\end{align}
+$$
+
+This system of equations is independent. The only solution that works for both equations is $x=\frac{1}{3}, y=\frac{5}{3}$. The two lines cross at the point $\big(\frac{1}{3},\frac{5}{3}\big)$.
+
+```{r, echo=FALSE}
+nicecurve(-1/3+6*x,-6,6,main="Example 4",ylim=c(-6,6),xaxis=seq(-5,5,1),yaxis=seq(-5,5,1))
+curve((-13-6*x)/-9, add=TRUE,lwd=2,col="firebrick")
+points(1/3,5/3,pch=19)
+text(1/3,5/3-.1,"(1/3, 5/3)",pos=4)
+```
+
+<hr>
+
+### Practice Solving a System
+
+<center>
+<div>
+<iframe width=780 height=400 frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive3 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="centert"></iframe>
+</div>
+
+L11 - Interactive 3: Practice Solving a System<br> [(L11-3 ADA Interactive Transcript)](https://docs.google.com/document/d/e/2PACX-1vSdnHwif79LP8bTFiS_lzeWpvoT8-5EK1c4lVSTAgx-Gj4vtM2OzbrE2VgXzPy9pc7N4EJYylffbyFk/pub)
+
+
+</center>
+
+<hr>
+
+## Solving in Context
+### Piano Sales Example
+
+<hr>
+<h4 class="step one">
+Understand the Problem
+</h4>
+
+Jasper loves music and has recently been hired as a piano salesman. His new boss asked him to choose a commission plan. He can choose Plan A or Plan B. For Plan A Jasper gets a base salary of $25,000 a year plus a $500 commission for each piano he sells. In Plan B Jasper gets a base salary of $30,000 a year plus a $200 commission for each piano. 
+
+<hr>
+<h4 class="step two">
+Identify Variables & Assumptions
+</h4>
+
+Jasper identifies two variables:
+
+* The number of pianos sold per year
+* The total amount of money he earns in the year.
+
+<hr>
+<h4 class="step three">
+Apply Quantitative Tools 
+</h4>
+
+Because Plan A and Plan B have the same two variables, Jasper can model his situation using a system of equations to better understand the decision he needs to make.
+
+* Plan A: the money he earns in one year = $25,000 + $500 for each piano
+* Plan B: the money he earns in one year = $30,000 + $200 for each piano
+
+This can be turned into the following system of equations where the input variable, $x$, represents the number of pianos Jasper sells in a year and the output variable, $y$, represents the total amount of money he earns in one year.
+
+$$
+\begin{align}
+y&=500x+25000\\
+y&=200x+30000\\
+\end{align}
+$$
+
+Because both equations are already solved for $y$ we can substitute $200x+30000$ in for $y$ in the first equation and solve for $x$:
+
+$$
+\begin{align}
+200x+30000&=500x+25000\\
+200x-500x&=25000-30000\\
+-300x&=-5000\\
+x&=\frac{-5000}{-300}\\
+x&=16.67\\
+\end{align}
+$$
+We can now substitute $x=16.67$ into any of the equations to find $y$:
+
+$$
+\begin{align}
+y&=500x+25000\\
+y&=500(16.67)+25000\\
+y&=33335\\
+\end{align}
+$$
+
+The solution to the system is $x=16.67, y=\$33,335$.
+
+The following graph of this system supports this solution:
+
+```{r, echo=FALSE}
+nicecurve(500*x+25000,-5,25,main="Piano Sales",ylim=c(-5000,50000),xaxis=seq(-5,25,5),yaxis=seq(0,50000,10000))
+curve(30000+200*x, add=TRUE,lwd=2,col="firebrick")
+text(20,38000," Plan A", col="steelblue")
+text(20,31000,"Plan B", col="firebrick")
+```
+
+<hr>
+<h4 class="step four">
+Make an Informed Decision
+</h4>
+
+From this solution, Jasper knows if he sells around 16 or 17 pianos the two plans pay about the same and he would make around $33,335 per year. If he sells more than 16 pianos, Plan A is a better plan because he earns more money in a year. If he sells 16 pianos or fewer, Plan B is a better plan.
+
+He believes he can sell at least 2 pianos per month. Since this a total of 24 pianos he decides to select Plan A.
+
+<hr>
+<h4 class="step five">
+Evaluate Your Reasoning
+</h4>
+
+Before telling his boss his decision, Jasper decides to ask some of the other salesman how many pianos they sold the previous year. He talks to three of them and finds that they sold 18, 31, and 22 pianos each. Because these values are all more than 17, Jasper is satisfied with his decision to chose Plan A and tells his boss of his decision.
+
+<hr>
+
+### Practice Solving in Context
+
+<center>
+<div>
+<iframe width=780 height=600 frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive4 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+L11 - Interactive 4: Practice Solving in Context<br> [(L11-4 ADA Interactive Transcript)](https://docs.google.com/document/d/e/2PACX-1vQkzfdFcsdRq6N6_--H04Hxr0vpuBgBki-E2OWSQlyG8XezELQAwjV5KTEtBMPGBjjlKYm0RA-sgBfv/pub)
+
+
+</center>
+
+
+
+<hr>
+
+## Systems and Trendlines
+
+Often, the equations that make up a system of equations are obtained from data using a trendline. The following example looks at an example from business: the break-even point. 
+
+
+
+<hr>
+<h4 class="step one">
+Understand the Problem
+</h4>
+
+Jeff and Lucas opened a pizzeria. They have been open for 10 months now and are doing some calculations to determine what they could do to improve their profits. Currently, they charge $10 for the large pizza, their best-selling item. During the 10 months their restaurant has been open, they collected the following data:
+
+<center>
+![Spreadsheet containing pizza sales data](./Lesson11/images/pizzadata.PNG)
+</center>
+
+They want to answer two questions: 
+
+* How many pizzas do we need to sell to break even each month?
+* Should we change the price of our large pizza?
+
+
+
+<hr>
+<h4 class="step two">
+Identify Variables & Assumptions
+</h4>
+
+Jeff and Lucas identify the following variables:
+
+* The number of pizzas sold each month
+* Total cost each month (how much money they have to pay to keep the business open)
+* Total revenue each month (the total amount of money they bring in during one month)
+* Total profit each month (total revenue minus total cost)
+
+They make the following assumptions:
+
+* They will break-even if their monthly revenue is equal to their monthly costs
+* If they change the price of the pizza, the number of pizzas sold will stay the same
+
+
+<hr>
+<h4 class="step three">
+Apply Quantitative Tools 
+</h4>
+
+Jeff and Lucas create the following scatter plot and trendlines to compare their revenue and costs. The input variable, $x$, represents the number of pizzas sold in one month. The output variable, $y$, represents money. We can see the data and the trendline for both the total revenue (orange) and total cost (blue).
+
+<center>
+![Scatter plot representing Revenue and Costs](./Lesson11/images/revenuecosts.png)
+</center>
+
+These two trendlines give them a system of equations:
+
+$$
+\begin{align}
+y&=10.893x + 217.7\\
+y&=5.8929x + 5803.9\\
+\end{align}
+$$
+
+Jeff and Lucas use substitution to solve the system of equations.  Because both equations are already solved for $y$, they can set the equations equal to each other and solve for $x$:
+
+$$
+\begin{align}
+10.893x + 217.7 &= 5.8929 x + 5803.90\\
+10.893x - 5.8929 x &= 5803.90 - 217.7\\
+5.0001x &= 5586.20\\
+x&=\frac{5586.20}{5.0001}\\
+x&=1117.2177\\
+\end{align}
+$$
+They can then substitute this value of $x$ back into any of the equations to solve for $y$. They used the first equation:
+
+$$
+\begin{align}
+y&=10.893x + 217.7\\
+y&=10.893(1117.2177)+217.7\\
+y&=12387.5524\\
+\end{align}
+$$
+The solution to the system of equations is $x=1117.2177, y=12387.5524$.
+
+Jeff and Lucas know that $x$ represents the number of pizzas sold and $y$ represents a dollar amount.  This solution means that if Jeff and Lucas sell 1,117 pizzas they will break-even and their revenue and costs will both be about \$12,387.55. 
+
+
+
+
+<hr>
+<h4 class="step four">
+Make an Informed Decision
+</h4>
+
+These calculations give Jeff and Lucas the answer to their first question: How many pizzas do they need to sell to break even each month? They need to sell around 1,117 pizzas per month. Because they are closed on Sunday, their pizzeria is open for around 26 days per month. They divide the number of pizzas by the number of days and get 42.96. This means they need to sell an average of 43 pizzas every day in order to break even.
+
+Looking back at the data, Jeff and Lucas notice that they sold more than 1,117 pizzas in 5 of the past 10 months: May, June, September, October, and November.  They are concerned that they sold fewer than 1,117 pizzas in the other 5 months. But they notice that the most recent three months have had good sales. They hope that this upward trend in pizza sales continues as their pizzeria becomes more popular. 
+
+To answer the question of whether they should increase the price of the large pizza, they notice that in the past three months, although they have sold more than 1,117 pizzas their total revenue was not much larger than their total costs.  That means their profits were relatively low.  They decide to increase the price of the large pizza to $11. They hope the extra revenue will increase their profits.
+
+<hr>
+
+<h4 class="step five">
+Evaluate Your Reasoning
+</h4>
+
+As Jeff and Lucas evaluate their reasoning, they re-examine their assumptions. One of their assumptions was: "If they change the price of the pizza, the number of pizzas sold will stay the same."  As they think about this assumption, they realize it is probably not very accurate.  Reducing prices would probably increase sales, while increasing prices would probably decrease sales.  Because their decision was to increase the price of the large pizza to $11, Jeff and Lucas realize they might see a decrease in sales.  They decide to try the higher price for three months and then re-evaluate their decision. 
+
+After three more months of sales, Jeff and Lucas reevaluate their decision.  In those three months they sold 1410, 1511, and 1620 pizzas.  So far, it appears that the increase in their prices has not decreased their sales too much. Their sales remain above the 1,117 pizzas they calculated that they needed to sell in order to break even. Because they raised the price of the large pizza they find that their revenue has increased, so their profits are also increasing. Jeff and Lucas decide to do more advertising. They know that if they can sell more pizzas their profits will continue to increase.
+
+<hr>
+
+## Non-linear Systems
+
+So far, all of the systems of equations we have encountered in this lesson have involved linear equations. Linear systems are the most common type of system that appear in real life problems. Because a line is simple, both in a graph and in an equation, we often choose to model situations with lines. This can be especially useful when the solution does not have to be precise, like rounding up to the nearest pizza or the nearest dollar. 
+
+However, sometimes situations need more precision or sometimes a line is not a close enough model and it is helpful to use non-linear models. There are ways to solve non-linear systems with algebra, but in this class, we will only solve non-linear systems using graphs. 
+
+Here is an example of a non-linear system of equations:
+
+$$
+\begin{align}
+y&=8x^2+12x+1\\
+y&=2(4)^x+3\\
+\end{align}
+$$
+
+Notice that the first equation is a quadratic function and the second equation is an exponential function. When we graph these functions we get the following:
+
+```{r, echo=FALSE}
+nicecurve(8*x^2+12*x+1,-6,5,main="A Non-linear System",ylim=c(-20,110),xaxis=seq(-5,5,1),yaxis=seq(-20,100,10),n=2000)
+curve(2*(4^x)+3, add=TRUE,lwd=2,col="firebrick")
+```
+
+Notice there are three solutions to this system of equations because the graphs intersect at three different points. It is difficult to determine the exact location of the intersection points from the graph, but we can tell they are somewhere around the points $(-1.6,3.5)$, $(0.3,6)$, and $(2.8, 95)$.
+
+<hr>
+
+###Solve a Non-linear System
+
+<center>
+<div>
+<iframe width=780 height=650 frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive5 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+</div>
+
+L11 - Interactive 5: Solve a Non-linear System<br> [(L11-5 ADA Interactive Transcript)](https://docs.google.com/document/d/e/2PACX-1vSGhGst8n7GmEFcv1eBE_eqipOQaWuqcrJjl6aW6GIVFRANGmnVNOeWJQc5q6P8z_lV0Ww6eId26AtN/pub)
+
+
+</center>
+
+<hr>
+
+## Lesson Checklist
+
+```{r, child = "Lesson11Checklist.Rmd"}
+
+```
+<center>
+&copy; 2020 Brigham Young University - Idaho
+</center>

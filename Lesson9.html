@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lesson 9: Change Over Time</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit I
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson1.html">Lesson 1</a>
+    </li>
+    <li>
+      <a href="Lesson2.html">Lesson 2</a>
+    </li>
+    <li>
+      <a href="Lesson3.html">Lesson 3</a>
+    </li>
+    <li>
+      <a href="Lesson4.html">Lesson 4</a>
+    </li>
+    <li>
+      <a href="Lesson5.html">Lesson 5</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit II
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson6.html">Lesson 6</a>
+    </li>
+    <li>
+      <a href="Lesson7.html">Lesson 7</a>
+    </li>
+    <li>
+      <a href="Lesson8.html">Lesson 8</a>
+    </li>
+    <li>
+      <a href="Lesson9.html">Lesson 9</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit III
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson10.html">Lesson 10</a>
+    </li>
+    <li>
+      <a href="Lesson11.html">Lesson 11</a>
+    </li>
+    <li>
+      <a href="Lesson12.html">Lesson 12</a>
+    </li>
+    <li>
+      <a href="Lesson13.html">Lesson 13</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 9: Change Over Time</h1>
+
+</div>
+
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+</script>
+<div id="opening-story" class="section level2">
+<h2>Opening Story</h2>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_sgo4rprt&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_sko5ke79" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
+</iframe>
+<p>Lesson 9 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vREda9tXP1u8-Oi3CQwnt83hi6MwOXPOp1dgTDqkvi-7t1pGm4M8cGaO1Eg9upztJ9G_V4CVdjq4I0_/pub">(1:10 mins, L9 Opening Story Transcript)</a></p>
+</center>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Most things change over time. Some things change quickly, like the weather or stock prices. Other things change slowly, like the depth of the grand Canyon, or recovering from a significant injury. Change, whether fast or slow, is always happening around us. When we are making decisions using the Quantitative Reasoning Process, it is important to determine how quickly things will change. This is especially true of financial decisions.</p>
+<p>When we consider saving money or taking out loans, the rate at which our savings or loan balance changes is an important factor. When we save money, we look at the rate at which interest builds up and is added to our balance. When we take out a loan, we want the amount of interest we pay each month to decrease as time passes. However, since interest on loans compounds, our loan balance can start to grow very rapidly. Loans can quickly get out of control if we do not manage our finances well.</p>
+<p>Amadi’s story from the opening video is a good example of a situation of change over time. Amadi wants to know how the amount of money he is saving for his home will change over time. He wants to make sure that he has enough money to purchase a home.</p>
+<p>We will start by applying the Quantitative Reasoning Process to Amadi’s example shown in the opening video.</p>
+<div id="amadis-savings" class="section level3">
+<h3>Amadi’s Savings</h3>
+<hr>
+<h4 class="step one">
+Understand the Problem
+</h4>
+<p>Amadi wants to save up enough money to purchase a home in 10 years. He already has $12,000 saved, but he expects the home to cost $50,000 and wants to know how much money he needs to save each month. He believes he can get an interest rate close to 1.5% APR on a savings account. He needs to determine how much money to save each month in order to reach his goal.</p>
+<hr>
+<h4 class="step two">
+Identify Variables &amp; Assumptions
+</h4>
+<p>The variables in this situation are:</p>
+<ul>
+<li>The amount Amadi adds to his savings account each month</li>
+<li>the total amount of money saved in 10 years</li>
+</ul>
+<p>Amadi has to make the following assumptions:</p>
+<ul>
+<li>He will be able to use the $12,000 he has already saved for his home</li>
+<li>He will be able to find or build a house for $50,000</li>
+<li>His savings account will have an interest rate of 1.5%</li>
+</ul>
+<p>The total amount of money Amadi will have saved in ten years is a function of the amount he saves each month.</p>
+<hr>
+<h4 class="step three">
+Apply Quantitative Tools
+</h4>
+<p>The Excel payment function, PMT, from Lesson 7 will help Amadi determine how much money he needs to save each month. In Lesson 7 we used the PMT function to help us find loan payments. When computing payments on a savings account, the PMT function is used in a similar way.</p>
+<p>Recall that the syntax for the PMT function is <span class="math display">\[
+\text{=PMT(rate, number of periods, loan amount)}
+\]</span> However, the function has a fourth optional input: <span class="math display">\[
+\text{=PMT(rate, number of periods, PV, [FV])}
+\]</span> In this case, PV stands for <em>present value</em> and FV stands for <em>future value</em>. [FV] is in square brackets to show it is optional. If we want to figure out how much to save each month, the current balance in our savings account is the present value (PV) and the total amount we need to save is the future value (FV).</p>
+<p>Amadi used this command to set up his Excel file.</p>
+<p><img src="Lesson9/Images/AmadiPayment.png" alt="Excel Calculations" /></p>
+<p>Notice that some numbers were positive and some were negative. Remember that a negative number is used for money “leaving your wallet” and a positive number is for money “entering your wallet”. Because Amadi is putting $12000 in his savings account now, the money is “leaving his wallet”" and will be negative. His monthly payments are also negative. But the $50,000 he will have saved at the end of 10 years is money he will get to take out of the bank and “put back in his wallet”, so it is entered in Excel as a positive number.</p>
+<p>The Excel output from the PMT function shows Amadi he needs to save $278.71 each month in order to have saved $50,000 in 10 years.</p>
+<hr>
+<h4 class="step four">
+Make an Informed Decision
+</h4>
+<p>After doing these calculations, Amadi realizes he needs to save at least $278.71 each month. He carefully examines his monthly budget. He decides if he is careful with the money he earns, he can save $300 each month. Saving a little extra every month will help, just in case he isn’t able to get the interest rate he wants or if he has an emergency and can’t deposit the full payment for a month or two.</p>
+<hr>
+<h4 class="step five">
+Evaluate Your Reasoning
+</h4>
+<p>After saving for a year, Amadi takes some time to review and evaluate his plan. He finds that saving $300 every month is difficult. It requires him to be extremely careful about the money he spends, but he is making it work. As he reevaluates his assumptions, he finds them to be fairly accurate. He is happy with the progress he has made.</p>
+<center>
+<div>
+<iframe width="780" height="400" frameborder="0" src="./Lesson9/Storyline/Lesson9.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L09 - Interactive 1: Amadi’s Savings<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSs4v3MJoGJ1WMzSKFgrDAvB0MXDa5bX77TRuhvDykr-lRCmUS35iVQpXAdu1NF-s1HSRm-uFsKRl_d/pub">(L09-1 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+</div>
+<div id="change-over-time" class="section level2">
+<h2>Change over Time</h2>
+<p>Notice that the amount of money in Amadi’s account is <em>changing over time</em>. Each month the account balance changes as he earns interest and makes new deposits to the account. We often talk about how fast things change, or <em>rates of change</em>. Rates of change apply in many situations. For example, imagine you just bought a new car. Over time, the car will depreciate. The value of the car goes down as time passes. The cost of gas rises and falls. As the car ages, systems wear out and the cost of maintaining the car typically goes up.</p>
+<p>In this lesson we will learn some mathematical principles that can help us quantify change. Predicting and understanding how things change helps us effectively use the Quantitative Reasoning Process to make good decisions in situations where change occurs over time.</p>
+<hr>
+</div>
+<div id="constant-and-variable-slopes" class="section level2">
+<h2>Constant and Variable Slopes</h2>
+<p>Graphs of functions give us a visual way to see how fast a quantity is changing. When we look at graphs of functions, the rate of change is represented by the slope of the line or the curve. Some functions have constant slopes and some functions have variable slopes. This distinction is important to consider when we study change over time.</p>
+<div id="constant-slope" class="section level3">
+<h3>Constant Slope</h3>
+<p>Let’s look at an example of a function with a constant slope. Karina is working at her first job after graduating from college. When she started working, she was paid an annual salary of $32,000 per year. Every year, her employer gives her a raise of $1,600 per year. Her annual salary can be represented as a function of the time she has worked at the store.</p>
+<p>Let <span class="math inline">\(y\)</span> represent her annual salary and let <span class="math inline">\(x\)</span> represent the number of years she has worked for the company. Then, we could say:</p>
+<p><span class="math display">\[
+y = 1600x+32000.
+\]</span></p>
+<p>Let’s look at some inputs and outputs of this function:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span>=number of years</th>
+<th><span class="math inline">\(y\)</span>=annual salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><span class="math inline">\(y=1600(0)+32000=\$32000\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><span class="math inline">\(y=1600(1)+32000=\$33600\)</span></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><span class="math inline">\(y=1600(2)+32000=\$35200\)</span></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><span class="math inline">\(y=1600(3)+32000=\$36800\)</span></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><span class="math inline">\(y=1600(4)+32000=\$38400\)</span></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><span class="math inline">\(y=1600(5)+32000=\$40000\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Our chart shows that the function <span class="math inline">\(y=1600x+32000\)</span> accurately represents Karina’s situation. In this chart we see that for each additional year Karina worked for the company, her salary increased by $1600 per year.</p>
+<p>This is a linear function with a slope of <span class="math inline">\(m=1600\)</span> and a <span class="math inline">\(y\)</span>-intercept of <span class="math inline">\(32000\)</span>. When we look at the graph of the function, the slope of the line represents the rate of change.</p>
+<p><img src="Lesson9_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Slope is the change in <span class="math inline">\(y\)</span> divided by the change in <span class="math inline">\(x\)</span>. In this equation, we can see that the slope is 1600.</p>
+<p><span class="math display">\[
+\text{slope} = \frac{\text{change in y}}{\text{change in x}}=\frac{\text{change in annual salary}}{\text{change in years worked}}=\frac{1600}{1}
+\]</span></p>
+<p>When the number of years worked changes by 1 year, Karina’s annual salary changes by $1600. Notice that this slope is consistent. Every year, Karina’s salary increases by the same amount. It always goes up by $1600 per year. We see this on the graph as a straight line. The slope is always the same. From any point on the graph, we can find another point if we go up by 1600 and move right 1.</p>
+<p>The slope of a function is the <em>rate of change</em>. The slope tells us how fast the output value is changing given a particular change in the input. If the graph is a straight line, the rate of change (and the slope) is constant between any two points.</p>
+<blockquote>
+<p>Linear functions represent situations with a constant rate of change.</p>
+</blockquote>
+<hr>
+</div>
+<div id="variable-slope" class="section level3">
+<h3>Variable Slope</h3>
+<p>Now let’s look at a similar example where the slope is not constant. Adriana is also working at her first job after graduation. Like Karina, when she started her job she made $32,000 per year. However, instead of getting a $1600 raise each year, she gets a 5% raise each year. The function that will describe Adriana’s salary each year is:</p>
+<p><span class="math display">\[
+y = 32000(1.05)^x
+\]</span></p>
+<p>where <span class="math inline">\(x\)</span> represents the number of years Adriana has worked at the store and <span class="math inline">\(y\)</span> represents her annual salary.</p>
+<p>Let’s look at a table showing us Adriana’s salary over the five years she works at the store.</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span>=number of years</th>
+<th><span class="math inline">\(y\)</span>=annual salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><span class="math inline">\(y=32000(1.05)^0=\$32000\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><span class="math inline">\(y=32000(1.05)^1=\$33600\)</span></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><span class="math inline">\(y=32000(1.05)^2=\$35280\)</span></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><span class="math inline">\(y=32000(1.05)^3=\$37044\)</span></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><span class="math inline">\(y=32000(1.05)^4=\$38896.20\)</span></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><span class="math inline">\(y=32000(1.05)^5=\$40841.01\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the changes in Adriana’s salary are different each year. The first year her salary goes up from $32000 to $33600 - so she gets a $1600 raise. The second year her salary goes up from $33600 to $35280. This time she got a $1680 raise. Let’s create a column showing the amount of her raise in the table.</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span>=number of years</th>
+<th><span class="math inline">\(y\)</span>=hourly wage</th>
+<th>Raise Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><span class="math inline">\(y=32000(1.05)^0=\$32000\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><span class="math inline">\(y=32000(1.05)^1=\$33600\)</span></td>
+<td>$1600</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><span class="math inline">\(y=32000(1.05)^2=\$35280\)</span></td>
+<td>$1680</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><span class="math inline">\(y=32000(1.05)^3=\$37044\)</span></td>
+<td>$1764</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><span class="math inline">\(y=32000(1.05)^4=\$38896.20\)</span></td>
+<td>$1852.50</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><span class="math inline">\(y=32000(1.05)^5=\$40841.01\)</span></td>
+<td>$1944.81</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the raise amount is not constant. This function has a <em>variable slope</em> or a <em>variable rate of change</em>.</p>
+<p>Recall that if a function has a constant slope, it is a linear function. If a function has a variable slope, it will be a <em>non-linear function</em>.</p>
+<blockquote>
+<p>Non-linear functions represent situations with variable rates of change.</p>
+</blockquote>
+<p>There are many different types of non-linear functions. The non-linear function in this example is exponential.</p>
+<p><img src="Lesson9_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>If we graph both Karina and Adriana’s salary functions on the same graph, it makes it easier to compare them and see that the graph of Adriana’s salary function is not a line. Notice that at first, their salaries are similar, but after a few years Adriana’s salary starts to pull away from Katrina’s salary. Notice Katrina’s salary continues to grow at a constant rate, but Adriana’s salary grows by increasingly larger amounts each year. This is the difference between linear and non-linear rates of change.</p>
+<p><img src="Lesson9_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<hr>
+</div>
+<div id="church-membership-example" class="section level3">
+<h3>Church Membership Example</h3>
+<p>Let’s look at another example of change over time. Since the organization of the Church of Jesus Christ of Latter Day Saints in 1830 with six members, the membership has grown significantly. Has the change been constant or variable? One way to determine the type of change is to look at a graph of church membership to see if the pattern is linear or non-linear.</p>
+<p>In Lesson 5 we learned that when we want to create a chart showing a trend over time, we use a time series plot. Using Excel, we created the following time series plot for church membership.</p>
+<p><img src="Lesson9/Images/Wk9.ChurchMembership.jpg" alt="Graph of Church Membership over Time" /></p>
+<p>This graph is clearly not a line. Because the graph is non-linear, we know the slope is not constant and that membership of the church has a variable rate of change. Notice that in the 1800s in the early history of the church, the number of new members added per year was small especially when compared to the number of members added to the church in recent years. We can see this in the graph. Let’s look at some specific numbers.</p>
+<ul>
+<li>In 1875 there were 107,167 members of the church. By 1876 membership had grown to 111,111. This is an increase of 3,944 members that year.</li>
+<li>In 1975 there were 3,572,202 members of the church. By 1976 membership had grown to 3,742,749. This is an increase of 170,547 new members that year.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+</ul>
+<p>These numbers verify what we see in the graph. The slope of the curve tells us the number of new members per year. The slope is not constant, so we know the number of new members per year is variable. We describe the change in church membership over time as non-linear.</p>
+<hr>
+</div>
+</div>
+<div id="understanding-interest" class="section level2">
+<h2>Understanding Interest</h2>
+<p>As part of your monthly budget, you should plan to save some money every month for an emergency or a large purchase. You could physically keep the money (for example: in an envelope, a home safe, or under your mattress) or you could put it in a savings account in your bank. The advantage of storing your money is a savings account is that you will then earn interest on the money you save. Banks pay <em>compound interest</em>.</p>
+<blockquote>
+<p>Compound interest is earned both on the original amount <em>and</em> on any accumulated interest.</p>
+</blockquote>
+<p>When you earn compound interest, you are earning interest on your interest. This means your account balance can grow very quickly. Putting money under your mattress every month leads to a <em>constant rate of change</em>. It only grows according to the amount you put in. Putting money in an account that pays compound interest leads to a <em>variable rate of change</em>. Not only does your account increase by the amount you put in, it also increases as you earn interest.</p>
+<hr>
+</div>
+<div id="compound-interest-equations---savings" class="section level2">
+<h2>Compound Interest Equations - Savings</h2>
+<p>There are three mathematical equations we need in order to compute the account balances of savings accounts that pay compound interest. These mathematical equations are used by Excel’s future value command, FV. We will be learning these equations to help us better understand what Excel is doing when it does calculations. You don’t need to memorize these equations, but if you are given one of these equations you should be able to enter the inputs and find the corresponding output.</p>
+<p>In these equations there are six variables. We will use the same variable names that are used in Excel:</p>
+<ul>
+<li><span class="math inline">\(FV\)</span> = Final Balance (future value)</li>
+<li><span class="math inline">\(PMT\)</span> = Monthly Payment</li>
+<li><span class="math inline">\(PV\)</span> = Principal Balance (present value)</li>
+<li><span class="math inline">\(r\)</span> = Annual interest Rate (written as a decimal)</li>
+<li><span class="math inline">\(n\)</span> = number of compoundings per year</li>
+<li><span class="math inline">\(Y\)</span> = number of years</li>
+</ul>
+<p>Here are the three equations:</p>
+<table>
+<colgroup>
+<col width="46%" />
+<col width="53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>equation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deposit <span class="math inline">\(PV\)</span> dollars in an account and leave it for <span class="math inline">\(Y\)</span> years</td>
+<td><span class="math display">\[FV=PV\left(1+\frac{r}{n}\right)^{(nY)}\]</span></td>
+</tr>
+<tr class="even">
+<td>Start with no money in the account, but add <span class="math inline">\(PMT\)</span> dollars per month for <span class="math inline">\(Y\)</span> years</td>
+<td><span class="math display">\[FV=PMT \frac{\bigg((1+\frac{r}{n})^{(nY)}-1\bigg)}{\bigg(\frac{r}{n}\bigg)}\]</span></td>
+</tr>
+<tr class="odd">
+<td>Start with a balance of <span class="math inline">\(PV\)</span> dollars and add <span class="math inline">\(PMT\)</span> dollars per month for <span class="math inline">\(Y\)</span> years</td>
+<td><span class="math display">\[FV=PV\left(1+\frac{r}{n}\right)^{(nY)}+PMT \frac{\bigg((1+\frac{r}{n})^{(nY)}-1\bigg)}{\bigg(\frac{r}{n}\bigg)}\]</span></td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the equations get complicated. But it makes it easier to see what is going on if you notice the third equation is just the sum of the first two.</p>
+<p>Excel is useful because it allows us to do these calculations without using the equations.</p>
+<div id="example-1" class="section level3 tabset tabset-fade">
+<h3 class="tabset tabset-fade">Example 1</h3>
+<p>Carlos wants to start a savings account. He has $2000 he can deposit now and plans to add $50 each month. The account will earn 2.0% interest and is compounded monthly. Carlos wants to know how much money he will have saved in 10 years.</p>
+<p>Let’s do the problem using the equation and using Excel. Notice that we get the same amount either way.</p>
+<div id="solution---using-the-equation" class="section level4">
+<h4>Solution - Using the equation</h4>
+<p>Using the equation from above, Carlos wants to find the value of <span class="math inline">\(FV\)</span>. He knows the values of the other variables:</p>
+<ul>
+<li><span class="math inline">\(PMT = \$50\)</span></li>
+<li><span class="math inline">\(PV = \$2000\)</span></li>
+<li><span class="math inline">\(r = 0.02\)</span></li>
+<li><span class="math inline">\(n = 12\)</span></li>
+<li><span class="math inline">\(Y = 10\)</span></li>
+</ul>
+<p>Putting all these values into the equation gives us: <span class="math display">\[
+\begin{align}
+A&amp;=PV\left(1+\frac{r}{n}\right)^{(nY)}+PMT \frac{\bigg((1+\frac{r}{n})^{(nY)}-1\bigg)}{\bigg(\frac{r}{n}\bigg)}\\
+&amp;=2000\left(1+\frac{0.02}{12}\right)^{(12\cdot10)}+50 \frac{\bigg((1+\frac{.02}{12})^{(12\cdot10)}-1\bigg)}{\bigg(\frac{.02}{12}\bigg)}\\
+&amp;=2442.40+6635.98\\
+&amp;=9078.38
+\end{align}
+\]</span> At the end of 10 years, Carlos will have $9078.38 in his account.</p>
+<hr>
+</div>
+<div id="solution---using-excel" class="section level4">
+<h4>Solution - Using Excel</h4>
+<p>Instead of using the equation above, Carlos could use Excel to find the answer. He is looking for the future value of his account, so he will use the FV command in Excel.</p>
+<p>The syntax for the FV command is:</p>
+<p><span class="math display">\[
+\text{=FV(rate, nper, PMT, [PV])}
+\]</span> The rate Excel uses is a <em>monthly</em> rate, so Carlos will need to divide his annual interest rate by 12 to find the monthly rate. Excel also asks for <em>nper</em>. This refers to the total number of periods, or the number of payments. He will make 12 payments for year for 10 years. So he needs to multiply 10*12 to find the value of nper.</p>
+<p>Carlos also has to remember to include negatives where appropriate. In Excel, PMT and PV would be negative in a savings situation because that is money you are taking out of your wallet and putting in the bank right now. The future value of his account will be positive because it will be money he can take out of the bank and put back into his wallet.</p>
+<p>Carlos types the following command into Excel to find his answer:</p>
+<p><span class="math display">\[
+\text{=FV(0.02/12,10*12,-50,-2000)}
+\]</span></p>
+<p><img src="Lesson9/Images/carlos.png" /></p>
+<p>At the end of 10 years, Carlos will have $9078.38 in his account.</p>
+<hr>
+</div>
+</div>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
+<center>
+<div>
+<iframe width="780" height="600" frameborder="0" src="./Lesson9/Storyline/Lesson9.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L09 - Interactive 2: Practice 1<br> <a href="https://docs.google.com/document/d/e/2PACX-1vRvNX9KNqXyyeny4w4hALVYwnnffKN7wIukijcSgggtu0oba0BIX4S-u6vh3kqtqOHlZlWJDklYaICe/pub">(L09-2 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+<center>
+<div>
+<iframe width="780" height="500" frameborder="0" src="./Lesson9/Storyline/Lesson9.Interactive3 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L09 - Interactive 3: Practice 2<br> <a href="https://docs.google.com/document/d/e/2PACX-1vRC9glo_Y00fMLnYfvpHss7ILG4HPBVIaeDRCKkWgyQ923H0SYJUAn7V9JEU4kaNhOKSbBbjcUxsIrp/pub">(L09-3 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+<div id="the-mattress-vs-the-retirement-plan" class="section level2">
+<h2>The Mattress vs The Retirement Plan</h2>
+<p>How much of a difference does compound interest make? In order to see this, we can compare two different retirement savings situations. In the first situation, image that you save money each month for retirement by putting it in an envelope hidden under your mattress. In the second situation, imagine that you invest the money in a retirement account that earns an average of 7.5% interest annually.</p>
+<p>In both situations, we will assume you just graduated from college and are beginning to save for retirement. You currently have $1200 and will save an additional $270 each month. You plan to retire in 35 years.</p>
+<div id="the-mattress-plan" class="section level3">
+<h3>The Mattress Plan</h3>
+<p>Currently, you have $1200 saved in an envelope hidden under your mattress. Every month you plan to add $270 to the envelope. This adds up to an additional $3240 per year. Because the account balance changes by the same amount every year, there is a constant rate of change. We can use a linear function to describe the amount of money you have saved. (The compound interest equations don’t apply because you are not earning any interest.)</p>
+<p><span class="math display">\[
+f(x)=3240x+1200
+\]</span></p>
+<p>In this equation the input, <span class="math inline">\(x\)</span>, is the number of years you have been saving. The output, <span class="math inline">\(f(x)\)</span>, is the amount of money you have saved. We can find how much money you will have saved in 35 years by using an input of <span class="math inline">\(x=35\)</span>.</p>
+<p><span class="math display">\[
+f(35)=3240(35)+1200=\$114,600
+\]</span></p>
+<hr>
+</div>
+<div id="the-retirement-plan" class="section level3">
+<h3>The Retirement Plan</h3>
+<p>Currently, you have $1200 saved in a retirement account that earns an average annual interest rate of 7.5% compounded monthly. That means every month the current balance in your account is used to calculate the interest, which they add to your balance, so the next month you start earning interest on the interest you earned last month. Every month you plan to add $270 to the account. Because the account balance changes by a different amount every month as the balance continues to grow, the rate of change is variable.</p>
+<p>We can use the compound interest equation to create an exponential function:</p>
+<p><span class="math display">\[
+\begin{align}
+FV&amp;=PV\left(1+\frac{r}{n}\right)^{(nY)}+PMT \frac{\bigg((1+\frac{r}{n})^{(nY)}-1\bigg)}{\bigg(\frac{r}{n}\bigg)}\\
+f(x)&amp;=1200\left(1+\frac{0.075}{12}\right)^{(12x)}+270\frac{\bigg((1+\frac{0.075}{12})^{(12x)}-1\bigg)}{\bigg(\frac{0.075}{12}\bigg)}\\
+\end{align}
+\]</span> This equation looks complicated, but if you do some arithmetic to simplify the equation, you find it is a rather simple exponential function.</p>
+<p><a href="javascript:showhide('algebra')">Click here if you want to see the algebra.<span style="font-size:8pt;">(click to view)</span></a></p>
+<div id="algebra" style="display:none;">
+<p><span class="math display">\[
+\begin{align}
+FV&amp;=PV\left(1+\frac{r}{n}\right)^{(nY)}+PMT \frac{\bigg((1+\frac{r}{n})^{(nY)}-1\bigg)}{\bigg(\frac{r}{n}\bigg)}\\
+f(x)&amp;=1200\left(1+\frac{0.075}{12}\right)^{(12x)}+270\frac{\bigg((1+\frac{0.075}{12})^{(12x)}-1\bigg)}{\bigg(\frac{0.075}{12}\bigg)}\\
+&amp;=1200\left(1+0.00625\right)^{(12x)}+270\frac{\bigg((1+0.00625)^{(12x)}-1\bigg)}{0.00625}\\
+&amp;=1200\left(1.00625\right)^{(12x)}+\frac{270}{0.00625}\bigg((1.00625)^{(12x)}-1\bigg)\\
+&amp;=1200\left(1.00625\right)^{(12x)}+43200\bigg((1.00625)^{(12x)}-1\bigg)\\
+&amp;=1200\left(1.00625\right)^{(12x)}+43200(1.00625)^{(12x)}-43200\\
+&amp;=44400\left(1.00625\right)^{(12x)}-43200\\
+\end{align}
+\]</span></p>
+</div>
+<p>Simplifying the equation yielded:</p>
+<p><span class="math display">\[
+f(x)=44400(1.00625)^{12x}-43200
+\]</span></p>
+<p>In this equation, just like in the mattress plan, the input, <span class="math inline">\(x\)</span>, is the number of years you have been saving. The output, <span class="math inline">\(f(x)\)</span> is the amount of money you have saved. We can find how much money you will have saved in 35 years by computing <span class="math inline">\(f(35)\)</span>.</p>
+<span class="math display">\[
+f(35)=44400(1.00625)^{12x}-43200=\$564736.46
+\]</span> Note of caution: If you round during the intermediate steps of the calculation above, the final answer may be off some from the error introduced by this rounding.<br />
+
+<hr>
+</div>
+<div id="comparing-the-mattress-and-the-retirement-plan" class="section level3">
+<h3>Comparing the Mattress and the Retirement Plan</h3>
+<p>Comparing the balance of the Mattress Plan and the Retirement Plan after 35 years shows the difference compound interest can make. In both situations, you started with the $1200 and saved $270 every month for 35 years. When you saved the money under your mattress you ended with $114,600 and when you saved the money in an account earning compound interest you ended with $564,093.13. The difference in the account balances is due entirely to earning compound interest.</p>
+<p>The following graph shows the graphs of the two savings plans over time:</p>
+<p><img src="Lesson9_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>This graph clearly shows the advantage of earning compound interest.</p>
+<hr>
+</div>
+</div>
+<div id="earning-interest-vs-paying-interest" class="section level2">
+<h2>Earning Interest vs Paying Interest</h2>
+<p>As we saw when we compared saving money in a retirement account vs saving money under your mattress, it is to your advantage to earn compound interest when you are saving money. However, when you borrow money you are charged compound interest. So when you are paying back a loan compound interest works against you instead of for you. As quoted in an <em>Ensign</em> article, Albert Einstein supposedly said “Compound interest is the eighth wonder of the world. He who understands it, earns it…He who doesn’t, pays it.”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>President Gordon B. Hinckley taught that we cannot obtain self-reliance “when there is serious debt hanging over a household. One has neither independence nor freedom from bondage when he is obligated to others.” He went on to issue this challenge: “Look to the condition of your finances. I urge you to be modest in your expenditures; discipline yourselves in your purchases to avoid debt to the extent possible. Pay off debt as quickly as you can, and free yourselves from bondage” <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>One reason debt becomes a source of temporal and spiritual bondage is because it accrues compound interest.</p>
+<hr>
+<div id="paying-off-debt" class="section level3">
+<h3>Paying Off Debt</h3>
+<hr>
+<h4 class="step one">
+Understand the Problem
+</h4>
+<p>Danielle has been using credit cards recklessly and has accumulated $12,271 in credit card debt. The debt is divided onto four different cards with different account balances and different APRs. The following table summarizes Danielle’s debt.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Credit Card</th>
+<th>Account Balance</th>
+<th>APR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Card 1</td>
+<td>$3121</td>
+<td>12.99%</td>
+</tr>
+<tr class="even">
+<td>Card 2</td>
+<td>$7012</td>
+<td>18.99%</td>
+</tr>
+<tr class="odd">
+<td>Card 3</td>
+<td>$1211</td>
+<td>22.99%</td>
+</tr>
+<tr class="even">
+<td>Card 4</td>
+<td>$927</td>
+<td>24.99%</td>
+</tr>
+</tbody>
+</table>
+<p>Danielle is creating a plan to become debt-free. She wants to know how much money she should pay each month to pay off all her credit card debt in 5 years. She also wants to know the total amount of money she will pay to the credit card companies in interest.</p>
+<hr>
+<h4 class="step two">
+Identify Variables &amp; Assumptions
+</h4>
+<p>Danielle identifies the following variables:</p>
+<ul>
+<li>How much she needs to pay per month on each account.<br />
+</li>
+<li>The amount of interest she will pay on each account by the time all four cards are paid off.</li>
+</ul>
+<p>She makes the following assumptions:</p>
+<ul>
+<li>She will pay off all her credit card debt in 5 years.</li>
+<li>She will not make any new charges on any of the cards.</li>
+</ul>
+<hr>
+<h4 class="step three">
+Apply Quantitative Tools
+</h4>
+<p>Danielle uses the PMT function in Excel to determine what her four monthly payments need to be in order to pay each card off in 5 years.</p>
+<p><img src="Lesson9/Images/Danielle.png" alt="Example of an Excel spreadsheet using the PMT fucntion for four different credit cards" /></p>
+<p>Now Danielle wants to figure out how much money she will pay in interest in the 5 years it takes her to pay off her cards.</p>
+<p>For each credit card she finds the total amount she will have to pay back by multiplying her monthly payment by 12 to get an annual total and then multiplying by 5 to get the Total Payments.</p>
+<p>Then she finds the interest paid on each card by taking the Total Payments and subtracting the Current Balance.</p>
+<center>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="21%" />
+<col width="21%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Credit Card</th>
+<th align="center">Current Balance (PV)</th>
+<th align="center">Monthly Payment</th>
+<th align="center">Total Payments</th>
+<th align="center">Interest Paid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Card #1</td>
+<td align="center">$3121</td>
+<td align="center">$71.00</td>
+<td align="center">$4260</td>
+<td align="center">$1139.00</td>
+</tr>
+<tr class="even">
+<td>Card #2</td>
+<td align="center">$7012</td>
+<td align="center">$181.86</td>
+<td align="center">$10911.60</td>
+<td align="center">$3899.60</td>
+</tr>
+<tr class="odd">
+<td>Card #3</td>
+<td align="center">$1211</td>
+<td align="center">$34.13</td>
+<td align="center">$2047.80</td>
+<td align="center">$836.80</td>
+</tr>
+<tr class="even">
+<td>Card #4</td>
+<td align="center">$927</td>
+<td align="center">$27.20</td>
+<td align="center">$1632.00</td>
+<td align="center">$705.00</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td align="center"><strong>$12271</strong></td>
+<td align="center"><strong>$314.19</strong></td>
+<td align="center"><strong>$18851.40</strong></td>
+<td align="center"><strong>$6580.40</strong></td>
+</tr>
+</tbody>
+</table>
+</center>
+<hr>
+<h4 class="step four">
+Make an Informed Decision
+</h4>
+<p>From her calculations, Danielle realizes that although she only owes $12,271 on all the credit cards combined, she will repay $18,851.40 which includes paying $6,580.40 in interest. Danielle will need to pay a total of $314.19 in credit card payments each month to pay off all of the balances in 5 years.</p>
+<hr>
+<h4 class="step five">
+Evaluate Your Reasoning
+</h4>
+<p>As Danielle reflects on her calculations, she decides that she needs a budget to make sure she can make the monthly payments. She also realizes that if she doesn’t stick to her budget she will probably continue to use her credit cards. For her plan to work, she will have to hold to her assumption that she will not use her credit cards anymore.</p>
+<p>After 5 years of careful budgeting and hard work, Danielle is able to pay off her credit cards. She has also realized the role compound interest had in her financial situation. She had to pay back much more money than she borrowed because her credit card balances accrued compound interest. Now that her credit card debt is paid off, she is able to revise her budget to save money and earn compound interest instead of paying compound interest.</p>
+<hr>
+</div>
+<div id="practice-problem" class="section level3">
+<h3>Practice Problem</h3>
+<center>
+<div>
+<iframe width="780" height="500" frameborder="0" src="./Lesson9/Storyline/Lesson9.Interactive4 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L09 - Interactive 4: Practice 3<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTceZS4EXOzJrAdik3qVNi-gRts2zvSypxrXE4J5V3PimV48vZ4N3Nifh-6NMxNYXKjqO2IOXdHi9Q2/pub">(L09-4 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+</div>
+<div id="lesson-checklist" class="section level2">
+<h2>Lesson Checklist</h2>
+<p>By the end of this lesson, you should be able to:</p>
+<ul>
+<li>define the term rate of change as the slope of a curve at a given point</li>
+<li>understand the difference between constant and variable rates of change</li>
+<li>define compound interest</li>
+<li>understand the connection between rate of change and accrued savings (or debt).</li>
+</ul>
+<center>
+© 2020 Brigham Young University - Idaho
+</center>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Wikipedia<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.lds.org/ensign/2016/07/young-adults/an-eternal-perspective-on-personal-and-family-finance?lang=eng#footnote9-13187_000_015" class="uri">https://www.lds.org/ensign/2016/07/young-adults/an-eternal-perspective-on-personal-and-family-finance?lang=eng#footnote9-13187_000_015</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.lds.org/general-conference/1998/10/to-the-boys-and-to-the-men?lang=eng" class="uri">https://www.lds.org/general-conference/1998/10/to-the-boys-and-to-the-men?lang=eng</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

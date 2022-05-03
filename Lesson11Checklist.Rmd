@@ -1,0 +1,12 @@
+---
+title: "Lesson 11 Checklist"
+---
+
+By the end of this lesson, you should be able to:
+
+* create a system of linear equations from information provided in a written format
+* solve a system of two linear equations with two unknowns using graphs
+* solve a system of two linear equations with two unknowns using substitution
+* interpret the solution to a system of equations
+* solve a system of equations obtained using trendlines
+* solve a non-linear system of two equations using a graph

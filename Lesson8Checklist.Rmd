@@ -1,0 +1,12 @@
+---
+title: "Lesson 8 Checklist"
+---
+
+By the end of this lesson, you should be able to:
+
+* correctly apply the order of operations
+* correctly use the rules of exponents
+* use function notation to evaluate a function (linear, quadratic, exponential) at a point 
+* Distinguish among linear, exponential, and quadratic graphs
+* identify graphs of linear, quadratic, and exponential functions from their equations
+* interpret functional values or graphs in context of a given situation.

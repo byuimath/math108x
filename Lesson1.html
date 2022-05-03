@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lesson 1: Preparing for Success</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit I
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson1.html">Lesson 1</a>
+    </li>
+    <li>
+      <a href="Lesson2.html">Lesson 2</a>
+    </li>
+    <li>
+      <a href="Lesson3.html">Lesson 3</a>
+    </li>
+    <li>
+      <a href="Lesson4.html">Lesson 4</a>
+    </li>
+    <li>
+      <a href="Lesson5.html">Lesson 5</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit II
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson6.html">Lesson 6</a>
+    </li>
+    <li>
+      <a href="Lesson7.html">Lesson 7</a>
+    </li>
+    <li>
+      <a href="Lesson8.html">Lesson 8</a>
+    </li>
+    <li>
+      <a href="Lesson9.html">Lesson 9</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Unit III
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Lesson10.html">Lesson 10</a>
+    </li>
+    <li>
+      <a href="Lesson11.html">Lesson 11</a>
+    </li>
+    <li>
+      <a href="Lesson12.html">Lesson 12</a>
+    </li>
+    <li>
+      <a href="Lesson13.html">Lesson 13</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 1: Preparing for Success</h1>
+
+</div>
+
+
+<div id="opening-video" class="section level2">
+<h2>Opening Video</h2>
+<p>In a BYU-Idaho devotional President Russel M. Nelson shared his thoughts about the potential of BYU-Idaho students. As you watch this four minute clip, pay attention to what President Nelson says BYU-Idaho students can accomplish.</p>
+<p><br> <br></p>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/41338032/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_5pwg7ksn&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[mediaProxy.mediaPlayFrom]=807.5&amp;flashvars[mediaProxy.mediaPlayTo]=1065&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_m12zigud" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
+</iframe>
+<p>Russell M. Nelson “The Lord Uses the Unlikely to Accomplish the Impossible”<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQF9jDOHbYidmAFWKSIIgZcnWVD-8UktwZ5cNwvY-PdZ1qe5PtouilqCQo-FfvS_InoIckMM346y7hF/pub">(4:44 mins, Nelson Excerpt Transcript)</a></p>
+</center>
+<p><br> <br></p>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>As mentioned by President Nelson, “the Lord has more in mind for you than you have in mind for yourself.” In this course, Math 108X: Mathematical Tools for the Real World, we will learn tools that can help you be prepared to make informed decisions. As you make informed decisions you will be able to do as promised by President Nelson and “accomplish the impossible.”</p>
+<hr>
+</div>
+<div id="tips-for-success" class="section level2">
+<h2>Tips for Success</h2>
+<ul>
+<li><p><em>Read the Textbook</em> This online textbook has been prepared as a resource to help you succeed in this class. Please take the time to carefully read the assigned reading each week.</p></li>
+<li><p><em>Work through the Textbook</em> As you read the textbook, realize that you can’t read a math textbook the same way you do a novel. As you complete the reading assignments, read with a paper and pencil and Excel nearby. As you read, take notes on important principles and concepts. When you encounter an example or interactive problem in the text, work the example out on paper and make sure you could repeat the example again on your own. When you are given instructions for how to do something in Excel, open Excel on your computer and follow along with the instructions.</p></li>
+<li><p><em>How Did I Do?</em> The homework assignments and Excel case studies include a “How Did I Do” button or tab that allows you to check your work. Use these tools appropriately. If you don’t get a problem correct the first time, take time to check your work. Go back and look at the reading material and see if there are concepts you need to review.</p></li>
+<li><p><em>Work with Your Group</em> Whether you are an online student working with a group online or a campus student working with a group in class, work together as a group. You will benefit as you serve others by taking time to explain principles you understand. And you will learn from others as they explain principles you are struggling to learn. Be an active and willing participating in group activities and assignments.</p></li>
+<li><p><em>Notice Applications</em> As you work on readings, homework, case studies, and exams always consider how you could apply the principles you are learning to your own life.</p></li>
+</ul>
+<hr>
+<p>The goal of this course is to help you use mathematical and statistical tools to make informed decisions. Life is full of opportunities to make decisions that impact our lives.</p>
+<p>President Henry B. Eyring, Second Counselor in the First Presidency, said “The Lord knows both what He will need you to do and what you will need to know. He is kind and He is all-knowing. So you can with confidence expect that He has prepared opportunities for you to learn in preparation for the service you will give. You will not recognize those opportunities perfectly….But when you put the spiritual things first in your life, you will be blessed to feel directed toward certain learning, and you will be motivated to work harder.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>This course is an opportunity for you to learn to make informed decisions in your life so that you can be of better service to the Lord.</p>
+<hr>
+</div>
+<div id="algebraic-tools" class="section level2">
+<h2>Algebraic Tools</h2>
+<p>Let’s review some algebraic tools and properties that will be helpful this semester. We will review manipulating fractions, the order of operations, and properties of exponents.</p>
+<div id="manipulating-fractions" class="section level3">
+<h3>Manipulating Fractions</h3>
+<p>Fractions commonly occur in mathematical situations. Remember that a fraction is made up of one whole number divided by another. The number on the top of the fraction is called the <em>numerator</em>. The number on the bottom of the fraction is called the <em>denominator</em>.</p>
+<p>We will review the rules we follow when adding, subtracting, multiplying and dividing fractions. These examples are brief and are just intended to be a quick review of principles you have learned before.</p>
+<hr>
+<div id="adding-fractions" class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Adding Fractions</h4>
+<p>In order to add fractions, you first find a common denominator. Then you add the numerator and keep the common denominator of the fraction the same. Let’s look at an example.</p>
+<div id="example-1" class="section level5">
+<h5>Example 1</h5>
+<p>Add <span class="math inline">\(\frac{3}{4}+\frac{2}{3}\)</span>.</p>
+<p><strong>Solution</strong>:</p>
+<p>First, we find a common denominator. In this case the denominators of the two fractions are 4 and 3. We need to find a denominator that is divisible by both 4 and 3. The smallest number that can be evenly divided by 4 and 3 is 12. So our common denominator is 12. We multiply both fractions by 1, written as a number divided by itself, so that we can get the common denominator of 12:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{3}{4}+\frac{2}{3}&amp;=\frac{3}{4}\cdot\frac{3}{3}+\frac{2}{3}\cdot\frac{4}{4}\\
+&amp;=\frac{9}{12}+\frac{8}{12}\\
+&amp;=\frac{9+8}{12}\\
+&amp;=\frac{17}{12}\\
+\end{aligned}
+\]</span></p>
+<p>Notice that after we found a common denominator of 12, we added the numerators of the fractions, but kept the common denominator of 12 on the bottom of the fraction.</p>
+<hr>
+</div>
+<div id="example-2" class="section level5">
+<h5>Example 2</h5>
+<p>Add <span class="math inline">\(\frac{17}{9}+\frac{8}{3}\)</span>.</p>
+<p><strong>Solution</strong>:</p>
+<p>First, we find a common denominator. In this case the denominators of the two fractions are 9 and 3. We need to find a denominator that is divisible by both 9 and 3. The smallest number that can be evenly divided by 9 and 3 is 9. So our common denominator is 9. We multiply the second fractions by 1, written as a number divided by itself, so that we can get the common denominator of 9:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{17}{9}+\frac{8}{3}&amp;=\frac{17}{9}+\frac{8}{3}\cdot\frac{3}{3}\\
+&amp;=\frac{17}{9}+\frac{24}{9}\\
+&amp;=\frac{17+24}{9}\\
+&amp;=\frac{41}{9}\\
+\end{aligned}
+\]</span></p>
+<p>Notice that after we found a common denominator of 9, we added the numerators of the fractions, but kept the common denominator of 9 on the bottom of the fraction.</p>
+<hr>
+</div>
+</div>
+<div id="subtracting-fractions" class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Subtracting Fractions</h4>
+<p>Subtraction of fractions is very similar to adding fractions. We find a common denominator then subtract the numerators while keeping the denominator constant.</p>
+<div id="example-3" class="section level5">
+<h5>Example 3</h5>
+<p>Simplify: <span class="math inline">\(\frac{3}{8}-\frac{13}{12}\)</span></p>
+<p><strong>Solution:</strong></p>
+<p>For this problem, we notice that the smallest number that is divisible by both 8 and 12 is 24. So we use a common denominator of 24.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{3}{8}-\frac{13}{12}&amp;=\frac{3}{8}\cdot\frac{3}{3}-\frac{13}{12}\cdot\frac{2}{2}\\
+&amp;=\frac{9}{24}-\frac{26}{24}\\
+&amp;=\frac{9-26}{24}\\
+&amp;=\frac{-17}{24}\\
+\end{aligned}
+\]</span></p>
+<hr>
+</div>
+<div id="example-4" class="section level5">
+<h5>Example 4</h5>
+<p>Simplify: <span class="math inline">\(\frac{5}{7}-\frac{5}{3}\)</span></p>
+<p><strong>Solution:</strong></p>
+<p>For this problem, we notice that the smallest number that is divisible by both 7 and 3 is 21. So we use a common denominator of 21.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{5}{7}-\frac{5}{3}&amp;=\frac{5}{7}\cdot\frac{3}{3}-\frac{5}{3}\cdot\frac{7}{7}\\
+&amp;=\frac{15}{21}-\frac{35}{21}\\
+&amp;=\frac{15-35}{21}\\
+&amp;=\frac{-20}{21}\\
+\end{aligned}
+\]</span></p>
+<hr>
+</div>
+</div>
+<div id="multipling-fractions" class="section level4">
+<h4>Multipling Fractions</h4>
+<p>To multiply fractions, we just multiply the numerators and multiply the denominators.</p>
+<div id="example-5" class="section level5">
+<h5>Example 5:</h5>
+<p>Multiply the fractions <span class="math inline">\(\frac{2}{5}\)</span> and <span class="math inline">\(\frac{-4}{3}\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p>We multiply the fractions by multiplying the numerators and multiplying the denominators:</p>
+<span class="math display">\[
+\begin{aligned}
+\frac{2}{5}\cdot\frac{-4}{3}&amp;=\frac{2\cdot(-4)}{5\cdot3}\\
+&amp;=\frac{-8}{15}
+\end{aligned}
+\]</span>
+<hr>
+</div>
+</div>
+<div id="dividing-fractions" class="section level4">
+<h4>Dividing Fractions</h4>
+<p>To divide fractions, we <em>invert and multiply</em>. This means that we take the second fraction, flip it upside down, and then multiply the two resulting fractions.</p>
+<div id="example-6" class="section level5">
+<h5>Example 6:</h5>
+<p>Do the following: <span class="math inline">\(\frac{3}{4}\div\frac{6}{5}\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p>We perform the division by inverting the second fraction and then multiplying.</p>
+<span class="math display">\[
+\begin{aligned}
+\frac{3}{4}\div\frac{6}{5}&amp;=\frac{3}{4}\cdot\frac{5}{6}\\
+&amp;=\frac{3\cdot5}{4\cdot6}\\
+&amp;=\frac{15}{24}\\
+&amp;=\frac{5}{8}\\
+\end{aligned}
+\]</span>
+<hr>
+</div>
+</div>
+</div>
+<div id="order-of-operations" class="section level3">
+<h3>Order of Operations</h3>
+<p>Have you ever come across a question like this on Facebook or other Social Media?</p>
+<center>
+<img src="Lesson8/Images/Wk8.FacebookOrderOfOperations.jpg" alt="Can you answer this? 7 - 1 X 0 + 3 / 3 = ?" />
+</center>
+<p>The comments on this type of social media posts typically shows great disagreement on the answer. The correct answer relies on the order of operations. The order of operations is a rule that helps us know the order in which to apply mathematical operations when simplifying an expression. The order of operations tells us to perform operations in the following order:</p>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Step 1</strong>:</td>
+<td>Carry out operations enclosed in parentheses.</td>
+</tr>
+<tr class="even">
+<td><strong>Step 2</strong>:</td>
+<td>Carry out operations involving exponents.</td>
+</tr>
+<tr class="odd">
+<td><strong>Step 3</strong>:</td>
+<td>Carry out any multiplication or division, in the order in which they appear from left to right.</td>
+</tr>
+<tr class="even">
+<td><strong>Step 4</strong>:</td>
+<td>Carry out any addition or subtraction, in the order in which they appear from left to right.</td>
+</tr>
+</tbody>
+</table>
+<p><br> The acronym P.E.M.D.A.S. is often used to describe the order of operations. P.E.M.D.A.S stands for parentheses, exponents, multiplication and division, addition and subtraction. Even though the M appears before the D and the A appears before the S, it is essential to remember that multiplication and division are carried out in the order they appear from left to right. It is similarly important to carry out addition and subtraction in the order they appear from left to right. The acronym P.E.M.D.A.S. might be better listed as P.E.(M.D.)(A.S.) with the parentheses reminding us that multiplication and division occur together, as do addition and subtraction.</p>
+<div id="examples-with-integers" class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Examples With Integers</h4>
+<div id="example-7" class="section level5">
+<h5>Example 7</h5>
+<p>Apply the order of operations to the Facebook meme posted above:</p>
+<p><span class="math display">\[
+7-1\times 0 + 3\div 3
+\]</span></p>
+<p><strong>Solution</strong></p>
+<p>Steps 1 and 2 don’t apply because there are no parentheses or exponents. So we start with Step 3 and perform all multiplication and division in the order in which they appear from left to right. Because <span class="math inline">\(1 \times 0=0\)</span> and <span class="math inline">\(3 \div 3=1\)</span> we can rewrite the equation as</p>
+<p><span class="math display">\[
+7-0+1
+\]</span></p>
+<p>We now go to Step 4 and carry out the addition and subtraction in the order in which they appear. This gives us the answer:</p>
+<p><span class="math display">\[
+7-0+1
+=7+1
+=8
+\]</span></p>
+<p>Using the order of operations, we can clearly see the answer is 8.</p>
+<hr>
+</div>
+<div id="example-8" class="section level5">
+<h5>Example 8</h5>
+<p>Use the order of operations to simplify the following:</p>
+<p><span class="math display">\[
+3(4-1)^2-10\div 2+3
+\]</span></p>
+<p><strong>Solution</strong></p>
+<p>In Step 1 we simplify the expression in the parentheses:</p>
+<p><span class="math display">\[
+3(3)^2-10\div 2+3
+\]</span></p>
+<p>Then Step 2 tells us to apply any exponents:</p>
+<p><span class="math display">\[
+3\times 9 - 10\div 2+3
+\]</span></p>
+<p>We then go to Step 3 and apply multiplication and division in order from left to right:</p>
+<p><span class="math display">\[
+27 - 5 + 3
+\]</span></p>
+<p>Finally, at Step 4 we carry out the addition and subtraction in order from left to right:</p>
+<span class="math display">\[
+25
+\]</span>
+<hr>
+</div>
+</div>
+<div id="examples-with-variables" class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Examples with Variables</h4>
+<div id="example-9" class="section level5">
+<h5>Example 9</h5>
+<p>When we use the order of operations in algebra, we often see variables in the expressions we need to simplify. Simplify the following expression:</p>
+<p><span class="math display">\[
+3x-4(x-3)+2x
+\]</span></p>
+<p><strong>Solution</strong></p>
+<p>Step 1, we start by simplifying the expression in parentheses. In this case, <span class="math inline">\(x-3\)</span> is already in the simplest form, so we can’t simplify it further. Step 2 doesn’t apply because there are no exponents. Step 3, perform multiplication (there is no division). We can multiply the 4 by the <span class="math inline">\(x-3\)</span> using the distributive property to get:</p>
+<p><span class="math display">\[
+3x-4x+12+2x
+\]</span></p>
+Step 4, addition and subtraction, but we can only combine like terms. This gives us <span class="math inline">\(x+12\)</span> as the answer.
+<hr>
+</div>
+<div id="example-10" class="section level5">
+<h5>Example 10</h5>
+<p>Often, instead of using the <span class="math inline">\(\div\)</span> symbol, we write expressions as fractions. If possible, simplify the following expression:</p>
+<p><span class="math display">\[
+\frac{3x-4}{3}
+\]</span></p>
+<p><strong>Solution</strong></p>
+<p>It is important to realize that when an expression is written as a fraction, there are implied parentheses on the numerator and denominator of the fraction. So this expression is actually:</p>
+<p><span class="math display">\[
+\frac{(3x-4)}{(3)}
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+(3x-4)\div (3)
+\]</span></p>
+This means that we have to subtract <span class="math inline">\(4\)</span> from the <span class="math inline">\(3x\)</span> <em>before</em> we can divide by <span class="math inline">\(3\)</span> (because Step 1 tells us to perform the operation in parentheses first, including implied parentheses.) Because <span class="math inline">\(3x-4\)</span> cannot be simplified, the entire expression is as simple as possible. Note that the <span class="math inline">\(3\)</span> in the numerator and the <span class="math inline">\(3\)</span> in the denominator can’t “cancel” because the order of operations with the implied parentheses in the fraction bar, tells us we must subtract 4 before we divide.
+<hr>
+</div>
+</div>
+<div id="practice-problems" class="section level4">
+<h4>Practice Problems</h4>
+<center>
+<div>
+<iframe width="780" height="420" frameborder="0" src="./Lesson1/Storyline/Lesson1.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L01 - Interactive 1: Practice Problems<br> <a href="https://docs.google.com/document/d/e/2PACX-1vS_F2ZmJAJGagaqgNtooJzt79d1dSBdiSJUnIk7nDr52AsQzkIb_4s3KtUiFFxJEc02dim6Wwo421Gs/pub">(L01-1 ADA Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+</div>
+<div id="exponent-rules" class="section level3">
+<h3>Exponent Rules</h3>
+<p>Here are four important rules that tell us how to work with exponents:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>Rule 1:</strong></td>
+<td><span class="math display">\[x^ax^b=x^{a+b}\]</span></td>
+</tr>
+<tr class="even">
+<td><strong>Rule 2:</strong></td>
+<td><span class="math display">\[(x^a)^b=x^{ab}\]</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Rule 3:</strong></td>
+<td><span class="math display">\[(xy)^a=x^ay^a\]</span></td>
+</tr>
+<tr class="even">
+<td><strong>Rule 4:</strong></td>
+<td><span class="math display">\[x^{-a}=\frac{1}{x^a}\]</span></td>
+</tr>
+</tbody>
+</table>
+<p>Note: We can apply the exponent rules in any order to simplify our answer.</p>
+<div id="examples-of-exponent-rules" class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Examples of Exponent Rules</h4>
+<p>Here are some examples that apply these rules.</p>
+<div id="example-11" class="section level5">
+<h5>Example 11</h5>
+<p>Simplify the following expression:</p>
+<p><span class="math display">\[
+\frac{(3xy)^3}{x^2} 
+\]</span></p>
+<p><strong>Solution</strong></p>
+<p>First, we use Rule 2 to simplify the numerator of the fraction:</p>
+<p><span class="math display">\[
+\frac{3^3x^3y^3}{x^2}.
+\]</span></p>
+<p>We know <span class="math inline">\(3^3=27\)</span> so we can simplify:</p>
+<p><span class="math display">\[
+\frac{27x^3y^3}{x^2}.
+\]</span></p>
+<p>Next, we use Rule 4 to rewrite the expression without a fraction:</p>
+<p><span class="math display">\[
+27x^3y^3x^{-2}.
+\]</span></p>
+<p>Finally, we use Rule 1 to combine the <span class="math inline">\(x\)</span> terms:</p>
+<p><span class="math display">\[
+27x^{3+(-2)}y^3.
+\]</span></p>
+<p>This gives us the final answer:</p>
+<span class="math display">\[
+27xy^3.
+\]</span>
+<hr>
+</div>
+<div id="example-12" class="section level5">
+<h5>Example 12</h5>
+<p>Simplify the following expression:</p>
+<p><span class="math display">\[
+\frac{2x^4(yz)^3}{(xz)^3 y^4}
+\]</span></p>
+<p><strong>Solution</strong></p>
+<p>By applying the exponent rules we get:</p>
+<span class="math display">\[
+\begin{aligned}
+\frac{2x^4(yz)^3}{(xz)^3 y^4} &amp;= \frac{2x^4y^3z^3}{x^3z^3y^4}\\
+&amp;= 2x^4y^3z^3x^{-3}z^{-3}y^{-4}\\
+&amp;= 2x^{4+(-3)}y^{3+(-4)}z^{3+(-3)}\\
+&amp;= 2x^1 y^{-1} z^0\\
+&amp;=\frac{2x}{y}.\\
+\end{aligned}
+\]</span>
+<HR>
+</div>
+</div>
+<div id="practice-problems-1" class="section level4">
+<h4>Practice Problems</h4>
+<center>
+<div>
+<iframe width="780" height="420" frameborder="0" src="./Lesson1/Storyline/Lesson1.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
+</iframe>
+</div>
+<p>L01 - Interactive 2: Practice Problems<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTaTorPR5Ltu-Gt_nR_UJq6tntHIaIDhF5UnnuOTtOo7bVuxOqvD5g9At9otCvsPnPLStvYMplYbYNu/pub">(L01-2 Interactive Transcript)</a></p>
+</center>
+<hr>
+</div>
+</div>
+</div>
+<div id="lesson-checklist" class="section level2">
+<h2>Lesson Checklist</h2>
+<p>By the end of this lesson, you should be able to:</p>
+<ul>
+<li>Summarize behaviors that lead to student success.</li>
+<li>Perform mathematical operations with fractions (addition, subtraction, multiplication, and division).</li>
+<li>Apply the order of operations.</li>
+<li>Use the rules of exponents.</li>
+<li></li>
+</ul>
+<center>
+© 2020 Brigham Young University - Idaho
+</center>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Henry B. Eyring, “Education for Real Life,” Ensign, Oct. 2002, 18-19<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

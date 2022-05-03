@@ -1,0 +1,53 @@
+---
+title: 'Table of Contents'
+output:
+  html_document:
+    theme: default
+    css: styles.css
+---
+
+<br/>
+
+## Unit 1
+
+<div style="padding-left:40px;">
+
+[Lesson 1: Preparing for Success](Lesson1.html)
+
+[Lesson 2: Introduction to the Process](Lesson2.html)
+
+[Lesson 3: Logical Reasoning](Lesson3.html)
+ 
+[Lesson 4: Tools of Building Better Budgets and More](Lesson4.html)
+
+[Lesson 5: Summarizing Data](Lesson5.html)
+
+</div>
+
+## Unit 2
+
+<div style="padding-left:40px;">
+
+[Lesson 6: Data Visualization](Lesson6.html)
+
+[Lesson 7:  Functions in Excel](Lesson7.html)
+
+[Lesson 8: Functions and their Graphs](Lesson8.html)
+
+[Lesson 9: Change Over Time](Lesson9.html)
+
+</div>
+
+## Unit 3
+
+<div style="padding-left:40px;">
+
+[Lesson 10: Making Predictions From Data](Lesson10.html)
+
+[Lesson 11: Solving Systems of Equations](Lesson11.html)
+
+[Lesson 12: Probability and Confidence Intervals](Lesson12.html)
+
+[Lesson 13: Applying the Quantitative Reasoning Process](Lesson13.html)
+
+</div>

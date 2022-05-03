@@ -1,0 +1,10 @@
+---
+title: "Lesson 6 Checklist"
+---
+
+After completing this lesson you should be able to do the following:
+
+* Create bar charts, pie charts, time series plots, and scatter plots of data in Excel.
+* Interpret the information provided in bar charts, pie charts, time series plots, and scatter plots.
+* Identify the type of chart (bar chart, pie chart, time series, scatter plot) that would be most appropriate for a given scenario.
+* Make a contextual conclusion from a given chart (bar chart, pie chart, time series, scatter plot).

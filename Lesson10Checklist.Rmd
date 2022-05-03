@@ -1,0 +1,14 @@
+---
+title: "Lesson 10 Checklist"
+---
+
+By the end of this lesson, you should be able to:
+
+* identify the input and output variable from a given scenario.
+* create a scatter plot of two quantitative variables in Excel.
+* identify for given data whether a linear, exponential, or quadratic trendline would be the most appropriate.
+* fit a linear, exponential, or quadratic trendline to a scatter plot of data in Excel.
+* use a trendline to make a prediction for the average value of the response variable at a given value of the explanatory variable.
+* interpret predictions and draw a contextual conclusion
+* assess the appropriateness of a trendline for given data
+* explain why correlation does not imply causation
