@@ -13,12 +13,22 @@
 
 <title>Lesson 8: Functions and Their Graphs</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,12 +36,16 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,32 +58,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -80,10 +69,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -100,40 +85,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -161,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -173,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -184,10 +142,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -199,7 +170,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -325,13 +295,13 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -425,7 +395,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -445,7 +415,7 @@ div.tocify {
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>In this lesson we are focusing on the third step of the Quantitative Reasoning Process: <em>Apply Quantitative Tools</em>. Last week we learned about functions. This week we will expand our knowledge of functions to see how they help solve some important questions from everyday life when used as a tool in the Quantitative Reasoning Process.</p>
-<p><img src="Lesson2/Images/qrprocess.png" alt="image of Quantitative Reasoning Process Model" /></p>
+<p><img src="Lesson2/Images/QRProcess.png" alt="image of Quantitative Reasoning Process Model" /></p>
 <p>In the opening story of this lesson, Sophia and Emmy used carbon-14 dating to solve the mystery about which statue was real and which was fake. Carbon-14 dating is a method that uses <em>exponential functions</em> to determine the age of an object that contains organic material.</p>
 <p>Although Sophia and Emmy’s story is a fictional bedtime story, similar uses of mathematical functions and the Quantitative Reasoning Process help solve many different types of problems encountered in every day life such as:</p>
 <ul>
@@ -499,10 +469,10 @@ div.tocify {
 </center>
 <hr>
 <div id="example-7" class="section level4 tabset tabset-fade">
-<h4>Example 7</h4>
+<h4 class="tabset tabset-fade">Example 7</h4>
 <p>Determine which of the following are linear functions:<br />
 a. <span class="math inline">\(f(x)=3x-2\)</span><br />
-b. <span class="math inline">\(3x-4y=-7\)</span><br />
+b. <span class="math inline">\(3x+4y=-7\)</span><br />
 c. <span class="math inline">\(y=4x^2-\sqrt{3}\)</span></p>
 <p><strong>Solution</strong></p>
 <div id="part-a." class="section level5">
@@ -534,7 +504,7 @@ The equation <span class="math inline">\(y=4x^2-\sqrt{3}\)</span> is not a linea
 </div>
 </div>
 <div id="example-8---graphing-linear-functions" class="section level4 tabset tabset-fade">
-<h4>Example 8 - Graphing Linear Functions</h4>
+<h4 class="tabset tabset-fade">Example 8 - Graphing Linear Functions</h4>
 <div id="example-8a" class="section level5">
 <h5>Example 8A</h5>
 <p>Graph the linear function <span class="math inline">\(f(x)=\frac{4}{5}x-3\)</span>.</p>
@@ -744,7 +714,7 @@ f(x)=-16x^2+v_0 x+h
 <hr>
 </div>
 <div id="example-12---graphing-exponential-functions" class="section level4 tabset tabset-fade">
-<h4>Example 12 - Graphing Exponential Functions</h4>
+<h4 class="tabset tabset-fade">Example 12 - Graphing Exponential Functions</h4>
 <div id="example-12a" class="section level5">
 <h5>Example 12A</h5>
 <p>Graph the function <span class="math inline">\(f(x)=3\cdot5^x+2\)</span>.</p>
@@ -966,9 +936,9 @@ Evaluate Your Reasoning
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p><em>Age and legality of ivory revealed by Carbon-14 dating can fight poachers</em>; July 1, 2013; <a href="https://phys.org/news/2013-07-age-legality-ivory-revealed-carbon-.html">Phys.org</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p><a href="https://www.healthstatus.com/perl/calculator.cgi" class="uri">https://www.healthstatus.com/perl/calculator.cgi</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p><a href="https://www.verywell.com/walking-calories-burned-per-minute-3887138" class="uri">https://www.verywell.com/walking-calories-burned-per-minute-3887138</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p><em>Age and legality of ivory revealed by Carbon-14 dating can fight poachers</em>; July 1, 2013; <a href="https://phys.org/news/2013-07-age-legality-ivory-revealed-carbon-.html">Phys.org</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.healthstatus.com/perl/calculator.cgi" class="uri">https://www.healthstatus.com/perl/calculator.cgi</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.verywell.com/walking-calories-burned-per-minute-3887138" class="uri">https://www.verywell.com/walking-calories-burned-per-minute-3887138</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -983,7 +953,7 @@ Evaluate Your Reasoning
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1001,7 +971,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -1022,7 +992,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

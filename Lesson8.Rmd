@@ -118,7 +118,7 @@ L08 - Interactive 1: Linear Functions<br> [(L08-1 ADA Interactive Transcript)](h
 #### Example 7 {.tabset .tabset-fade}
 Determine which of the following are linear functions:  
 a. $f(x)=3x-2$  
-b. $3x-4y=-7$  
+b. $3x+4y=-7$  
 c. $y=4x^2-\sqrt{3}$  
 
 **Solution** 

@@ -333,7 +333,7 @@ Clearly there are other factors that are not considered here that would provide 
 
 <hr>
 
-#### Excel Intructions - Scatter Plots {.tabset .tabset-fade}
+#### Excel Instructions - Scatter Plots {.tabset .tabset-fade}
 
 To make the above scatter plot:
 

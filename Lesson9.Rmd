@@ -202,7 +202,7 @@ Let's look at a table showing us Adriana's salary over the five years she works 
 
 Notice that the changes in Adriana's salary are different each year.  The first year her salary goes up from \$32000 to \$33600 - so she gets a \$1600 raise.  The second year her salary goes up from $33600 to \$35280. This time she got a \$1680 raise.  Let's create a column showing the amount of her raise in the table.
 
-| $x$=number of years | $y$=hourly wage | Raise Amount |
+| $x$=number of years | $y$=annual salary | Raise Amount |
 |--------------------|--------------------|------------|
 |0|$y=32000(1.05)^0=\$32000$| |
 |1|$y=32000(1.05)^1=\$33600$|\$1600|
@@ -373,7 +373,7 @@ L09 - Interactive 3: Practice 2<br> [(L09-3 ADA Interactive Transcript)](https:/
 
 ## The Mattress vs The Retirement Plan
 
-How much of a difference does compound interest make? In order to see this, we can compare two different retirement savings situations.  In the first situation, image that you save money each month for retirement by putting it in an envelope hidden under your mattress. In the second situation, imagine that you invest the money in a retirement account that earns an average of 7.5% interest annually. 
+How much of a difference does compound interest make? In order to see this, we can compare two different retirement savings situations.  In the first situation, imagine that you save money each month for retirement by putting it in an envelope hidden under your mattress. In the second situation, imagine that you invest the money in a retirement account that earns an average of 7.5% interest annually. 
 
 In both situations, we will assume you just graduated from college and are beginning to save for retirement. You currently have \$1200 and will save an additional \$270 each month. You plan to retire in 35 years.
 

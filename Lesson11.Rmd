@@ -78,7 +78,7 @@ The input value, $x$, in each of the equations is the number of kilometers they 
 
 As we learned in Chapter 7 the two equations in this example are linear equations. The rate of change (or slope) in each equation is constant. When we plot this type equation we get a straight line. 
 
-Let's look more carefully at the graph of the two lines representing the Emmy and Sophia's situation. The blue line represents the cost of the monster truck as the kilometers increase. The red line represents the cost of the boat as the kilometers increase.
+Let's look more carefully at the graph of the two lines representing the situation. The blue line represents the cost of the monster truck as the kilometers increase. The red line represents the cost of the boat as the kilometers increase.
 
 ```{r, echo=FALSE}
 nicecurve(37.50+0.88*x,main="How to Get Out of the Jungle",-2,70,xaxis=seq(0,60,10),yaxis=seq(-10,100,10))
@@ -126,7 +126,7 @@ Evaluate Your Reasoning
 
 Sophia and Emmy tie the boat up at the town marina and ask directions to their hotel. After finding out that they have 5 kilometers still to walk they rethink their decision. 
 
-Sophia and Emmy have realized that they made an incorrect assumption in their application of the Quantitative Reasoning process.  The mistakenly assumed that both modes of transportation would get them back to their hotel. But since they didn't realize that travel by boat would also require a 5 kilometer walk, they made a decision that didn't turn out to be the best.
+Sophia and Emmy have realized that they made an incorrect assumption in their application of the Quantitative Reasoning process.  They mistakenly assumed that both modes of transportation would get them back to their hotel. But since they didn't realize that travel by boat would also require a 5 kilometer walk, they made a decision that didn't turn out to be the best.
 
 Because the difference in price between the rentals was relatively small, they now wish they had rented the monster truck and driven straight to the hotel. 
 
@@ -212,7 +212,7 @@ x-y&=0\\
 \end{align}
 $$
 
-The point $(1,1)$ is the only point where the two lines cross *and* the values $x=1, y=1$ is the only set of $x, y$ values that will yield true statements for both equations. When we get a single unique solution like this, we say that the system of equations is *independent*.
+The point $(1,1)$ is the only point where the two lines cross, *and* the values $x=1$ and $y=1$ are the only values for $x$ and $y$ that will yield true statements for both equations. When we get a single unique solution like this, we say that the system of equations is *independent*.
 
 <hr>
 
@@ -260,7 +260,7 @@ $$
 
 The second equation can be graphed as a line with a slope of 1/2 and a $y$-intercept of -3.
 
-It we plot both lines on the same graph, they look like this:
+If we plot both lines on the same graph, they look like this:
 
 ```{r, echo=FALSE}
 nicecurve(1/2*x+2,-6,6,main="Example 2",ylim=c(-6,6),xaxis=seq(-5,5,1),yaxis=seq(-5,5,1))
