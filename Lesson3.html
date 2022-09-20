@@ -13,12 +13,22 @@
 
 <title>Lesson 3: Logical Reasoning</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,12 +36,16 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,32 +58,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -80,10 +70,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -100,40 +86,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -161,7 +123,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -173,7 +135,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -184,10 +146,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -199,7 +174,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -325,7 +299,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -339,7 +313,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -352,7 +326,7 @@ div.tocify {
   <a href="index.html">Table of Contents</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit I
      
     <span class="caret"></span>
@@ -376,7 +350,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit II
      
     <span class="caret"></span>
@@ -397,7 +371,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit III
      
     <span class="caret"></span>
@@ -425,7 +399,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -436,32 +410,56 @@ div.tocify {
 
 <div id="opening-story" class="section level2">
 <h2>Opening Story</h2>
-<p>As you watch this video, notice the different advertisements and media encountered by individuals in the video. Think about how often you encounter advertisements and media that try to inflence the choices you make.</p>
+<p>As you watch this video, notice the different advertisements and
+media encountered by individuals in the video. Think about how often you
+encounter advertisements and media that try to inflence the choices you
+make.</p>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_hhwszpep&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_6wc2t7oi" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p>Lesson 3 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vRIwK9JICnXhxWrOXarj-gcT1rvbVWubM-sYac2wRaS84Ec0D-3cSWlO4U1Z1Cm294sv3RDX5gXAiLv/pub">(0:47 mins, L3 Opening Story Transcript)</a></p>
+<p>Lesson 3 - Opening story<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vRIwK9JICnXhxWrOXarj-gcT1rvbVWubM-sYac2wRaS84Ec0D-3cSWlO4U1Z1Cm294sv3RDX5gXAiLv/pub">(0:47
+mins, L3 Opening Story Transcript)</a></p>
 </center>
 </div>
 <div id="making-choices" class="section level2">
 <h2>Making Choices</h2>
-<p>Every day we make many choices. We choose which products to buy, which candidate will get our vote, how we will take care of our health, what to do with our money, and even what we will believe.</p>
-<p>To make good decisions using quantitative reasoning we need to be familiar with the tools of the Quantitative Reasoning Process. We also need to understand some of the pitfalls that can misdirect us when we try to reason through decisions.</p>
+<p>Every day we make many choices. We choose which products to buy,
+which candidate will get our vote, how we will take care of our health,
+what to do with our money, and even what we will believe.</p>
+<p>To make good decisions using quantitative reasoning we need to be
+familiar with the tools of the Quantitative Reasoning Process. We also
+need to understand some of the pitfalls that can misdirect us when we
+try to reason through decisions.</p>
 <blockquote>
-<p><em>Logical Reasoning</em> is the process of analyzing and evaluating arguments in order to draw valid conclusions.</p>
+<p><em>Logical Reasoning</em> is the process of analyzing and evaluating
+arguments in order to draw valid conclusions.</p>
 </blockquote>
-<p>Logical reasoning is key to making good decisions in all aspects of our lives. Last week, we introduced the Quantitative Reasoning model. Recall that the purpose of the model was to help you make informed decisions that are based on sound reasoning with quantitative evidence.</p>
+<p>Logical reasoning is key to making good decisions in all aspects of
+our lives. Last week, we introduced the Quantitative Reasoning model.
+Recall that the purpose of the model was to help you make informed
+decisions that are based on sound reasoning with quantitative
+evidence.</p>
 <center>
-<img src="Lesson2/Images/qrprocess.png" alt="Quantitative Reasoning Model" />
+<img src="Lesson2/Images/QRProcess.png"
+alt="Quantitative Reasoning Model" />
 </center>
-<p>People frequently use logical reasoning to try to influence our decisions. When logical reasoning is used to support a specific conclusion, we call it a <em>logical argument</em>. Sometimes we use logical arguments to persuade someone to make a choice with a particular outcome. Logical arguments present reasons for accepting a conclusion.</p>
-<div id="propositions-and-conditional-statements" class="section level3">
+<p>People frequently use logical reasoning to try to influence our
+decisions. When logical reasoning is used to support a specific
+conclusion, we call it a <em>logical argument</em>. Sometimes we use
+logical arguments to persuade someone to make a choice with a particular
+outcome. Logical arguments present reasons for accepting a
+conclusion.</p>
+<div id="propositions-and-conditional-statements"
+class="section level3">
 <h3>Propositions and Conditional Statements</h3>
-<p>Logical arguments are created by combining together one or more <em>propositions</em> and <em>conditional statements</em>.</p>
+<p>Logical arguments are created by combining together one or more
+<em>propositions</em> and <em>conditional statements</em>.</p>
 <div id="propositions" class="section level4">
 <h4>Propositions</h4>
 <blockquote>
-<p>A <em>proposition</em> is a statement that is either true or false.</p>
+<p>A <em>proposition</em> is a statement that is either true or
+false.</p>
 </blockquote>
 <p>The following statements are all propositions:</p>
 <center>
@@ -470,63 +468,115 @@ div.tocify {
 <p>“Snakes are mammals.”</p>
 <p>“Caleb got an A on the exam.”</p>
 </center>
-<p>Notice that each of these statements is either true or false. “The sun is the center of our solar system” is an example of a true proposition, while “Snakes are mammals” is an example of a false proposition. Both are propositions because they are statements that are either true or false.</p>
-<p>Only statements can be propositions. For example, “Is it raining?” is not a proposition because it is a question instead of a statement. “Hey you! Come here!” is not a proposition because it is a command and has no truth value.</p>
+<p>Notice that each of these statements is either true or false. “The
+sun is the center of our solar system” is an example of a true
+proposition, while “Snakes are mammals” is an example of a false
+proposition. Both are propositions because they are statements that are
+either true or false.</p>
+<p>Only statements can be propositions. For example, “Is it raining?” is
+not a proposition because it is a question instead of a statement. “Hey
+you! Come here!” is not a proposition because it is a command and has no
+truth value.</p>
 </div>
 <div id="conditional-statements" class="section level4">
 <h4>Conditional Statements</h4>
 <p>Conditional statements are a particular type of proposition.</p>
 <blockquote>
-<p>A <em>conditional statement</em> is a proposition with an if-then structure.</p>
+<p>A <em>conditional statement</em> is a proposition with an if-then
+structure.</p>
 </blockquote>
 <p>The following statements are all conditional statements:</p>
 <center>
-<p>“If the basketball team wins this game, then they will go to the state championship.”</p>
-<p>“If you take out student loans, then you will have to repay them after you graduate.”</p>
+<p>“If the basketball team wins this game, then they will go to the
+state championship.”</p>
+<p>“If you take out student loans, then you will have to repay them
+after you graduate.”</p>
 <p>“If ye love me, keep my commandments.”</p>
 </center>
-<p>Conditional statements are made up of two parts: the “if” part and the “then” part.</p>
+<p>Conditional statements are made up of two parts: the “if” part and
+the “then” part.</p>
 <blockquote>
 <p>The “if” part of a conditional statement is called an assumption.</p>
 </blockquote>
 <blockquote>
-<p>The “then” part of a conditional statement is called a conclusion.</p>
+<p>The “then” part of a conditional statement is called a
+conclusion.</p>
 </blockquote>
-<p>Some propositions don’t use the if-then wording, but can be reworded as a conditional Statement. These propositions are called <strong>implied conditional statements</strong>. Key words like “all”, “whenever”, “always”, “never”, “every time”, and “none” help us identify implied conditional statements.</p>
+<p>Some propositions don’t use the if-then wording, but can be reworded
+as a conditional Statement. These propositions are called
+<strong>implied conditional statements</strong>. Key words like “all”,
+“whenever”, “always”, “never”, “every time”, and “none” help us identify
+implied conditional statements.</p>
 </div>
 <div id="example-1" class="section level4">
 <h4>Example 1</h4>
-<p>“All dogs are mammals” is an implied conditional statement. We could reword it as “If an animal is a dog, then it is a mammal.” The assumption of this implied conditional statement is “If an animal is a dog” and the conclusion is “then it is a mammal.”</p>
+<p>“All dogs are mammals” is an implied conditional statement. We could
+reword it as “If an animal is a dog, then it is a mammal.” The
+assumption of this implied conditional statement is “If an animal is a
+dog” and the conclusion is “then it is a mammal.”</p>
 </div>
 <div id="example-2" class="section level4">
 <h4>Example 2</h4>
-<p>“You are tired in the morning whenever you stay out late” is an implied conditional statement because it could be reworded as “If you stay out late, then you will be tired in the morning.” In this example the assumption is “If you stay out late” and the conclusion is “then you will be tired in the morning.”</p>
+<p>“You are tired in the morning whenever you stay out late” is an
+implied conditional statement because it could be reworded as “If you
+stay out late, then you will be tired in the morning.” In this example
+the assumption is “If you stay out late” and the conclusion is “then you
+will be tired in the morning.”</p>
 <hr>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
 </h4>
-<p>Notice that the second step of the Quantitative Reasoning Process is to “identify variables and assumptions.” Understanding that a conditional statement is made up of an assumption and a conclusion helps us apply the Quantitative Reasoning Process correctly. For example, in the last lesson we saw Lucas and Amanda make the assumption that their expenses would stay fairly constant until Lucas finished school. The conclusions and decisions that we made last week were based on this assumption. We could write this as a conditional statement:</p>
+<p>Notice that the second step of the Quantitative Reasoning Process is
+to “identify variables and assumptions.” Understanding that a
+conditional statement is made up of an assumption and a conclusion helps
+us apply the Quantitative Reasoning Process correctly. For example, in
+the last lesson we saw Lucas and Amanda make the assumption that their
+expenses would stay fairly constant until Lucas finished school. The
+conclusions and decisions that we made last week were based on this
+assumption. We could write this as a conditional statement:</p>
 <center>
-<p>“If Lucas and Amanda’s expenses stay fairly constant until Lucas finishes school, then their decision about student loans will be appropriate.”</p>
+<p>“If Lucas and Amanda’s expenses stay fairly constant until Lucas
+finishes school, then their decision about student loans will be
+appropriate.”</p>
 </center>
-<p>When making decisions it is important to identify the assumptions we are using. If Lucas and Amanda’s health insurance suddenly increased, their expenses would not remain constant. This would then affect the decision they made using the Quantitative Reasoning Process.</p>
-<p>Conditional statements show up in a variety of mediums including technical mediums such as computer codes and financial equations, and message-based mediums such as the scriptures, advertisements, and political messages. In message-based mediums, assumptions are not always stated directly. Sometimes it is assumed that everyone believes the same thing.</p>
-<p>Think about the time when people believed the world was flat. That assumption led to logical thinking such as: If the world is flat, then it must have an edge. If there is an edge, then we could fall off the edge of the world. If we try to sail across the ocean, we will fall off the edge of the world.</p>
+<p>When making decisions it is important to identify the assumptions we
+are using. If Lucas and Amanda’s health insurance suddenly increased,
+their expenses would not remain constant. This would then affect the
+decision they made using the Quantitative Reasoning Process.</p>
+<p>Conditional statements show up in a variety of mediums including
+technical mediums such as computer codes and financial equations, and
+message-based mediums such as the scriptures, advertisements, and
+political messages. In message-based mediums, assumptions are not always
+stated directly. Sometimes it is assumed that everyone believes the same
+thing.</p>
+<p>Think about the time when people believed the world was flat. That
+assumption led to logical thinking such as: If the world is flat, then
+it must have an edge. If there is an edge, then we could fall off the
+edge of the world. If we try to sail across the ocean, we will fall off
+the edge of the world.</p>
 <center>
-<img src="Lesson3/Images/wk3.flatworld.jpg" alt="Flat World" />
+<img src="Lesson3/Images/wk3.FlatWorld.jpg" alt="Flat World" />
 </center>
 </div>
 </div>
 <div id="truth-values-of-conditional-statements" class="section level3">
 <h3>Truth Values of Conditional Statements</h3>
-<p>Every proposition has a truth value. Since conditional statements are one type of proposition, this means every conditional statement is either true or false.</p>
+<p>Every proposition has a truth value. Since conditional statements are
+one type of proposition, this means every conditional statement is
+either true or false.</p>
 <p>Consider the following conditional statement:</p>
 <center>
 <p>“If Anthony takes this pill, then his headache will go away.”</p>
 </center>
 <p>Is this conditional statement true or false?</p>
-<p>Without having more information there isn’t really a clear answer. The only way we can <em>know</em> if the statement is true or false is to have Anthony take the pill and see whether or not his headache goes away. If Anthony doesn’t take the pill, then the best we can do is to <em>assume</em> the statement is true.</p>
-<p><strong>This is always the case.</strong> In order to determine the truth value of a conditional statement, we need to know the truth value of the assumption and the truth value of the conclusion.</p>
+<p>Without having more information there isn’t really a clear answer.
+The only way we can <em>know</em> if the statement is true or false is
+to have Anthony take the pill and see whether or not his headache goes
+away. If Anthony doesn’t take the pill, then the best we can do is to
+<em>assume</em> the statement is true.</p>
+<p><strong>This is always the case.</strong> In order to determine the
+truth value of a conditional statement, we need to know the truth value
+of the assumption and the truth value of the conclusion.</p>
 <p>In this example, there are four different possibilities:</p>
 <ul>
 <li>Anthony took the pill and his headache went away.</li>
@@ -534,90 +584,181 @@ Identify Variables &amp; Assumptions
 <li>Anthony did not take the pill and his headache went away.</li>
 <li>Anthony did not take the pill and his headache did not go away.</li>
 </ul>
-<p>Only one of these possibilities would make the conditional statement false. If Anthony took the pill and his headache did not go away, then the conditional statement was false.</p>
-<p>The conditional statement can only be true if Anthony took the pill and his headache went away.</p>
-<p>If Anthony didn’t take the pill, then we have no way of knowing if his headache would have gone away. In this situation we follow the same “innocent until proven guilty” strategy that is used in a court of law. Because Anthony didn’t take the pill we have no way of knowing if it would have made his headache go away. Therefore, we give the claim the benefit of the doubt and assume the conditional statement is true.</p>
-<p>This example demonstrates three important principles about the truth value of conditional statements:</p>
+<p>Only one of these possibilities would make the conditional statement
+false. If Anthony took the pill and his headache did not go away, then
+the conditional statement was false.</p>
+<p>The conditional statement can only be true if Anthony took the pill
+and his headache went away.</p>
+<p>If Anthony didn’t take the pill, then we have no way of knowing if
+his headache would have gone away. In this situation we follow the same
+“innocent until proven guilty” strategy that is used in a court of law.
+Because Anthony didn’t take the pill we have no way of knowing if it
+would have made his headache go away. Therefore, we give the claim the
+benefit of the doubt and assume the conditional statement is true.</p>
+<p>This example demonstrates three important principles about the truth
+value of conditional statements:</p>
 <ul>
-<li>A conditional statement is FALSE when the assumption is true and the conclusion is false.</li>
-<li>A conditional statement is TRUE when the assumption is true and the conclusion is true.</li>
-<li>A conditional statement is <em>assumed</em> to be TRUE when the assumption is false. (The conclusion could be either true or false.) Because the assumption is false, there is no way to tell whether the conditional statement is true, so we give the benefit of the doubt and assume the conditional statement to be true.</li>
+<li>A conditional statement is FALSE when the assumption is true and the
+conclusion is false.</li>
+<li>A conditional statement is TRUE when the assumption is true and the
+conclusion is true.</li>
+<li>A conditional statement is <em>assumed</em> to be TRUE when the
+assumption is false. (The conclusion could be either true or false.)
+Because the assumption is false, there is no way to tell whether the
+conditional statement is true, so we give the benefit of the doubt and
+assume the conditional statement to be true.</li>
 </ul>
-<p>Conditional statements are called <em>conditional</em> because their truth value depends on the truth of the assumption. The assumption tells us the <em>conditions</em> that have to be true for the conclusion to be guaranteed to be true.</p>
+<p>Conditional statements are called <em>conditional</em> because their
+truth value depends on the truth of the assumption. The assumption tells
+us the <em>conditions</em> that have to be true for the conclusion to be
+guaranteed to be true.</p>
 <blockquote>
-<p>In a true conditional statement, if the assumption is true then the conclusion is guaranteed to always be true.</p>
+<p>In a true conditional statement, if the assumption is true then the
+conclusion is guaranteed to always be true.</p>
 </blockquote>
-<p>It is important to understand that the Quantitative Reasoning Process will lead to a conclusion that is based on a conditional statement. When we make a decision using the Quantitative Reasoning Process, it is only guaranteed to be a good decision if the assumptions we used are found to be true.</p>
-<p>If our assumptions are false, then our conclusion may or may not be accurate. <strong>Anytime we make an informed decision using quantitative reasoning, it is important to be aware that our conclusion is only guaranteed to be true if the assumptions we made are accurate and true.</strong></p>
+<p>It is important to understand that the Quantitative Reasoning Process
+will lead to a conclusion that is based on a conditional statement. When
+we make a decision using the Quantitative Reasoning Process, it is only
+guaranteed to be a good decision if the assumptions we used are found to
+be true.</p>
+<p>If our assumptions are false, then our conclusion may or may not be
+accurate. <strong>Anytime we make an informed decision using
+quantitative reasoning, it is important to be aware that our conclusion
+is only guaranteed to be true if the assumptions we made are accurate
+and true.</strong></p>
 <p>Let’s look at a few other examples of conditional statements.</p>
 <div id="example-3" class="section level4">
 <h4>Example 3</h4>
-<p>Under what conditions would the following conditional statement be false?</p>
+<p>Under what conditions would the following conditional statement be
+false?</p>
 <center>
-<p>“If the basketball team wins this game, then they will go to the state championship.”</p>
+<p>“If the basketball team wins this game, then they will go to the
+state championship.”</p>
 </center>
-<p><strong>Answer:</strong> As stated in the principle given above, a conditional statement is false if the assumption is true and the conclusion is false. In this example that would mean that the basketball team wins this game (so the assumption is true) but they don’t get to go to the state championship (the conclusion is false).</p>
+<p><strong>Answer:</strong> As stated in the principle given above, a
+conditional statement is false if the assumption is true and the
+conclusion is false. In this example that would mean that the basketball
+team wins this game (so the assumption is true) but they don’t get to go
+to the state championship (the conclusion is false).</p>
 </div>
 <div id="example-4" class="section level4">
 <h4>Example 4</h4>
-<p>Using the same conditional statement from example 1, let’s say that the basketball team loses the game, but they still end up getting to go to the state championship. Is the conditional statement true or false?</p>
-<p><strong>Answer:</strong> The conditional statement as a whole is assumed to be true. In this case, the assumption of the conditional statement is false (they didn’t win the game), so the conclusion may or may not be true (they might get to go to the state championship and they might not). Either way, the conditional statement is assumed to be <strong>true</strong> because the assumption is false. We don’t know what would have happened if they had won the game, so we give the benefit of the doubt to the original conditional statement and assume the statement to be true.</p>
+<p>Using the same conditional statement from example 1, let’s say that
+the basketball team loses the game, but they still end up getting to go
+to the state championship. Is the conditional statement true or
+false?</p>
+<p><strong>Answer:</strong> The conditional statement as a whole is
+assumed to be true. In this case, the assumption of the conditional
+statement is false (they didn’t win the game), so the conclusion may or
+may not be true (they might get to go to the state championship and they
+might not). Either way, the conditional statement is assumed to be
+<strong>true</strong> because the assumption is false. We don’t know
+what would have happened if they had won the game, so we give the
+benefit of the doubt to the original conditional statement and assume
+the statement to be true.</p>
 <div>
 <center>
 <iframe width="780" height="400" frameborder="0" src="./Lesson3/Storyline/Lesson3.Content1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L03 - Interactive 1: Truth Values<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQVu33QfES7wH31wF4qiBGvV-N8rV61eIB_SftpJYHIzGtbQIZRybele-d4ae3aKBer39641VswmuR2/pub">(L03-1 ADA Interactive Transcript)</a></p>
+<p>L03 - Interactive 1: Truth Values<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQVu33QfES7wH31wF4qiBGvV-N8rV61eIB_SftpJYHIzGtbQIZRybele-d4ae3aKBer39641VswmuR2/pub">(L03-1
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 </div>
 </div>
-<div id="conditional-statements-in-the-scriptures" class="section level3">
+<div id="conditional-statements-in-the-scriptures"
+class="section level3">
 <h3>Conditional Statements in the Scriptures</h3>
-<p>Looking for logical structures can help us better understand all types of logical arguments, including those found in the scriptures. Many of the conditional statements found in the scriptures are promises. If we do our part to make the assumption true, the conclusion is guaranteed to follow.</p>
+<p>Looking for logical structures can help us better understand all
+types of logical arguments, including those found in the scriptures.
+Many of the conditional statements found in the scriptures are promises.
+If we do our part to make the assumption true, the conclusion is
+guaranteed to follow.</p>
 <p>Here are some examples:</p>
 <div id="example-5" class="section level4">
 <h4>Example 5</h4>
 <blockquote>
-<p>Then said Jesus to those Jews which believed on him, If ye continue in my word, then are ye my disciples indeed;<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Then said Jesus to those Jews which believed on him, If ye continue
+in my word, then are ye my disciples indeed;<a href="#fn1"
+class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </blockquote>
-<p>The assumption in this scripture is “if you continue in my word” and the conclusion is “then are ye my disciples indeed.” Because we know this scripture is true, this tells us if we continue to read, study, and follow the words of the Savior, then we are guaranteed to be His disciples.</p>
+<p>The assumption in this scripture is “if you continue in my word” and
+the conclusion is “then are ye my disciples indeed.” Because we know
+this scripture is true, this tells us if we continue to read, study, and
+follow the words of the Savior, then we are guaranteed to be His
+disciples.</p>
 </div>
 <div id="example-6" class="section level4">
 <h4>Example 6</h4>
 <blockquote>
-<p>If ye love me, keep my commandments.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>If ye love me, keep my commandments.<a href="#fn2"
+class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 </blockquote>
-<p>The assumption in this scripture is “if ye love me” and the conclusion is “keep my commandments”. Because we know this scripture is true, we know if we love the Savior, we will keep his commandments.</p>
+<p>The assumption in this scripture is “if ye love me” and the
+conclusion is “keep my commandments”. Because we know this scripture is
+true, we know if we love the Savior, we will keep his commandments.</p>
 </div>
 <div id="example-7" class="section level4">
 <h4>Example 7</h4>
 <blockquote>
-<p>Then if our hearts have been hardened, yea, if we have hardened our hearts against the word, insomuch that it has not been found in us, then will our state be awful, for then we shall be condemned.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>Then if our hearts have been hardened, yea, if we have hardened our
+hearts against the word, insomuch that it has not been found in us, then
+will our state be awful, for then we shall be condemned.<a href="#fn3"
+class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 </blockquote>
-<p>The assumption in this scripture is “if we have hardened our hearts against the word” and the conclusion is “then will our state be awful, for then we shall be condemned.” Because we know this scripture is true, we know if we harden our hearts against the word, we are guaranteed to be condemned.</p>
+<p>The assumption in this scripture is “if we have hardened our hearts
+against the word” and the conclusion is “then will our state be awful,
+for then we shall be condemned.” Because we know this scripture is true,
+we know if we harden our hearts against the word, we are guaranteed to
+be condemned.</p>
 </div>
 <div id="example-8" class="section level4">
 <h4>Example 8</h4>
-<p>In addition to finding conditional statements in the scriptures, we often see them in the words of the prophets. Consider the following statement made by President Gordon B. Hinckley:</p>
+<p>In addition to finding conditional statements in the scriptures, we
+often see them in the words of the prophets. Consider the following
+statement made by President Gordon B. Hinckley:</p>
 <blockquote>
-<p>“If we will give…service [to others], our days will be filled with joy and gladness.”<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>“If we will give…service [to others], our days will be filled with
+joy and gladness.”<a href="#fn4" class="footnote-ref"
+id="fnref4"><sup>4</sup></a></p>
 </blockquote>
-<p>The assumption in this statement is “if we will give service to others” and the conclusion is “our days will be filled with joy and gladness.” This promise from a prophet guarantees that we will have days filled with joy and gladness if we give service to others. Those who do not choose to serve others may or may not find that same joy and gladness. It is possible they will, but it is only guaranteed to those who give service to others.</p>
+<p>The assumption in this statement is “if we will give service to
+others” and the conclusion is “our days will be filled with joy and
+gladness.” This promise from a prophet guarantees that we will have days
+filled with joy and gladness if we give service to others. Those who do
+not choose to serve others may or may not find that same joy and
+gladness. It is possible they will, but it is only guaranteed to those
+who give service to others.</p>
 </div>
 <div id="activity" class="section level4">
 <h4>Activity</h4>
-<p>Find a scripture or gospel quote that uses a conditional statement. Conduct a similar analysis and see what you learn about that quote by considering the logical structure of the argument. You will be asked to share this scripture in your preparation homework.</p>
+<p>Find a scripture or gospel quote that uses a conditional statement.
+Conduct a similar analysis and see what you learn about that quote by
+considering the logical structure of the argument. You will be asked to
+share this scripture in your preparation homework.</p>
 </div>
 </div>
 </div>
 <div id="strength-of-arguments" class="section level2">
 <h2>Strength of Arguments</h2>
-<p>As we have seen so far in this lesson logical reasoning is an essential part of the Quantitative Reasoning Process. It is essential that we clearly understand the assumptions we are making and realize that our conclusions are only guaranteed to be accurate if our assumptions are true. Additionally, it is important to understand persuasive logical arguments we are presented with in the news, social media, and the internet.</p>
-<p>In the opening video for this lesson you saw several ads and commercials that used faulty reasoning. Logical arguments that use faulty reasoning are very common. We call this type of argument logical fallacies.</p>
+<p>As we have seen so far in this lesson logical reasoning is an
+essential part of the Quantitative Reasoning Process. It is essential
+that we clearly understand the assumptions we are making and realize
+that our conclusions are only guaranteed to be accurate if our
+assumptions are true. Additionally, it is important to understand
+persuasive logical arguments we are presented with in the news, social
+media, and the internet.</p>
+<p>In the opening video for this lesson you saw several ads and
+commercials that used faulty reasoning. Logical arguments that use
+faulty reasoning are very common. We call this type of argument logical
+fallacies.</p>
 <blockquote>
-<p>A logical fallacy is an argument that is based on an error in reasoning.</p>
+<p>A logical fallacy is an argument that is based on an error in
+reasoning.</p>
 </blockquote>
-<p>In particular, we will discuss four types of logical fallacies. There are many others, but these four are some of the most common:</p>
+<p>In particular, we will discuss four types of logical fallacies. There
+are many others, but these four are some of the most common:</p>
 <ul>
 <li>Improper generalization</li>
 <li>Appeal to emotion</li>
@@ -626,72 +767,148 @@ Identify Variables &amp; Assumptions
 </ul>
 <div id="improper-generalization" class="section level3">
 <h3>Improper Generalization</h3>
-<p>The weight loss ad from the introductory video is a great example of an argument that includes the improper generalization fallacy.</p>
+<p>The weight loss ad from the introductory video is a great example of
+an argument that includes the improper generalization fallacy.</p>
 <center>
-<img src="Lesson3/Images/billboard.jpg" alt="A billboard advertising weight loss, lose 50 lbs without dieting! Others have done it and YOU CAN TOO!" />
+<img src="Lesson3/Images/Billboard.jpg"
+alt="A billboard advertising weight loss, lose 50 lbs without dieting! Others have done it and YOU CAN TOO!" />
 </center>
-<p>The advertisement implies that because this program has worked for others, it will work for you too. The ad is not just congratulating the individual on their weight loss. It is inviting us to join them in weight loss through this program.</p>
+<p>The advertisement implies that because this program has worked for
+others, it will work for you too. The ad is not just congratulating the
+individual on their weight loss. It is inviting us to join them in
+weight loss through this program.</p>
 <blockquote>
-<p>The improper generalization fallacy refers to an argument that concludes that because one individual or group experiences a certain result, then everyone should experience the similar results.</p>
+<p>The improper generalization fallacy refers to an argument that
+concludes that because one individual or group experiences a certain
+result, then everyone should experience the similar results.</p>
 </blockquote>
-<p>The weight loss program may have worked for the individuals referred to in the ad, but that doesn’t mean it will work for everyone. The advertisers are trying to get you to spend your money on their program.</p>
+<p>The weight loss program may have worked for the individuals referred
+to in the ad, but that doesn’t mean it will work for everyone. The
+advertisers are trying to get you to spend your money on their
+program.</p>
 </div>
 <div id="appeal-to-emotion" class="section level3">
 <h3>Appeal to Emotion</h3>
 <p>Another common fallacy is an appeal to emotion</p>
 <blockquote>
-<p>The appeal to emotion fallacy is an argument that claims something is true because of an emotional reason unrelated to the argument.</p>
+<p>The appeal to emotion fallacy is an argument that claims something is
+true because of an emotional reason unrelated to the argument.</p>
 </blockquote>
-<p>The animal shelter ad shown in the introductory video is a good example of this.</p>
+<p>The animal shelter ad shown in the introductory video is a good
+example of this.</p>
 <center>
-<img src="Lesson3/Images/mag_Adopt_cropped.png" alt="image displaying an animal shelter ad" />
+<img src="Lesson3/Images/Mag_Adopt_cropped.png"
+alt="image displaying an animal shelter ad" />
 </center>
 </center>
-<p>This ad includes a picture of a dog and a tagline that says: “Adopt today! A pet is waiting for you.” The image and the words combine to provide an emotional appeal to encourage pet adoption. Note that the advertisers are trying to influence your actions by appealing to your emotions.</p>
-<p>Another example of an appeal to emotion is shown in the following ad for Michelin tires.</p>
+<p>This ad includes a picture of a dog and a tagline that says: “Adopt
+today! A pet is waiting for you.” The image and the words combine to
+provide an emotional appeal to encourage pet adoption. Note that the
+advertisers are trying to influence your actions by appealing to your
+emotions.</p>
+<p>Another example of an appeal to emotion is shown in the following ad
+for Michelin tires.</p>
 <p><br></p>
 <center>
-<img src="Lesson3/Images/wk3.tires.jpg" alt="Michelin Tires ad" />
+<img src="Lesson3/Images/Wk3.Tires.jpg" alt="Michelin Tires ad" />
 </center>
 <p><br></p>
-<p>Including a baby in this advertisement connects to your emotions by appealing to your desire to protect children. Rather than telling you why Michelin tires are better than other tires, it implies that Michelin tires will help you keep your baby safe. Note, however, that it gives no evidence for this claim.</p>
+<p>Including a baby in this advertisement connects to your emotions by
+appealing to your desire to protect children. Rather than telling you
+why Michelin tires are better than other tires, it implies that Michelin
+tires will help you keep your baby safe. Note, however, that it gives no
+evidence for this claim.</p>
 </div>
 <div id="personal-attacks" class="section level3">
 <h3>Personal Attacks</h3>
-<p>In the introductory video you heard a political ad promoting Debbie Williams as the mayor of Garden City. This ad is an example of a personal attack. The argument presented did not provide any logical reasons to vote for Debbie Williams; it just attacked Bryce Phillips, the current mayor of Garden City. The attacks were of a personal nature rather than attacking his policies.</p>
+<p>In the introductory video you heard a political ad promoting Debbie
+Williams as the mayor of Garden City. This ad is an example of a
+personal attack. The argument presented did not provide any logical
+reasons to vote for Debbie Williams; it just attacked Bryce Phillips,
+the current mayor of Garden City. The attacks were of a personal nature
+rather than attacking his policies.</p>
 <blockquote>
-<p>A personal attack fallacy is an argument that is based on attacking the person making the argument, rather than critiquing the argument on its own merits.</p>
+<p>A personal attack fallacy is an argument that is based on attacking
+the person making the argument, rather than critiquing the argument on
+its own merits.</p>
 </blockquote>
-<p>Here is another example of a political ad that uses a personal attack.</p>
+<p>Here is another example of a political ad that uses a personal
+attack.</p>
 <p><br></p>
 <center>
 <img src="Lesson3/Images/wk3.political.png" alt="Political Ad" />
 </center>
 <p><br></p>
-<p>This ad is from a State Senator election in Montana in 2014. Notice that, among other things, the ad claims “Tonya Shellnutt opposes holding rapists and abusers accountable for their crimes.” This is clearly an exaggeration that portrays Ms. Shellnutt in a poor light. It is unlikely that Ms. Shellnutt wants rapists and abusers to have no consequences for their actions, and equally unlikely that she would like Montana women and families to be in danger. The ad attacks Ms. Shellnutt personally because of her position on a particular piece of legislation, instead of addressing the actual law to which it refers.</p>
+<p>This ad is from a State Senator election in Montana in 2014. Notice
+that, among other things, the ad claims “Tonya Shellnutt opposes holding
+rapists and abusers accountable for their crimes.” This is clearly an
+exaggeration that portrays Ms. Shellnutt in a poor light. It is unlikely
+that Ms. Shellnutt wants rapists and abusers to have no consequences for
+their actions, and equally unlikely that she would like Montana women
+and families to be in danger. The ad attacks Ms. Shellnutt personally
+because of her position on a particular piece of legislation, instead of
+addressing the actual law to which it refers.</p>
 </div>
 <div id="alternative-explanations" class="section level3">
 <h3>Alternative Explanations</h3>
-<p>Did you know that more drownings occur in months where ice cream consumption is high? This must mean that ice cream consumption causes drowning, right?</p>
-<p>Rather than making that conclusion, we should consider whether there is an alternative explanation.</p>
+<p>Did you know that more drownings occur in months where ice cream
+consumption is high? This must mean that ice cream consumption causes
+drowning, right?</p>
+<p>Rather than making that conclusion, we should consider whether there
+is an alternative explanation.</p>
 <blockquote>
-<p>The alternative explanation fallacy refers to an argument where a conclusion is made without adequately considering other explanations that might explain the observed effect.</p>
+<p>The alternative explanation fallacy refers to an argument where a
+conclusion is made without adequately considering other explanations
+that might explain the observed effect.</p>
 </blockquote>
-<p>In this example, we should consider the weather. People tend to eat ice cream more often in warmer weather. And people go swimming more when the weather is warmer. So the increase in drowning deaths is most likely due to an increase in the number of people swimming during warmer weather. It has nothing to do with ice cream.</p>
-<p>We saw another example in the introductory video where the newspaper headline claimed: “Soda a Day Leads to Heart Attacks in Men.”<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> Researchers found a correlation between soda drinking and heart attacks. But just knowing there is a correlation does not mean the researchers can conclude that drinking a soda every day causes the heart attack. There may be other alternative explanations.</p>
-<p>Another historical example relates to smoking and lung cancer. Prior to the 1900s, lung cancer was very rare. However, as smoking became more popular, doctors noticed an increase in the occurrence of lung cancer. In the 1920s and 1930s, doctors started noticing a correlation between smoking and lung cancer. However many alternative explanations were suggested, especially by the tobacco industry. In the 1960s, only about one-third of US doctors believed that lung cancer was caused by smoking. Before concluding that smoking <em>causes</em> lung cancer, doctors had to rule out any possible alternative explanations. This took many carefully designed scientific studies over many years. Some of those studies looked at the prevalence of smoking in different areas of the world and compared it to the prevalence of lung cancer in that area. In this example, researchers were eventually able to eliminate alternative explanations and show that most cases of lung cancer are indeed caused by smoking.</p>
+<p>In this example, we should consider the weather. People tend to eat
+ice cream more often in warmer weather. And people go swimming more when
+the weather is warmer. So the increase in drowning deaths is most likely
+due to an increase in the number of people swimming during warmer
+weather. It has nothing to do with ice cream.</p>
+<p>We saw another example in the introductory video where the newspaper
+headline claimed: “Soda a Day Leads to Heart Attacks in Men.”<a
+href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+Researchers found a correlation between soda drinking and heart attacks.
+But just knowing there is a correlation does not mean the researchers
+can conclude that drinking a soda every day causes the heart attack.
+There may be other alternative explanations.</p>
+<p>Another historical example relates to smoking and lung cancer. Prior
+to the 1900s, lung cancer was very rare. However, as smoking became more
+popular, doctors noticed an increase in the occurrence of lung cancer.
+In the 1920s and 1930s, doctors started noticing a correlation between
+smoking and lung cancer. However many alternative explanations were
+suggested, especially by the tobacco industry. In the 1960s, only about
+one-third of US doctors believed that lung cancer was caused by smoking.
+Before concluding that smoking <em>causes</em> lung cancer, doctors had
+to rule out any possible alternative explanations. This took many
+carefully designed scientific studies over many years. Some of those
+studies looked at the prevalence of smoking in different areas of the
+world and compared it to the prevalence of lung cancer in that area. In
+this example, researchers were eventually able to eliminate alternative
+explanations and show that most cases of lung cancer are indeed caused
+by smoking.</p>
 <p>Some references:</p>
 <ul>
-<li><a href="http://tobaccocontrol.bmj.com/content/21/2/87.full" class="uri">http://tobaccocontrol.bmj.com/content/21/2/87.full</a><br />
+<li><a href="http://tobaccocontrol.bmj.com/content/21/2/87.full"
+class="uri">http://tobaccocontrol.bmj.com/content/21/2/87.full</a><br />
 </li>
-<li><a href="https://www.gapminder.org/videos/lung-cancer-statistics/" class="uri">https://www.gapminder.org/videos/lung-cancer-statistics/</a></li>
+<li><a href="https://www.gapminder.org/videos/lung-cancer-statistics/"
+class="uri">https://www.gapminder.org/videos/lung-cancer-statistics/</a></li>
 </ul>
 </div>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>This lesson highlights the importance of understanding logical arguments when making decisions. In the Quantitative Reasoning Process we make assumptions. It is important to keep in mind that the validity of the decisions we make are conditional. If the assumptions are true, it is guaranteed that our conclusions are true.</p>
-<p>We also need to be aware of logical fallacies when we examine logical arguments. Logical fallacies such as improper generalizations, appeals to emotion, personal attacks, and alternative explanations can lead to invalid conclusions.</p>
+<p>This lesson highlights the importance of understanding logical
+arguments when making decisions. In the Quantitative Reasoning Process
+we make assumptions. It is important to keep in mind that the validity
+of the decisions we make are conditional. If the assumptions are true,
+it is guaranteed that our conclusions are true.</p>
+<p>We also need to be aware of logical fallacies when we examine logical
+arguments. Logical fallacies such as improper generalizations, appeals
+to emotion, personal attacks, and alternative explanations can lead to
+invalid conclusions.</p>
 </div>
 <div id="lesson-checklist" class="section level2">
 <h2>Lesson Checklist</h2>
@@ -699,9 +916,11 @@ Identify Variables &amp; Assumptions
 <ul>
 <li>Identify conditional statements.</li>
 <li>Identify scriptural conditional statements</li>
-<li>Identify the assumptions and conclusions of a conditional statement</li>
+<li>Identify the assumptions and conclusions of a conditional
+statement</li>
 <li>Determine the truth of a conditional statement.</li>
-<li>Identify key assumptions used in a given model of a real-world situation.</li>
+<li>Identify key assumptions used in a given model of a real-world
+situation.</li>
 <li>Identify potential flaws in quantitative reasoning, including
 <ul>
 <li>improper generalization.</li>
@@ -714,14 +933,26 @@ Identify Variables &amp; Assumptions
 © 2020 Brigham Young University - Idaho
 </center>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p><a href="https://www.lds.org/scriptures/nt/john/8.31?lang=eng#29">John 8:31</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p><a href="https://www.lds.org/scriptures/nt/john/14.15?lang=eng#14">John 14:15</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p><a href="https://www.lds.org/scriptures/bofm/alma/12.13?lang=eng#12">Alma 12:13</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>Gordon B. Hinckley. <a href="https://www.lds.org/ensign/1987/03/giving-ourselves-to-the-service-of-the-lord?lang=eng">Giving Ourselves to the Service of the Lord</a>. Ensign, March 1987.<a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>CBS News. <a href="http://www.cbsnews.com/news/soda-a-day-may-lead-to-heart-attacks-in-men/">Soda a Day May Lead to Heart Attacks in Men</a>. July 25, 2013.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p><a
+href="https://www.lds.org/scriptures/nt/john/8.31?lang=eng#29">John
+8:31</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a
+href="https://www.lds.org/scriptures/nt/john/14.15?lang=eng#14">John
+14:15</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a
+href="https://www.lds.org/scriptures/bofm/alma/12.13?lang=eng#12">Alma
+12:13</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Gordon B. Hinckley. <a
+href="https://www.lds.org/ensign/1987/03/giving-ourselves-to-the-service-of-the-lord?lang=eng">Giving
+Ourselves to the Service of the Lord</a>. Ensign, March 1987.<a
+href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>CBS News. <a
+href="http://www.cbsnews.com/news/soda-a-day-may-lead-to-heart-attacks-in-men/">Soda
+a Day May Lead to Heart Attacks in Men</a>. July 25, 2013.<a
+href="#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -736,7 +967,7 @@ Identify Variables &amp; Assumptions
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -754,7 +985,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -763,6 +994,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
@@ -775,7 +1009,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
