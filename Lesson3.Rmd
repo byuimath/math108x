@@ -31,7 +31,9 @@ To make good decisions using quantitative reasoning we need to be familiar with 
 Logical reasoning is key to making good decisions in all aspects of our lives. Last week, we introduced the Quantitative Reasoning model.  Recall that the purpose of the model was to help you make informed decisions that are based on sound reasoning with quantitative evidence.
 
 <center>
+
 ![Quantitative Reasoning Model](./Lesson2/Images/qrprocess.png)
+
 </center>
 
 People frequently use logical reasoning to try to influence our decisions. When logical reasoning is used to support a specific conclusion, we call it a *logical argument*. Sometimes we use logical arguments to persuade someone to make a choice with a particular outcome. Logical arguments present reasons for accepting a conclusion.
