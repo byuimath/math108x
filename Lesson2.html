@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>Lesson 2: Introduction to The Process</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,12 +36,16 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,38 +58,12 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -83,13 +71,8 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -100,44 +83,59 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
+.dropdown-submenu {
+  position: relative;
 }
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
 }
-
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
 }
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
 }
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
 }
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu.pull-left {
+  float: none;
 }
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -148,54 +146,85 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
-
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
-
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -209,6 +238,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -244,8 +279,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -255,8 +288,18 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -270,7 +313,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -283,7 +326,7 @@ div.tocify {
   <a href="index.html">Table of Contents</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit I
      
     <span class="caret"></span>
@@ -307,7 +350,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit II
      
     <span class="caret"></span>
@@ -328,7 +371,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit III
      
     <span class="caret"></span>
@@ -356,7 +399,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -370,36 +413,72 @@ div.tocify {
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/41338032/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_nkqjb33p&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=0_ggbx9j66" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player">
 </iframe>
-<p>Lesson 2 Opening Story: Introduction to the Process<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQzOIDnHaTG5g_bNd8VPaF_AxSq4VzrCtVrw1zA90Te2Im7lshXwlYn7nO1jsF3iXFzgjO_636T6p1L/pub">(1:52 mins, L2 Opening Story Transcript)</a></p>
+<p>Lesson 2 Opening Story: Introduction to the Process<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQzOIDnHaTG5g_bNd8VPaF_AxSq4VzrCtVrw1zA90Te2Im7lshXwlYn7nO1jsF3iXFzgjO_636T6p1L/pub">(1:52
+mins, L2 Opening Story Transcript)</a></p>
 </center>
 </div>
 <div id="the-quantitative-reasoning-process" class="section level2">
 <h2>The Quantitative Reasoning Process</h2>
-<p>As you saw in the introductory video, Lucas and Amanda are facing a complicated decision that impacts their family life and finances now while they are going to school as well as their future. Should they take out loans to cover their expenses and finish school more quickly? Or should they have Lucas take another part-time job to stay debt free, but cause school to take an extra three to four semesters?</p>
-<p>This scenario is a good example of a real-world problem where mathematics can be used to help make an informed decision. In this course we will be learning how the Quantitative Reasoning Process can help us make informed decisions in many different aspects of our lives.</p>
-<p>The Quantitative Reasoning Process is described in the following interactive diagram. Press the next button to see a description of each step of the process:</p>
+<p>As you saw in the introductory video, Lucas and Amanda are facing a
+complicated decision that impacts their family life and finances now
+while they are going to school as well as their future. Should they take
+out loans to cover their expenses and finish school more quickly? Or
+should they have Lucas take another part-time job to stay debt free, but
+cause school to take an extra three to four semesters?</p>
+<p>This scenario is a good example of a real-world problem where
+mathematics can be used to help make an informed decision. In this
+course we will be learning how the Quantitative Reasoning Process can
+help us make informed decisions in many different aspects of our
+lives.</p>
+<p>The Quantitative Reasoning Process is described in the following
+interactive diagram. Press the next button to see a description of each
+step of the process:</p>
 <div>
 <center>
 <iframe width="780" height="380" frameborder="0" src="./Lesson2/Storyline/QRProcess - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L02 - Interactive 1: Quantitative Reasoning<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTaTorPR5Ltu-Gt_nR_UJq6tntHIaIDhF5UnnuOTtOo7bVuxOqvD5g9At9otCvsPnPLStvYMplYbYNu/pub">(L02-1 ADA Interactive Transcript)</a></p>
+<p>L02 - Interactive 1: Quantitative Reasoning<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTaTorPR5Ltu-Gt_nR_UJq6tntHIaIDhF5UnnuOTtOo7bVuxOqvD5g9At9otCvsPnPLStvYMplYbYNu/pub">(L02-1
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 <hr>
-<p>In order to better understand how the Quantitative Reasoning Process works, let’s use the process, step-by-step, to help Lucas and Amanda make an informed decision about their financial situation.</p>
+<p>In order to better understand how the Quantitative Reasoning Process
+works, let’s use the process, step-by-step, to help Lucas and Amanda
+make an informed decision about their financial situation.</p>
 <h3 class="step one">
 Understand the Problem
 </h3>
-<p>Lucas and Amanda have identified two possible plans for Lucas to complete school and need to decide which one is financially better for their family.</p>
+<p>Lucas and Amanda have identified two possible plans for Lucas to
+complete school and need to decide which one is financially better for
+their family.</p>
 <p style="margin-left: 2em">
-<b>Part-Time Job Option:</b> Lucas could take on additional part-time work while going to school.
+<b>Part-Time Job Option:</b> Lucas could take on additional part-time
+work while going to school.
 </p>
 <p style="margin-left: 2em">
-<b>Student Loan Option:</b> They could use student loans to cover their expenses.
+<b>Student Loan Option:</b> They could use student loans to cover their
+expenses.
 </p>
-<p>Lucas and Amanda have already determined that they value their education. Amanda has already graduated and they want to make an informed decision about the best way for Lucas to finish school. They want to follow the advice President Dieter F. Uchtdorf gave:</p>
+<p>Lucas and Amanda have already determined that they value their
+education. Amanda has already graduated and they want to make an
+informed decision about the best way for Lucas to finish school. They
+want to follow the advice President Dieter F. Uchtdorf gave:</p>
 <div style="margin-left: 2em;">
-<p>For members of the Church, education is not merely a good idea – it’s a commandment. We are to learn ‘of things both in heaven and in the earth, and under the earth; things which have been, things which are, things which must shortly come to pass; things which are at home, things which are abroad.’ Joseph Smith loved learning even though he had few opportunities for formal education…Joseph taught the Saints that knowledge was a necessary part of our mortal journey, for ‘man is saved no faster than he [gains] knowledge,’ and that ‘whatever principle of intelligence we attain…in this life, it will rise with us in the resurrection.’ During challenging times, it is even more important to learn. The Prophet Joseph taught, ’Knowledge does away with darkness, [anxiety], and doubt; for these cannot exist where knowledge is.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>For members of the Church, education is not merely a good idea – it’s
+a commandment. We are to learn ‘of things both in heaven and in the
+earth, and under the earth; things which have been, things which are,
+things which must shortly come to pass; things which are at home, things
+which are abroad.’ Joseph Smith loved learning even though he had few
+opportunities for formal education…Joseph taught the Saints that
+knowledge was a necessary part of our mortal journey, for ‘man is saved
+no faster than he [gains] knowledge,’ and that ‘whatever principle of
+intelligence we attain…in this life, it will rise with us in the
+resurrection.’ During challenging times, it is even more important to
+learn. The Prophet Joseph taught, ’Knowledge does away with darkness,
+[anxiety], and doubt; for these cannot exist where knowledge is.<a
+href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 <hr>
 <h3 class="step two">
@@ -408,11 +487,16 @@ Identify Variables &amp; Assumptions
 <h4>
 Identify Key Variables
 </h4>
-<p>Now that we have an understanding of the real-world problem Lucas and Amanda are facing, we need to identify the variables in their problem.</p>
+<p>Now that we have an understanding of the real-world problem Lucas and
+Amanda are facing, we need to identify the variables in their
+problem.</p>
 <blockquote>
-<p>Definition: A variable is an element of a situation that has the potential to vary or change in value.</p>
+<p>Definition: A variable is an element of a situation that has the
+potential to vary or change in value.</p>
 </blockquote>
-<p>To identify the key variables, we ask ourselves which elements of the situation have the potential to vary or change in value. In Lucas and Amanda’s situation, here are some variables they should consider:</p>
+<p>To identify the key variables, we ask ourselves which elements of the
+situation have the potential to vary or change in value. In Lucas and
+Amanda’s situation, here are some variables they should consider:</p>
 <ul>
 <li>Tuition costs</li>
 <li>Living expenses</li>
@@ -422,69 +506,161 @@ Identify Key Variables
 <li>Annual interest rate</li>
 <li>Wages from part-time employment.</li>
 </ul>
-<p>If we consider each of these variables, we realize they are elements of the situation that could change. For example, tuition prices could go up before Lucas graduates and their living expenses could go up or down. Lucas’s salary after graduation will depend on the job he gets. Lucas and Amanda could take the maximum loan amount available or they could decide to take a smaller amount. The costs of the loan and the interest rate will vary based on the economy. Lucas’s wages from part-time employment could change if Lucas gets a raise or he loses his job.</p>
-<p>All of these variables are important for Lucas and Amanda to consider when making their decision. Lucas and Amanda will have to decide which variables are the most important.</p>
+<p>If we consider each of these variables, we realize they are elements
+of the situation that could change. For example, tuition prices could go
+up before Lucas graduates and their living expenses could go up or down.
+Lucas’s salary after graduation will depend on the job he gets. Lucas
+and Amanda could take the maximum loan amount available or they could
+decide to take a smaller amount. The costs of the loan and the interest
+rate will vary based on the economy. Lucas’s wages from part-time
+employment could change if Lucas gets a raise or he loses his job.</p>
+<p>All of these variables are important for Lucas and Amanda to consider
+when making their decision. Lucas and Amanda will have to decide which
+variables are the most important.</p>
 <hr>
 <h4>
 Making Assumptions
 </h4>
-<p>Lucas and Amanda’s situation involves several different variables that could take on different values. This makes the problem more complicated because there are so many different quantities that could change. In order to simplify any situation and make it more manageable, we must make some assumptions.</p>
+<p>Lucas and Amanda’s situation involves several different variables
+that could take on different values. This makes the problem more
+complicated because there are so many different quantities that could
+change. In order to simplify any situation and make it more manageable,
+we must make some assumptions.</p>
 <blockquote>
-<p>Definition: An assumption is an idea or concept that is accepted as true.</p>
+<p>Definition: An assumption is an idea or concept that is accepted as
+true.</p>
 </blockquote>
-<p>Often, our assumptions are related to our variables (that is why assumptions and variables are listed in the same step of the Quantitative Reasoning Process). We frequently assume that a variable will behave in a certain way. For example, Lucas and Amanda could assume that their living expenses will remain fairly constant for the time Lucas needs to finish school. This assumption will simplify their calculations and allow them to focus their attention on other aspects of the situation.</p>
-<p>In addition to making assumptions about variables, we also make general assumptions about situations. For example, Lucas and Amanda will need to assume that they have explored all possible options for scholarships and grants that could help them pay for school. If additional scholarship or grant money were available, that might impact their decision about taking out student loans.</p>
+<p>Often, our assumptions are related to our variables (that is why
+assumptions and variables are listed in the same step of the
+Quantitative Reasoning Process). We frequently assume that a variable
+will behave in a certain way. For example, Lucas and Amanda could assume
+that their living expenses will remain fairly constant for the time
+Lucas needs to finish school. This assumption will simplify their
+calculations and allow them to focus their attention on other aspects of
+the situation.</p>
+<p>In addition to making assumptions about variables, we also make
+general assumptions about situations. For example, Lucas and Amanda will
+need to assume that they have explored all possible options for
+scholarships and grants that could help them pay for school. If
+additional scholarship or grant money were available, that might impact
+their decision about taking out student loans.</p>
 <p>These are not the only assumptions they need to make.</p>
 <div>
 <center>
 <iframe width="780" height="350" frameborder="0" src="./Lesson2/Storyline/Lesson2.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L02 - Interactive 2: Assumptions<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTBP80AFM_mUyS3JdGJcM5EGm1_L_PXQXKc2rtE2SuUkeuLhzQLtW4Kvo_Qis90rQniCIeXj_gEAGt-/pub">(L02-2 ADA Interactive Transcript)</a></p>
+<p>L02 - Interactive 2: Assumptions<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTBP80AFM_mUyS3JdGJcM5EGm1_L_PXQXKc2rtE2SuUkeuLhzQLtW4Kvo_Qis90rQniCIeXj_gEAGt-/pub">(L02-2
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 <p><br></p>
-<p>The assumptions are important to understand because if one of these assumptions is false it has the potential to change the outcome of Lucas and Amanda’s decision about part-time work or student loans. Let’s look at what would happen if some of these assumptions turn out not to be true.</p>
+<p>The assumptions are important to understand because if one of these
+assumptions is false it has the potential to change the outcome of Lucas
+and Amanda’s decision about part-time work or student loans. Let’s look
+at what would happen if some of these assumptions turn out not to be
+true.</p>
 <ul>
-<li><p>Lucas and Amanda assumed that their expenses would remain fairly constant until Lucas finishes school. They will be basing all their calculations on this assumption. What if their expenses increase significantly over time? Then the calculations they use to make their decision might be inaccurate and they might make the wrong decision because it was based on a faulty assumption. For this assumption to be true, Lucas and Amanda will need to live frugally until Lucas graduates and until any loans are paid off. “Wherefore, do not spend money for that which is of no worth, nor your labor for that which cannot satisfy.”<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
-<li><p>Lucas and Amanda assumed that Lucas will have good grades with either option. But what if Lucas’s grades go down when he starts another part-time job and he ends up having to repeat some classes? This would increase the time it takes Lucas to graduate.</p></li>
+<li><p>Lucas and Amanda assumed that their expenses would remain fairly
+constant until Lucas finishes school. They will be basing all their
+calculations on this assumption. What if their expenses increase
+significantly over time? Then the calculations they use to make their
+decision might be inaccurate and they might make the wrong decision
+because it was based on a faulty assumption. For this assumption to be
+true, Lucas and Amanda will need to live frugally until Lucas graduates
+and until any loans are paid off. “Wherefore, do not spend money for
+that which is of no worth, nor your labor for that which cannot
+satisfy.”<a href="#fn2" class="footnote-ref"
+id="fnref2"><sup>2</sup></a></p></li>
+<li><p>Lucas and Amanda assumed that Lucas will have good grades with
+either option. But what if Lucas’s grades go down when he starts another
+part-time job and he ends up having to repeat some classes? This would
+increase the time it takes Lucas to graduate.</p></li>
 </ul>
-<p>It is important to understand that if an assumption is faulty, the decision based on that assumption can be a poor decision. However, it is also important to remember that making assumptions is essential to decision making.</p>
+<p>It is important to understand that if an assumption is faulty, the
+decision based on that assumption can be a poor decision. However, it is
+also important to remember that making assumptions is essential to
+decision making.</p>
 <hr>
 <h3 class="step three">
 Apply Quantitative Tools
 </h3>
-<p>When we have identified the key variables and made assumptions, we are ready to use algebraic, statistical, and computational tools to help us make a decision. During this semester we will learn many of these quantitative tools that help us make informed decisions. The goal of this lesson is to help you learn the Quantitative Reasoning Process, so we will not focus as much on the quantitative tools as we will in later lessons. Many of the tools we refer to in this lesson will be discussed in more detail later in the semester.</p>
+<p>When we have identified the key variables and made assumptions, we
+are ready to use algebraic, statistical, and computational tools to help
+us make a decision. During this semester we will learn many of these
+quantitative tools that help us make informed decisions. The goal of
+this lesson is to help you learn the Quantitative Reasoning Process, so
+we will not focus as much on the quantitative tools as we will in later
+lessons. Many of the tools we refer to in this lesson will be discussed
+in more detail later in the semester.</p>
 <h4>
 Estimating School and Living Expenses
 </h4>
-<p>First, let’s estimate how much Lucas and Amanda will need to pay for school and living expenses. BYU-Idaho has created an estimate of how much these costs should be for a BYU-Idaho student living in Rexburg. We will use the costs they provide on their website.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<p>First, let’s estimate how much Lucas and Amanda will need to pay for
+school and living expenses. BYU-Idaho has created an estimate of how
+much these costs should be for a BYU-Idaho student living in Rexburg. We
+will use the costs they provide on their website.<a href="#fn3"
+class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <center>
-<img src="Lesson2/Images/wk2.byuicosts.png" alt="List of items and their cost: LDS Tuition (semester) $2009, Loan fees $28, books and supplies $400, transportation $596, personal expenses $841, housing and food $920 to $2290, average cost per semester $4800 to $6160." width="500">
+<p><img src="Lesson2/Images/Wk2.BYUIcosts.png" alt="List of items and their cost: LDS Tuition (semester) $2009, Loan fees $28, books and supplies $400, transportation $596, personal expenses $841, housing and food $920 to $2290, average cost per semester $4800 to $6160." width="500"></p>
 </center>
-<p>Because Lucas and Amanda are married and have two children, Sophia and Emmy<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>, they will need more money for food and housing than a single student, therefore we will use the highest estimate. This means we assume they will have expenses of $6,160 per semester. Because there are three semesters in a year, we will multiply this value by 3 to find their living expenses for one year. <span class="math display">\[\$6,160 \times 3 = \$18,480\]</span></p>
+<p>Because Lucas and Amanda are married and have two children, Sophia
+and Emmy<a href="#fn4" class="footnote-ref"
+id="fnref4"><sup>4</sup></a>, they will need more money for food and
+housing than a single student, therefore we will use the highest
+estimate. This means we assume they will have expenses of $6,160 per
+semester. Because there are three semesters in a year, we will multiply
+this value by 3 to find their living expenses for one year. <span
+class="math display">\[\$6,160 \times 3 = \$18,480\]</span></p>
 <hr>
 <h4>
 Part-time Work Income
 </h4>
-<p>We need to estimate how much Lucas and Amanda make through their part-time work. We know that Amanda is doing some part-time tutoring to earn extra money and Lucas is working at a part-time job. Amanda works about 4 hours per week and charges $10/hour for tutoring. Lucas works part-time on campus for 8 hours per week and makes $9.10 per hour.</p>
+<p>We need to estimate how much Lucas and Amanda make through their
+part-time work. We know that Amanda is doing some part-time tutoring to
+earn extra money and Lucas is working at a part-time job. Amanda works
+about 4 hours per week and charges $10/hour for tutoring. Lucas works
+part-time on campus for 8 hours per week and makes $9.10 per hour.</p>
 <div>
 <center>
 <iframe width="780" height="575" frameborder="0" src="./Lesson2/Storyline/Lesson2.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L02 - Interactive 3: Estimating Expenses<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTrdTVQlgvZyaDPjMNsbFIe8BI2Mps6xRhnYM1h6aVh6UKiqVornTLVvXGiWcAofRDmJVwWlOYoB_Is/pub">(L02-3 ADA Interactive Transcript)</a></p>
+<p>L02 - Interactive 3: Estimating Expenses<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTrdTVQlgvZyaDPjMNsbFIe8BI2Mps6xRhnYM1h6aVh6UKiqVornTLVvXGiWcAofRDmJVwWlOYoB_Is/pub">(L02-3
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 <hr>
 <h4>
 Loan Payment
 </h4>
-<p>In the video, we hear Lucas tell Amanda that they qualified for $6,200 per semester in loan money. However, Amanda replied by saying she thinks they could get by on a lot less. We can find how much money they need to borrow by subtracting their wages from part-time work from their total annual living expenses.</p>
-<p><span class="math display">\[\text{Annual Living Expenses} - \text{Annual Wages} = \$18,480 - \$4,737.60 = $13,742.40\]</span></p>
-<p>From this calculation, we see that they are short by about $13,800 per year. If they take out student loans, Lucas wants to graduate as soon as possible so he will apply for Fast Grad and go to school all three semesters. This means they would need to borrow about $4600 per semester.</p>
-<p>If they take out a loan, Lucas will be able to graduate in 2 years (6 semesters). So when they graduate they will have a total loan of <span class="math display">\[\$4,600 \times 6 = \$27,600.\]</span></p>
-<p>Anytime we take out a loan, we have to pay the banking institution for the use of their money. The money we pay to the bank in addition to the amount we borrowed is called interest. One of our assumptions is that they could get an interest rate of 4%.</p>
-<p>Lucas and Amanda also realize that if they don’t take out a student loan, it will take them two additional years to graduate. But, when they do graduate, they would be debt free. So, if they want to be in the same situation by taking out student loans, they want to pay off the loan in 2 years.</p>
-<p>Now that we know they will have a loan amount of $27,600, an interest rate of 4%, and a loan term of 2 years, we can use the following loan calculator to determine their monthly payment on the loan.</p>
+<p>In the video, we hear Lucas tell Amanda that they qualified for
+$6,200 per semester in loan money. However, Amanda replied by saying she
+thinks they could get by on a lot less. We can find how much money they
+need to borrow by subtracting their wages from part-time work from their
+total annual living expenses.</p>
+<p><span class="math display">\[\text{Annual Living Expenses} -
+\text{Annual Wages} = \$18,480 - \$4,737.60 = $13,742.40\]</span></p>
+<p>From this calculation, we see that they are short by about $13,800
+per year. If they take out student loans, Lucas wants to graduate as
+soon as possible so he will apply for Fast Grad and go to school all
+three semesters. This means they would need to borrow about $4600 per
+semester.</p>
+<p>If they take out a loan, Lucas will be able to graduate in 2 years (6
+semesters). So when they graduate they will have a total loan of <span
+class="math display">\[\$4,600 \times 6 = \$27,600.\]</span></p>
+<p>Anytime we take out a loan, we have to pay the banking institution
+for the use of their money. The money we pay to the bank in addition to
+the amount we borrowed is called interest. One of our assumptions is
+that they could get an interest rate of 4%.</p>
+<p>Lucas and Amanda also realize that if they don’t take out a student
+loan, it will take them two additional years to graduate. But, when they
+do graduate, they would be debt free. So, if they want to be in the same
+situation by taking out student loans, they want to pay off the loan in
+2 years.</p>
+<p>Now that we know they will have a loan amount of $27,600, an interest
+rate of 4%, and a loan term of 2 years, we can use the following loan
+calculator to determine their monthly payment on the loan.</p>
 <p><br></p>
 <center>
 <!-- Mortgage Calculator Widget -->
@@ -495,77 +671,135 @@ Loan Payment
 <script>var maoCalc={};maoCalc.settings={"theme":"theme1","view":"vertical1","responsive":"mcw-wrap_responsive","font":"inherit","border":true,"boxShadow":true,"backgroundColor":"#ffffff","fieldColor":"#fff","textColor":"#334356","borderColor":"#165277","currency":"$","currencySide":"left","delimiters":",.","popup":false,"popupView":"doughnutPopup","style":true,"widgetTotalInterest":false,"widgetTotalPrincipal":false,"monthlyPayment":"Monthly Payment","totalPrincipalPaid":"Total Principal","totalInterestPaid":"Total Interest","totalPayments":"Total Payments","years":"years","title":{"enabled":true,"color":"#334356","label":"Loan Calculator"},"homePrice":{"label":"Loan Amount","value":""},"downPayment":{"enabled":false,"label":"Down Payment","value":false},"interestRate":{"label":"Interest Rate","value":""},"mortgageTerm":{"label":"Loan Term","value":""},"pmi":{"enabled":false,"label":"PMI","value":false},"taxes":{"enabled":false,"label":"Taxes","value":false},"insurance":{"enabled":false,"label":"Insurance","value":false},"hoa":{"enabled":false,"label":"HOA","value":false},"extra":{"enabled":false,"labelAdd":"Add extra payments","labelRemove":"Remove extra payments","labelToMonthy":"To monthly","labelYearly":"Extra yearly"},"startDate":{"enabled":false,"label":"Start Date"},"monthsArr":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"button":{"color":"#ffffff","bg":"#0099ff","label":"Calculate"},"amortizationSchedule":"Amortization Schedule","popupLabels":{"monthlyPrincipalInterest":"Monthly Principal & Interest","monthlyExtraPayment":"Monthly Extra Payment","monthlyPayment":"MONTHLY PAYMENT","downPayment":"Down payment","extraPayments":"Extra payments","totalPrincipalPaid":"Total principal paid","totalInterestPaid":"Total interest paid","totalOfAllPayments":"TOTAL OF ALL PAYMENTS","amortizationSchedule":"Amortization Schedule","tablePaymentDate":"Payment date","tablePayment":"Payment","tablePrincipal":"Principal","tableInterest":"Interest","tableTotalInterest":"Total Interest","tableBalance":"Balance","pmi":"PMI","taxes":"Taxes","insurance":"Insurance","shortInsurance":"Ins","hoa":"HOA","chartBalance":"Balance","chartPrincipal":"Principal","chartInterest":"Interest"},"useTitleAsLink":false,"titleLinkUrl":"","useFooterLink":false,"footerLinkAnchor":"","footerLinkUrl":""};(function(){function loadScript(src){var s,t;s=document.createElement("script");s.src=src;t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}function decode(str){return!window.btoa?'not_found':window.btoa(unescape(encodeURIComponent(str)));}var uri='https://mortgage-advice-online.org/widget/'+decode(window.location)+'.js';loadScript(uri);})();</script>
 </div>
 <!-- End Mortgage Calculator Widget -->
-<p>L02 - Interactive 4: Simple Loan calculator<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQ8D4f-4Dpm-0q_rGPHjeibmVfF_gIwqaULc3aBkoxiXSinvJ8NWxb-PU17k7TI4ZiKYLQrknVTmQBY/pub">(L02-4 ADA Interactive Transcript)</a></p>
+<p>L02 - Interactive 4: Simple Loan calculator<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQ8D4f-4Dpm-0q_rGPHjeibmVfF_gIwqaULc3aBkoxiXSinvJ8NWxb-PU17k7TI4ZiKYLQrknVTmQBY/pub">(L02-4
+ADA Interactive Transcript)</a></p>
 </center>
 <p><br></p>
-<p>Calculate the amount to be paid to the bank each year by multiplying the monthly payment by 12 months.</p>
+<p>Calculate the amount to be paid to the bank each year by multiplying
+the monthly payment by 12 months.</p>
 <hr>
 <h4>
 How much do they need to make?
 </h4>
-<p>Now the question is whether or not Lucas and Amanda can afford to make the monthly loan payment. This depends on Lucas’s take-home salary after graduation. Moving the slider below shows how changing our assumptions about Lucas’s take-home salary after graduation affects how much money they would have left after paying their living expenses and making their loan payments.</p>
+<p>Now the question is whether or not Lucas and Amanda can afford to
+make the monthly loan payment. This depends on Lucas’s take-home salary
+after graduation. Moving the slider below shows how changing our
+assumptions about Lucas’s take-home salary after graduation affects how
+much money they would have left after paying their living expenses and
+making their loan payments.</p>
 <div>
 <center>
 <iframe width="780" height="375" frameborder="0" src="./Lesson2/Storyline/Lesson2.slider - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L02 - Interactive 5: Loan Payments<br> <a href="https://docs.google.com/document/d/e/2PACX-1vT_Ylc_5RHiUMlZf4U2VIAXaStsRZZG_zKKt5dqBt43p_4FU6Og742B8K4nxrWiiUHl59kfnGzDhbRS/pub">(L02-5 ADAInteractive Transcript)</a></p>
+<p>L02 - Interactive 5: Loan Payments<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vT_Ylc_5RHiUMlZf4U2VIAXaStsRZZG_zKKt5dqBt43p_4FU6Og742B8K4nxrWiiUHl59kfnGzDhbRS/pub">(L02-5
+ADAInteractive Transcript)</a></p>
 </center>
 </div>
 <p><br></p>
-<p>Let’s figure out exactly how much Lucas’ take-home pay would need to be per year in order to be able to pay for their living expenses and make their loan payment. Keep in mind that this is just his take-home pay. His total salary would need to be higher in order to allow for paying taxes.</p>
+<p>Let’s figure out exactly how much Lucas’ take-home pay would need to
+be per year in order to be able to pay for their living expenses and
+make their loan payment. Keep in mind that this is just his take-home
+pay. His total salary would need to be higher in order to allow for
+paying taxes.</p>
 <p><span class="math display">\[
 \begin{align}
-\text{total annual expense}&amp;=\text{living expenses}+\text{loan payment}\\
+\text{total annual expense}&amp;=\text{living expenses}+\text{loan
+payment}\\
 &amp;=\$18,480+\$14,382\\
 &amp;=\$32,862
 \end{align}
 \]</span></p>
 <p>This information could also be shown in the following graph.</p>
 <center>
-<img src="Lesson2/Images/wk2.graph.png" alt="scatterplot of take home pay vs money left after paying expenses and loan. Shows same content as in the above interactive activity." width="600">
+<p><img src="Lesson2/Images/wk2.graph.PNG" alt="scatterplot of take home pay vs money left after paying expenses and loan. Shows same content as in the above interactive activity." width="600"></p>
 </center>
 <hr>
 <h3 class="step four">
 Make an Informed Decision
 </h3>
-<p>Now that Lucas and Amanda have modeled the situation, they need to interpret the information they have gathered. They conclude that if they take out student loans and then repay them in the first two years, Lucas’s salary after graduation would need to have a take-home amount of at least $32,862. If his take-home amount is less than $32,862, they could not repay the loan in two years. If his take-home amount is more than $32,862, they could repay the loan and still have some money left.</p>
+<p>Now that Lucas and Amanda have modeled the situation, they need to
+interpret the information they have gathered. They conclude that if they
+take out student loans and then repay them in the first two years,
+Lucas’s salary after graduation would need to have a take-home amount of
+at least $32,862. If his take-home amount is less than $32,862, they
+could not repay the loan in two years. If his take-home amount is more
+than $32,862, they could repay the loan and still have some money
+left.</p>
 <blockquote>
 <p>What do you think Lucas and Amanda should do?</p>
 </blockquote>
-<p>Please think carefully about your answer to this question. On your Lesson 1 Prep Quiz you will be asked to answer this question and justify your answer.</p>
-<p>Lucas and Amanda will need to look carefully at the potential careers that correspond to Lucas’s major. They will need to evaluate salaries and the cost of living in different locations as well as other family concerns. But now that they have used the Quantitative Reasoning Process they have a well-grounded foundation upon which to base their financial decisions.</p>
-<p>As they make their decision they should also consider the following advice of President Clark Gilbert:</p>
+<p>Please think carefully about your answer to this question. On your
+Lesson 2 Prep Quiz you will be asked to answer this question and justify
+your answer.</p>
+<p>Lucas and Amanda will need to look carefully at the potential careers
+that correspond to Lucas’s major. They will need to evaluate salaries
+and the cost of living in different locations as well as other family
+concerns. But now that they have used the Quantitative Reasoning Process
+they have a well-grounded foundation upon which to base their financial
+decisions.</p>
+<p>As they make their decision they should also consider the following
+advice of past BYU-Idaho President Clark Gilbert:</p>
 <div style="margin-left: 2em;">
-<p>Your academic stewardship at BYU-Idaho includes your time to graduation. Did you know that your probability of being an engaged future employee nearly doubles when you graduate on time and with modest college debt? Work hard in your classes. Take your education seriously. Never steal from the Lord or yourself by cheating in a class. Be a profitable servant, and return with increase the talents He has given you in this remarkable faculty and rich academic environment“<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+<p>Your academic stewardship at BYU-Idaho includes your time to
+graduation. Did you know that your probability of being an engaged
+future employee nearly doubles when you graduate on time and with modest
+college debt? Work hard in your classes. Take your education seriously.
+Never steal from the Lord or yourself by cheating in a class. Be a
+profitable servant, and return with increase the talents He has given
+you in this remarkable faculty and rich academic environment”<a
+href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 </div>
 <hr>
 <h3 class="step five">
 Evaluate Your Reasoning
 </h3>
-<p>Once Lucas and Amanda have made a decision, it is important that they reflect on and evaluate their decision. They should ask themselves questions like</p>
+<p>Once Lucas and Amanda have made a decision, it is important that they
+reflect on and evaluate their decision. They should ask themselves
+questions like</p>
 <ul>
 <li>Does this decision make sense?</li>
 <li>Are my assumptions reasonable?</li>
-<li>Are there any consequences of this decision I haven’t considered?</li>
-<li>What types of events could happen that would violate my assumptions? (Perhaps an unplanned illness or the loss of a job.) Do I have a plan to deal with these events?</li>
+<li>Are there any consequences of this decision I haven’t
+considered?</li>
+<li>What types of events could happen that would violate my assumptions?
+(Perhaps an unplanned illness or the loss of a job.) Do I have a plan to
+deal with these events?</li>
 <li>Have I prayed about the decision?</li>
 </ul>
-<p>Why is it so important that Lucas and Amanda make a careful, informed decision in this situation? Heber J. Grant answers this question:</p>
+<p>Why is it so important that Lucas and Amanda make a careful, informed
+decision in this situation? Heber J. Grant answers this question:</p>
 <div style="margin-left: 2em;">
-<p>If there is any one thing that will bring peace and contentment into the human heart, and into the family, it is to live within our means. And if there is any one thing that is grinding and discouraging and disheartening, it is to have debts and obligations that one cannot meet.“<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a></p>
+<p>If there is any one thing that will bring peace and contentment into
+the human heart, and into the family, it is to live within our means.
+And if there is any one thing that is grinding and discouraging and
+disheartening, it is to have debts and obligations that one cannot
+meet.”<a href="#fn6" class="footnote-ref"
+id="fnref6"><sup>6</sup></a></p>
 </div>
 <hr>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>The Quantitative Reasoning Process gives us a way to carefully consider difficult choices and to make informed decisions. Through the Quantitative Reasoning Process we identify the real-world situation, identify the assumptions and key variables, apply necessary quantitative tools, and then use our results to make informed decision.</p>
-<p><img src="Lesson2/Images/QRProcess.png" alt="Diagram of Quantitative Reasoning Process: 1. Understand the problem 2. Identify key variables, make key assumptions 3. Apply quantitative tools 4. Make an informed decision 5. Evaluate your reasoning." /></p>
-<p>The financial situation presented in this lesson is just one example of how the Quantitative Reasoning Process can help us make informed decisions. During this semester as we learn to make informed decisions in all aspects of our lives, we will be more prepared to serve others in our homes, churches, and communities.</p>
+<p>The Quantitative Reasoning Process gives us a way to carefully
+consider difficult choices and to make informed decisions. Through the
+Quantitative Reasoning Process we identify the real-world situation,
+identify the assumptions and key variables, apply necessary quantitative
+tools, and then use our results to make informed decision.</p>
+<p><img src="Lesson2/Images/QRProcess.png"
+alt="Diagram of Quantitative Reasoning Process: 1. Understand the problem 2. Identify key variables, make key assumptions 3. Apply quantitative tools 4. Make an informed decision 5. Evaluate your reasoning." /></p>
+<p>The financial situation presented in this lesson is just one example
+of how the Quantitative Reasoning Process can help us make informed
+decisions. During this semester as we learn to make informed decisions
+in all aspects of our lives, we will be more prepared to serve others in
+our homes, churches, and communities.</p>
 <hr>
 </div>
 <div id="lesson-checklist" class="section level2">
 <h2>Lesson Checklist</h2>
-<p>At the end of this lesson, you should be able to do the following:</p>
+<p>At the end of this lesson, you should be able to do the
+following:</p>
 <ul>
 <li>Identify the steps of the Quantitative Reasoning Process.</li>
 <li>Identify assumptions</li>
@@ -578,15 +812,34 @@ Evaluate Your Reasoning
 © 2020 Brigham Young University - Idaho
 </center>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>Dieter F. Uchtdorf, <a href="https://www.lds.org/general-conference/2009/10/two-principles-for-any-economy?lang=eng">“Two Principles for Any Economy,”</a> Ensign, November 2009<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p><a href="https://www.lds.org/scriptures/bofm/2-ne/9.51?lang=eng#50">2nd Nephi 9:51</a><a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p><a href="http://www.byui.edu/admissions/costs" class="uri">http://www.byui.edu/admissions/costs</a><a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p>Sophia and Emmy are named after famous female mathematcians: <a href="https://en.wikipedia.org/wiki/Sophie_Germain">Sophie Germain</a>, <a href="https://en.wikipedia.org/wiki/Sofia_Kovalevskaya">Sofia Kovalevskaya</a>, and <a href="https://en.wikipedia.org/wiki/Emmy_Noether">Emmy Noether</a><a href="#fnref4">↩</a></p></li>
-<li id="fn5"><p>Clark Gilbert, <a href="http://www.byui.edu/devotionals/president-clark-g-gilbert-fall-2016">“Children of Promise”</a>, September 13, 2016 Devotional<a href="#fnref5">↩</a></p></li>
-<li id="fn6"><p><a href="https://www.lds.org/manual/teachings-heber-j-grant/chapter-13?lang=eng#4-35970_000_017">President Heber J. Grant</a>, Gospel Standards, comp. G. Homer Durham [1941], page 111<a href="#fnref6">↩</a></p></li>
+<li id="fn1"><p>Dieter F. Uchtdorf, <a
+href="https://www.lds.org/general-conference/2009/10/two-principles-for-any-economy?lang=eng">“Two
+Principles for Any Economy,”</a> Ensign, November 2009<a href="#fnref1"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a
+href="https://www.lds.org/scriptures/bofm/2-ne/9.51?lang=eng#50">2nd
+Nephi 9:51</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="http://www.byui.edu/admissions/costs"
+class="uri">http://www.byui.edu/admissions/costs</a><a href="#fnref3"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Sophia and Emmy are named after famous female
+mathematicians: <a
+href="https://en.wikipedia.org/wiki/Sophie_Germain">Sophie Germain</a>,
+<a href="https://en.wikipedia.org/wiki/Sofia_Kovalevskaya">Sofia
+Kovalevskaya</a>, and <a
+href="https://en.wikipedia.org/wiki/Emmy_Noether">Emmy Noether</a><a
+href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Clark Gilbert, <a
+href="http://www.byui.edu/devotionals/president-clark-g-gilbert-fall-2016">“Children
+of Promise”</a>, September 13, 2016 Devotional<a href="#fnref5"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a
+href="https://www.lds.org/manual/teachings-heber-j-grant/chapter-13?lang=eng#4-35970_000_017">President
+Heber J. Grant</a>, Gospel Standards, comp. G. Homer Durham [1941], page
+111<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -601,13 +854,59 @@ Evaluate Your Reasoning
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
