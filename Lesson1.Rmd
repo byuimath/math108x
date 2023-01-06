@@ -14,7 +14,7 @@ output:
 source("nicecurve.R")
 ```
 
-In a BYU-Idaho devotional President Russel M. Nelson shared his thoughts about the potential of BYU-Idaho students. As you watch this four minute clip, pay attention to what President Nelson says BYU-Idaho students can accomplish..
+In a BYU-Idaho devotional President Russel M. Nelson shared his thoughts about the potential of BYU-Idaho students. As you watch this four minute clip, pay attention to what President Nelson says BYU-Idaho students can accomplish...
 
 <br>
 <br>
