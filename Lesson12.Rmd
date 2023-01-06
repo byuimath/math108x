@@ -603,19 +603,6 @@ L12 - Interactive 4: Sample Size and Margin of Error<br> [(L12-4 ADA Interactive
 
 </center>
 
-
-<center>
-<div>
-<iframe width=780 height=600 frameborder="0" src="./Lesson12/Storyline/Lesson12.PoliticalPollb - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
-</div>
-
-L12 - Interactive 4: Sample Size and Margin of Error<br> [(L12-4 ADA Interactive Transcript)](https://docs.google.com/document/d/e/2PACX-1vSqp61vuXrjgH7OENq7LQMc5Kr_XRGyP-sVAfGZjEj3_1qPD7FE3kx7beBL9pMskM28ivRIo_69nM8H/pub)
-
-
-</center>
-
-
-
 <hr>
 
 ### Comparing Confidence Intervals
@@ -624,7 +611,7 @@ In the introductory video, we heard Craig explain to Lucas and Amanda why the ma
 
 <center>
 <div>
-<iframe width=780 height=600 frameborder="0" src="./Lesson12/Storyline/Lesson12.PoliticalPollb - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
+<iframe width=780 height=600 frameborder="0" src="./Lesson12/Storyline/Lesson12.PoliticalPollB - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center"></iframe>
 </div>
 
 L12 - Interactive 5: Comparing Confidence Intervals<br> [(L12-5 ADA Interactive Transcript)](https://docs.google.com/document/d/e/2PACX-1vQu23N5YN7DVVB30-Z9nSXrvTc-_LLaeywMf29jUhIbm9A3ujgwkv22uR2UPOlf7FtMYjNwVqXvV8MK/pub)

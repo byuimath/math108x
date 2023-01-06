@@ -3,7 +3,7 @@
     "path": "C:/Users/curtisgn/OneDrive - BYU-Idaho/Course Lead/108/Math108XWebsite/math108x/Lesson12.Rmd",
     "project_path": "Lesson12.Rmd",
     "type": "r_markdown",
-    "hash": "2055056283",
+    "hash": "1932255927",
     "contents": "",
     "dirty": false,
     "created": 1673045545459.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "608,220",
-        "scrollLine": "601"
+        "cursorPosition": "613,94",
+        "scrollLine": "595"
     },
     "folds": "",
-    "lastKnownWriteTime": 1673046352,
+    "lastKnownWriteTime": 1673047450,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1673046352596,
+    "last_content_update": 1673047450052,
     "read_only": false,
     "read_only_alternatives": []
 }
