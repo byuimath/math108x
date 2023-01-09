@@ -241,7 +241,7 @@ points(0,32000,pch=19,col="steelblue")
 <hr>
 
 ### Church Membership Example
-Let's look at another example of change over time. Since the organization of the Church of Jesus Christ of Latter Day Saints in 1830 with six members, the membership has grown significantly. Has the change been constant or variable?  One way to determine the type of change is to look at a graph of church membership to see if the pattern is linear or non-linear. 
+Let's look at another example of change over time. Since the organization of The Church of Jesus Christ of Latter-day Saints in 1830 with six members, the membership has grown significantly. Has the change been constant or variable?  One way to determine the type of change is to look at a graph of church membership to see if the pattern is linear or non-linear. 
 
 In Lesson 5 we learned that when we want to create a chart showing a trend over time, we use a time series plot.  Using Excel, we created the following time series plot for church membership.
 
