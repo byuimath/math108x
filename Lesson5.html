@@ -13,12 +13,22 @@
 
 <title>Lesson 5: Summarizing Data</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,12 +36,16 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,32 +58,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -80,10 +70,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -100,40 +86,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -161,7 +123,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -173,7 +135,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -184,10 +146,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -199,7 +174,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -325,7 +299,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -339,12 +313,12 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+      <a class="navbar-brand" href="index.html">The Quantitative Reasoning Process</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -352,7 +326,7 @@ div.tocify {
   <a href="index.html">Table of Contents</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit I
      
     <span class="caret"></span>
@@ -376,7 +350,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit II
      
     <span class="caret"></span>
@@ -397,7 +371,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit III
      
     <span class="caret"></span>
@@ -425,7 +399,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -439,51 +413,96 @@ div.tocify {
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_rszr6xj8&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_b4ql7ed9" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p>Lesson 5 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSAF5JREjySOUTsJe1W097S0ZU-fEQODxoSUCPp8usiNqWRIZY0cIZDx4c3YSKT_SD-uhge-xmU8LUJ/pub">(1:22 mins, L5 Opening Story Transcript)</a></p>
+<p>Lesson 5 - Opening story<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vSAF5JREjySOUTsJe1W097S0ZU-fEQODxoSUCPp8usiNqWRIZY0cIZDx4c3YSKT_SD-uhge-xmU8LUJ/pub">(1:22
+mins, L5 Opening Story Transcript)</a></p>
 </center>
 </div>
 <div id="summarizing-data" class="section level2">
 <h2>Summarizing Data</h2>
-<p>Information surrounds us. In the introductory video, we heard a conversation between Lucas, Amanda, and their doctor. Even in a simple conversation like this one, a lot of information is exchanged. We need to be able to make sense of the information we hear. Knowing how to make sense of information is a highly valued skill in today’s workplace. It is also an important trait of the wise consumer, the informed citizen, and the educated individual. Making sense of information is usually called <em>summarizing data</em>. We summarize data every day in many ways, but the goal is always to give an improved understanding of a situation.</p>
-<p>One example of summarizing data was seen in the introductory video when Amanda stated, “The doctor has been gone a really long time.” Lucas replied, “I wouldn’t worry about it. The longest we’ve ever had to wait is 15 minutes.” This comment is a concise <em>summary</em> of all of their previous visits to the doctor’s office. It allowed Lucas to comfort Amanda by referencing their past experience in a concise way.</p>
+<p>Information surrounds us. In the introductory video, we heard a
+conversation between Lucas, Amanda, and their doctor. Even in a simple
+conversation like this one, a lot of information is exchanged. We need
+to be able to make sense of the information we hear. Knowing how to make
+sense of information is a highly valued skill in today’s workplace. It
+is also an important trait of the wise consumer, the informed citizen,
+and the educated individual. Making sense of information is usually
+called <em>summarizing data</em>. We summarize data every day in many
+ways, but the goal is always to give an improved understanding of a
+situation.</p>
+<p>One example of summarizing data was seen in the introductory video
+when Amanda stated, “The doctor has been gone a really long time.” Lucas
+replied, “I wouldn’t worry about it. The longest we’ve ever had to wait
+is 15 minutes.” This comment is a concise <em>summary</em> of all of
+their previous visits to the doctor’s office. It allowed Lucas to
+comfort Amanda by referencing their past experience in a concise
+way.</p>
 <center>
 <div>
 <iframe width="780" height="400" frameborder="0" src="./Lesson5/Storyline/Lesson 5 Interactive 1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L05 - Interactive 1: Summarizing Data<br> <a href="https://docs.google.com/document/d/e/2PACX-1vRJwmzTylmRKA_waWov0ZyEzuYd3Vul7LN2ONQytuB6kR4PVmo71GJrMENPAf8GYEmnZGtPmwqxEa3p/pub">(L05-1 ADA Interactive Transcript)</a></p>
+<p>L05 - Interactive 1: Summarizing Data<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vRJwmzTylmRKA_waWov0ZyEzuYd3Vul7LN2ONQytuB6kR4PVmo71GJrMENPAf8GYEmnZGtPmwqxEa3p/pub">(L05-1
+ADA Interactive Transcript)</a></p>
 </div>
 </center>
-<p>In this lesson we will learn some of the most commonly used tools for summarizing data. We will also learn how to use how to use Excel to help us do these calculations.</p>
+<p>In this lesson we will learn some of the most commonly used tools for
+summarizing data. We will also learn how to use how to use Excel to help
+us do these calculations.</p>
 <hr>
 </div>
 <div id="tools-for-summarizing-data" class="section level2">
 <h2>Tools for Summarizing Data</h2>
-<p>Basic statistical calculations can help us summarize information, especially when that information consists of numbers. We will be discussing how the minimum, maximum, mean, median, mode, standard deviation, and percentiles can help us summarize information.</p>
+<p>Basic statistical calculations can help us summarize information,
+especially when that information consists of numbers. We will be
+discussing how the minimum, maximum, mean, median, mode, standard
+deviation, and percentiles can help us summarize information.</p>
 <hr>
 <div id="minimum-and-maximum" class="section level3">
 <h3>Minimum and Maximum</h3>
-<p>First, let’s look at the minimum and maximum. The minimum and maximum are common ways of summarizing the most extreme values that have occurred in a given scenario.</p>
+<p>First, let’s look at the minimum and maximum. The minimum and maximum
+are common ways of summarizing the most extreme values that have
+occurred in a given scenario.</p>
 <blockquote>
-<p>The <em>minimum</em> value in a list of observations is the smallest value that occurs.</p>
+<p>The <em>minimum</em> value in a list of observations is the smallest
+value that occurs.</p>
 </blockquote>
 <blockquote>
-<p>The <em>maximum</em> value in a list of observations is the largest value that occurs.</p>
+<p>The <em>maximum</em> value in a list of observations is the largest
+value that occurs.</p>
 </blockquote>
-<p>The minimum and maximum help us see what values are possible, since we would expect all the other observations to be between these two extremes.</p>
+<p>The minimum and maximum help us see what values are possible, since
+we would expect all the other observations to be between these two
+extremes.</p>
 <div id="example-1" class="section level4">
 <h4>Example 1</h4>
-<p>Look at any weather report and you will typically see the high and low temperatures reported. Here is an example of a typical weekly weather forecast. Find the minimum and maximum temperatures for the week and explain what they tell us.</p>
+<p>Look at any weather report and you will typically see the high and
+low temperatures reported. Here is an example of a typical weekly
+weather forecast. Find the minimum and maximum temperatures for the week
+and explain what they tell us.</p>
 <center>
-<img src="Lesson5/Week%205/TempHiLo.png" alt="Image showing the weather of each day of the week. Monday is partly cloudy, has a high of 50 and low of 32. Tuesday is cloudy with a high of 47 with a low of 31. Wednesday is partly cloudy with a high of 50 and a low of 24. Thursday is sunny with a high of 56 and low of 25. Friday is sunny with a high of 59, and a low of 30. Saturday is sunny with a high of 57 with a low of 34. Sunday is partly cloudy with a high of 54 and a low of 34." />
+<img src="Lesson5/Week%205/TempHiLo.png"
+alt="Image showing the weather of each day of the week. Monday is partly cloudy, has a high of 50 and low of 32. Tuesday is cloudy with a high of 47 with a low of 31. Wednesday is partly cloudy with a high of 50 and a low of 24. Thursday is sunny with a high of 56 and low of 25. Friday is sunny with a high of 59, and a low of 30. Saturday is sunny with a high of 57 with a low of 34. Sunday is partly cloudy with a high of 54 and a low of 34." />
 </center>
 <p><strong>Solution</strong><br />
-We see the high and low temperature for each day listed. If you compare the predicted high temperatures for each day of the week, you will see the largest (or highest) temperature of 59° Fahrenheit is predicted to occur on Friday. The smallest (or lowest) temperature of 24° Fahrenheit is predicted to occur on Wednesday. Therefore the maximum temperature is 59° F and the minimum temperature is 24°F. We would expect all other temperatures during this given week to be between 24°F and 59°F.</p>
-Locating the maximum and minimum values can always be done by hand. However, if we have a lot of values to look at it can be more practical to let Excel find the maximum and minimum for us.
+We see the high and low temperature for each day listed. If you compare
+the predicted high temperatures for each day of the week, you will see
+the largest (or highest) temperature of 59° Fahrenheit is predicted to
+occur on Friday. The smallest (or lowest) temperature of 24° Fahrenheit
+is predicted to occur on Wednesday. Therefore the maximum temperature is
+59° F and the minimum temperature is 24°F. We would expect all other
+temperatures during this given week to be between 24°F and 59°F.</p>
+Locating the maximum and minimum values can always be done by hand.
+However, if we have a lot of values to look at it can be more practical
+to let Excel find the maximum and minimum for us.
 <hr>
 </div>
-<div id="excel-instructions---maximum-and-minimum" class="section level4 tabset tabset-fade">
-<h4>Excel Instructions - Maximum and Minimum</h4>
-<p>Follow these steps to learn how to calculate the maximum and minimum in Excel:</p>
+<div id="excel-instructions---maximum-and-minimum"
+class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Excel Instructions - Maximum and
+Minimum</h4>
+<p>Follow these steps to learn how to calculate the maximum and minimum
+in Excel:</p>
 <div id="step-1" class="section level5">
 <h5>Step 1</h5>
 <p>Open a “New Workbook” in Excel.</p>
@@ -494,7 +513,10 @@ Locating the maximum and minimum values can always be done by hand. However, if 
 </div>
 <div id="step-2" class="section level5">
 <h5>Step 2</h5>
-<p>Type in the data for which you want to calculate the minimum or maximum. For this example, we will use the predicted high and low temperatures shown in the typical weather forecast depicted in the example above.</p>
+<p>Type in the data for which you want to calculate the minimum or
+maximum. For this example, we will use the predicted high and low
+temperatures shown in the typical weather forecast depicted in the
+example above.</p>
 <center>
 <img src="Lesson5/Week%205/HighLow1.png" />
 </center>
@@ -516,8 +538,11 @@ Locating the maximum and minimum values can always be done by hand. However, if 
 </div>
 <div id="step-4" class="section level5">
 <h5>Step 4</h5>
-<p>Press <code>Enter</code> (or <code>return</code>) and the cursor will move to the next line with the result for the maximum of 59°F now showing.</p>
-<p>Repeat the above process using the <code>=MIN(</code> command to obtain the minimum.</p>
+<p>Press <code>Enter</code> (or <code>return</code>) and the cursor will
+move to the next line with the result for the maximum of 59°F now
+showing.</p>
+<p>Repeat the above process using the <code>=MIN(</code> command to
+obtain the minimum.</p>
 <center>
 <img src="Lesson5/Week%205/HighLow3.png" />
 </center>
@@ -525,7 +550,8 @@ Locating the maximum and minimum values can always be done by hand. However, if 
 </div>
 <div id="step-5" class="section level5">
 <h5>Step 5</h5>
-<p>Labeling these values is optional, but helpful for remembering what they are.</p>
+<p>Labeling these values is optional, but helpful for remembering what
+they are.</p>
 <center>
 <img src="Lesson5/Week%205/HighLow4.png" />
 </center>
@@ -535,47 +561,110 @@ Locating the maximum and minimum values can always be done by hand. However, if 
 </div>
 <div id="mean-median-and-mode" class="section level3">
 <h3>Mean, Median, and Mode</h3>
-<p>The mean, median, and mode are ways of summarizing the most typical values that have occurred in a given scenario. They are often called <em>measures of center</em> because they give a good feel for the values that are “right in the center” of all of the observed values.</p>
+<p>The mean, median, and mode are ways of summarizing the most typical
+values that have occurred in a given scenario. They are often called
+<em>measures of center</em> because they give a good feel for the values
+that are “right in the center” of all of the observed values.</p>
 <blockquote>
-<p>The <em>mean</em> is more commonly referred to as <em>the average</em>. It is calculated by adding up all of the values and dividing by the total number of values. It is good for summarizing the center of values that are generally very similar to each other.</p>
+<p>The <em>mean</em> is more commonly referred to as <em>the
+average</em>. It is calculated by adding up all of the values and
+dividing by the total number of values. It is good for summarizing the
+center of values that are generally very similar to each other.</p>
 </blockquote>
 <blockquote>
-<p>The <em>median</em> is the middle number in a list of numbers that is sorted from smallest to largest. Thus, fifty percent of the values are lower than the median and fifty percent of the values are larger than the median. It is good for summarizing the center of values where most of the values are similar but some are dramatically higher (or lower) than the rest.</p>
+<p>The <em>median</em> is the middle number in a list of numbers that is
+sorted from smallest to largest. Thus, fifty percent of the values are
+lower than the median and fifty percent of the values are larger than
+the median. It is good for summarizing the center of values where most
+of the values are similar but some are dramatically higher (or lower)
+than the rest.</p>
 </blockquote>
 <blockquote>
-<p>The <em>mode</em> is the value that occurs most often in a list of numbers. It is good for summarizing data that only has a few distinct values that are possible.</p>
+<p>The <em>mode</em> is the value that occurs most often in a list of
+numbers. It is good for summarizing data that only has a few distinct
+values that are possible.</p>
 </blockquote>
 <div id="example-2" class="section level4">
 <h4>Example 2</h4>
-<p>How long does a human pregnancy last? The common answer is 9 months, but we know that not every pregnancy is the same length. Should you use the mean, median, or mode to describe the length of human pregnancies? Why?</p>
+<p>How long does a human pregnancy last? The common answer is 9 months,
+but we know that not every pregnancy is the same length. Should you use
+the mean, median, or mode to describe the length of human pregnancies?
+Why?</p>
 <p><strong>Solution</strong></p>
-<p>The <em>mean (or average)</em> is a good estimate of the length of pregnancies because most pregnancies last about the same amount of time.</p>
-<p>The mean length of a pregnancy is 266 days from conception (or 38 weeks). This mean could be calculated by taking the number of days every pregnancy lasts and dividing by the total number of pregnancies. The mean, or average, is a good estimate of the length of a pregnancy because two-thirds of pregnancies are within 2 weeks of this estimate. In other words, the lengths of most pregnancies are very close to 266 days even though a rare few are much longer or much shorter than that.</p>
-<p>(Note that sometimes the last menstrual period rather than date of conception is used to predict a pregnancy. In this case, the mean is two weeks longer, i.e., 280 days, or 40 weeks.)</p>
+<p>The <em>mean (or average)</em> is a good estimate of the length of
+pregnancies because most pregnancies last about the same amount of
+time.</p>
+<p>The mean length of a pregnancy is 266 days from conception (or 38
+weeks). This mean could be calculated by taking the number of days every
+pregnancy lasts and dividing by the total number of pregnancies. The
+mean, or average, is a good estimate of the length of a pregnancy
+because two-thirds of pregnancies are within 2 weeks of this estimate.
+In other words, the lengths of most pregnancies are very close to 266
+days even though a rare few are much longer or much shorter than
+that.</p>
+<p>(Note that sometimes the last menstrual period rather than date of
+conception is used to predict a pregnancy. In this case, the mean is two
+weeks longer, i.e., 280 days, or 40 weeks.)</p>
 <hr>
 </div>
 <div id="example-3" class="section level4">
 <h4>Example 3</h4>
-<p>What is a typical household annual income? We know that not every household has the same income, so we need to summarize this data in order to understand it better. Should you use the mean, median, or mode to describe household income? Why?</p>
+<p>What is a typical household annual income? We know that not every
+household has the same income, so we need to summarize this data in
+order to understand it better. Should you use the mean, median, or mode
+to describe household income? Why?</p>
 <p><strong>Solution</strong></p>
-<p>The <em>median</em> is often used to summarize incomes for a given region. For example, a news headline stated, “Worldwide, Median Household Income About $10,000”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. This is because while most people earn around the same amount of money each month, with some earning more than others, there are yet others who earn extraordinarily more money than the rest of us. The median income is reported in order to keep the extremely high incomes from skewing the results. Thus, the median income gives a better feel than would the mean for what most people actually make.</p>
-To demonstrate further, a survey of 183 BYU-Idaho students<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> showed that the median hourly wage of students was $9.02 an hour. The mean hourly wage was $10.81, but was skewed by a student who stated they were earning $100.00 an hour! The median is a better representation in this case of the typical hourly wage of BYU-Idaho students. Remember, 50% of students will earn less than the median wage and 50% will earn more than the median wage.
+<p>The <em>median</em> is often used to summarize incomes for a given
+region. For example, a news headline stated, “Worldwide, Median
+Household Income About $10,000”<a href="#fn1" class="footnote-ref"
+id="fnref1"><sup>1</sup></a>. This is because while most people earn
+around the same amount of money each month, with some earning more than
+others, there are yet others who earn extraordinarily more money than
+the rest of us. The median income is reported in order to keep the
+extremely high incomes from skewing the results. Thus, the median income
+gives a better feel than would the mean for what most people actually
+make.</p>
+To demonstrate further, a survey of 183 BYU-Idaho students<a href="#fn2"
+class="footnote-ref" id="fnref2"><sup>2</sup></a> showed that the median
+hourly wage of students was $9.02 an hour. The mean hourly wage was
+$10.81, but was skewed by a student who stated they were earning $100.00
+an hour! The median is a better representation in this case of the
+typical hourly wage of BYU-Idaho students. Remember, 50% of students
+will earn less than the median wage and 50% will earn more than the
+median wage.
 <hr>
 </div>
 <div id="example-4" class="section level4">
 <h4>Example 4</h4>
-<p>If you have ever tried to find a certain size of clothing at a store you may have noticed that some sizes are more commonly sold than others. But not all clothing sizes are the same size, so we can summarize this information to get a better idea of what clothing sizes are available. Should you use the mean, median, or mode to describe available clothing sizes? Why?</p>
+<p>If you have ever tried to find a certain size of clothing at a store
+you may have noticed that some sizes are more commonly sold than others.
+But not all clothing sizes are the same size, so we can summarize this
+information to get a better idea of what clothing sizes are available.
+Should you use the mean, median, or mode to describe available clothing
+sizes? Why?</p>
 <p><strong>Solution</strong></p>
-<p>This is an example of the <em>mode</em>, or the most commonly occurring clothing sizes. The mode is a good value to use because there are only a few sizes possible.</p>
-<p>To demonstrate further, some data from college students in the U.S.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> shows that the modal shoe size (most commonly occurring shoe size) for females is size 8. The modal size for males is size 11. If you go to a shoe store you will probably find a better selection in these sizes than you would in less common sizes.</p>
+<p>This is an example of the <em>mode</em>, or the most commonly
+occurring clothing sizes. The mode is a good value to use because there
+are only a few sizes possible.</p>
+<p>To demonstrate further, some data from college students in the U.S.<a
+href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> shows that
+the modal shoe size (most commonly occurring shoe size) for females is
+size 8. The modal size for males is size 11. If you go to a shoe store
+you will probably find a better selection in these sizes than you would
+in less common sizes.</p>
 <hr>
 </div>
-<div id="excel-instructions---mean-median-and-mode" class="section level4 tabset tabset-fade">
-<h4>Excel Instructions - Mean, Median, and Mode</h4>
-<p>Follow theses steps to calculate the mean, median, or mode in Excel:</p>
+<div id="excel-instructions---mean-median-and-mode"
+class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Excel Instructions - Mean, Median, and
+Mode</h4>
+<p>Follow theses steps to calculate the mean, median, or mode in
+Excel:</p>
 <div id="step-1-1" class="section level5">
 <h5>Step 1</h5>
-<p>Enter the data into Excel. For this example, we will continue using the weather data from the previous Excel Instructions where we found the maximum and minimum values.</p>
+<p>Enter the data into Excel. For this example, we will continue using
+the weather data from the previous Excel Instructions where we found the
+maximum and minimum values.</p>
 <center>
 <img src="Lesson5/Week%205/HighLow4.png" />
 </center>
@@ -587,7 +676,8 @@ To demonstrate further, a survey of 183 BYU-Idaho students<a href="#fn2" class="
 <ul>
 <li>type the command <code>=AVERAGE(</code> in a blank cell</li>
 <li>highlight the data you are interested in</li>
-<li>finish by typing the closing parentheses <code>)</code> and pressing <code>Enter</code> or <code>return</code>.</li>
+<li>finish by typing the closing parentheses <code>)</code> and pressing
+<code>Enter</code> or <code>return</code>.</li>
 </ul>
 <center>
 <img src="Lesson5/Week%205/HighLow5.png" />
@@ -600,7 +690,8 @@ To demonstrate further, a survey of 183 BYU-Idaho students<a href="#fn2" class="
 <ul>
 <li>type the command <code>=MEDIAN(</code> in a blank cell</li>
 <li>highlight the data you are interested in</li>
-<li>finish by typing the closing parentheses <code>)</code> and pressing <code>Enter</code> or <code>return</code>.</li>
+<li>finish by typing the closing parentheses <code>)</code> and pressing
+<code>Enter</code> or <code>return</code>.</li>
 </ul>
 <center>
 <img src="Lesson5/Week%205/HighLow7.png" />
@@ -613,8 +704,10 @@ To demonstrate further, a survey of 183 BYU-Idaho students<a href="#fn2" class="
 <ul>
 <li>type the command <code>=MODE(</code> in a blank cell</li>
 <li>highlight the data you are interested in</li>
-<li>finish by typing the closing parentheses <code>)</code> and pressing <code>Enter</code> or <code>return</code>.</li>
-<li>Note that Excel just finds one mode and there might be more than one.</li>
+<li>finish by typing the closing parentheses <code>)</code> and pressing
+<code>Enter</code> or <code>return</code>.</li>
+<li>Note that Excel just finds one mode and there might be more than
+one.</li>
 </ul>
 <center>
 <img src="Lesson5/Week%205/HighLow8.png" />
@@ -633,26 +726,59 @@ To demonstrate further, a survey of 183 BYU-Idaho students<a href="#fn2" class="
 </div>
 <div id="standard-deviation" class="section level3">
 <h3>Standard Deviation</h3>
-<p>The standard deviation helps us know how close to the mean all the values in a data set are. This is helpful because it tells us if all the points in a data set are close together or if they are very spread out.</p>
+<p>The standard deviation helps us know how close to the mean all the
+values in a data set are. This is helpful because it tells us if all the
+points in a data set are close together or if they are very spread
+out.</p>
 <blockquote>
-<p>The <em>standard deviation</em> is a summary of how much values vary from the mean of a set of data. When the values are all very close to the mean, the standard deviation is small. When the values vary dramatically from the mean, the standard deviation is large.</p>
+<p>The <em>standard deviation</em> is a summary of how much values vary
+from the mean of a set of data. When the values are all very close to
+the mean, the standard deviation is small. When the values vary
+dramatically from the mean, the standard deviation is large.</p>
 </blockquote>
-<p>The following diagram demonstrates the idea of standard deviation. In each picture, the red dot in the center represents the mean. Notice in the diagram representing a small standard deviation most of the points are quite close to the mean. In the diagram representing a large standard deviation we can see the points are quite spread out and not as close to the mean.</p>
+<p>The following diagram demonstrates the idea of standard deviation. In
+each picture, the red dot in the center represents the mean. Notice in
+the diagram representing a small standard deviation most of the points
+are quite close to the mean. In the diagram representing a large
+standard deviation we can see the points are quite spread out and not as
+close to the mean.</p>
 <center>
 <img src="Lesson5_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 </center>
 <div id="example-5" class="section level4">
 <h4>Example 5</h4>
-<p>Consider the following two sets of data: a) all the daily high temperatures in 2016 in Honolulu, Hawaii, or b) all the daily high temperatures in 2016 in Rexburg, Idaho. Which set of data would have a larger standard deviation? Explain.</p>
+<p>Consider the following two sets of data: a) all the daily high
+temperatures in 2016 in Honolulu, Hawaii, or b) all the daily high
+temperatures in 2016 in Rexburg, Idaho. Which set of data would have a
+larger standard deviation? Explain.</p>
 <p><strong>Solution</strong><br />
-We know that the temperature in Hawaii is pretty similar all year long. But the temperature in Idaho varies a lot. In the summer the high temperature in Rexburg might be 95°F while in the winter the high temperature might only be -10°F.</p>
-<p>During 2016, the average annual temperature in Honolulu, Hawaii was 84.09°F and the standard deviation was 2.97°F. The warmest days of the year were July 14 and August 12, 2016. On both of those days the high temperature was 91°F. The coldest day of the year was December 30th when the high temperature was 75°F. <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
-<p>During 2016, the average annual temperature in Rexburg, Idaho was 57.33°F with a standard deviation of 22°F. The warmest day of the year was August 2, 2016 when the high temperature was 95°F. The coldest day of the year, however, was on December 17th when the high temperature was only 4°F.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
-<p>If we compare the standard deviations for Honolulu and Rexburg, we see that Honolulu’s standard deviation of 2.97°F is much smaller than Rexburg’s standard deviation of 22°F. This tells us the temperatures in Honolulu are usually much closer to the average when compared to the temperatures in Rexburg that vary a lot from the average.</p>
+We know that the temperature in Hawaii is pretty similar all year long.
+But the temperature in Idaho varies a lot. In the summer the high
+temperature in Rexburg might be 95°F while in the winter the high
+temperature might only be -10°F.</p>
+<p>During 2016, the average annual temperature in Honolulu, Hawaii was
+84.09°F and the standard deviation was 2.97°F. The warmest days of the
+year were July 14 and August 12, 2016. On both of those days the high
+temperature was 91°F. The coldest day of the year was December 30th when
+the high temperature was 75°F. <a href="#fn4" class="footnote-ref"
+id="fnref4"><sup>4</sup></a></p>
+<p>During 2016, the average annual temperature in Rexburg, Idaho was
+57.33°F with a standard deviation of 22°F. The warmest day of the year
+was August 2, 2016 when the high temperature was 95°F. The coldest day
+of the year, however, was on December 17th when the high temperature was
+only 4°F.<a href="#fn5" class="footnote-ref"
+id="fnref5"><sup>5</sup></a></p>
+<p>If we compare the standard deviations for Honolulu and Rexburg, we
+see that Honolulu’s standard deviation of 2.97°F is much smaller than
+Rexburg’s standard deviation of 22°F. This tells us the temperatures in
+Honolulu are usually much closer to the average when compared to the
+temperatures in Rexburg that vary a lot from the average.</p>
 <hr>
 </div>
-<div id="excel-instructions---standard-deviation" class="section level4 tabset tabset-fade">
-<h4>Excel Instructions - Standard Deviation</h4>
+<div id="excel-instructions---standard-deviation"
+class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Excel Instructions - Standard
+Deviation</h4>
 <p>To compute the standard deviation in Excel:</p>
 <div id="step-1-2" class="section level5">
 <h5>Step 1</h5>
@@ -660,7 +786,8 @@ We know that the temperature in Hawaii is pretty similar all year long. But the 
 <ul>
 <li>type the command <code>=STDEV(</code> in a blank cell</li>
 <li>highlight the data you are interested in</li>
-<li>finish by typing the closing parentheses <code>)</code> and pressing <code>Enter</code> or <code>return</code>.</li>
+<li>finish by typing the closing parentheses <code>)</code> and pressing
+<code>Enter</code> or <code>return</code>.</li>
 </ul>
 <center>
 <img src="Lesson5/Week%205/HighLow10.png" />
@@ -679,26 +806,52 @@ We know that the temperature in Hawaii is pretty similar all year long. But the 
 </div>
 <div id="percentiles" class="section level3">
 <h3>Percentiles</h3>
-<p>Percentiles help us see how a certain value compares to all the other values in a set of data.</p>
+<p>Percentiles help us see how a certain value compares to all the other
+values in a set of data.</p>
 <blockquote>
-<p>A <em>percentile</em> measures the percentage of values that are the same as or less than the specified value. They are typically used to measure the performance of an individual with respect to their peers.</p>
+<p>A <em>percentile</em> measures the percentage of values that are the
+same as or less than the specified value. They are typically used to
+measure the performance of an individual with respect to their
+peers.</p>
 </blockquote>
-<p>Context is very important to consider when looking at percentiles. Being at the 5th percentile might be good, it might be bad, and it might not be significant at all. It really just depends on the situation. You should never consider a percentile without looking at the related context.</p>
+<p>Context is very important to consider when looking at percentiles.
+Being at the 5th percentile might be good, it might be bad, and it might
+not be significant at all. It really just depends on the situation. You
+should never consider a percentile without looking at the related
+context.</p>
 <div id="example-6" class="section level4">
 <h4>Example 6</h4>
-<p>Juan took a standardized test and then was told that he scored at the 82nd percentile. Interpret what the percentile means.</p>
+<p>Juan took a standardized test and then was told that he scored at the
+82nd percentile. Interpret what the percentile means.</p>
 <p><strong>Solution</strong></p>
-<p>Knowing that Juan’s score was at the 82nd percentile helps us understand how he scored compared to the other students who took the standardized test. We know he scored as well or better than 82% of all the people who took the test. This means 18% of students who took the test scored better than Juan did. Juan’s percentile score does not tell us his actual score on the exam. It only tells us what percentage of students he scored higher than (or the same as).</p>
+<p>Knowing that Juan’s score was at the 82nd percentile helps us
+understand how he scored compared to the other students who took the
+standardized test. We know he scored as well or better than 82% of all
+the people who took the test. This means 18% of students who took the
+test scored better than Juan did. Juan’s percentile score does not tell
+us his actual score on the exam. It only tells us what percentage of
+students he scored higher than (or the same as).</p>
 <hr>
 </div>
 <div id="example-7" class="section level4">
 <h4>Example 7</h4>
-<p>In the introductory video we heard the doctor tell Lucas and Amanda that their daughter Emmy is in the 4th percentile for girls her age. Explain what this means.</p>
-<p><strong>Solution</strong> Since Emmy is in the 4th percentile we know that out of all the baby girls her age, only 4% weigh the same or less than Emmy does. That means 96% of the babies weight more than Emmy. We could also think of it as: 4 out of every 100 babies will be the same weight or smaller. The doctor noted: “It is something to keep an eye on, but it’s actually not that unusual.” In this case the context is very important, the doctor does not just use a percentile to make a decision about Emmy’s care. He will also consider other indicators of her health.</p>
+<p>In the introductory video we heard the doctor tell Lucas and Amanda
+that their daughter Emmy is in the 4th percentile for girls her age.
+Explain what this means.</p>
+<p><strong>Solution</strong> Since Emmy is in the 4th percentile we know
+that out of all the baby girls her age, only 4% weigh the same or less
+than Emmy does. That means 96% of the babies weight more than Emmy. We
+could also think of it as: 4 out of every 100 babies will be the same
+weight or smaller. The doctor noted: “It is something to keep an eye on,
+but it’s actually not that unusual.” In this case the context is very
+important, the doctor does not just use a percentile to make a decision
+about Emmy’s care. He will also consider other indicators of her
+health.</p>
 <hr>
 </div>
-<div id="excel-instructions---percentiles" class="section level4 tabset tabset-fade">
-<h4>Excel Instructions - Percentiles</h4>
+<div id="excel-instructions---percentiles"
+class="section level4 tabset tabset-fade">
+<h4 class="tabset tabset-fade">Excel Instructions - Percentiles</h4>
 <p>To compute a percentile in Excel:</p>
 <div id="step-1-3" class="section level5">
 <h5>Step 1</h5>
@@ -706,8 +859,10 @@ We know that the temperature in Hawaii is pretty similar all year long. But the 
 <ul>
 <li>type the command <code>=PERCENTILE(</code> in a blank cell</li>
 <li>highlight the data you are interested in</li>
-<li>type a comma <code>,</code> and the desired percentile as a decimal like <code>0.9</code></li>
-<li>finish by typing the closing parentheses <code>)</code> and pressing <code>Enter</code> or <code>return</code>.</li>
+<li>type a comma <code>,</code> and the desired percentile as a decimal
+like <code>0.9</code></li>
+<li>finish by typing the closing parentheses <code>)</code> and pressing
+<code>Enter</code> or <code>return</code>.</li>
 </ul>
 <center>
 <img src="Lesson5/Week%205/HighLow12.png" />
@@ -731,19 +886,31 @@ We know that the temperature in Hawaii is pretty similar all year long. But the 
 <div>
 <iframe width="780" height="700" frameborder="0" src="./Lesson5/Storyline/Lesson 5 Interactive 2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L05 - Interactive 2: Practice<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQ5oBBLE50rIlEzN6VXMYU-RWDUuxxFNieHygXNEkTUJaEvVJAQK_eHmBo9HKE_5G2ZUais7MN_rclR/pub">(L05-2 ADA Interactive Transcript)</a></p>
+<p>L05 - Interactive 2: Practice<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQ5oBBLE50rIlEzN6VXMYU-RWDUuxxFNieHygXNEkTUJaEvVJAQK_eHmBo9HKE_5G2ZUais7MN_rclR/pub">(L05-2
+ADA Interactive Transcript)</a></p>
 </div>
 </center>
 <hr>
 </div>
 <div id="putting-it-all-together" class="section level2">
 <h2>Putting it All Together</h2>
-<p>Now that we know how to compute numbers that summarize data we can use these tools as part of the quantitative reasoning process to help us make an informed decision. Let’s go back to Lucas and Amanda and their experience at the doctor in the introductory video. At the end of the video we heard the doctor say; “I don’t think we need to be concerned unless it worsens. We’ll watch her progress closely.” (Note: This scenario is based on a real situation, but keep in mind that just having a low percentile for weight is not necessarily a cause for concern.)</p>
+<p>Now that we know how to compute numbers that summarize data we can
+use these tools as part of the quantitative reasoning process to help us
+make an informed decision. Let’s go back to Lucas and Amanda and their
+experience at the doctor in the introductory video. At the end of the
+video we heard the doctor say; “I don’t think we need to be concerned
+unless it worsens. We’ll watch her progress closely.” (Note: This
+scenario is based on a real situation, but keep in mind that just having
+a low percentile for weight is not necessarily a cause for concern.)</p>
 <hr>
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Emmy hasn’t been eating well and has spit up a lot after she eats. Lucas and Amanda’s were concerned about Emmy’s weight. They want to decide how to proceed to care for Emmy to ensure that she is healthy.</p>
+<p>Emmy hasn’t been eating well and has spit up a lot after she eats.
+Lucas and Amanda’s were concerned about Emmy’s weight. They want to
+decide how to proceed to care for Emmy to ensure that she is
+healthy.</p>
 <hr>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
@@ -758,53 +925,102 @@ Identify Variables &amp; Assumptions
 <p>Lucas and Amanda need to make a few assumptions:</p>
 <ul>
 <li>Emmy’s weight and height are an indication of her health</li>
-<li>Emmy’s weight and height are going to continue to be smaller than average</li>
+<li>Emmy’s weight and height are going to continue to be smaller than
+average</li>
 <li>Emmy is going to continue to spit up often</li>
 </ul>
 <hr>
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>The percentile is a useful statistical tool in this situation. Knowing that Emmy’s weight is in the 4th percentile helps Lucas and Amanda understand how her weight compares to the weight of other babies her age. The chart the doctor showed is also a helpful tool because it gives them a visual tool to understand Emmy’s weight. Lucas and Amanda understand that percentiles should always be considered in context. Just being small isn’t necessarily a concern, but because Emmy is also not eating well and spitting up a lot they are wondering if something is wrong.</p>
+<p>The percentile is a useful statistical tool in this situation.
+Knowing that Emmy’s weight is in the 4th percentile helps Lucas and
+Amanda understand how her weight compares to the weight of other babies
+her age. The chart the doctor showed is also a helpful tool because it
+gives them a visual tool to understand Emmy’s weight. Lucas and Amanda
+understand that percentiles should always be considered in context. Just
+being small isn’t necessarily a concern, but because Emmy is also not
+eating well and spitting up a lot they are wondering if something is
+wrong.</p>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>After discussing things further with the doctor, Lucas and Amanda decide not to do any medical tests at this time. The doctor wants to watch Emmy’s progress, but he is not overly concerned. Lucas and Amanda are worried about doing medical tests because the tests are not covered by their health insurance and they would have to pay about $100 each for the six tests the might apply. Based on their doctor’s recommendation, they decide to wait and see if Emmy’s weight improves.</p>
+<p>After discussing things further with the doctor, Lucas and Amanda
+decide not to do any medical tests at this time. The doctor wants to
+watch Emmy’s progress, but he is not overly concerned. Lucas and Amanda
+are worried about doing medical tests because the tests are not covered
+by their health insurance and they would have to pay about $100 each for
+the six tests the might apply. Based on their doctor’s recommendation,
+they decide to wait and see if Emmy’s weight improves.</p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>After carefully considering their decision, discussing it with the doctor, and praying about it, Lucas and Amanda are comfortable with their decision.</p>
-<p>In two months they return to the doctor to follow up on Emmy’s progress. At that visit they find that Emmy’s weight has dropped to the 2nd percentile for baby girls her age. She is spitting up more often and has other signs of poor health. Based on this new information, they re-discuss their decision with the doctor and decide to go ahead and do the tests. The doctor helps them find a clinic where the tests can be done for less money than they would be at the hospital.</p>
-<p>The tests come back and show that Emmy has a small health issue that is able to be fixed with medication. In a follow up visit a few months later Emmy’s weight has increased to the 15th percentile for baby girls her age.</p>
-<p>This example used the percentile as a tool to help understand Emmy’s weight. In this case the doctor did the computation required and reported the percentile to Lucas and Amanda. In other cases we will find that Excel is a helpful tool for us to use as part of the Quantitative Reasoning Process when we want to find the minimum, maximum, mean, medium, mode, standard deviation, or a percentile.</p>
+<p>After carefully considering their decision, discussing it with the
+doctor, and praying about it, Lucas and Amanda are comfortable with
+their decision.</p>
+<p>In two months they return to the doctor to follow up on Emmy’s
+progress. At that visit they find that Emmy’s weight has dropped to the
+2nd percentile for baby girls her age. She is spitting up more often and
+has other signs of poor health. Based on this new information, they
+re-discuss their decision with the doctor and decide to go ahead and do
+the tests. The doctor helps them find a clinic where the tests can be
+done for less money than they would be at the hospital.</p>
+<p>The tests come back and show that Emmy has a small health issue that
+is able to be fixed with medication. In a follow up visit a few months
+later Emmy’s weight has increased to the 15th percentile for baby girls
+her age.</p>
+<p>This example used the percentile as a tool to help understand Emmy’s
+weight. In this case the doctor did the computation required and
+reported the percentile to Lucas and Amanda. In other cases we will find
+that Excel is a helpful tool for us to use as part of the Quantitative
+Reasoning Process when we want to find the minimum, maximum, mean,
+medium, mode, standard deviation, or a percentile.</p>
 <hr>
 </div>
 <div id="lesson-checklist" class="section level2">
 <h2>Lesson Checklist</h2>
-<p>At the end of this lesson, you should be able to do the following:</p>
+<p>At the end of this lesson, you should be able to do the
+following:</p>
 <ul>
-<li>Use Excel to calculate the minimum, maximum, mean, median, mode, standard deviation, and a percentile.</li>
-<li>Interpret the maximum and minimum as measures of the extreme values in a set of data.</li>
-<li>Interpret the mean, median, and mode as measures of the center in a set of data.</li>
-<li>Be able to determine whether to use the mean, median, or mode to find a measure of the center of a set of data.</li>
-<li>Interpret the standard deviation as a measure of variability of a set of data.</li>
-<li>Interpret percentiles as a way to compare an individual value to the rest of the data set.</li>
-<li>Use the minimum, maximum, mean, median, mode, standard deviation, and percentiles as a quantitative tool in the Quantitative Reasoning Process.</li>
+<li>Use Excel to calculate the minimum, maximum, mean, median, mode,
+standard deviation, and a percentile.</li>
+<li>Interpret the maximum and minimum as measures of the extreme values
+in a set of data.</li>
+<li>Interpret the mean, median, and mode as measures of the center in a
+set of data.</li>
+<li>Be able to determine whether to use the mean, median, or mode to
+find a measure of the center of a set of data.</li>
+<li>Interpret the standard deviation as a measure of variability of a
+set of data.</li>
+<li>Interpret percentiles as a way to compare an individual value to the
+rest of the data set.</li>
+<li>Use the minimum, maximum, mean, median, mode, standard deviation,
+and percentiles as a quantitative tool in the Quantitative Reasoning
+Process.</li>
 </ul>
 <center>
 © 2020 Brigham Young University - Idaho
 </center>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p><a href="http://www.gallup.com/poll/166211/worldwide-median-household-income-000.aspx " target="_blank">http://www.gallup.com/poll/166211/worldwide-median-household-income-000.aspx</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Brother Cromar’s BYU-I Stats class survey<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p><a href="http://newsfeed.time.com/2012/10/16/size-8-is-the-new-7-why-our-feet-are-getting-bigger/" target="_blank">http://newsfeed.time.com/2012/10/16/size-8-is-the-new-7-why-our-feet-are-getting-bigger/</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p><a href="http://www.ncdc.noaa.gov" target="_blank">http://www.ncdc.noaa.gov</a><a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p><a href="http://www.ncdc.noaa.gov" target="_blank">http://www.ncdc.noaa.gov</a><a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li
+id="fn1"><p><a href="http://www.gallup.com/poll/166211/worldwide-median-household-income-000.aspx " target="_blank">http://www.gallup.com/poll/166211/worldwide-median-household-income-000.aspx</a><a
+href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Brother Cromar’s BYU-I Stats class survey<a
+href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li
+id="fn3"><p><a href="http://newsfeed.time.com/2012/10/16/size-8-is-the-new-7-why-our-feet-are-getting-bigger/" target="_blank">http://newsfeed.time.com/2012/10/16/size-8-is-the-new-7-why-our-feet-are-getting-bigger/</a><a
+href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li
+id="fn4"><p><a href="http://www.ncdc.noaa.gov" target="_blank">http://www.ncdc.noaa.gov</a><a
+href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li
+id="fn5"><p><a href="http://www.ncdc.noaa.gov" target="_blank">http://www.ncdc.noaa.gov</a><a
+href="#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -819,7 +1035,7 @@ Evaluate Your Reasoning
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -837,7 +1053,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -846,6 +1062,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>Lesson 10: Making Predictions From Data</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,12 +36,16 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,38 +58,12 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -83,13 +71,8 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -100,44 +83,59 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
+.dropdown-submenu {
+  position: relative;
 }
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
 }
-
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
 }
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
 }
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
 }
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu.pull-left {
+  float: none;
 }
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -148,54 +146,85 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
-
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
-
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -209,6 +238,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -244,8 +279,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -255,8 +288,18 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -270,12 +313,12 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+      <a class="navbar-brand" href="index.html">The Quantitative Reasoning Process</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -283,7 +326,7 @@ div.tocify {
   <a href="index.html">Table of Contents</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit I
      
     <span class="caret"></span>
@@ -307,7 +350,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit II
      
     <span class="caret"></span>
@@ -328,7 +371,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit III
      
     <span class="caret"></span>
@@ -356,11 +399,12 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
-<h1 class="title toc-ignore">Lesson 10: Making Predictions From Data</h1>
+<h1 class="title toc-ignore">Lesson 10: Making Predictions From
+Data</h1>
 
 </div>
 
@@ -370,23 +414,47 @@ div.tocify {
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_3gbhhyat&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_qfnz9gt9" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p>Lesson 10 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTMmLClXg20NeGKV5-4w026dP8axcsh_C2rGAqztUY7XX7lYw-XcAyU6PAwHHXrGCQJn18847VFXyK-/pub">(0:54 mins, L10 Opening Story Transcript)</a></p>
+<p>Lesson 10 - Opening story<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTMmLClXg20NeGKV5-4w026dP8axcsh_C2rGAqztUY7XX7lYw-XcAyU6PAwHHXrGCQJn18847VFXyK-/pub">(0:54
+mins, L10 Opening Story Transcript)</a></p>
 </center>
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>As Sophia and Emmy traveled through Yellowstone National Park (USA) they encountered situations where <em>data analysis</em> was used to make a decision or a prediction.</p>
+<p>As Sophia and Emmy traveled through Yellowstone National Park (USA)
+they encountered situations where <em>data analysis</em> was used to
+make a decision or a prediction.</p>
 <blockquote>
-<p>Data analysis is the method of collecting, graphing, and analyzing data in order to understand patterns in the data.</p>
+<p>Data analysis is the method of collecting, graphing, and analyzing
+data in order to understand patterns in the data.</p>
 </blockquote>
-<p>In other words, data analysis is used to uncover the truth about a current scenario, a future event, or even what happened in the past.</p>
-<p>Elder Bednar stated, “I long have been impressed with the simple and clear definition of truth set forth in the Book of Mormon: The Spirit speaketh the truth and lieth not. Wherefore, it speaketh of things as they really are, and of things as they really will be; wherefore, these things are manifested unto us plainly, for the salvation of our souls.”<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
-<p>While we live in a time where God has revealed many truths, there are still many things that God has not yet revealed. As individuals, our futures are still full of uncertainty. This lesson focuses on analyzing data to make prediction, which gives us quantitative tools to better understand things “as they really are” and predict things “as they really will be.” <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<p>In other words, data analysis is used to uncover the truth about a
+current scenario, a future event, or even what happened in the past.</p>
+<p>Elder Bednar stated, “I long have been impressed with the simple and
+clear definition of truth set forth in the Book of Mormon: The Spirit
+speaketh the truth and lieth not. Wherefore, it speaketh of things as
+they really are, and of things as they really will be; wherefore, these
+things are manifested unto us plainly, for the salvation of our
+souls.”<a href="#fn1" class="footnote-ref"
+id="fnref1"><sup>1</sup></a></p>
+<p>While we live in a time where God has revealed many truths, there are
+still many things that God has not yet revealed. As individuals, our
+futures are still full of uncertainty. This lesson focuses on analyzing
+data to make prediction, which gives us quantitative tools to better
+understand things “as they really are” and predict things “as they
+really will be.” <a href="#fn2" class="footnote-ref"
+id="fnref2"><sup>2</sup></a></p>
 </div>
 <div id="input-and-output-variables" class="section level2">
 <h2>Input and Output Variables</h2>
-<p>One of the most powerful ways to discover how things “really are” is to use known information to help predict, or explain the unknown. This is done using input and output variables, as we have discussed in earlier lessons.</p>
-<p>Mathematicians and statisticians use a variety of different names to refer to input and output variables. We will continue to refer to these variables as inputs and outputs. But it can be helpful to know their other names.</p>
+<p>One of the most powerful ways to discover how things “really are” is
+to use known information to help predict, or explain the unknown. This
+is done using input and output variables, as we have discussed in
+earlier lessons.</p>
+<p>Mathematicians and statisticians use a variety of different names to
+refer to input and output variables. We will continue to refer to these
+variables as inputs and outputs. But it can be helpful to know their
+other names.</p>
 <table>
 <thead>
 <tr class="header">
@@ -413,24 +481,63 @@ div.tocify {
 </tr>
 </tbody>
 </table>
-<p>We have seen several examples of input and output variables in previous lessons. In Lesson 8 we read about Sarah, a woman who was trying to improve her health. She used the function <span class="math inline">\(f(x)=6x+1860\)</span> where the input variable, <span class="math inline">\(x\)</span>, represented the number of minutes she walked each day and the output variable, <span class="math inline">\(f(x)\)</span> or <span class="math inline">\(y\)</span>, represented her total caloric expenditure for the day. The total number of calories burned changed in <em>response</em> to how long she walked, and how long she walked <em>explained</em> or <em>predicted</em> how many calories she would burn. Said differently, she was free (or <em>independent</em>) to choose how long she walked, while the total number of calories burned was <em>dependent</em> on her choice of how long she walked. This is just an example of how the alternative names of input and output variables could be used. As stated previously, this lesson will continue to use only the terms “input” and “output” for variables.</p>
-<p>When it is possible two variables might be related, we can use data analysis to explore relationships between the input variable and the output variable. We can create a scatter plot with the input variable on the horizontal axis (<span class="math inline">\(x\)</span>-axis) and the output variable on the vertical axis (<span class="math inline">\(y\)</span>-axis). Looking at the scatter plot helps us see if a pattern or trend exists that can be described using a function.</p>
+<p>We have seen several examples of input and output variables in
+previous lessons. In Lesson 8 we read about Sarah, a woman who was
+trying to improve her health. She used the function <span
+class="math inline">\(f(x)=6x+1860\)</span> where the input variable,
+<span class="math inline">\(x\)</span>, represented the number of
+minutes she walked each day and the output variable, <span
+class="math inline">\(f(x)\)</span> or <span
+class="math inline">\(y\)</span>, represented her total caloric
+expenditure for the day. The total number of calories burned changed in
+<em>response</em> to how long she walked, and how long she walked
+<em>explained</em> or <em>predicted</em> how many calories she would
+burn. Said differently, she was free (or <em>independent</em>) to choose
+how long she walked, while the total number of calories burned was
+<em>dependent</em> on her choice of how long she walked. This is just an
+example of how the alternative names of input and output variables could
+be used. As stated previously, this lesson will continue to use only the
+terms “input” and “output” for variables.</p>
+<p>When it is possible two variables might be related, we can use data
+analysis to explore relationships between the input variable and the
+output variable. We can create a scatter plot with the input variable on
+the horizontal axis (<span class="math inline">\(x\)</span>-axis) and
+the output variable on the vertical axis (<span
+class="math inline">\(y\)</span>-axis). Looking at the scatter plot
+helps us see if a pattern or trend exists that can be described using a
+function.</p>
 </div>
 <div id="trendlines" class="section level2">
 <h2>Trendlines</h2>
-<p>When data shows a pattern or trend, we can use the data to make predictions. The predictions may be about some future event, an estimate of what happened in the past, or even a statement about where things are currently. We often use trendlines to describe a trend or correlation in data.</p>
+<p>When data shows a pattern or trend, we can use the data to make
+predictions. The predictions may be about some future event, an estimate
+of what happened in the past, or even a statement about where things are
+currently. We often use trendlines to describe a trend or correlation in
+data.</p>
 <blockquote>
-<p>A <em>trendline</em> is the graph of a function that describes the pattern or trend in data represented by input and output variables.</p>
+<p>A <em>trendline</em> is the graph of a function that describes the
+pattern or trend in data represented by input and output variables.</p>
 </blockquote>
-<p>Although the term <em>trendline</em> includes the word “line”, trendlines are not always lines, they can also be curves. We will be using linear trendlines, quadratic trendlines, and exponential trendlines.</p>
+<p>Although the term <em>trendline</em> includes the word “line”,
+trendlines are not always lines, they can also be curves. We will be
+using linear trendlines, quadratic trendlines, and exponential
+trendlines.</p>
 <div id="community-service-example" class="section level3">
 <h3>Community Service Example</h3>
-<p>A study conducted in 2014 showed that “Americans who actively work to better their communities have higher overall well-being than those who do not.” <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> Although the actual data of the study is confidential and cannot be shared here, the following data is recreated to reflect the results of the actual study. This fabricated data shows the score earned by 10 fictitious individuals on a well-being index along with the number of hours of community service they have completed in the past month.</p>
+<p>A study conducted in 2014 showed that “Americans who actively work to
+better their communities have higher overall well-being than those who
+do not.” <a href="#fn3" class="footnote-ref"
+id="fnref3"><sup>3</sup></a> Although the actual data of the study is
+confidential and cannot be shared here, the following data is recreated
+to reflect the results of the actual study. This fabricated data shows
+the score earned by 10 fictitious individuals on a well-being index
+along with the number of hours of community service they have completed
+in the past month.</p>
 <center>
-<table style="width:56%;">
+<table>
 <colgroup>
-<col width="29%" />
-<col width="26%" />
+<col width="52%" />
+<col width="47%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -478,32 +585,53 @@ div.tocify {
 </tbody>
 </table>
 </center>
-<p>To study the trend shown by this data we use Excel to create a scatter plot. We decide if the trend is linear, quadratic, or exponential and then add the appropriate trendline and equation to the graph.</p>
+<p>To study the trend shown by this data we use Excel to create a
+scatter plot. We decide if the trend is linear, quadratic, or
+exponential and then add the appropriate trendline and equation to the
+graph.</p>
 <center>
-<p><img src="Lesson10/Images/CommunityService.png" alt="A scatterplot of the data above, with a trendline added, y = 4.9745x + 43.213" /></p>
+<p><img src="Lesson10/Images/CommunityService.png"
+alt="A scatterplot of the data above, with a trendline added, y = 4.9745x + 43.213" /></p>
 </center>
-<p><br> <br> Looking at the graph, we can see that all the points don’t lie directly on the line. However, the line does show the general trend of the data. In this case, Excel tells us the general relationship between the Well-Being Index Score and the Hours of Community Service can be described with the function</p>
+<p><br> <br> Looking at the graph, we can see that all the points don’t
+lie directly on the line. However, the line does show the general trend
+of the data. In this case, Excel tells us the general relationship
+between the Well-Being Index Score and the Hours of Community Service
+can be described with the function</p>
 <p><span class="math display">\[
 y=4.9745x+43.213
 \]</span></p>
-<p>where the input, <span class="math inline">\(x\)</span>, represents the number of hours of community service completed in the past month and the output, <span class="math inline">\(y\)</span>, represents the score on the well-being index.</p>
-<p>We can use this function to predict the well-being score for individuals, based on the number of hours of community service they have completed in the previous month.</p>
-<p>For individuals who have completed 10 hours of community service in the past month,</p>
+<p>where the input, <span class="math inline">\(x\)</span>, represents
+the number of hours of community service completed in the past month and
+the output, <span class="math inline">\(y\)</span>, represents the score
+on the well-being index.</p>
+<p>We can use this function to predict the well-being score for
+individuals, based on the number of hours of community service they have
+completed in the previous month.</p>
+<p>For individuals who have completed 10 hours of community service in
+the past month,</p>
 <p><span class="math display">\[
 y=4.9745(10)+43.213=92.958.
 \]</span></p>
-<p>For individuals who have completed 5 hours of community service in the past month,</p>
+<p>For individuals who have completed 5 hours of community service in
+the past month,</p>
 <p><span class="math display">\[
 y=4.9745(5)+43.213=68.0855.
-\]</span> The prediction is that on average, individuals who complete 10 hours of community service will have a higher well-being score than individuals who complete 5 hours of community service.</p>
+\]</span> The prediction is that on average, individuals who complete 10
+hours of community service will have a higher well-being score than
+individuals who complete 5 hours of community service.</p>
 </div>
-<div id="excel-instructions---trendlines" class="section level3 tabset tabset-fade">
-<h3>Excel Instructions - Trendlines</h3>
-<p>Click on each of the five steps below to learn how to create the community service scatter plot and trendline.</p>
+<div id="excel-instructions---trendlines"
+class="section level3 tabset tabset-fade">
+<h3 class="tabset tabset-fade">Excel Instructions - Trendlines</h3>
+<p>Click on each of the five steps below to learn how to create the
+community service scatter plot and trendline.</p>
 <div id="step-1" class="section level4">
 <h4>Step 1</h4>
-<p>Create an Excel file that lists the input variable in the first column and the output variable in the second column.</p>
-<p><img src="Lesson10/Images/scatterplotstep1.png" alt="Spreadsheet containing the hours of community service and the Well-Being Index Score" /></p>
+<p>Create an Excel file that lists the input variable in the first
+column and the output variable in the second column.</p>
+<p><img src="Lesson10/Images/scatterplotstep1.png"
+alt="Spreadsheet containing the hours of community service and the Well-Being Index Score" /></p>
 <hr>
 </div>
 <div id="step-2" class="section level4">
@@ -513,7 +641,8 @@ y=4.9745(5)+43.213=68.0855.
 <li>[2] Select “Insert”.</li>
 <li>[3] Select the “Scatter plot” icon and the “Scatter option”.</li>
 </ul>
-<p><img src="Lesson10/Images/scatterplotstep2.png" alt="Spreadsheet example" /></p>
+<p><img src="Lesson10/Images/scatterplotstep2.png"
+alt="Spreadsheet example" /></p>
 <hr>
 </div>
 <div id="step-3" class="section level4">
@@ -523,23 +652,29 @@ y=4.9745(5)+43.213=68.0855.
 <li>[1] Right-click on one of the points.</li>
 <li>[2] From the right-click menu, select “Add Trendline”</li>
 </ul>
-<p><img src="Lesson10/Images/scatterplotstep3.png" alt="Spreadsheet example" /></p>
+<p><img src="Lesson10/Images/scatterplotstep3.png"
+alt="Spreadsheet example" /></p>
 <hr>
 </div>
 <div id="step-4" class="section level4">
 <h4>Step 4</h4>
 <p>From the “Format Trendline” menu,</p>
 <ul>
-<li>[1] Because the scatter plot for these data show a linear trend, select “Linear”. (Select “Polynomial” to create a quadratic trendline or “Exponential” to create an exponential trendline.)</li>
+<li>[1] Because the scatter plot for these data show a linear trend,
+select “Linear”. (Select “Polynomial” to create a quadratic trendline or
+“Exponential” to create an exponential trendline.)</li>
 <li>[2] Check the box to “Display Equation on Chart”.</li>
 </ul>
-<p><img src="Lesson10/Images/scatterplotstep4.png" alt="Spreadsheet example" /></p>
+<p><img src="Lesson10/Images/scatterplotstep4.png"
+alt="Spreadsheet example" /></p>
 <hr>
 </div>
 <div id="step-5" class="section level4">
 <h4>Step 5</h4>
-<p>Add chart elements [1], such as axis titles and chart titles to create a finished graph [2].</p>
-<p><img src="Lesson10/Images/scatterplotstep5.png" alt="Spreadsheet example" /></p>
+<p>Add chart elements [1], such as axis titles and chart titles to
+create a finished graph [2].</p>
+<p><img src="Lesson10/Images/scatterplotstep5.png"
+alt="Spreadsheet example" /></p>
 <hr>
 </div>
 </div>
@@ -550,64 +685,136 @@ y=4.9745(5)+43.213=68.0855.
 <iframe width="780" height="600" frameborder="0" src="./Lesson10/Storyline/Lesson10.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L10 - Interactive 1: Practice Creating Trendline<br> <a href="https://docs.google.com/document/d/e/2PACX-1vRHccyt3J_Zjx6jQfadTmKKYM-AEcyD-DkpQkcDPNSK4D8MySwkKwqlKK95p1C1xIGFd9OGV7pN-zUg/pub">(L10-1 ADAInteractive Transcript)</a></p>
+<p>L10 - Interactive 1: Practice Creating Trendline<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vRHccyt3J_Zjx6jQfadTmKKYM-AEcyD-DkpQkcDPNSK4D8MySwkKwqlKK95p1C1xIGFd9OGV7pN-zUg/pub">(L10-1
+ADAInteractive Transcript)</a></p>
 </center>
 <hr>
 </div>
 </div>
 <div id="correlation-vs-causation" class="section level2">
 <h2>Correlation vs Causation</h2>
-<p>In chapter 2 we learned about flaws in logical reasoning. If we are not careful, the use of trendlines can lead to a very common flaw in logical reasoning.</p>
-<p>When a scatter plot shows a trend or relationship between two variables we say that the variables are <em>correlated</em>. However, this does not necessarily mean that changes in the input variable <em>cause</em> a change in the output variable.</p>
+<p>In chapter 2 we learned about flaws in logical reasoning. If we are
+not careful, the use of trendlines can lead to a very common flaw in
+logical reasoning.</p>
+<p>When a scatter plot shows a trend or relationship between two
+variables we say that the variables are <em>correlated</em>. However,
+this does not necessarily mean that changes in the input variable
+<em>cause</em> a change in the output variable.</p>
 <blockquote>
-<p>A correlation between two variables does not imply there is a causal relationship.</p>
+<p>A correlation between two variables does not imply there is a causal
+relationship.</p>
 </blockquote>
-<p>A causal relationship means that changes in one variable <em>cause</em> a change in the other variable. Often, when variables are correlated there is an alternative explanation, other than causation, for the relationship. Here are a few examples.</p>
+<p>A causal relationship means that changes in one variable
+<em>cause</em> a change in the other variable. Often, when variables are
+correlated there is an alternative explanation, other than causation,
+for the relationship. Here are a few examples.</p>
 <div id="lice-a-sign-of-good-health" class="section level4">
 <h4>Lice: A Sign of Good Health</h4>
 <p><br></p>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_by427lro&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_yf7t25u5" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p>Correlation/Causation<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTy79ft5DaT6FIIAoHfHIETWkwLxga_jbgVafpWbA1SxRaHCCV5rWJZb40ve9y8rEE49l-JRBbH0oee/pub">(2:37 mins, L10 Eyring Transcript)</a></p>
+<p>Correlation/Causation<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTy79ft5DaT6FIIAoHfHIETWkwLxga_jbgVafpWbA1SxRaHCCV5rWJZb40ve9y8rEE49l-JRBbH0oee/pub">(2:37
+mins, L10 Eyring Transcript)</a></p>
 </center>
 <p><br></p>
-<p>As explained by President Eyring, it is easy to assume a casual relationship when none exists.</p>
+<p>As explained by President Eyring, it is easy to assume a casual
+relationship when none exists.</p>
 </div>
 <div id="eating-ice-cream-causes-shark-attacks" class="section level4">
 <h4>Eating Ice Cream Causes Shark Attacks!</h4>
-<p>Here is another classic example. The following scatter plot and trendline show the relationship between monthly ice cream sales and the number of shark attacks per month.<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p>
+<p>Here is another classic example. The following scatter plot and
+trendline show the relationship between monthly ice cream sales and the
+number of shark attacks per month.<a href="#fn4" class="footnote-ref"
+id="fnref4"><sup>4</sup></a></p>
 <center>
-<p><img src="Lesson10/Images/sharkattacks.jpg" alt="scatterplot plus trendline showing ice cream sales compared to shark attacks" /></p>
+<p><img src="Lesson10/Images/sharkattacks.JPG"
+alt="scatterplot plus trendline showing ice cream sales compared to shark attacks" /></p>
 </center>
-<p>This scatter plot clearly shows a linear trend where increased monthly ice cream sales correspond with a high number of shark attacks. However, what we are seeing in the graph is a <em>correlation</em> between ice cream sales and shark attacks. We cannot conclude that eating ice cream <em>causes</em> shark attacks.</p>
-<p>The correlation seen in these data has a more rational explanation. Because of warmer weather, people are more likely to eat ice cream in the summer than they are in the winter. So ice cream sales are higher during summer months. Similarly, warmer weather during the summer means that people are more likely to go to the ocean and go swimming. Due to there being more people in the water, as well as because of the migratory patterns of sharks, shark attacks are more common during the summer than in the winter. So the relationship between ice cream sales and shark attacks is due to the fact that both are more common during summer months when the temperature is warmer. This <em>alternative explanation</em> explains the trend we see in the data.</p>
-<p>In the case of sharks and ice cream, it is pretty obvious that we should look for an alternative explanation. However, no matter what the data represents, we should always remember that seeing a correlation or trend in the data does not tell us that there is a causal relationship where changes in one variable <em>cause</em> a change in the other variable. Here is an example where it is more tempting to say a causal relationship exists. We first saw this example in Lesson 3.</p>
+<p>This scatter plot clearly shows a linear trend where increased
+monthly ice cream sales correspond with a high number of shark attacks.
+However, what we are seeing in the graph is a <em>correlation</em>
+between ice cream sales and shark attacks. We cannot conclude that
+eating ice cream <em>causes</em> shark attacks.</p>
+<p>The correlation seen in these data has a more rational explanation.
+Because of warmer weather, people are more likely to eat ice cream in
+the summer than they are in the winter. So ice cream sales are higher
+during summer months. Similarly, warmer weather during the summer means
+that people are more likely to go to the ocean and go swimming. Due to
+there being more people in the water, as well as because of the
+migratory patterns of sharks, shark attacks are more common during the
+summer than in the winter. So the relationship between ice cream sales
+and shark attacks is due to the fact that both are more common during
+summer months when the temperature is warmer. This <em>alternative
+explanation</em> explains the trend we see in the data.</p>
+<p>In the case of sharks and ice cream, it is pretty obvious that we
+should look for an alternative explanation. However, no matter what the
+data represents, we should always remember that seeing a correlation or
+trend in the data does not tell us that there is a causal relationship
+where changes in one variable <em>cause</em> a change in the other
+variable. Here is an example where it is more tempting to say a causal
+relationship exists. We first saw this example in Lesson 3.</p>
 </div>
 <div id="soda-leads-to-heart-attacks" class="section level4">
 <h4>Soda Leads to Heart Attacks</h4>
-<p>A research study published in 2013 examined the effect that drinking soda (or other sugary drinks) has on cardiovascular health. The data examined in this study showed a trend where men who drank more soda had higher risk of having a heart attack. However, as stated in a CBSNews article reporting on the study, “other doctors caution that just because there may be a link between sugary drinks and heart attacks does not mean sugar is causing them.”<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> The article went on to point out that men who drink sugary drinks often consume them along with burgers, fries, and other unhealthy food choices. Having a generally unhealthy diet and other poor health habits may be the actual cause of increased heart attack risk.</p>
+<p>A research study published in 2013 examined the effect that drinking
+soda (or other sugary drinks) has on cardiovascular health. The data
+examined in this study showed a trend where men who drank more soda had
+higher risk of having a heart attack. However, as stated in a CBSNews
+article reporting on the study, “other doctors caution that just because
+there may be a link between sugary drinks and heart attacks does not
+mean sugar is causing them.”<a href="#fn5" class="footnote-ref"
+id="fnref5"><sup>5</sup></a> The article went on to point out that men
+who drink sugary drinks often consume them along with burgers, fries,
+and other unhealthy food choices. Having a generally unhealthy diet and
+other poor health habits may be the actual cause of increased heart
+attack risk.</p>
 </div>
 <div id="community-service-and-well-being" class="section level4">
 <h4>Community Service and Well-Being</h4>
-<p>We should apply the rule that correlation does not imply causation to the community service example from the previous section. This example shows a trend where people who do more community service tend to have higher scores on a well-being index. However, we cannot conclude that it is the community service that <em>causes</em> them to have better well-being. We just know there is a correlation and that an individual who does more community service is more likely to have a higher score on the well-being index. It might be the community service that causes a feeling of well-being, but there might also be an alternative explanation. The information we have been given is not enough to tell.</p>
+<p>We should apply the rule that correlation does not imply causation to
+the community service example from the previous section. This example
+shows a trend where people who do more community service tend to have
+higher scores on a well-being index. However, we cannot conclude that it
+is the community service that <em>causes</em> them to have better
+well-being. We just know there is a correlation and that an individual
+who does more community service is more likely to have a higher score on
+the well-being index. It might be the community service that causes a
+feeling of well-being, but there might also be an alternative
+explanation. The information we have been given is not enough to
+tell.</p>
 </div>
 </div>
 <div id="linear-quadratic-or-exponential" class="section level2">
 <h2>Linear, Quadratic, or Exponential?</h2>
-<p>Excel can create linear, quadratic, and exponential trendlines. To decide which of these three types of trendlines would apply in a particular situation we look at the shape of the scatter plot. If the general shape of the points are close to being a line, we use a linear trendline. If the general shape of the graph resembles a u-shaped parabola, we use a quadratic trendline. If the general shape is non-linear and increasing (or decreasing), we use an exponential trendline.</p>
-<p>Linear trendlines are used with data that is linear and has a constant rate of change. Quadratic and exponential trendlines are used with data that is non-linear and has a variable rate of change.</p>
+<p>Excel can create linear, quadratic, and exponential trendlines. To
+decide which of these three types of trendlines would apply in a
+particular situation we look at the shape of the scatter plot. If the
+general shape of the points are close to being a line, we use a linear
+trendline. If the general shape of the graph resembles a u-shaped
+parabola, we use a quadratic trendline. If the general shape is
+non-linear and increasing (or decreasing), we use an exponential
+trendline.</p>
+<p>Linear trendlines are used with data that is linear and has a
+constant rate of change. Quadratic and exponential trendlines are used
+with data that is non-linear and has a variable rate of change.</p>
 <center>
 <div>
 <iframe width="780" height="700" frameborder="0" src="./Lesson10/Storyline/Lesson10.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L10 - Interactive 2: Linear, Quadratic, or Exponential?<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSRUau00VzEJLf3ySGj3H9K_3PqXaHxu98GtU6zWnGBysDXBVKMWTfzq9Et7N7ExoPfwCZn1_WcJ3lP/pub">(L10-2 ADA Interactive Transcript)</a></p>
+<p>L10 - Interactive 2: Linear, Quadratic, or Exponential?<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vSRUau00VzEJLf3ySGj3H9K_3PqXaHxu98GtU6zWnGBysDXBVKMWTfzq9Et7N7ExoPfwCZn1_WcJ3lP/pub">(L10-2
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 <div id="writing-exponential-functions" class="section level4">
 <h4>Writing Exponential Functions</h4>
-<p>Because of the rules of exponents (that we reviewed in Lesson 1), exponential functions can be written a variety of different ways. For example,</p>
+<p>Because of the rules of exponents (that we reviewed in Lesson 1),
+exponential functions can be written a variety of different ways. For
+example,</p>
 <p><span class="math display">\[
 \begin{align}
 f(x)&amp;=2^{-x}\\
@@ -615,9 +822,24 @@ f(x)&amp;=2^{-x}\\
 &amp;=(2^{-1})^x\\
 &amp;=\bigg(\frac{1}{2}\bigg)^x\\
 \end{align}
-\]</span> Therefore, even though the equations <span class="math inline">\(f(x)=2^{-x}\)</span> and <span class="math inline">\(f(x)=\big(\frac{1}{2}\big)^x\)</span> look different from one another, they represent the same function and have the same graph.</p>
-<p>Excel uses the exponential number <span class="math inline">\(e\)</span> when giving the equation for an exponential function. The exponential number <span class="math inline">\(e\)</span> is a constant that is approximately equal to 2.7182. Like <span class="math inline">\(\pi\)</span>, the exponential number <span class="math inline">\(e\)</span> is a non-terminating, non-repeating decimal. Because <span class="math inline">\(e\)</span> is a number that shows up naturally in a variety of applications, it was given a special name and symbol.</p>
-<p>We can use the rules of exponents to show that <span class="math inline">\(f(x)=e^{1.098612x}\)</span> and <span class="math inline">\(f(x)=3^x\)</span> are different equations that represent the same function.</p>
+\]</span> Therefore, even though the equations <span
+class="math inline">\(f(x)=2^{-x}\)</span> and <span
+class="math inline">\(f(x)=\big(\frac{1}{2}\big)^x\)</span> look
+different from one another, they represent the same function and have
+the same graph.</p>
+<p>Excel uses the exponential number <span
+class="math inline">\(e\)</span> when giving the equation for an
+exponential function. The exponential number <span
+class="math inline">\(e\)</span> is a constant that is approximately
+equal to 2.7182. Like <span class="math inline">\(\pi\)</span>, the
+exponential number <span class="math inline">\(e\)</span> is a
+non-terminating, non-repeating decimal. Because <span
+class="math inline">\(e\)</span> is a number that shows up naturally in
+a variety of applications, it was given a special name and symbol.</p>
+<p>We can use the rules of exponents to show that <span
+class="math inline">\(f(x)=e^{1.098612x}\)</span> and <span
+class="math inline">\(f(x)=3^x\)</span> are different equations that
+represent the same function.</p>
 <span class="math display">\[
 \begin{align}
 f(x)&amp;=e^{1.098612x}\\
@@ -631,21 +853,31 @@ f(x)&amp;=e^{1.098612x}\\
 </div>
 <div id="predictions-from-trendlines" class="section level2">
 <h2>Predictions from Trendlines</h2>
-<p>Creating a scatter plot and trendline gives us a function to describe the relationship between two variables. We can use this function to make predictions. The following example demonstrates how we could use predictions from trendlines as part of the Quantitative Reasoning Process.</p>
+<p>Creating a scatter plot and trendline gives us a function to describe
+the relationship between two variables. We can use this function to make
+predictions. The following example demonstrates how we could use
+predictions from trendlines as part of the Quantitative Reasoning
+Process.</p>
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Olivia has a 10 year old Honda Civic. It is completely paid for so Olivia has been saving money each month for the purchase of her next car. She currently has $10,500 saved to purchase a new car.</p>
+<p>Olivia has a 10 year old Honda Civic. It is completely paid for so
+Olivia has been saving money each month for the purchase of her next
+car. She currently has $10,500 saved to purchase a new car.</p>
 <center>
-<img src="Lesson10/Images/2007_Honda_Civic_Sedan.jpg" alt="picture of a Honda Civic" />
+<img src="Lesson10/Images/2007_Honda_Civic_Sedan.jpg"
+alt="picture of a Honda Civic" />
 </center>
 <p><br> <br></p>
-<p>The new car Olivia wants to buy will cost $18,000, including all taxes and fees. Olivia needs to determine whether she will get enough money from the sale of her old Honda Civic to purchase the new car.</p>
+<p>The new car Olivia wants to buy will cost $18,000, including all
+taxes and fees. Olivia needs to determine whether she will get enough
+money from the sale of her old Honda Civic to purchase the new car.</p>
 <hr>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
 </h4>
-<p>As Olivia considers the variables and assumptions in her situation, she identifies the following key variables:</p>
+<p>As Olivia considers the variables and assumptions in her situation,
+she identifies the following key variables:</p>
 <ul>
 <li>The total cost of the new car.</li>
 <li>The condition of the Honda Civic she is selling.</li>
@@ -654,37 +886,67 @@ Identify Variables &amp; Assumptions
 <p>She realizes she is making the following assumptions:</p>
 <ul>
 <li>She will pay cash for her new car and not borrow any money.</li>
-<li>She can use all the money from the sale of the Honda Civic for the purchase of her new car.</li>
+<li>She can use all the money from the sale of the Honda Civic for the
+purchase of her new car.</li>
 <li>She can buy a new car for $18,000.</li>
 <li>She has $10,500 to use to purchase her new car.</li>
-<li>If she can sell her Honda Civic for at least $7500, she can purchase the new car.</li>
+<li>If she can sell her Honda Civic for at least $7500, she can purchase
+the new car.</li>
 </ul>
 <hr>
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>Olivia knows she needs to be able to sell her 10 year old Honda Civic for at least $7500. She finds several Honda Civics for sale, but none of them are the same year as hers, so she isn’t sure how much she will earn from the sale of her old car. Olivia creates a spreadsheet listing the age and sale price of Honda Civics in her area with similar features and condition as her Honda Civic.</p>
-<p>The scatter plot shows how the value of the Honda Civic changes over time. After looking at the scatter plot, Olivia realizes the data is non-linear so she decides to use an exponential trendline to describe the relationship between the age and sale price of Honda Civics.</p>
-<p><img src="Lesson10/Images/Civic1.png" alt="Spreadsheet showing the data: age of car and sale price, also with a trendline showing an exponential downward relation" /></p>
-<p>From the scatter plot shown above, we see that the function relating age and sale price of Honda Civics is</p>
+<p>Olivia knows she needs to be able to sell her 10 year old Honda Civic
+for at least $7500. She finds several Honda Civics for sale, but none of
+them are the same year as hers, so she isn’t sure how much she will earn
+from the sale of her old car. Olivia creates a spreadsheet listing the
+age and sale price of Honda Civics in her area with similar features and
+condition as her Honda Civic.</p>
+<p>The scatter plot shows how the value of the Honda Civic changes over
+time. After looking at the scatter plot, Olivia realizes the data is
+non-linear so she decides to use an exponential trendline to describe
+the relationship between the age and sale price of Honda Civics.</p>
+<p><img src="Lesson10/Images/Civic1.png"
+alt="Spreadsheet showing the data: age of car and sale price, also with a trendline showing an exponential downward relation" /></p>
+<p>From the scatter plot shown above, we see that the function relating
+age and sale price of Honda Civics is</p>
 <p><span class="math display">\[
 y=18422e^{-0.1x}
-\]</span> where <span class="math inline">\(x\)</span> represents the age of the car and <span class="math inline">\(y\)</span> represents the sale price.</p>
-<p>Olivia uses this equation to predict the amount of money she will get from selling her 10-year old car:</p>
+\]</span> where <span class="math inline">\(x\)</span> represents the
+age of the car and <span class="math inline">\(y\)</span> represents the
+sale price.</p>
+<p>Olivia uses this equation to predict the amount of money she will get
+from selling her 10-year old car:</p>
 <p><span class="math display">\[
-y=18422e^{-0.1(10)}=\$6777.08 
+y=18422e^{-0.1(10)}=\$6777.08
 \]</span></p>
-<p>Rounding up, Olivia concludes that she will be able to sell her car for around $6800. However, she realizes that this prediction gives an average price and that there will be variation in the selling price of Honda Civics. So she might be able to sell her car for a little more or a little less than this predicted price.</p>
+<p>Rounding up, Olivia concludes that she will be able to sell her car
+for around $6800. However, she realizes that this prediction gives an
+average price and that there will be variation in the selling price of
+Honda Civics. So she might be able to sell her car for a little more or
+a little less than this predicted price.</p>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>Because Olivia has $10,500 saved, if she sells her car for $6800 she would have a total of $17,300. However, Olivia knows she needs at least $18,000 for the new car she wants to purchase. She will likely be about $700 short of the amount she needs to purchase the new car. She decides to wait to sell her car until she has saved more money.</p>
+<p>Because Olivia has $10,500 saved, if she sells her car for $6800 she
+would have a total of $17,300. However, Olivia knows she needs at least
+$18,000 for the new car she wants to purchase. She will likely be about
+$700 short of the amount she needs to purchase the new car. She decides
+to wait to sell her car until she has saved more money.</p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>As Olivia reflects on her decision, she is disappointed. Because she was excited to purchase the new car, she looks again at the new car options. She finds a less expensive car that she likes and that will meet her needs. Since the alternative car is only $16,000 it fits within her current budgeted amount. She revises her decision and goes ahead and puts her Honda Civic up for sale. She lists the sale price as $7,800 so she still has room to negotiate with potential buyers about the price.</p>
+<p>As Olivia reflects on her decision, she is disappointed. Because she
+was excited to purchase the new car, she looks again at the new car
+options. She finds a less expensive car that she likes and that will
+meet her needs. Since the alternative car is only $16,000 it fits within
+her current budgeted amount. She revises her decision and goes ahead and
+puts her Honda Civic up for sale. She lists the sale price as $7,800 so
+she still has room to negotiate with potential buyers about the
+price.</p>
 <hr>
 <div id="practice-making-a-prediction" class="section level3">
 <h3>Practice Making a Prediction</h3>
@@ -693,58 +955,135 @@ Evaluate Your Reasoning
 <iframe width="780" height="600" frameborder="0" src="./Lesson10/Storyline/Lesson10.Interactive3 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L10 - Interactive 3: Practice Making a Prediction<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSrkNuRb8TQ6lLBSCsHYLclgTy2eTQ5Un_DvrnPbgvBVTBGx0sKOAv_55DCuCBcqomu0r0v0vN10ihm/pub">(L10-3 ADA Interactive Transcript)</a></p>
+<p>L10 - Interactive 3: Practice Making a Prediction<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vSrkNuRb8TQ6lLBSCsHYLclgTy2eTQ5Un_DvrnPbgvBVTBGx0sKOAv_55DCuCBcqomu0r0v0vN10ihm/pub">(L10-3
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 </div>
 </div>
 <div id="example-old-faithful" class="section level2">
 <h2>Example: Old Faithful</h2>
-<p>In the opening video, we saw that Sophia and Emmy predicted the time of the next eruption of Old Faithful Geyser. Old Faithful is one of the most famous features of Yellowstone National Park. The <a href="http://www.yellowstonepark.com/about-old-faithful/">park’s website</a> boasts that Old Faithful is “the most famous geyser in the world”.</p>
-<p>Old Faithful is named for its predictable eruptions. Visitors to the park come from all over the world to see the eruption of Old Faithful.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> The geyser is so predictable that the park actually posts signs letting visitors know how many minutes until the next eruption. Most other geysers in Yellowstone and elsewhere erupt less frequently and their eruptions are much more difficult to predict.</p>
-<p>The scatter plot below shows how the park uses the length of the previous eruption to determine how long it will be until the next eruption. The scatter plot shows the general pattern found in actual data recorded by researchers for past eruptions.</p>
+<p>In the opening video, we saw that Sophia and Emmy predicted the time
+of the next eruption of Old Faithful Geyser. Old Faithful is one of the
+most famous features of Yellowstone National Park. The <a
+href="http://www.yellowstonepark.com/about-old-faithful/">park’s
+website</a> boasts that Old Faithful is “the most famous geyser in the
+world”.</p>
+<p>Old Faithful is named for its predictable eruptions. Visitors to the
+park come from all over the world to see the eruption of Old Faithful.<a
+href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> The geyser
+is so predictable that the park actually posts signs letting visitors
+know how many minutes until the next eruption. Most other geysers in
+Yellowstone and elsewhere erupt less frequently and their eruptions are
+much more difficult to predict.</p>
+<p>The scatter plot below shows how the park uses the length of the
+previous eruption to determine how long it will be until the next
+eruption. The scatter plot shows the general pattern found in actual
+data recorded by researchers for past eruptions.</p>
 <center>
 <img src="Lesson10_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 </center>
-<p>Notice that if the previous eruption of Old Faithful lasted for 4.0 minutes, then we would predict the time until the next eruption to be anywhere from 68 to 90 minutes. See the blue points in the plot below.</p>
-<p>The red points in the plot predict that if the previous eruption lasted 2.0 minutes, we would expect a waiting time between 42 and 66 minutes until the next eruption. We can see that the longer the previous eruption lasted, the longer we would expect to wait until the next eruption.</p>
+<p>Notice that if the previous eruption of Old Faithful lasted for 4.0
+minutes, then we would predict the time until the next eruption to be
+anywhere from 68 to 90 minutes. See the blue points in the plot
+below.</p>
+<p>The red points in the plot predict that if the previous eruption
+lasted 2.0 minutes, we would expect a waiting time between 42 and 66
+minutes until the next eruption. We can see that the longer the previous
+eruption lasted, the longer we would expect to wait until the next
+eruption.</p>
 <center>
 <img src="Lesson10_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 </center>
-<p>If we could fit a mathematical model to the data, then we could create an equation that would allow us to predict the average waiting time to the next eruption based on the length of the current eruption.</p>
-<p>Note that the general trend in the data is linear. This suggests a line would be the most appropriate mathematical model for these data.</p>
+<p>If we could fit a mathematical model to the data, then we could
+create an equation that would allow us to predict the average waiting
+time to the next eruption based on the length of the current
+eruption.</p>
+<p>Note that the general trend in the data is linear. This suggests a
+line would be the most appropriate mathematical model for these
+data.</p>
 <center>
 <img src="Lesson10_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 </center>
-<p>The mathematical model we get from this data is given by the equation <span class="math display">\[
+<p>The mathematical model we get from this data is given by the equation
+<span class="math display">\[
   y = 33.47 + 10.73x
-\]</span> where the input variable, <span class="math inline">\(x\)</span>, represents the length of the most recent eruption and the output variable, <span class="math inline">\(y\)</span>, represents the waiting time to the next eruption. If the most recent eruption lasted 4.0 minutes, then the model would estimate that the next eruption will occur in <span class="math display">\[
+\]</span> where the input variable, <span
+class="math inline">\(x\)</span>, represents the length of the most
+recent eruption and the output variable, <span
+class="math inline">\(y\)</span>, represents the waiting time to the
+next eruption. If the most recent eruption lasted 4.0 minutes, then the
+model would estimate that the next eruption will occur in <span
+class="math display">\[
   y = 33.47 + 10.73(4.0) = 76.39 \ \text{minutes}.
-\]</span> Park rangers can add 76.39 minutes to the time at which the previous eruption ended, and then <a href="http://geysertimes.org/geyser.php?id=OldFaithful">post a sign</a> near Old Faithful stating when the next eruption would occur. However, note that as shown in the plot above, the actual waiting time could be anywhere from 68 to 90 minutes. So it would be wise to let visitors know that the eruption time could be a little earlier or a little later than the predicted 76.39 minutes from the end of the previous eruption.</p>
+\]</span> Park rangers can add 76.39 minutes to the time at which the
+previous eruption ended, and then <a
+href="http://geysertimes.org/geyser.php?id=OldFaithful">post a sign</a>
+near Old Faithful stating when the next eruption would occur. However,
+note that as shown in the plot above, the actual waiting time could be
+anywhere from 68 to 90 minutes. So it would be wise to let visitors know
+that the eruption time could be a little earlier or a little later than
+the predicted 76.39 minutes from the end of the previous eruption.</p>
 <hr>
 <center>
 <div>
 <iframe width="780" height="600" frameborder="0" src="./Lesson10/Storyline/Lesson10.Interactive4 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L10 - Interactive 4: Example: Old Faithful<br> <a href="https://docs.google.com/document/d/e/2PACX-1vR5TPixVIv3HO-kfHPTeUVM_B8O8ZpqQKU8qex4bF5EheDi5Tk_04FB5QFFuEbsPcIWm1KTMl5GQkCW/pub">(L10-4 ADA Interactive Transcript)</a></p>
+<p>L10 - Interactive 4: Example: Old Faithful<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vR5TPixVIv3HO-kfHPTeUVM_B8O8ZpqQKU8qex4bF5EheDi5Tk_04FB5QFFuEbsPcIWm1KTMl5GQkCW/pub">(L10-4
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 </div>
 <div id="example-snow-machines-in-yellowstone" class="section level2">
 <h2>Example: Snow Machines in Yellowstone</h2>
-<p>In the opening video, Sophia and Emmy encountered a park ranger who enforced the rule that their snow machines had the best available technology. Yellowstone National Park officials have been given the task of conserving natural resources in the park, while at the same time allowing for use of the park by the public. Conservation and public use can be at odds with one another. The use of snow machines in Yellowstone is an example of where there has been a lot of controversy.</p>
+<p>In the opening video, Sophia and Emmy encountered a park ranger who
+enforced the rule that their snow machines had the best available
+technology. Yellowstone National Park officials have been given the task
+of conserving natural resources in the park, while at the same time
+allowing for use of the park by the public. Conservation and public use
+can be at odds with one another. The use of snow machines in Yellowstone
+is an example of where there has been a lot of controversy.</p>
 <center>
-<img src="Lesson10/Images/SnowmobilesYellowstone.jpg" alt="picture of snowmobilers in Yellowstone" />
+<img src="Lesson10/Images/SnowmobilesYellowstone.jpg"
+alt="picture of snowmobilers in Yellowstone" />
 </center>
 <p><br></p>
-<p>In order to protect the environment in Yellowstone National Park, all snow machines are required to have the best available technology (BAT).<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> This is because older snow machines have less efficient engines that emit more hydrocarbons and carbon monoxide, which are harmful to the environment. However, restricting the types of snow machines significantly restricts winter access to Yellowstone.</p>
-<p>The officials at the National Park Service used data analysis to help make decisions related to the conservation and use of Yellowstone National Park, such as the use of snow machines. The following example outlines the process used by Yellowstone officials to determine the winter use policy in Yellowstone.</p>
+<p>In order to protect the environment in Yellowstone National Park, all
+snow machines are required to have the best available technology
+(BAT).<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
+This is because older snow machines have less efficient engines that
+emit more hydrocarbons and carbon monoxide, which are harmful to the
+environment. However, restricting the types of snow machines
+significantly restricts winter access to Yellowstone.</p>
+<p>The officials at the National Park Service used data analysis to help
+make decisions related to the conservation and use of Yellowstone
+National Park, such as the use of snow machines. The following example
+outlines the process used by Yellowstone officials to determine the
+winter use policy in Yellowstone.</p>
 <hr>
 <h4 class="step one">
 Understand the Problem
 </h4>
-By the late 1990’s the number of snow machines entering Yellowstone during the winter had increased to the point there was a noticeable impact on air quality.<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> In 1999, an environmental group petitioned the National Park Service and asked them to ban recreational snowmobiling in Yellowstone (and all other National Parks). <a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> In 2000, in response to noticeable impacts on air quality and the request by an environmental group, the National Park Service decided to phase out the use of snow machines in Yellowstone National Park. In 2001, the National Park Service was sued over their proposed ban of snow machines. Because the National Park Service has a legal mandate to allow for public use of park resources, a federal court overturned Yellowstone’s snow machine ban. Yellowstone officials then decided to carry out several studies in order to determine the best way to balance environmental conservation and public use of the park. <a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a>
+By the late 1990’s the number of snow machines entering Yellowstone
+during the winter had increased to the point there was a noticeable
+impact on air quality.<a href="#fn8" class="footnote-ref"
+id="fnref8"><sup>8</sup></a> In 1999, an environmental group petitioned
+the National Park Service and asked them to ban recreational
+snowmobiling in Yellowstone (and all other National Parks). <a
+href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> In 2000,
+in response to noticeable impacts on air quality and the request by an
+environmental group, the National Park Service decided to phase out the
+use of snow machines in Yellowstone National Park. In 2001, the National
+Park Service was sued over their proposed ban of snow machines. Because
+the National Park Service has a legal mandate to allow for public use of
+park resources, a federal court overturned Yellowstone’s snow machine
+ban. Yellowstone officials then decided to carry out several studies in
+order to determine the best way to balance environmental conservation
+and public use of the park. <a href="#fn10" class="footnote-ref"
+id="fnref10"><sup>10</sup></a>
 <hr>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
@@ -755,31 +1094,61 @@ Identify Variables &amp; Assumptions
 <li>The number of vehicles entering the park</li>
 <li>Hydrocarbon Emissions</li>
 <li>Carbon Monoxide Emissions</li>
-<li>Types of snow machine engine (2-stroke engines, 4-stroke engines, BAT engines)</li>
+<li>Types of snow machine engine (2-stroke engines, 4-stroke engines,
+BAT engines)</li>
 </ul>
 <p>The researchers made several important assumptions:</p>
 <ul>
 <li>Hydrocarbon and carbon monoxide are harmful to the environment</li>
-<li>Decreasing the number of vehicles entering the park will decrease hydrocarbon and carbon monoxide emissions</li>
-<li>BAT snow machines have lower hydrocarbon and carbon monoxide emissions than non-BAT snow machines</li>
+<li>Decreasing the number of vehicles entering the park will decrease
+hydrocarbon and carbon monoxide emissions</li>
+<li>BAT snow machines have lower hydrocarbon and carbon monoxide
+emissions than non-BAT snow machines</li>
 <li>Traveling with a guide will reduce harmful emissions</li>
 </ul>
 <hr>
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>Between 2002 and 2011, the National Park Service released eight different reports on the impact of winter use on air quality. You can see a complete list of all of their reports <a href="https://www.nature.nps.gov/air/studies/yell/yellAQwinter.cfm">here</a>. The following explanation shows just a small part of the data examined by Park officials as they used data to make decisions on Park policy.</p>
-<p>At the beginning of their research in 2000, researchers compared carbon monoxide and hydrocarbon emissions from different type of vehicles entering Yellowstone. The following bar-chart shows the estimated annual emissions from automobiles, RVs, snow machines, snowcoaches, and buses for 1992 through 1999.<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a></p>
+<p>Between 2002 and 2011, the National Park Service released eight
+different reports on the impact of winter use on air quality. You can
+see a complete list of all of their reports <a
+href="https://www.nature.nps.gov/air/studies/yell/yellAQwinter.cfm">here</a>.
+The following explanation shows just a small part of the data examined
+by Park officials as they used data to make decisions on Park
+policy.</p>
+<p>At the beginning of their research in 2000, researchers compared
+carbon monoxide and hydrocarbon emissions from different type of
+vehicles entering Yellowstone. The following bar-chart shows the
+estimated annual emissions from automobiles, RVs, snow machines,
+snowcoaches, and buses for 1992 through 1999.<a href="#fn11"
+class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
 <center>
-<p><img src="Lesson10/Images/vehiclebarchart.jpg" alt="barplot showing the data above, Snowmobiles releasing the most average annual emmisions" /></p>
+<p><img src="Lesson10/Images/VehicleBarChart.JPG"
+alt="barplot showing the data above, Snowmobiles releasing the most average annual emmisions" /></p>
 </center>
-<p>They also looked at pie charts that showed the source of all annual hydrocarbons and carbon monoxide emissions <a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>:</p>
+<p>They also looked at pie charts that showed the source of all annual
+hydrocarbons and carbon monoxide emissions <a href="#fn12"
+class="footnote-ref" id="fnref12"><sup>12</sup></a>:</p>
 <center>
-<p><img src="Lesson10/Images/HCpie.JPG" alt="Pie chart of the data above" /> <img src="Lesson10/Images/COpie.JPG" /></p>
+<p><img src="Lesson10/Images/HCpie.JPG"
+alt="Pie chart of the data above" /> <img
+src="Lesson10/Images/COpie.JPG" /></p>
 </center>
-<p>From the bar chart and the pie chart, it is clear that snow machines are the largest source of these harmful emissions. This led Park officials to decide that, although they should not completely ban the use of snow machines in Yellowstone, changes to the winter use policy did need to occur.</p>
-<p>They gathered data on how the type of engine a snow machine had impacted the carbon monoxide emissions.<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a></p>
+<p>From the bar chart and the pie chart, it is clear that snow machines
+are the largest source of these harmful emissions. This led Park
+officials to decide that, although they should not completely ban the
+use of snow machines in Yellowstone, changes to the winter use policy
+did need to occur.</p>
+<p>They gathered data on how the type of engine a snow machine had
+impacted the carbon monoxide emissions.<a href="#fn13"
+class="footnote-ref" id="fnref13"><sup>13</sup></a></p>
 <table>
+<colgroup>
+<col width="54%" />
+<col width="22%" />
+<col width="22%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Type of snow machine engine</th>
@@ -850,40 +1219,98 @@ Apply Quantitative Tools
 </tr>
 </tbody>
 </table>
-<p>In order to test their assumption that snow machines with the best available technology (BAT) have lower emissions than older snow machines with 2-stroke engines, they created a scatter plot of these data and created trendlines for each type of snow machine.</p>
+<p>In order to test their assumption that snow machines with the best
+available technology (BAT) have lower emissions than older snow machines
+with 2-stroke engines, they created a scatter plot of these data and
+created trendlines for each type of snow machine.</p>
 <center>
-<img src="Lesson10/Images/2stroke_vs_BAT.jpg" alt="Scatter plot of emissions from the two different snow machines listed above" />
+<img src="Lesson10/Images/2stroke_vs_BAT.JPG"
+alt="Scatter plot of emissions from the two different snow machines listed above" />
 </center>
-<p>Comparing the slopes of these two lines gave helpful information on how the two different types of snow machines are related to carbon monoxide emissions.</p>
-<p>For snow machines with 2-stroke engines (older technology), the slope of the line is 0.0538. This tells us:</p>
+<p>Comparing the slopes of these two lines gave helpful information on
+how the two different types of snow machines are related to carbon
+monoxide emissions.</p>
+<p>For snow machines with 2-stroke engines (older technology), the slope
+of the line is 0.0538. This tells us:</p>
 <p><span class="math display">\[
-\text{slope}=\frac{\text{change in y}}{\text{change in x}}=\frac{\text{change in carbon monoxide}}{\text{change in number of snow machines}}=\frac{0.0538 \text{ ppm}}{1 \text{ snow machine}}
-\]</span> Each 2-stroke engine adds 0.0538 ppm of carbon monoxide. Similarly, since the slope of the line for BAT engines is 0.0081, we know BAT engines add 0.00081 ppm of carbon monoxide. Because these numbers are small they are hard to compare. If we multiply them each by 1000, we see that 1000 2-stroke engines would add 53.8 ppm of carbon monoxide while 1000 BAT engines would only add 8.1 ppm of carbon monoxide.</p>
+\text{slope}=\frac{\text{change in y}}{\text{change in
+x}}=\frac{\text{change in carbon monoxide}}{\text{change in number of
+snow machines}}=\frac{0.0538 \text{ ppm}}{1 \text{ snow machine}}
+\]</span> Each 2-stroke engine adds 0.0538 ppm of carbon monoxide.
+Similarly, since the slope of the line for BAT engines is 0.0081, we
+know BAT engines add 0.00081 ppm of carbon monoxide. Because these
+numbers are small they are hard to compare. If we multiply them each by
+1000, we see that 1000 2-stroke engines would add 53.8 ppm of carbon
+monoxide while 1000 BAT engines would only add 8.1 ppm of carbon
+monoxide.</p>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>Based on these calculations (and others that are not shown here), Park officials developed a new policy for winter use in Yellowstone. In 2003 and 2004 they put new winter use restrictions in place. They were again sued over these plans because they restricted winter use in Yellowstone. They again did more research and in 2007 they completed a new plan that allowed for 540 commercially guided, BAT snow machines and 83 snowcoaches to enter the Park each day. <a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a></p>
+<p>Based on these calculations (and others that are not shown here),
+Park officials developed a new policy for winter use in Yellowstone. In
+2003 and 2004 they put new winter use restrictions in place. They were
+again sued over these plans because they restricted winter use in
+Yellowstone. They again did more research and in 2007 they completed a
+new plan that allowed for 540 commercially guided, BAT snow machines and
+83 snowcoaches to enter the Park each day. <a href="#fn14"
+class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>Between 2007 and 2013 the Park reevaluated their winter use plan several more times. Some of the reevaluation occurred as a result of further suits filed in federal court and some of the reevaluation was based on public comment and input.<br />
-In 2011, Park officials gathered data that compared data collected on the number of winter vehicles entering the Park through the West Entrance and carbon monoxide measurements taken near the entrance.</p>
-<p>This scatter plot shows how the number of winter vehicles correlated to carbon monoxide measurements. There is a strong linear relationship that shows that when more cars enter the park, carbon monoxide measurements also increase.<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></p>
+<p>Between 2007 and 2013 the Park reevaluated their winter use plan
+several more times. Some of the reevaluation occurred as a result of
+further suits filed in federal court and some of the reevaluation was
+based on public comment and input.<br />
+In 2011, Park officials gathered data that compared data collected on
+the number of winter vehicles entering the Park through the West
+Entrance and carbon monoxide measurements taken near the entrance.</p>
+<p>This scatter plot shows how the number of winter vehicles correlated
+to carbon monoxide measurements. There is a strong linear relationship
+that shows that when more cars enter the park, carbon monoxide
+measurements also increase.<a href="#fn15" class="footnote-ref"
+id="fnref15"><sup>15</sup></a></p>
 <center>
-<img src="Lesson10/Images/Vehicles_vs_CO.jpg" alt="Scatter Plot showing number of winter vehicles versus 8-hour Carbon Monoxide" />
+<img src="Lesson10/Images/vehicles_vs_co.jpg"
+alt="Scatter Plot showing number of winter vehicles versus 8-hour Carbon Monoxide" />
 </center>
-<p>The following graph shows a bar chart and a time series plot overlayed on top of each other. It shows how the number of winter vehicles and carbon monoxide measurements have changed over the time period the Park has been changing their policy.<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a></p>
+<p>The following graph shows a bar chart and a time series plot
+overlayed on top of each other. It shows how the number of winter
+vehicles and carbon monoxide measurements have changed over the time
+period the Park has been changing their policy.<a href="#fn16"
+class="footnote-ref" id="fnref16"><sup>16</sup></a></p>
 <center>
-<img src="Lesson10/Images/CO_overtime.jpg" alt="barplot plus time series chart plotting the data given above" />
+<img src="Lesson10/Images/co_overtime.jpg"
+alt="barplot plus time series chart plotting the data given above" />
 </center>
-<p>These graphs clearly show that the changes made in 2003-2011 are helping reduce carbon monoxide emissions in the Park.</p>
-<p>In 2013 they revised their policy again based on further study. One common criticism of the plan prior to 2013 was that the public was not allowed to enter the Park unless they were with a commercially guided tour. Also, the management plan allowed 83 snowcoaches per day, but on some days fewer than 83 snowcoaches entered the Park while snow machine users were turned away.</p>
-<p>Park officials revised their guidelines to allow for flexibility in the ratio of snow machines and snow coaches. If fewer snowcoaches enter the park on a given day, they are now able to allow more snow machines to enter. They also added an option for one non-commercially guided group to enter the Park each day.</p>
-<p>You can read all of the details of Yellowstone National Park’s current <a href="https://www.nps.gov/yell/learn/management/currentmgmt.htm">winter-use policy</a> on their website.</p>
+<p>These graphs clearly show that the changes made in 2003-2011 are
+helping reduce carbon monoxide emissions in the Park.</p>
+<p>In 2013 they revised their policy again based on further study. One
+common criticism of the plan prior to 2013 was that the public was not
+allowed to enter the Park unless they were with a commercially guided
+tour. Also, the management plan allowed 83 snowcoaches per day, but on
+some days fewer than 83 snowcoaches entered the Park while snow machine
+users were turned away.</p>
+<p>Park officials revised their guidelines to allow for flexibility in
+the ratio of snow machines and snow coaches. If fewer snowcoaches enter
+the park on a given day, they are now able to allow more snow machines
+to enter. They also added an option for one non-commercially guided
+group to enter the Park each day.</p>
+<p>You can read all of the details of Yellowstone National Park’s
+current <a
+href="https://www.nps.gov/yell/learn/management/currentmgmt.htm">winter-use
+policy</a> on their website.</p>
 <hr>
-<p>Most of the examples of the Quantitative Reasoning Process have shown how it can be used by individuals to make decisions about their personal and family lives. This example shows how the Quantitative Reasoning Process was used by the National Park Service. The Quantitative Reasoning Process is commonly used by businesses, government agencies, non-profit organizations, communities, and other organizations. Scientists, mathematicians, statisticians, business people, and other professionals use the Quantitative Reasoning Process to help them make decisions in their work.</p>
+<p>Most of the examples of the Quantitative Reasoning Process have shown
+how it can be used by individuals to make decisions about their personal
+and family lives. This example shows how the Quantitative Reasoning
+Process was used by the National Park Service. The Quantitative
+Reasoning Process is commonly used by businesses, government agencies,
+non-profit organizations, communities, and other organizations.
+Scientists, mathematicians, statisticians, business people, and other
+professionals use the Quantitative Reasoning Process to help them make
+decisions in their work.</p>
 <hr>
 </div>
 <div id="lesson-checklist" class="section level2">
@@ -892,9 +1319,12 @@ In 2011, Park officials gathered data that compared data collected on the number
 <ul>
 <li>identify the input and output variable from a given scenario.</li>
 <li>create a scatter plot of two quantitative variables in Excel.</li>
-<li>identify for given data whether a linear, exponential, or quadratic trendline would be the most appropriate.</li>
-<li>fit a linear, exponential, or quadratic trendline to a scatter plot of data in Excel.</li>
-<li>use a trendline to make a prediction for the average value of the response variable at a given value of the explanatory variable.</li>
+<li>identify for given data whether a linear, exponential, or quadratic
+trendline would be the most appropriate.</li>
+<li>fit a linear, exponential, or quadratic trendline to a scatter plot
+of data in Excel.</li>
+<li>use a trendline to make a prediction for the average value of the
+response variable at a given value of the explanatory variable.</li>
 <li>interpret predictions and draw a contextual conclusion</li>
 <li>assess the appropriateness of a trendline for given data</li>
 <li>explain why correlation does not imply causation</li>
@@ -902,38 +1332,91 @@ In 2011, Park officials gathered data that compared data collected on the number
 </div>
 <div id="optional-resources" class="section level2">
 <h2>Optional Resources</h2>
-<p>Paragraph 10-13 of <a href="https://www.lds.org/general-conference/2012/04/that-the-lost-may-be-found?lang=eng">this conference talk</a> given in April 2012 by Elder M. Russell Ballard include an interesting example of cause and effect.</p>
-<p>The following video shows more about the research done to establish a causal relationship between smoking and lung cancer.</p>
+<p>Paragraph 10-13 of <a
+href="https://www.lds.org/general-conference/2012/04/that-the-lost-may-be-found?lang=eng">this
+conference talk</a> given in April 2012 by Elder M. Russell Ballard
+include an interesting example of cause and effect.</p>
+<p>The following video shows more about the research done to establish a
+causal relationship between smoking and lung cancer.</p>
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6RzDMEW5omc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
 </center>
 <center>
-(03:37 mins, <a href="https://docs.google.com/document/d/e/2PACX-1vTZ32RRNvuUdibAFPatWmYNUrQT6BnHaW_wrNpzlWHRnRjytpVXcG5m23FhEwApJt4UR6Q2bmptJRlI/pub">“Joy of Stats” Transcript</a>; <a href="https://video.byui.edu/media/Lesson+10_+Joy+of+Stats/0_lhfyqcgo">“Joy of Stats” Captioned Link</a>)
+(03:37 mins, <a
+href="https://docs.google.com/document/d/e/2PACX-1vTZ32RRNvuUdibAFPatWmYNUrQT6BnHaW_wrNpzlWHRnRjytpVXcG5m23FhEwApJt4UR6Q2bmptJRlI/pub">“Joy
+of Stats” Transcript</a>; <a
+href="https://video.byui.edu/media/Lesson+10_+Joy+of+Stats/0_lhfyqcgo">“Joy
+of Stats” Captioned Link</a>)
 </center>
 <center>
 © 2020 Brigham Young University - Idaho
 </center>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p><a href="https://www.lds.org/liahona/2010/06/things-as-they-really-are?lang=eng">Elder Bednar</a><a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Jacob 4:13<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p><a href="http://www.gallup.com/poll/174785/americans-serving-communities-gain-edge.aspx?utm_source=add_this&amp;utm_medium=addthis.com&amp;utm_campaign=sharing#.U-pK7uNhqns.twitter" class="uri">http://www.gallup.com/poll/174785/americans-serving-communities-gain-edge.aspx?utm_source=add_this&amp;utm_medium=addthis.com&amp;utm_campaign=sharing#.U-pK7uNhqns.twitter</a><a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p><a href="https://swflreia.com/2017/05/17/ice-cream-sales-cause-shark-attacks/" class="uri">https://swflreia.com/2017/05/17/ice-cream-sales-cause-shark-attacks/</a><a href="#fnref4">↩</a></p></li>
-<li id="fn5"><p><a href="http://www.cbsnews.com/news/soda-a-day-may-lead-to-heart-attacks-in-men/" class="uri">http://www.cbsnews.com/news/soda-a-day-may-lead-to-heart-attacks-in-men/</a><a href="#fnref5">↩</a></p></li>
-<li id="fn6"><p>The Old Faithful Geyser is only a 2.5 hour drive from the BYU-Idaho campus. You can watch a live webcam of Old Faithful <a href="https://www.nps.gov/features/yell/webcam/oldfaithfulstreaming.html">here</a>.<a href="#fnref6">↩</a></p></li>
-<li id="fn7"><p><a href="https://www.nps.gov/yell/planyourvisit/newbatlist.htm" class="uri">https://www.nps.gov/yell/planyourvisit/newbatlist.htm</a><a href="#fnref7">↩</a></p></li>
-<li id="fn8"><p><a href="https://www.nature.nps.gov/air/studies/yell/yellAQwinter.cfm" class="uri">https://www.nature.nps.gov/air/studies/yell/yellAQwinter.cfm</a><a href="#fnref8">↩</a></p></li>
-<li id="fn9"><p><a href="https://www.nps.gov/yell/learn/management/timeline.htm" class="uri">https://www.nps.gov/yell/learn/management/timeline.htm</a><a href="#fnref9">↩</a></p></li>
-<li id="fn10"><p><a href="https://www.nps.gov/yell/learn/management/timeline.htm" class="uri">https://www.nps.gov/yell/learn/management/timeline.htm</a><a href="#fnref10">↩</a></p></li>
-<li id="fn11"><p><a href="https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf" class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf</a><a href="#fnref11">↩</a></p></li>
-<li id="fn12"><p><a href="https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf" class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf</a><a href="#fnref12">↩</a></p></li>
-<li id="fn13"><p><a href="https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf" class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf</a><a href="#fnref13">↩</a></p></li>
-<li id="fn14"><p><a href="https://www.nps.gov/yell/learn/management/timeline.htm" class="uri">https://www.nps.gov/yell/learn/management/timeline.htm</a><a href="#fnref14">↩</a></p></li>
-<li id="fn15"><p><a href="https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf" class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf</a><a href="#fnref15">↩</a></p></li>
-<li id="fn16"><p><a href="https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf" class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf</a><a href="#fnref16">↩</a></p></li>
+<li id="fn1"><p><a
+href="https://www.lds.org/liahona/2010/06/things-as-they-really-are?lang=eng">Elder
+Bednar</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Jacob 4:13<a href="#fnref2"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a
+href="http://www.gallup.com/poll/174785/americans-serving-communities-gain-edge.aspx?utm_source=add_this&amp;utm_medium=addthis.com&amp;utm_campaign=sharing#.U-pK7uNhqns.twitter"
+class="uri">http://www.gallup.com/poll/174785/americans-serving-communities-gain-edge.aspx?utm_source=add_this&amp;utm_medium=addthis.com&amp;utm_campaign=sharing#.U-pK7uNhqns.twitter</a><a
+href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a
+href="https://swflreia.com/2017/05/17/ice-cream-sales-cause-shark-attacks/"
+class="uri">https://swflreia.com/2017/05/17/ice-cream-sales-cause-shark-attacks/</a><a
+href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a
+href="http://www.cbsnews.com/news/soda-a-day-may-lead-to-heart-attacks-in-men/"
+class="uri">http://www.cbsnews.com/news/soda-a-day-may-lead-to-heart-attacks-in-men/</a><a
+href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>The Old Faithful Geyser is only a 2.5 hour drive from
+the BYU-Idaho campus. You can watch a live webcam of Old Faithful <a
+href="https://www.nps.gov/features/yell/webcam/oldfaithfulstreaming.html">here</a>.<a
+href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><a
+href="https://www.nps.gov/yell/planyourvisit/newbatlist.htm"
+class="uri">https://www.nps.gov/yell/planyourvisit/newbatlist.htm</a><a
+href="#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p><a
+href="https://www.nature.nps.gov/air/studies/yell/yellAQwinter.cfm"
+class="uri">https://www.nature.nps.gov/air/studies/yell/yellAQwinter.cfm</a><a
+href="#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p><a
+href="https://www.nps.gov/yell/learn/management/timeline.htm"
+class="uri">https://www.nps.gov/yell/learn/management/timeline.htm</a><a
+href="#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p><a
+href="https://www.nps.gov/yell/learn/management/timeline.htm"
+class="uri">https://www.nps.gov/yell/learn/management/timeline.htm</a><a
+href="#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p><a
+href="https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf"
+class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf</a><a
+href="#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p><a
+href="https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf"
+class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/Snowmobile_Report.pdf</a><a
+href="#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p><a
+href="https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf"
+class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf</a><a
+href="#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p><a
+href="https://www.nps.gov/yell/learn/management/timeline.htm"
+class="uri">https://www.nps.gov/yell/learn/management/timeline.htm</a><a
+href="#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p><a
+href="https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf"
+class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf</a><a
+href="#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p><a
+href="https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf"
+class="uri">https://www.nature.nps.gov/air/Pubs/pdf/yell/2009-2011_YELL_WinterAQ.pdf</a><a
+href="#fnref16" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -948,13 +1431,59 @@ In 2011, Park officials gathered data that compared data collected on the number
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

@@ -13,8 +13,8 @@
 
 <title>Lesson 4: Tools for Building Better Budgets and More</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -60,6 +60,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
 
@@ -84,6 +85,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -296,12 +300,12 @@ div.tocify {
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row">
-<div class="col-sm-12 col-md-4 col-lg-3">
+<div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -309,12 +313,12 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+      <a class="navbar-brand" href="index.html">The Quantitative Reasoning Process</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -322,7 +326,7 @@ div.tocify {
   <a href="index.html">Table of Contents</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit I
      
     <span class="caret"></span>
@@ -346,7 +350,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit II
      
     <span class="caret"></span>
@@ -367,7 +371,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit III
      
     <span class="caret"></span>
@@ -399,7 +403,8 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Lesson 4: Tools for Building Better Budgets and More</h1>
+<h1 class="title toc-ignore">Lesson 4: Tools for Building Better Budgets
+and More</h1>
 
 </div>
 
@@ -409,26 +414,52 @@ div.tocify {
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_9vx0557j&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_i3ncuaan" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p><br> Lesson 4 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTAiCyoWoHmqsWtXAa3-vLhPINz8QGO1owxDJY75Cyhec1SM0m_x5m-Pj8KzBbhw8ISfWhuOjBQKRFY/pub">(2:05 mins, L4 Opening Story Transcript)</a></p>
+<p><br> Lesson 4 - Opening story<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTAiCyoWoHmqsWtXAa3-vLhPINz8QGO1owxDJY75Cyhec1SM0m_x5m-Pj8KzBbhw8ISfWhuOjBQKRFY/pub">(2:05
+mins, L4 Opening Story Transcript)</a></p>
 </center>
 </div>
 <div id="budgeting" class="section level2">
 <h2>Budgeting</h2>
-<p>As we saw in the video, different people have different approaches to budgeting. Budgeting is an important tool for maintaining financial health. In order to make any informed decision involving our finances we need to have a budget. Consider the council given by President Thomas S. Monson:</p>
+<p>As we saw in the video, different people have different approaches to
+budgeting. Budgeting is an important tool for maintaining financial
+health. In order to make any informed decision involving our finances we
+need to have a budget. Consider the council given by President Thomas S.
+Monson:</p>
 <div style="margin-left: 2em;">
-<p>“Perhaps no counsel has been repeated more often than how to <em>manage wisely our income</em>…Too many in the Church have failed to avoid unnecessary debt. They have little, if any, financial reserve. The solution is to budget, to live within our means, and to save some for the future.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>“Perhaps no counsel has been repeated more often than how to
+<em>manage wisely our income</em>…Too many in the Church have failed to
+avoid unnecessary debt. They have little, if any, financial reserve. The
+solution is to budget, to live within our means, and to save some for
+the future.”<a href="#fn1" class="footnote-ref"
+id="fnref1"><sup>1</sup></a></p>
 </div>
-<p>President Spencer W. Kimball said, “Every family should have a budget…We have to know approximately what we may receive and we certainly must know what we are going to spend.”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<p>In this lesson we will be learning some computation tools that can help us build a budget. These tools will allow us to carefully consider the income we receive and what expenses we have. However, these tools will be helpful for more than just budgeting.</p>
+<p>President Spencer W. Kimball said, “Every family should have a
+budget…We have to know approximately what we may receive and we
+certainly must know what we are going to spend.”<a href="#fn2"
+class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>In this lesson we will be learning some computation tools that can
+help us build a budget. These tools will allow us to carefully consider
+the income we receive and what expenses we have. However, these tools
+will be helpful for more than just budgeting.</p>
 <center>
-<p><img src="Lesson4/Images/Step3.png" alt="Apply Quantitative Tools" /></p>
+<p><img src="Lesson4/Images/Step3.png"
+alt="Apply Quantitative Tools" /></p>
 </center>
-<p>Step 3 in the Quantitative Reasoning Process is to apply quantitative tools. Applying quantitative tools allows us to do calculations that help make an informed decision. Some common quantitative tools include percentages and units connected to numbers. Most of the numbers we encounter outside of the classroom come in connection with words and units rather than in disconnected math equations. It is important to be able translate English words into math symbols to build equations.</p>
+<p>Step 3 in the Quantitative Reasoning Process is to apply quantitative
+tools. Applying quantitative tools allows us to do calculations that
+help make an informed decision. Some common quantitative tools include
+percentages and units connected to numbers. Most of the numbers we
+encounter outside of the classroom come in connection with words and
+units rather than in disconnected math equations. It is important to be
+able translate English words into math symbols to build equations.</p>
 <hr>
 </div>
 <div id="english-to-math-translations" class="section level2">
 <h2>English-to-Math Translations</h2>
-<p>Understanding how to translate English words into mathematical equations is essential to problem solving. Some common English-to-math translations are found in the following table.</p>
+<p>Understanding how to translate English words into mathematical
+equations is essential to problem solving. Some common English-to-math
+translations are found in the following table.</p>
 <table>
 <colgroup>
 <col width="22%" />
@@ -459,13 +490,15 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td>product of</td>
-<td align="center"><span class="math inline">\(\times \text{ or } \cdot\)</span></td>
+<td align="center"><span class="math inline">\(\times \text{ or }
+\cdot\)</span></td>
 <td align="center">The product of five and two</td>
 <td align="center"><span class="math inline">\(5\times 2\)</span></td>
 </tr>
 <tr class="even">
 <td>quotient of</td>
-<td align="center"><span class="math inline">\(\div \text{ or }/\)</span></td>
+<td align="center"><span class="math inline">\(\div \text{ or
+}/\)</span></td>
 <td align="center">The quotient of eight and four</td>
 <td align="center"><span class="math inline">\(\frac{8}{4}\)</span></td>
 </tr>
@@ -477,60 +510,84 @@ div.tocify {
 </tr>
 <tr class="even">
 <td>of</td>
-<td align="center"><span class="math inline">\(\times \text{ or } \cdot\)</span></td>
+<td align="center"><span class="math inline">\(\times \text{ or }
+\cdot\)</span></td>
 <td align="center">Two-thirds of 99</td>
-<td align="center"><span class="math inline">\(\frac{2}{3}\times 99\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{3}\times
+99\)</span></td>
 </tr>
 <tr class="odd">
 <td>per</td>
-<td align="center"><span class="math inline">\(\div \text{ or }/\)</span></td>
+<td align="center"><span class="math inline">\(\div \text{ or
+}/\)</span></td>
 <td align="center">Ten miles per hour</td>
-<td align="center"><span class="math inline">\(\frac{10 \text{ miles}}{\text{hour}}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{10 \text{
+miles}}{\text{hour}}\)</span></td>
 </tr>
 <tr class="even">
 <td>percent</td>
 <td align="center">divided by 100 (per = divide; cent = 100)</td>
 <td align="center">Nine percent</td>
-<td align="center"><span class="math inline">\(\frac{9}{100}\)</span></td>
+<td align="center"><span
+class="math inline">\(\frac{9}{100}\)</span></td>
 </tr>
 <tr class="odd">
 <td>a percentage more than</td>
-<td align="center"><span class="math inline">\(\times\)</span> (1<span class="math inline">\(+\)</span>percentage written as a decimal)</td>
+<td align="center"><span class="math inline">\(\times\)</span> (1<span
+class="math inline">\(+\)</span>percentage written as a decimal)</td>
 <td align="center">Twenty percent more than thirteen</td>
-<td align="center"><span class="math inline">\(13\times(1+0.20)\)</span></td>
+<td align="center"><span
+class="math inline">\(13\times(1+0.20)\)</span></td>
 </tr>
 <tr class="even">
 <td>a percentage less than</td>
-<td align="center"><span class="math inline">\(\times\)</span> (1<span class="math inline">\(-\)</span>percentage written as a decimal)</td>
+<td align="center"><span class="math inline">\(\times\)</span> (1<span
+class="math inline">\(-\)</span>percentage written as a decimal)</td>
 <td align="center">Twenty percent less than thirteen</td>
-<td align="center"><span class="math inline">\(13\times(1-0.20)\)</span></td>
+<td align="center"><span
+class="math inline">\(13\times(1-0.20)\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Let’s look at some examples of converting English words to mathematical symbols.</p>
+<p>Let’s look at some examples of converting English words to
+mathematical symbols.</p>
 <div id="english-to-math-examples" class="section level3 tabset">
 <h3 class="tabset">English-to-Math Examples</h3>
 <div id="example-1" class="section level4">
 <h4>Example 1</h4>
-<p>Translate the English words “The sales tax is 6% of the original price” to math symbols.</p>
+<p>Translate the English words “The sales tax is 6% of the original
+price” to math symbols.</p>
 <p><strong>Solution</strong><br />
-The key words in this sentence are “is”, “%”, and “of”. By changing “is” to =, “%” to division by 100, and “of” to <span class="math inline">\(\times\)</span> we get:</p>
-<span class="math display">\[\text{The sales tax}= \frac{6}{100} \times \text{the original price}.\]</span>
+The key words in this sentence are “is”, “%”, and “of”. By changing “is”
+to =, “%” to division by 100, and “of” to <span
+class="math inline">\(\times\)</span> we get:</p>
+<span class="math display">\[\text{The sales tax}= \frac{6}{100} \times
+\text{the original price}.\]</span>
 <hr>
 </div>
 <div id="example-2" class="section level4">
 <h4>Example 2</h4>
-<p>Translate the English words “The mortgage on my new home is 10% more than the mortgage on my old home” to math symbols.</p>
-<p><strong>Solution</strong> The key words in the sentence are “is” and “10% more than.” Using the information in the table, we change the sentence to:</p>
-<p><span class="math display">\[\text{new mortgage} = \text{old mortgage}\times(1+0.10).\]</span></p>
+<p>Translate the English words “The mortgage on my new home is 10% more
+than the mortgage on my old home” to math symbols.</p>
+<p><strong>Solution</strong> The key words in the sentence are “is” and
+“10% more than.” Using the information in the table, we change the
+sentence to:</p>
+<p><span class="math display">\[\text{new mortgage} = \text{old
+mortgage}\times(1+0.10).\]</span></p>
 <hr>
 </div>
 <div id="example-3" class="section level4">
 <h4>Example 3</h4>
-<p>Translate the English words “The sum of my power bill and my phone bill is eight percent of my income” to math symbols.</p>
-<p><strong>Solution</strong> The key words in the sentence are “sum of,” “is,” “percent,” and “of.” Using the information in the table we change the sentence to:</p>
-<p><span class="math display">\[\text{power bill} + \text{phone bill} = \frac{8}{100} \times \text{income}.\]</span></p>
-<p>Once we understand how to translate English words to mathematical symbols we can use the mathematical equations to do helpful calculations. Here are some examples:</p>
+<p>Translate the English words “The sum of my power bill and my phone
+bill is eight percent of my income” to math symbols.</p>
+<p><strong>Solution</strong> The key words in the sentence are “sum of,”
+“is,” “percent,” and “of.” Using the information in the table we change
+the sentence to:</p>
+<p><span class="math display">\[\text{power bill} + \text{phone bill} =
+\frac{8}{100} \times \text{income}.\]</span></p>
+<p>Once we understand how to translate English words to mathematical
+symbols we can use the mathematical equations to do helpful
+calculations. Here are some examples:</p>
 <hr>
 </div>
 </div>
@@ -538,37 +595,56 @@ The key words in this sentence are “is”, “%”, and “of”. By changing 
 <h3 class="tabset">Solving Examples</h3>
 <div id="example-4" class="section level4">
 <h4>Example 4</h4>
-<p>The sales tax is 6% of the original price. The original price is $10.00. Find the sales tax.</p>
+<p>The sales tax is 6% of the original price. The original price is
+$10.00. Find the sales tax.</p>
 <p><strong>Solution</strong><br />
-First we convert the English sentence to math symbols (see Example 1): <span class="math display">\[\text{sales tax} = \frac{6}{100} \times \text{original price}\]</span></p>
-<p>Since we know the original price is $10 the equation gives us a way to find the sales tax.</p>
-<p><span class="math display">\[\text{sales tax} = \frac{6}{100} \times \$10.\]</span></p>
+First we convert the English sentence to math symbols (see Example 1):
+<span class="math display">\[\text{sales tax} = \frac{6}{100} \times
+\text{original price}\]</span></p>
+<p>Since we know the original price is $10 the equation gives us a way
+to find the sales tax.</p>
+<p><span class="math display">\[\text{sales tax} = \frac{6}{100} \times
+\$10.\]</span></p>
 <p>Now change the fraction to a decimal:</p>
-<p><span class="math display">\[\text{sales tax}= 0.06\times \$10.\]</span></p>
+<p><span class="math display">\[\text{sales tax}= 0.06\times
+\$10.\]</span></p>
 <p>Finally, multiply out the right side of the equation</p>
 <p><span class="math display">\[\text{sales tax}=\$0.60\]</span></p>
 <hr>
 </div>
 <div id="example-5" class="section level4">
 <h4>Example 5</h4>
-<p>The sales tax is 6% of the original price. We know the sales tax is $0.90. Find the original price.</p>
+<p>The sales tax is 6% of the original price. We know the sales tax is
+$0.90. Find the original price.</p>
 <p><strong>Solution</strong><br />
-Like the previous problem, we start by converting the English sentence to math symbols: <span class="math display">\[\text{sales tax} = \frac{6}{100} \times \text{original price}\]</span></p>
-<p>Since we know sales tax is $0.90, we can solve for the original price.</p>
-<p><span class="math display">\[\$0.90 = 0.06 \times \text{original price}.\]</span></p>
-<p>Divide both sides of the equation by 0.06 to isolate the “original price:”</p>
-<p><span class="math display">\[\frac{\$0.90}{0.06} = \text{original price}.\]</span></p>
+Like the previous problem, we start by converting the English sentence
+to math symbols: <span class="math display">\[\text{sales tax} =
+\frac{6}{100} \times \text{original price}\]</span></p>
+<p>Since we know sales tax is $0.90, we can solve for the original
+price.</p>
+<p><span class="math display">\[\$0.90 = 0.06 \times \text{original
+price}.\]</span></p>
+<p>Divide both sides of the equation by 0.06 to isolate the “original
+price:”</p>
+<p><span class="math display">\[\frac{\$0.90}{0.06} = \text{original
+price}.\]</span></p>
 <p>Divide the left side of the equation:</p>
-<p><span class="math display">\[\$15.00 =\text{original price}.\]</span></p>
+<p><span class="math display">\[\$15.00 =\text{original
+price}.\]</span></p>
 <hr>
 </div>
 <div id="example-6" class="section level4">
 <h4>Example 6</h4>
-<p>After sales tax, the final price of a sweater is 5% more than the price on the price tag. The price tag on a sweater is $35, what is the final price of the sweater?</p>
+<p>After sales tax, the final price of a sweater is 5% more than the
+price on the price tag. The price tag on a sweater is $35, what is the
+final price of the sweater?</p>
 <p><strong>Solution</strong><br />
-“The final price is 5% more than the price tag.” This sentence translates to the mathematical equation:</p>
-<p><span class="math display">\[\text{final price} = \text{price tag}\times(1+0.05)\]</span></p>
-<p>Since the price tag is $35, this gives us the equation we need to find the final price:</p>
+“The final price is 5% more than the price tag.” This sentence
+translates to the mathematical equation:</p>
+<p><span class="math display">\[\text{final price} = \text{price
+tag}\times(1+0.05)\]</span></p>
+<p>Since the price tag is $35, this gives us the equation we need to
+find the final price:</p>
 <p><span class="math display">\[
 \begin{align}
 \text{final price} &amp;= \$35\times(1.05)\\
@@ -579,11 +655,15 @@ Like the previous problem, we start by converting the English sentence to math s
 </div>
 <div id="example-7" class="section level4">
 <h4>Example 7</h4>
-<p>After sales tax, the final price of a sweater is 5% more than the price on the price tag. If the final price was $15.25, find the price on the price tag.</p>
+<p>After sales tax, the final price of a sweater is 5% more than the
+price on the price tag. If the final price was $15.25, find the price on
+the price tag.</p>
 <p><strong>Solution</strong><br />
 Using the same equation as in Example 6:</p>
-<p><span class="math display">\[\text{final price} = \text{price tag}\times(1+0.05)\]</span></p>
-<p>Since the final price was $15.25, we can substitute the value for the final price and solve for the price tag:</p>
+<p><span class="math display">\[\text{final price} = \text{price
+tag}\times(1+0.05)\]</span></p>
+<p>Since the final price was $15.25, we can substitute the value for the
+final price and solve for the price tag:</p>
 <p><span class="math display">\[
 \begin{align}
 \$15.25 &amp;= 1.05 \times \text{price tag}\\
@@ -596,27 +676,34 @@ Using the same equation as in Example 6:</p>
 </div>
 <div id="example-8" class="section level3 tabset">
 <h3 class="tabset">Example 8</h3>
-<p>Sometimes people purchase items that are on sale to keep their expenses within their planned budget.</p>
+<p>Sometimes people purchase items that are on sale to keep their
+expenses within their planned budget.</p>
 <center>
-<img src="Lesson4/Images/wk4.sale.jpg" alt="Sales Ad displaying Take an Additional 30% Off Sitewide!" />
+<img src="Lesson4/Images/wk4.sale.jpg"
+alt="Sales Ad displaying Take an Additional 30% Off Sitewide!" />
 </center>
-<p>Suppose we need to purchase a new printer with an original purchase price of $64.99. The sales price is 30% less than the original price of $64.99. Find the sales price and the dollar amount saved.</p>
-<p>This example shows there can be more than one way to solve a problem.</p>
+<p>Suppose we need to purchase a new printer with an original purchase
+price of $64.99. The sales price is 30% less than the original price of
+$64.99. Find the sales price and the dollar amount saved.</p>
+<p>This example shows there can be more than one way to solve a
+problem.</p>
 <div id="solution-1" class="section level4">
 <h4>Solution 1</h4>
 <p>This sentence translates to the following equation:</p>
 <p><span class="math display">\[
 \begin{align}
 \text{sales price} &amp;= (1-0.30) \times \text{original price}\\
-\text{sales price} &amp;= 0.70 \times \$64.99\\ 
+\text{sales price} &amp;= 0.70 \times \$64.99\\
 \text{sales price} &amp;= \$45.49\\
 \end{align}
 \]</span></p>
-<p>The total dollars saved would be the difference between the original price and the sales price.</p>
+<p>The total dollars saved would be the difference between the original
+price and the sales price.</p>
 <p><span class="math display">\[
 \text{Dollars saved} = \text{original price} - \text{sales price}
 \]</span></p>
-<p>Substituting the dollar amounts that we know into the math equation yields the following:</p>
+<p>Substituting the dollar amounts that we know into the math equation
+yields the following:</p>
 <span class="math display">\[
 \begin{align}
 \text{Dollars saved} &amp;= \$64.99 - \$45.49\\
@@ -627,14 +714,16 @@ Using the same equation as in Example 6:</p>
 </div>
 <div id="solution-2" class="section level4">
 <h4>Solution 2</h4>
-<p>We could also say that the savings will be 30% of the original cost. The words in this sentence translate to: <span class="math display">\[
+<p>We could also say that the savings will be 30% of the original cost.
+The words in this sentence translate to: <span class="math display">\[
 \begin{align}
-\text{savings} &amp;= 0.30 \times \text{original cost}\\ 
+\text{savings} &amp;= 0.30 \times \text{original cost}\\
 &amp;= 0.30*\$64.99 \\
 &amp;=\$19.50\\
 \end{align}
 \]</span></p>
-<p>The sales price will be the original price minus the dollars saved.</p>
+<p>The sales price will be the original price minus the dollars
+saved.</p>
 <p><span class="math display">\[
 \begin{align}
 \text{Sales price} &amp;= \$64.99 -\$19.50\\
@@ -650,7 +739,9 @@ Using the same equation as in Example 6:</p>
 <center>
 <iframe width="780" height="500" frameborder="0" src="./Lesson4/Storyline/Lesson4.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L04 - Interactive 1: Give It a Try<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTekHKms50T7iqwFcIZZmeleCQ2Bs36vLs1LobNHS2zhpWFR8hRh69e8Ib76vTkMeqz92BEaydsOLbp/pub">(L04-1 ADA Interactive Transcript)</a></p>
+<p>L04 - Interactive 1: Give It a Try<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTekHKms50T7iqwFcIZZmeleCQ2Bs36vLs1LobNHS2zhpWFR8hRh69e8Ib76vTkMeqz92BEaydsOLbp/pub">(L04-1
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 <hr>
@@ -658,37 +749,72 @@ Using the same equation as in Example 6:</p>
 </div>
 <div id="units-and-unit-conversions" class="section level2">
 <h2>Units and Unit Conversions</h2>
-<p>The units connected to a number tell us what the number counts or measures. Consider the following examples: 10 doors, $500, 80 mph, 10 K. The units are respectively doors, dollars, miles per hour (or miles/hour), and kilometers. <br> <br> <br> <br></p>
+<p>The units connected to a number tell us what the number counts or
+measures. Consider the following examples: 10 doors, $500, 80 mph, 10 K.
+The units are respectively doors, dollars, miles per hour (or
+miles/hour), and kilometers. <br> <br> <br> <br></p>
 <div>
 <center>
 <iframe width="780" height="350" frameborder="0" src="./Lesson4/Storyline/Lesson4.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(1.15);-moz-transform-scale(1.15);" align="center">
 </iframe>
 <p><br></p>
-<p>L04 - Interactive 2: Units<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQzYwXWbTCwf2DvrOiG9F9dSHycBxmMCvjiRvlBO5m_v1RtVRwNpDnwk9YJ4_-iM71LeWXOhGAPk13f/pub">(L04-2 ADA Interactive Transcript)</a></p>
+<p>L04 - Interactive 2: Units<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQzYwXWbTCwf2DvrOiG9F9dSHycBxmMCvjiRvlBO5m_v1RtVRwNpDnwk9YJ4_-iM71LeWXOhGAPk13f/pub">(L04-2
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 <p><br> <br> <br> <br></p>
-<p>Sometimes we need to convert an amount of something with one unit to an equivalent amount expressed with different units. We want to change the way we express things so that the actual amount or quantity stays the same but the units change.</p>
+<p>Sometimes we need to convert an amount of something with one unit to
+an equivalent amount expressed with different units. We want to change
+the way we express things so that the actual amount or quantity stays
+the same but the units change.</p>
 <hr>
 <div id="example-9" class="section level4">
 <h4>Example 9</h4>
-<p>The race car drove 85,800 feet in 5 minutes. Find how fast it was traveling in miles per hour.</p>
-<p><strong>Solution</strong> We will need to change the units, but the actual distance and time the car traveled should not change. We will just be expressing them in different units. We are going to use the multiplicative identity property to change the units. The multiplicative identity property tells us that if you multiply a quantity by 1, the quantity does not change.</p>
-<p>We know that 60 minutes = 1 hour. Even though the numbers are different and the units are different the quantity of time is exactly the same. If we stack this equality relationship as a fraction, we get</p>
-<p><span class="math display">\[\frac{60 \text{ minutes}}{1 \text{ hour}} =1.\]</span></p>
+<p>The race car drove 85,800 feet in 5 minutes. Find how fast it was
+traveling in miles per hour.</p>
+<p><strong>Solution</strong> We will need to change the units, but the
+actual distance and time the car traveled should not change. We will
+just be expressing them in different units. We are going to use the
+multiplicative identity property to change the units. The multiplicative
+identity property tells us that if you multiply a quantity by 1, the
+quantity does not change.</p>
+<p>We know that 60 minutes = 1 hour. Even though the numbers are
+different and the units are different the quantity of time is exactly
+the same. If we stack this equality relationship as a fraction, we
+get</p>
+<p><span class="math display">\[\frac{60 \text{ minutes}}{1 \text{
+hour}} =1.\]</span></p>
 <p>We can even swap the numerator and denominator to get</p>
-<p><span class="math display">\[\frac{1 \text{ hour}}{60 \text{ minutes}} = 1.\]</span></p>
-<p>Now we will use this relationship, called a unit conversion rate, to change our units from minutes to hours.</p>
-<p><span class="math display">\[\frac{85,800 \text{ feet}}{5 \text{ minutes}} \times \frac{60 \text{ minutes}}{1 \text{ hour}}\]</span></p>
-<p>When we multiply two fractions we multiply the two numerators and multiply the two denominators to get the product of the fractions.</p>
+<p><span class="math display">\[\frac{1 \text{ hour}}{60 \text{
+minutes}} = 1.\]</span></p>
+<p>Now we will use this relationship, called a unit conversion rate, to
+change our units from minutes to hours.</p>
+<p><span class="math display">\[\frac{85,800 \text{ feet}}{5 \text{
+minutes}} \times \frac{60 \text{ minutes}}{1 \text{ hour}}\]</span></p>
+<p>When we multiply two fractions we multiply the two numerators and
+multiply the two denominators to get the product of the fractions.</p>
 <p>Now we have</p>
-<p><span class="math display">\[\frac{85,800 \text{ feet} \times 60 \text{ minutes}}{5 \text{ minutes} \times 1 \text{ hour}}.\]</span></p>
-<p>We have the units “minutes”/“minutes” which is equal to 1. We can now cancel the unit “minutes” in the numerator and in the denominator because multiplying by 1 does not change the quantity of time.</p>
-<p><span class="math display">\[\frac{85,800 \text{ feet} \times 60}{5 \times 1 \text{ hour}}  = \frac{5,148,000 \text{ feet}}{5 \text{ hours}} = \frac{1,029,600 \text{ feet}}{1 \text{ hour}}\]</span></p>
-<p>We have our time unit correct so we only need to change our distance unit from feet to miles. There are 5280 feet in one mile so we will either use 1 mile/5280 feet or 5280 feet/1 mile as our unit conversion tool. Because “feet” is in the numerator of the fraction we want to change, we will want “feet” in the denominator of the unit conversion tool. This way we can have “feet”/ “feet” and we can cancel the unit “feet.”</p>
+<p><span class="math display">\[\frac{85,800 \text{ feet} \times 60
+\text{ minutes}}{5 \text{ minutes} \times 1 \text{ hour}}.\]</span></p>
+<p>We have the units “minutes”/“minutes” which is equal to 1. We can now
+cancel the unit “minutes” in the numerator and in the denominator
+because multiplying by 1 does not change the quantity of time.</p>
+<p><span class="math display">\[\frac{85,800 \text{ feet} \times 60}{5
+\times 1 \text{ hour}}  = \frac{5,148,000 \text{ feet}}{5 \text{ hours}}
+= \frac{1,029,600 \text{ feet}}{1 \text{ hour}}\]</span></p>
+<p>We have our time unit correct so we only need to change our distance
+unit from feet to miles. There are 5280 feet in one mile so we will
+either use 1 mile/5280 feet or 5280 feet/1 mile as our unit conversion
+tool. Because “feet” is in the numerator of the fraction we want to
+change, we will want “feet” in the denominator of the unit conversion
+tool. This way we can have “feet”/ “feet” and we can cancel the unit
+“feet.”</p>
 <p><span class="math display">\[
 \begin{align}
-\frac{1,029,600 \text{ feet}}{1 \text{ hour}} \times \frac{1 \text{ mile}}{5280 \text{ feet}} &amp;= \frac{1,029,600 \text{ feet} \times 1 \text{ mile}}{1 \text{ hour} \times 5280 \text{ feet}}\\
+\frac{1,029,600 \text{ feet}}{1 \text{ hour}} \times \frac{1 \text{
+mile}}{5280 \text{ feet}} &amp;= \frac{1,029,600 \text{ feet} \times 1
+\text{ mile}}{1 \text{ hour} \times 5280 \text{ feet}}\\
 &amp;=\frac{1,029,600 \text{ miles}}{5280 \text{ hours}}\\
 &amp;=\frac{195 \text{ miles}}{1 \text{ hour}}\\
 \end{align}
@@ -699,7 +825,9 @@ Using the same equation as in Example 6:</p>
 <center>
 <iframe width="780" height="440" frameborder="0" src="./Lesson4/Storyline/Lesson4.Interactive3 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L04 - Interactive 3: Unit Conversions<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQClU4_7wypsXqrlkoq2Q1G_O6YHAr9OyIRuSi924bgs0NKViwpxF6qn0DWrRzTqo-QMGovtFaoHaLK/pub">(L04-3 ADA Interactive Transcript)</a></p>
+<p>L04 - Interactive 3: Unit Conversions<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQClU4_7wypsXqrlkoq2Q1G_O6YHAr9OyIRuSi924bgs0NKViwpxF6qn0DWrRzTqo-QMGovtFaoHaLK/pub">(L04-3
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 <hr>
@@ -707,35 +835,58 @@ Using the same equation as in Example 6:</p>
 </div>
 <div id="budgeting-1" class="section level2">
 <h2>Budgeting</h2>
-<p>The purpose of budgeting is to help us make wise decisions about how to use the resources we have. In the following video Henry J. Eyring, President of BYU-Idaho, provides some advice and council to BYU-Idaho students on using money wisely.</p>
+<p>The purpose of budgeting is to help us make wise decisions about how
+to use the resources we have. In the following video Henry J. Eyring,
+President of BYU-Idaho, provides some advice and council to BYU-Idaho
+students on using money wisely.</p>
 <div id="president-eyring-video" class="section level3">
 <h3>President Eyring Video</h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_pnntgl1n&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_p8h7a62k" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p><br> L04 - Budgeting - Eyring<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQ2Juhlgw9YE8IWSsD7kG3BTOHQoPLoOI_DrfA4bNCCseDBt30nk13Y-BTcYOcJZNXNJb-Dn6jTvyPR/pub">(3:34 mins, L4 Eyring Transcript)</a></p>
+<p><br> L04 - Budgeting - Eyring<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQ2Juhlgw9YE8IWSsD7kG3BTOHQoPLoOI_DrfA4bNCCseDBt30nk13Y-BTcYOcJZNXNJb-Dn6jTvyPR/pub">(3:34
+mins, L4 Eyring Transcript)</a></p>
 </center>
 <hr>
-<p>We frequently use unit conversions when we build a budget. We want to know about money in different time frames. Usually we want a monthly budget, but sometimes it makes more sense to look at a yearly budget, or a weekly budget. College students sometimes plan their budgets around semesters. Budgeting is much more effective when we use the same time frame for all of our income and expenses. When we change the time frame for expenses or income it is called <em>prorating</em>.</p>
+<p>We frequently use unit conversions when we build a budget. We want to
+know about money in different time frames. Usually we want a monthly
+budget, but sometimes it makes more sense to look at a yearly budget, or
+a weekly budget. College students sometimes plan their budgets around
+semesters. Budgeting is much more effective when we use the same time
+frame for all of our income and expenses. When we change the time frame
+for expenses or income it is called <em>prorating</em>.</p>
 </div>
 <div id="an-example-budget" class="section level3">
 <h3>An Example Budget</h3>
-<p>Let’s look at how the tools we have learned in this lesson can be used as part of the Quantitative Reasoning Process.</p>
+<p>Let’s look at how the tools we have learned in this lesson can be
+used as part of the Quantitative Reasoning Process.</p>
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Heidi is a BYU-Idaho student who has not been using a budget. On a recent visit to a restaurant, her card was declined when she tried to pay for her meal. Her roommate was kind and paid for her meal, but Heidi was embarrassed and wants to improve her finances. She has decided to create a budget.</p>
+<p>Heidi is a BYU-Idaho student who has not been using a budget. On a
+recent visit to a restaurant, her card was declined when she tried to
+pay for her meal. Her roommate was kind and paid for her meal, but Heidi
+was embarrassed and wants to improve her finances. She has decided to
+create a budget.</p>
 <hr>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
 </h4>
-<p>A budget is a mathematical model of our finances. It is an itemized plan for how we will use our money. In order to create and use an effective budget we need to know two important things:</p>
+<p>A budget is a mathematical model of our finances. It is an itemized
+plan for how we will use our money. In order to create and use an
+effective budget we need to know two important things:</p>
 <ol style="list-style-type: decimal">
 <li>The amount of money we have <strong>coming in</strong>, and</li>
 <li>The amount of money we have <strong>going out</strong>.</li>
 </ol>
-<p>These are our key variables. We typically refer to the money we have coming in as <em>income</em> and the money we spend as <em>expenses</em>. If a monthly time frame is used, the difference between monthly income and monthly expenses is called <em>net monthly cash flow</em>.</p>
-<p>Heidi will also need to make assumptions about her income and her expenses. In this case she will be making the following assumptions:</p>
+<p>These are our key variables. We typically refer to the money we have
+coming in as <em>income</em> and the money we spend as
+<em>expenses</em>. If a monthly time frame is used, the difference
+between monthly income and monthly expenses is called <em>net monthly
+cash flow</em>.</p>
+<p>Heidi will also need to make assumptions about her income and her
+expenses. In this case she will be making the following assumptions:</p>
 <ul>
 <li>Her only income will be from her part time job.</li>
 <li>Her pay rate at her part time job will stay the same.</li>
@@ -745,18 +896,30 @@ Identify Variables &amp; Assumptions
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>Heidi needs to consider each of her two key variables: how much money is she spending and how much money is coming in.</p>
+<p>Heidi needs to consider each of her two key variables: how much money
+is she spending and how much money is coming in.</p>
 <div id="heidis-income" class="section level4">
 <h4>Heidi’s income</h4>
-<p>Heidi works for 20 hours each week. Her job pays $11.90 per hour. Heidi uses the following unit conversion to compute her total monthly income.</p>
-<p><span class="math display">\[ \frac{$11.90}{1 
-\text{ hour of work}}\times\frac{20 \text{ hours of work}}{1 \text{ week}}\times\frac{4 \text{ weeks}}{1 \text{ month}}\]</span></p>
-<p>Notice that the “hours of work” unit and the “weeks” unit will divide to be 1, so the units will be left as dollars ($) per month. When Heidi multiplied the top of the fractions and the bottom of the fractions she got:</p>
+<p>Heidi works for 20 hours each week. Her job pays $11.90 per hour.
+Heidi uses the following unit conversion to compute her total monthly
+income.</p>
+<p><span class="math display">\[ \frac{$11.90}{1
+\text{ hour of work}}\times\frac{20 \text{ hours of work}}{1 \text{
+week}}\times\frac{4 \text{ weeks}}{1 \text{ month}}\]</span></p>
+<p>Notice that the “hours of work” unit and the “weeks” unit will divide
+to be 1, so the units will be left as dollars ($) per month. When Heidi
+multiplied the top of the fractions and the bottom of the fractions she
+got:</p>
 <p><span class="math display">\[\$952\text{ per month}\]</span></p>
 </div>
 <div id="heidis-expenses" class="section level4">
 <h4>Heidi’s expenses</h4>
-<p>Heidi pays 10% of her income for tithing each month. Additionally, based on her past spending she estimates that she spends about $60 dollars a week for groceries, $1620 a year on car repairs, $500 a month on rent, and every other Saturday she spends $25 for dinner and a movie with friends. We will use the following table to summarize her monthly expenses.</p>
+<p>Heidi pays 10% of her income for tithing each month. Additionally,
+based on her past spending she estimates that she spends about $60
+dollars a week for groceries, $1620 a year on car repairs, $500 a month
+on rent, and every other Saturday she spends $25 for dinner and a movie
+with friends. We will use the following table to summarize her monthly
+expenses.</p>
 <table>
 <thead>
 <tr class="header">
@@ -773,12 +936,14 @@ Apply Quantitative Tools
 </tr>
 <tr class="even">
 <td>Groceries</td>
-<td>$60/week <span class="math inline">\(\times\)</span> 4 weeks/1 month</td>
+<td>$60/week <span class="math inline">\(\times\)</span> 4 weeks/1
+month</td>
 <td>$240/month</td>
 </tr>
 <tr class="odd">
 <td>Car Repairs</td>
-<td>$1620/year <span class="math inline">\(\times\)</span> 1 year/12 months</td>
+<td>$1620/year <span class="math inline">\(\times\)</span> 1 year/12
+months</td>
 <td>$135/month</td>
 </tr>
 <tr class="even">
@@ -788,7 +953,8 @@ Apply Quantitative Tools
 </tr>
 <tr class="odd">
 <td>Entertainment</td>
-<td>$25/2 Saturdays <span class="math inline">\(\times\)</span> 4 Saturdays/1 month</td>
+<td>$25/2 Saturdays <span class="math inline">\(\times\)</span> 4
+Saturdays/1 month</td>
 <td>$50/month</td>
 </tr>
 <tr class="even">
@@ -802,8 +968,17 @@ Apply Quantitative Tools
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>After doing her calculations, Heidi realized that she was spending more money than she was making (her net monthly cash flow is $952-$1020.20 = $-68.20). This helped her understand why her card was declined at the restaurant. Based on her calculations she realized that she either needs to increase her income or decrease her expenses.</p>
-<p>After considering her options, Heidi realized that she couldn’t get more hours at work and didn’t have time to work another job. So her best option would be to cut her expenses. She decided to decrease the amount she spent on groceries per week to $50 and to cut her entertainment spending down to $20 per month. When she redid the calculations, she got the following result:</p>
+<p>After doing her calculations, Heidi realized that she was spending
+more money than she was making (her net monthly cash flow is
+$952-$1020.20 = $-68.20). This helped her understand why her card was
+declined at the restaurant. Based on her calculations she realized that
+she either needs to increase her income or decrease her expenses.</p>
+<p>After considering her options, Heidi realized that she couldn’t get
+more hours at work and didn’t have time to work another job. So her best
+option would be to cut her expenses. She decided to decrease the amount
+she spent on groceries per week to $50 and to cut her entertainment
+spending down to $20 per month. When she redid the calculations, she got
+the following result:</p>
 <table>
 <thead>
 <tr class="header">
@@ -820,12 +995,14 @@ Make an Informed Decision
 </tr>
 <tr class="even">
 <td>Groceries</td>
-<td>$50/week <span class="math inline">\(\times\)</span> 4 weeks/1 month</td>
+<td>$50/week <span class="math inline">\(\times\)</span> 4 weeks/1
+month</td>
 <td>$200/month</td>
 </tr>
 <tr class="odd">
 <td>Car Repairs</td>
-<td>$1620/year <span class="math inline">\(\times\)</span> 1 year/12 months</td>
+<td>$1620/year <span class="math inline">\(\times\)</span> 1 year/12
+months</td>
 <td>$135/month</td>
 </tr>
 <tr class="even">
@@ -845,13 +1022,37 @@ Make an Informed Decision
 </tr>
 </tbody>
 </table>
-<p>Heidi realized that this would lead to her spending being less than her earnings which would put her in a better financial situation. In 2 Nephi 9:51, we are counseled about the choices we make with our money, “Wherefore, do not spend money for that which is of no worth, nor your labor for that which cannot satisfy.”<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Once we have used the computational tools to understand and calculate our expenses and income, we are in a good position to interpret the information and make an informed decision about how we want to spend our money. We can set budgeting goals and then track our spending to see if we are meeting our goals. President N. Eldon Tanner of the Quorum of the Twelve (1962-1982) stated, “I’m convinced that it is not the amount of money that an individual earns that brings peace of mind, as much as having control of your money.”<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> President Heber J. Grant said, “If there is any one thing that will bring peace,it is to live within our means. If there is any one thing that is grinding, it is to have debts and obligations that one cannot meet.”<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p>Heidi realized that this would lead to her spending being less than
+her earnings which would put her in a better financial situation. In 2
+Nephi 9:51, we are counseled about the choices we make with our money,
+“Wherefore, do not spend money for that which is of no worth, nor your
+labor for that which cannot satisfy.”<a href="#fn3" class="footnote-ref"
+id="fnref3"><sup>3</sup></a> Once we have used the computational tools
+to understand and calculate our expenses and income, we are in a good
+position to interpret the information and make an informed decision
+about how we want to spend our money. We can set budgeting goals and
+then track our spending to see if we are meeting our goals. President N.
+Eldon Tanner of the Quorum of the Twelve (1962-1982) stated, “I’m
+convinced that it is not the amount of money that an individual earns
+that brings peace of mind, as much as having control of your money.”<a
+href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> President
+Heber J. Grant said, “If there is any one thing that will bring peace,it
+is to live within our means. If there is any one thing that is grinding,
+it is to have debts and obligations that one cannot meet.”<a href="#fn5"
+class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>Now that Heidi has made a decision about her budget, it is important that she take some time to reflect and evaluate her decision. She should ask if her budget is reasonable. Will she be able to stick to the smaller entertainment budget? She also should evaluate her assumptions and make sure they are appropriate and reasonable.</p>
-<p>It will also be helpful for Heidi to reflect and evaluate her budget after using it for a few months. Having experience living by the budget will help her make sure that the decisions she made are effective. It is likely she will find areas where the budget needs to be adjusted.</p>
+<p>Now that Heidi has made a decision about her budget, it is important
+that she take some time to reflect and evaluate her decision. She should
+ask if her budget is reasonable. Will she be able to stick to the
+smaller entertainment budget? She also should evaluate her assumptions
+and make sure they are appropriate and reasonable.</p>
+<p>It will also be helpful for Heidi to reflect and evaluate her budget
+after using it for a few months. Having experience living by the budget
+will help her make sure that the decisions she made are effective. It is
+likely she will find areas where the budget needs to be adjusted.</p>
 <hr>
 </div>
 </div>
@@ -861,7 +1062,9 @@ Evaluate Your Reasoning
 <center>
 <iframe width="780" height="700" frameborder="0" src="./Lesson4/Storyline/Lesson4.Interactive4 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
-<p>L04 - Interactive 4: Practice<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTKRZnMCSiVNAOuu1_yEVJIYjszkX4EqGdGYQa6o2Tr7YSyp83BtLEjlJwNB2JtJJEn2mnUl2OT87X-/pub">(L04-4 ADA Interactive Transcript)</a></p>
+<p>L04 - Interactive 4: Practice<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTKRZnMCSiVNAOuu1_yEVJIYjszkX4EqGdGYQa6o2Tr7YSyp83BtLEjlJwNB2JtJJEn2mnUl2OT87X-/pub">(L04-4
+ADA Interactive Transcript)</a></p>
 </center>
 </div>
 <hr>
@@ -869,41 +1072,74 @@ Evaluate Your Reasoning
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>Are you using a budget? If not, we encourage you to apply the Quantitative Reasoning Process to your personal situation. If so, now might be a good time to reevaluate your budget and determine if there are improvements that can be made. Living on a budget can help improve your financial situation, no matter how much money you have. As Barbara B. Smith, former General Relief Society President said, “Living on a budget is not a chore. It need not even be a deprivation. Budgeting should be a great learning experience.”<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>Are you using a budget? If not, we encourage you to apply the
+Quantitative Reasoning Process to your personal situation. If so, now
+might be a good time to reevaluate your budget and determine if there
+are improvements that can be made. Living on a budget can help improve
+your financial situation, no matter how much money you have. As Barbara
+B. Smith, former General Relief Society President said, “Living on a
+budget is not a chore. It need not even be a deprivation. Budgeting
+should be a great learning experience.”<a href="#fn6"
+class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 <hr>
 </div>
 <div id="lesson-checklist" class="section level2">
 <h2>Lesson Checklist</h2>
 <p>By the end of this lesson you should be able to do the following:</p>
 <ul>
-<li>Understand the mathematical meaning of keywords such as per, of, is, more than, and less than.</li>
+<li>Understand the mathematical meaning of keywords such as per, of, is,
+more than, and less than.</li>
 <li>Identify the units involved in solving a problem.</li>
 <li>Use appropriate units and unit conversions to solve a problem.</li>
 <li>Solve problems using percentages.</li>
-<li>Create a monthly budget by using unit conversions to prorate costs.</li>
+<li>Create a monthly budget by using unit conversions to prorate
+costs.</li>
 </ul>
 </div>
 <div id="optional-resources" class="section level2">
 <h2>Optional Resources</h2>
-<p>The following articles discuss a study mentioned by President Henry J. Enrying in the video included in this week’s lesson:</p>
+<p>The following articles discuss a study mentioned by President Henry
+J. Enrying in the video included in this week’s lesson:</p>
 <ul>
-<li><a href="http://news.gallup.com/businessjournal/150671/happiness-is-love-and-75k.aspx">Happiness is Love – and $75,000</a></li>
-<li><a href="http://news.gallup.com/opinion/gallup/210011/income-buys-happiness-differently-based-live.aspx">Income Buys Happiness Differently Based on Where you Live</a></li>
-<li><a href="http://www.pnas.org/content/107/38/16489.full">High Income Improves Evaluation of Life But Not Emotional Well-Being</a></li>
+<li><a
+href="http://news.gallup.com/businessjournal/150671/happiness-is-love-and-75k.aspx">Happiness
+is Love – and $75,000</a></li>
+<li><a
+href="http://news.gallup.com/opinion/gallup/210011/income-buys-happiness-differently-based-live.aspx">Income
+Buys Happiness Differently Based on Where you Live</a></li>
+<li><a href="http://www.pnas.org/content/107/38/16489.full">High Income
+Improves Evaluation of Life But Not Emotional Well-Being</a></li>
 </ul>
 <center>
 © 2020 Brigham Young University - Idaho
 </center>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>Thomas S. Monson. <a href="https://www.lds.org/ensign/1986/09/guiding-principles-of-personal-and-family-welfare?lang=eng">Guiding Principles of Personal and Family Welfare</a>. Ensign Magazine, Sept. 1986.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Spencer W. Kimball. As quoted in <a href="https://www.lds.org/bc/content/shared/content/english/pdf/language-materials/33293_eng.pdf">One for the Money</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p><a href="https://www.lds.org/scriptures/bofm/2-ne/9.51?lang=eng#50">2nd Nephi 9:51</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>N. Eldon Tanner. <a href="https://www.lds.org/general-conference/1979/10/constancy-amid-change?lang=eng&amp;_r=1">Constancy Amid Change</a>. General Conference, October 1979.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p><a href="https://www.lds.org/manual/teachings-heber-j-grant/chapter-13?lang=eng#4-35970_000_017">President Heber J. Grant</a>, Gospel Standards, comp. G. Homer Durham [1941], page 111<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>Sister Barbara B. Smith, General Relief Society President. <a href="https://www.lds.org/general-conference/1981/04/reach-for-the-stars?lang=eng">Reach for the Stars</a>. General conference, April 1981.<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>Thomas S. Monson. <a
+href="https://www.lds.org/ensign/1986/09/guiding-principles-of-personal-and-family-welfare?lang=eng">Guiding
+Principles of Personal and Family Welfare</a>. Ensign Magazine,
+Sept. 1986.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Spencer W. Kimball. As quoted in <a
+href="https://www.lds.org/bc/content/shared/content/english/pdf/language-materials/33293_eng.pdf">One
+for the Money</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a
+href="https://www.lds.org/scriptures/bofm/2-ne/9.51?lang=eng#50">2nd
+Nephi 9:51</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>N. Eldon Tanner. <a
+href="https://www.lds.org/general-conference/1979/10/constancy-amid-change?lang=eng&amp;_r=1">Constancy
+Amid Change</a>. General Conference, October 1979.<a href="#fnref4"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a
+href="https://www.lds.org/manual/teachings-heber-j-grant/chapter-13?lang=eng#4-35970_000_017">President
+Heber J. Grant</a>, Gospel Standards, comp. G. Homer Durham [1941], page
+111<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Sister Barbara B. Smith, General Relief Society
+President. <a
+href="https://www.lds.org/general-conference/1981/04/reach-for-the-stars?lang=eng">Reach
+for the Stars</a>. General conference, April 1981.<a href="#fnref6"
+class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -945,6 +1181,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

@@ -13,8 +13,8 @@
 
 <title>Lesson 11: Solving Systems of Equations</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -60,6 +60,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
 
@@ -84,6 +85,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -296,12 +300,12 @@ div.tocify {
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row">
-<div class="col-sm-12 col-md-4 col-lg-3">
+<div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -309,12 +313,12 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+      <a class="navbar-brand" href="index.html">The Quantitative Reasoning Process</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -322,7 +326,7 @@ div.tocify {
   <a href="index.html">Table of Contents</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit I
      
     <span class="caret"></span>
@@ -346,7 +350,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit II
      
     <span class="caret"></span>
@@ -367,7 +371,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit III
      
     <span class="caret"></span>
@@ -399,7 +403,8 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Lesson 11: Solving Systems of Equations</h1>
+<h1 class="title toc-ignore">Lesson 11: Solving Systems of
+Equations</h1>
 
 </div>
 
@@ -409,21 +414,35 @@ div.tocify {
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_19bwxfok&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_7wzzn5xq" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p>Lesson 11 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTbucQBINEYm6sXCJST5fvH-cHqSn0qjaZlHVz8D8O6JkDMQgkKOnycZuxk-OBdIATNG6z7FTetPh55/pub">(1:03 mins, L11 Opening Story Transcript)</a></p>
+<p>Lesson 11 - Opening story<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTbucQBINEYm6sXCJST5fvH-cHqSn0qjaZlHVz8D8O6JkDMQgkKOnycZuxk-OBdIATNG6z7FTetPh55/pub">(1:03
+mins, L11 Opening Story Transcript)</a></p>
 </center>
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Sophia and Emmy need to make a decision where they must compare two options. We often face situations with different options where we can use the Quantitative Reasoning Process to compare our options. There are several different quantitative tools we can use to make this type of comparison. One tool we look at in this lesson is a <em>system of equations</em>.</p>
+<p>Sophia and Emmy need to make a decision where they must compare two
+options. We often face situations with different options where we can
+use the Quantitative Reasoning Process to compare our options. There are
+several different quantitative tools we can use to make this type of
+comparison. One tool we look at in this lesson is a <em>system of
+equations</em>.</p>
 <blockquote>
-<p>A <em>system of equations</em> is a list of two or more equations that use the same input and output variables.</p>
+<p>A <em>system of equations</em> is a list of two or more equations
+that use the same input and output variables.</p>
 </blockquote>
-<p>We can use graphs or algebra to solve for the values of the variables that satisfy both equations. Let’s start by looking at how Sophia and Emmy use a system of equations to decide between renting the monster truck or renting the boat.</p>
+<p>We can use graphs or algebra to solve for the values of the variables
+that satisfy both equations. Let’s start by looking at how Sophia and
+Emmy use a system of equations to decide between renting the monster
+truck or renting the boat.</p>
 <hr>
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Sophia and Emmy need to find a way back to their hotel from the jungle. They are faced with a decision where they need to compare the cost of two different things, renting the monster truck or renting the motor boat.</p>
+<p>Sophia and Emmy need to find a way back to their hotel from the
+jungle. They are faced with a decision where they need to compare the
+cost of two different things, renting the monster truck or renting the
+motor boat.</p>
 <hr>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
@@ -436,61 +455,114 @@ Identify Variables &amp; Assumptions
 <p>We can use the following assumptions:</p>
 <ul>
 <li>Sophia and Emmy can drive either the truck or the boat.</li>
-<li>Sophia can use her emergency credit card that was not swallowed by the black caiman.</li>
+<li>Sophia can use her emergency credit card that was not swallowed by
+the black caiman.</li>
 </ul>
-<p>We can set up two equations that are related to each other because the variables are the same in both cases: the total cost of transportation out of the jungle and the number of kilometers. With either the monster truck or the motor boat we are focused on money and distance.</p>
+<p>We can set up two equations that are related to each other because
+the variables are the same in both cases: the total cost of
+transportation out of the jungle and the number of kilometers. With
+either the monster truck or the motor boat we are focused on money and
+distance.</p>
 <hr>
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
 <p>We can model each scenario with a mathematical equation.</p>
-<p>The total cost, <span class="math inline">\(y\)</span>, of the truck is $37.50 + $0.88 <span class="math inline">\(\times\)</span> kilometers: <span class="math inline">\(y=37.50+0.88x\)</span><br />
-The total cost, <span class="math inline">\(y\)</span>, of the boat is $60.00 +$0.19 <span class="math inline">\(\times\)</span> kilometers: <span class="math inline">\(y=60+0.19x\)</span></p>
-<p>The input value, <span class="math inline">\(x\)</span>, in each of the equations is the number of kilometers they travel. The output value <span class="math inline">\(y\)</span>, is the total cost of transportation.</p>
-<p>As we learned in Chapter 7 the two equations in this example are linear equations. The rate of change (or slope) in each equation is constant. When we plot this type equation we get a straight line.</p>
-<p>Let’s look more carefully at the graph of the two lines representing the situation. The blue line represents the cost of the monster truck as the kilometers increase. The red line represents the cost of the boat as the kilometers increase.</p>
+<p>The total cost, <span class="math inline">\(y\)</span>, of the truck
+is $37.50 + $0.88 <span class="math inline">\(\times\)</span>
+kilometers: <span class="math inline">\(y=37.50+0.88x\)</span><br />
+The total cost, <span class="math inline">\(y\)</span>, of the boat is
+$60.00 +$0.19 <span class="math inline">\(\times\)</span> kilometers:
+<span class="math inline">\(y=60+0.19x\)</span></p>
+<p>The input value, <span class="math inline">\(x\)</span>, in each of
+the equations is the number of kilometers they travel. The output value
+<span class="math inline">\(y\)</span>, is the total cost of
+transportation.</p>
+<p>As we learned in Chapter 7 the two equations in this example are
+linear equations. The rate of change (or slope) in each equation is
+constant. When we plot this type equation we get a straight line.</p>
+<p>Let’s look more carefully at the graph of the two lines representing
+the situation. The blue line represents the cost of the monster truck as
+the kilometers increase. The red line represents the cost of the boat as
+the kilometers increase.</p>
 <p><img src="Lesson11_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>We can see from the graph that the two lines cross at around 33 kilometers on the <span class="math inline">\(x\)</span>-axis and just above $65 on the <span class="math inline">\(y\)</span>-axis.</p>
-<p>If Sophia and Emmy travel less than 33 kilometers then the truck is the least expensive. If they travel more than 33 kilometers then the boat is the least expensive.</p>
+<p>We can see from the graph that the two lines cross at around 33
+kilometers on the <span class="math inline">\(x\)</span>-axis and just
+above $65 on the <span class="math inline">\(y\)</span>-axis.</p>
+<p>If Sophia and Emmy travel less than 33 kilometers then the truck is
+the least expensive. If they travel more than 33 kilometers then the
+boat is the least expensive.</p>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>Sophia and Emmy need more information to make an informed decision. They really need to know the distance from their jungle position back to town.</p>
-<p>After asking for more information, they find that the dirt road back to the hotel is about 40 kilometers long and the river trip is 38 kilometers. Use the equations we built to compute the cost of each rental vehicle.</p>
+<p>Sophia and Emmy need more information to make an informed decision.
+They really need to know the distance from their jungle position back to
+town.</p>
+<p>After asking for more information, they find that the dirt road back
+to the hotel is about 40 kilometers long and the river trip is 38
+kilometers. Use the equations we built to compute the cost of each
+rental vehicle.</p>
 <hr>
 <center>
 <div>
 <iframe width="780" height="600" frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L11 - Interactive 1: Make an Informed Decision<br> <a href="https://docs.google.com/document/d/e/2PACX-1vTWUh_XS2ojcBKHATWBbBO00vtK0MQDau3PT4f82hpUiLd0xLVzjZUXT8QrUhQHvglZlWHWd_pCAL4L/pub">(L11-1 ADA Interactive Transcript)</a></p>
+<p>L11 - Interactive 1: Make an Informed Decision<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vTWUh_XS2ojcBKHATWBbBO00vtK0MQDau3PT4f82hpUiLd0xLVzjZUXT8QrUhQHvglZlWHWd_pCAL4L/pub">(L11-1
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>Sophia and Emmy tie the boat up at the town marina and ask directions to their hotel. After finding out that they have 5 kilometers still to walk they rethink their decision.</p>
-<p>Sophia and Emmy have realized that they made an incorrect assumption in their application of the Quantitative Reasoning process. They mistakenly assumed that both modes of transportation would get them back to their hotel. But since they didn’t realize that travel by boat would also require a 5 kilometer walk, they made a decision that didn’t turn out to be the best.</p>
-<p>Because the difference in price between the rentals was relatively small, they now wish they had rented the monster truck and driven straight to the hotel.</p>
+<p>Sophia and Emmy tie the boat up at the town marina and ask directions
+to their hotel. After finding out that they have 5 kilometers still to
+walk they rethink their decision.</p>
+<p>Sophia and Emmy have realized that they made an incorrect assumption
+in their application of the Quantitative Reasoning process. They
+mistakenly assumed that both modes of transportation would get them back
+to their hotel. But since they didn’t realize that travel by boat would
+also require a 5 kilometer walk, they made a decision that didn’t turn
+out to be the best.</p>
+<p>Because the difference in price between the rentals was relatively
+small, they now wish they had rented the monster truck and driven
+straight to the hotel.</p>
 <hr>
-<p>The remainder of this lesson will focus on the powerful quantitative tool, systems of equations, that we used to understand Sophia and Emmy’s situation.</p>
-<p>There are several different techniques that can be used to solve systems of equations. We will look at two of them: solving systems of equations with graphs and solving systems of equations with algebra.</p>
+<p>The remainder of this lesson will focus on the powerful quantitative
+tool, systems of equations, that we used to understand Sophia and Emmy’s
+situation.</p>
+<p>There are several different techniques that can be used to solve
+systems of equations. We will look at two of them: solving systems of
+equations with graphs and solving systems of equations with algebra.</p>
 <hr>
 </div>
 <div id="solving-systems-with-graphs" class="section level2">
 <h2>Solving Systems with Graphs</h2>
-<p>The graph of an equation represents all the points that satisfy the equation. When we are solving a system of equations we want to find a point that satisfies all of the equations in the system. This means that if you graph both equations in a system of two equations on a graph you can find the solution to the system by finding all points where the graphs intersect. An intersection point satisfies both equations so it represents the solution we are looking for.</p>
+<p>The graph of an equation represents all the points that satisfy the
+equation. When we are solving a system of equations we want to find a
+point that satisfies all of the equations in the system. This means that
+if you graph both equations in a system of two equations on a graph you
+can find the solution to the system by finding all points where the
+graphs intersect. An intersection point satisfies both equations so it
+represents the solution we are looking for.</p>
 <div id="example-1" class="section level3">
 <h3>Example 1</h3>
-<p>Graph the following two equations to solve the system of equations:</p>
+<p>Graph the following two equations to solve the system of
+equations:</p>
 <p><span class="math display">\[
 \begin{align}
 3x+2y&amp;=5\\
 x-y&amp;=0\\
 \end{align}
 \]</span> <strong>Solution</strong></p>
-<p>We want to find a point <span class="math inline">\((x,y)\)</span> that satisfies both equations. This means the point we are looking for will be the point where the two graphs intersect. If we solve each equation for <span class="math inline">\(y\)</span>, we will see that they fit the pattern of a linear function and we will be able to graph the lines.</p>
+<p>We want to find a point <span class="math inline">\((x,y)\)</span>
+that satisfies both equations. This means the point we are looking for
+will be the point where the two graphs intersect. If we solve each
+equation for <span class="math inline">\(y\)</span>, we will see that
+they fit the pattern of a linear function and we will be able to graph
+the lines.</p>
 <p>Equation 1: <span class="math display">\[
 \begin{align}
 3x+2y&amp;=5\\
@@ -505,11 +577,28 @@ x-y&amp;=0\\
 y&amp;=x\\
 \end{align}
 \]</span></p>
-<p>Equation 1 can be represented with a line with a <span class="math inline">\(y\)</span>-intercept of <span class="math inline">\(\frac{5}{2}\)</span> and a slope of <span class="math inline">\(\frac{-3}{2}\)</span>. Equation 2 gives the graph of a line with a <span class="math inline">\(y\)</span>-intercept of 0 and a slope of 1. If we plot both lines on the same graph, they look like this:</p>
+<p>Equation 1 can be represented with a line with a <span
+class="math inline">\(y\)</span>-intercept of <span
+class="math inline">\(\frac{5}{2}\)</span> and a slope of <span
+class="math inline">\(\frac{-3}{2}\)</span>. Equation 2 gives the graph
+of a line with a <span class="math inline">\(y\)</span>-intercept of 0
+and a slope of 1. If we plot both lines on the same graph, they look
+like this:</p>
 <p><img src="Lesson11_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>The solution to the system of equations is represented on the graph by the point where the two lines intersect. By looking at the graph of these two lines, we can see that they cross at the point <span class="math inline">\((1,1)\)</span>. This means <span class="math inline">\(x=1, y=1\)</span> is the solution to the system of equations.</p>
+<p>The solution to the system of equations is represented on the graph
+by the point where the two lines intersect. By looking at the graph of
+these two lines, we can see that they cross at the point <span
+class="math inline">\((1,1)\)</span>. This means <span
+class="math inline">\(x=1, y=1\)</span> is the solution to the system of
+equations.</p>
 <p><strong>Check Our Answer</strong></p>
-<p>We can verify that <span class="math inline">\(x=1, y=1\)</span> is the solution to the system by checking that <span class="math inline">\((1,1)\)</span> is exactly the point where they cross. We do this by substituting in these values for <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in both equations and making sure that both mathematical statements are true.</p>
+<p>We can verify that <span class="math inline">\(x=1, y=1\)</span> is
+the solution to the system by checking that <span
+class="math inline">\((1,1)\)</span> is exactly the point where they
+cross. We do this by substituting in these values for <span
+class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span> in both equations and making sure that
+both mathematical statements are true.</p>
 <p>Equation 1:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -529,12 +618,20 @@ x-y&amp;=0\\
 \text{True}&amp;\text{ Statement}
 \end{align}
 \]</span></p>
-<p>The point <span class="math inline">\((1,1)\)</span> is the only point where the two lines cross, <em>and</em> the values <span class="math inline">\(x=1\)</span> and <span class="math inline">\(y=1\)</span> are the only values for <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> that will yield true statements for both equations. When we get a single unique solution like this, we say that the system of equations is <em>independent</em>.</p>
+<p>The point <span class="math inline">\((1,1)\)</span> is the only
+point where the two lines cross, <em>and</em> the values <span
+class="math inline">\(x=1\)</span> and <span
+class="math inline">\(y=1\)</span> are the only values for <span
+class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span> that will yield true statements for
+both equations. When we get a single unique solution like this, we say
+that the system of equations is <em>independent</em>.</p>
 <hr>
 </div>
 <div id="example-2" class="section level3">
 <h3>Example 2</h3>
-<p>Graph the following two equations to solve the system of equations:</p>
+<p>Graph the following two equations to solve the system of
+equations:</p>
 <p><span class="math display">\[
 \begin{align}
 -x+2y&amp;=4\\
@@ -542,7 +639,9 @@ x-y&amp;=0\\
 \end{align}
 \]</span></p>
 <p><strong>Solution</strong></p>
-<p>If we solve each equation for <span class="math inline">\(y\)</span>, we can see that each one fits the pattern of a linear function and can graph the lines.</p>
+<p>If we solve each equation for <span class="math inline">\(y\)</span>,
+we can see that each one fits the pattern of a linear function and can
+graph the lines.</p>
 <p>Equation 1:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -552,7 +651,8 @@ y&amp;=\frac{x+4}{2}\\
 y&amp;=\frac{1}{2}x+\frac{4}{2}\\
 y&amp;=\frac{1}{2}x+2\\
 \end{align}
-\]</span> The first equation can be graphed as a line with a slope of 1/2 and a <span class="math inline">\(y\)</span>-intercept of 2.</p>
+\]</span> The first equation can be graphed as a line with a slope of
+1/2 and a <span class="math inline">\(y\)</span>-intercept of 2.</p>
 <p>Equation 2:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -563,24 +663,40 @@ y&amp;=\frac{3}{6}x-\frac{18}{6}\\
 y&amp;=\frac{1}{2}x-3\\
 \end{align}
 \]</span></p>
-<p>The second equation can be graphed as a line with a slope of 1/2 and a <span class="math inline">\(y\)</span>-intercept of -3.</p>
+<p>The second equation can be graphed as a line with a slope of 1/2 and
+a <span class="math inline">\(y\)</span>-intercept of -3.</p>
 <p>If we plot both lines on the same graph, they look like this:</p>
 <p><img src="Lesson11_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>From the graph it looks like the lines are parallel, which means they will never cross. We can see from the equations that the lines are parallel because the two lines have the same slope. This means that there is no <span class="math inline">\(x,y\)</span> pair that will satisfy both equations and thus there is no solution to this system of linear equations. When there is no solution to a system of equations we say that the system of equations is <em>inconsistent</em>.</p>
+<p>From the graph it looks like the lines are parallel, which means they
+will never cross. We can see from the equations that the lines are
+parallel because the two lines have the same slope. This means that
+there is no <span class="math inline">\(x,y\)</span> pair that will
+satisfy both equations and thus there is no solution to this system of
+linear equations. When there is no solution to a system of equations we
+say that the system of equations is <em>inconsistent</em>.</p>
 <hr>
 <center>
 <div>
 <iframe width="780" height="425" frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive2 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L11 - Interactive 2: Example 2<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSOUCaBXKVA1g2jygkhZJXuuFjBptGEodMjnXmKy7PhtebMTCVCvJm-U8zgGDE94z-CgV_RW0yjbSVu/pub">(L11-2 ADA Interactive Transcript)</a></p>
+<p>L11 - Interactive 2: Example 2<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vSOUCaBXKVA1g2jygkhZJXuuFjBptGEodMjnXmKy7PhtebMTCVCvJm-U8zgGDE94z-CgV_RW0yjbSVu/pub">(L11-2
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 </div>
 </div>
 <div id="solving-systems-with-algebra" class="section level2">
 <h2>Solving Systems with Algebra</h2>
-<p>Graphing systems of equations helps us to visualize the system and the solutions but unless the equations and solutions are fairly simple it can be difficult to obtain accurate results. We can also solve systems of equations using techniques of algebra. The <em>Substitution Method</em> is one way to solve a system of equations. To solve a system of equations using the substitution method we eliminate one variable from one of the equations by substituting an expression for that variable from the other equation.</p>
+<p>Graphing systems of equations helps us to visualize the system and
+the solutions but unless the equations and solutions are fairly simple
+it can be difficult to obtain accurate results. We can also solve
+systems of equations using techniques of algebra. The <em>Substitution
+Method</em> is one way to solve a system of equations. To solve a system
+of equations using the substitution method we eliminate one variable
+from one of the equations by substituting an expression for that
+variable from the other equation.</p>
 <div id="example-3" class="section level3">
 <h3>Example 3</h3>
 <p>Use the substitution method to solve the system of equations:</p>
@@ -591,7 +707,8 @@ y&amp;=\frac{1}{2}x-3\\
 \end{align}
 \]</span></p>
 <p><strong>Solution</strong></p>
-<p>To solve this system using the substitution method, we first solve the first equation for <span class="math inline">\(y\)</span>:</p>
+<p>To solve this system using the substitution method, we first solve
+the first equation for <span class="math inline">\(y\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 2x-y&amp;=-5\\
@@ -599,14 +716,18 @@ y&amp;=\frac{1}{2}x-3\\
 y&amp;=2x+5\\
 \end{align}
 \]</span></p>
-<p>Now, we substitute the expression <span class="math inline">\(2x+5\)</span> in for the <span class="math inline">\(y\)</span> in the other equation:</p>
+<p>Now, we substitute the expression <span
+class="math inline">\(2x+5\)</span> in for the <span
+class="math inline">\(y\)</span> in the other equation:</p>
 <p><span class="math display">\[
 \begin{align}
 3x+5y&amp;=12\\
 3x+5(2x+5)&amp;=12\\
 \end{align}
 \]</span></p>
-<p>Because we have an equation with only <span class="math inline">\(x\)</span>’s in it, we can solve for <span class="math inline">\(x\)</span>:</p>
+<p>Because we have an equation with only <span
+class="math inline">\(x\)</span>’s in it, we can solve for <span
+class="math inline">\(x\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 3x+5(2x+5)&amp;=12\\
@@ -617,7 +738,10 @@ y&amp;=2x+5\\
 x&amp;=\frac{-13}{13}\\
 x&amp;=-1\\
 \end{align}
-\]</span> We know <span class="math inline">\(x=-1\)</span> so we can substitute this value for the <span class="math inline">\(x\)</span> in the <span class="math inline">\(y\)</span>-expression we found earlier, <span class="math inline">\(y=2x+5\)</span>:</p>
+\]</span> We know <span class="math inline">\(x=-1\)</span> so we can
+substitute this value for the <span class="math inline">\(x\)</span> in
+the <span class="math inline">\(y\)</span>-expression we found earlier,
+<span class="math inline">\(y=2x+5\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 y&amp;=2x+5\\
@@ -626,7 +750,11 @@ y&amp;=-2+5\\
 y&amp;=3
 \end{align}
 \]</span></p>
-<p>We have found the solution to this system of equations to be <span class="math inline">\(x=-1, y=3\)</span>. Because there is a single solution to this system of equations, it is independent. The graph of these two equations verifies this solution because the lines intersect at the point <span class="math inline">\((-1,3)\)</span>.</p>
+<p>We have found the solution to this system of equations to be <span
+class="math inline">\(x=-1, y=3\)</span>. Because there is a single
+solution to this system of equations, it is independent. The graph of
+these two equations verifies this solution because the lines intersect
+at the point <span class="math inline">\((-1,3)\)</span>.</p>
 <p><img src="Lesson11_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <hr>
 </div>
@@ -639,7 +767,9 @@ y&amp;=3
 18x-3y&amp;=1\\
 \end{align}
 \]</span> <strong>Solution</strong></p>
-<p>We need to solve for one of the variables in one of the equations. We will solve for <span class="math inline">\(y\)</span> in the second equation:</p>
+<p>We need to solve for one of the variables in one of the equations. We
+will solve for <span class="math inline">\(y\)</span> in the second
+equation:</p>
 <p><span class="math display">\[
 \begin{align}
 18x-3y&amp;=1\\
@@ -648,7 +778,9 @@ y&amp;=\frac{-18x+1}{-3}\\
 y&amp;=\frac{-18}{-3}x+\frac{1}{-3}\\
 y&amp;=6x-\frac{1}{3}
 \end{align}
-\]</span> Now that we know <span class="math inline">\(y\)</span> in terms of <span class="math inline">\(x\)</span>, we can substitute this into the first equation:</p>
+\]</span> Now that we know <span class="math inline">\(y\)</span> in
+terms of <span class="math inline">\(x\)</span>, we can substitute this
+into the first equation:</p>
 <p><span class="math display">\[
 \begin{align}
 6x-9y&amp;=-13\\
@@ -661,7 +793,10 @@ x&amp;=\frac{-16}{-48}\\
 x&amp;=\frac{1}{3}\\
 \end{align}
 \]</span></p>
-<p>We can now substitute <span class="math inline">\(\frac{1}{3}\)</span> in for <span class="math inline">\(x\)</span> in any of the equations to find <span class="math inline">\(y\)</span>:</p>
+<p>We can now substitute <span
+class="math inline">\(\frac{1}{3}\)</span> in for <span
+class="math inline">\(x\)</span> in any of the equations to find <span
+class="math inline">\(y\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 y&amp;=6x-\frac{1}{3}\\
@@ -671,7 +806,10 @@ y&amp;=\frac{6-1}{3}\\
 y&amp;=\frac{5}{3}\\
 \end{align}
 \]</span></p>
-<p>This system of equations is independent. The only solution that works for both equations is <span class="math inline">\(x=\frac{1}{3}, y=\frac{5}{3}\)</span>. The two lines cross at the point <span class="math inline">\(\big(\frac{1}{3},\frac{5}{3}\big)\)</span>.</p>
+<p>This system of equations is independent. The only solution that works
+for both equations is <span class="math inline">\(x=\frac{1}{3},
+y=\frac{5}{3}\)</span>. The two lines cross at the point <span
+class="math inline">\(\big(\frac{1}{3},\frac{5}{3}\big)\)</span>.</p>
 <p><img src="Lesson11_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <hr>
 </div>
@@ -682,7 +820,9 @@ y&amp;=\frac{5}{3}\\
 <iframe width="780" height="400" frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive3 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="centert">
 </iframe>
 </div>
-<p>L11 - Interactive 3: Practice Solving a System<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSdnHwif79LP8bTFiS_lzeWpvoT8-5EK1c4lVSTAgx-Gj4vtM2OzbrE2VgXzPy9pc7N4EJYylffbyFk/pub">(L11-3 ADA Interactive Transcript)</a></p>
+<p>L11 - Interactive 3: Practice Solving a System<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vSdnHwif79LP8bTFiS_lzeWpvoT8-5EK1c4lVSTAgx-Gj4vtM2OzbrE2VgXzPy9pc7N4EJYylffbyFk/pub">(L11-3
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 </div>
@@ -695,7 +835,11 @@ y&amp;=\frac{5}{3}\\
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Jasper loves music and has recently been hired as a piano salesman. His new boss asked him to choose a commission plan. He can choose Plan A or Plan B. For Plan A Jasper gets a base salary of $25,000 a year plus a $500 commission for each piano he sells. In Plan B Jasper gets a base salary of $30,000 a year plus a $200 commission for each piano.</p>
+<p>Jasper loves music and has recently been hired as a piano salesman.
+His new boss asked him to choose a commission plan. He can choose Plan A
+or Plan B. For Plan A Jasper gets a base salary of $25,000 a year plus a
+$500 commission for each piano he sells. In Plan B Jasper gets a base
+salary of $30,000 a year plus a $200 commission for each piano.</p>
 <hr>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
@@ -709,19 +853,31 @@ Identify Variables &amp; Assumptions
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>Because Plan A and Plan B have the same two variables, Jasper can model his situation using a system of equations to better understand the decision he needs to make.</p>
+<p>Because Plan A and Plan B have the same two variables, Jasper can
+model his situation using a system of equations to better understand the
+decision he needs to make.</p>
 <ul>
-<li>Plan A: the money he earns in one year = $25,000 + $500 for each piano</li>
-<li>Plan B: the money he earns in one year = $30,000 + $200 for each piano</li>
+<li>Plan A: the money he earns in one year = $25,000 + $500 for each
+piano</li>
+<li>Plan B: the money he earns in one year = $30,000 + $200 for each
+piano</li>
 </ul>
-<p>This can be turned into the following system of equations where the input variable, <span class="math inline">\(x\)</span>, represents the number of pianos Jasper sells in a year and the output variable, <span class="math inline">\(y\)</span>, represents the total amount of money he earns in one year.</p>
+<p>This can be turned into the following system of equations where the
+input variable, <span class="math inline">\(x\)</span>, represents the
+number of pianos Jasper sells in a year and the output variable, <span
+class="math inline">\(y\)</span>, represents the total amount of money
+he earns in one year.</p>
 <p><span class="math display">\[
 \begin{align}
 y&amp;=500x+25000\\
 y&amp;=200x+30000\\
 \end{align}
 \]</span></p>
-<p>Because both equations are already solved for <span class="math inline">\(y\)</span> we can substitute <span class="math inline">\(200x+30000\)</span> in for <span class="math inline">\(y\)</span> in the first equation and solve for <span class="math inline">\(x\)</span>:</p>
+<p>Because both equations are already solved for <span
+class="math inline">\(y\)</span> we can substitute <span
+class="math inline">\(200x+30000\)</span> in for <span
+class="math inline">\(y\)</span> in the first equation and solve for
+<span class="math inline">\(x\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 200x+30000&amp;=500x+25000\\
@@ -730,7 +886,9 @@ y&amp;=200x+30000\\
 x&amp;=\frac{-5000}{-300}\\
 x&amp;=16.67\\
 \end{align}
-\]</span> We can now substitute <span class="math inline">\(x=16.67\)</span> into any of the equations to find <span class="math inline">\(y\)</span>:</p>
+\]</span> We can now substitute <span
+class="math inline">\(x=16.67\)</span> into any of the equations to find
+<span class="math inline">\(y\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 y&amp;=500x+25000\\
@@ -738,20 +896,30 @@ y&amp;=500(16.67)+25000\\
 y&amp;=33335\\
 \end{align}
 \]</span></p>
-<p>The solution to the system is <span class="math inline">\(x=16.67, y=\$33,335\)</span>.</p>
+<p>The solution to the system is <span class="math inline">\(x=16.67,
+y=\$33,335\)</span>.</p>
 <p>The following graph of this system supports this solution:</p>
 <p><img src="Lesson11_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>From this solution, Jasper knows if he sells around 16 or 17 pianos the two plans pay about the same and he would make around $33,335 per year. If he sells more than 16 pianos, Plan A is a better plan because he earns more money in a year. If he sells 16 pianos or fewer, Plan B is a better plan.</p>
-<p>He believes he can sell at least 2 pianos per month. Since this a total of 24 pianos he decides to select Plan A.</p>
+<p>From this solution, Jasper knows if he sells around 16 or 17 pianos
+the two plans pay about the same and he would make around $33,335 per
+year. If he sells more than 16 pianos, Plan A is a better plan because
+he earns more money in a year. If he sells 16 pianos or fewer, Plan B is
+a better plan.</p>
+<p>He believes he can sell at least 2 pianos per month. Since this a
+total of 24 pianos he decides to select Plan A.</p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>Before telling his boss his decision, Jasper decides to ask some of the other salesman how many pianos they sold the previous year. He talks to three of them and finds that they sold 18, 31, and 22 pianos each. Because these values are all more than 17, Jasper is satisfied with his decision to chose Plan A and tells his boss of his decision.</p>
+<p>Before telling his boss his decision, Jasper decides to ask some of
+the other salesman how many pianos they sold the previous year. He talks
+to three of them and finds that they sold 18, 31, and 22 pianos each.
+Because these values are all more than 17, Jasper is satisfied with his
+decision to chose Plan A and tells his boss of his decision.</p>
 <hr>
 </div>
 <div id="practice-solving-in-context" class="section level3">
@@ -761,21 +929,30 @@ Evaluate Your Reasoning
 <iframe width="780" height="600" frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive4 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L11 - Interactive 4: Practice Solving in Context<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQkzfdFcsdRq6N6_--H04Hxr0vpuBgBki-E2OWSQlyG8XezELQAwjV5KTEtBMPGBjjlKYm0RA-sgBfv/pub">(L11-4 ADA Interactive Transcript)</a></p>
+<p>L11 - Interactive 4: Practice Solving in Context<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQkzfdFcsdRq6N6_--H04Hxr0vpuBgBki-E2OWSQlyG8XezELQAwjV5KTEtBMPGBjjlKYm0RA-sgBfv/pub">(L11-4
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 </div>
 </div>
 <div id="systems-and-trendlines" class="section level2">
 <h2>Systems and Trendlines</h2>
-<p>Often, the equations that make up a system of equations are obtained from data using a trendline. The following example looks at an example from business: the break-even point.</p>
+<p>Often, the equations that make up a system of equations are obtained
+from data using a trendline. The following example looks at an example
+from business: the break-even point.</p>
 <hr>
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Jeff and Lucas opened a pizzeria. They have been open for 10 months now and are doing some calculations to determine what they could do to improve their profits. Currently, they charge $10 for the large pizza, their best-selling item. During the 10 months their restaurant has been open, they collected the following data:</p>
+<p>Jeff and Lucas opened a pizzeria. They have been open for 10 months
+now and are doing some calculations to determine what they could do to
+improve their profits. Currently, they charge $10 for the large pizza,
+their best-selling item. During the 10 months their restaurant has been
+open, they collected the following data:</p>
 <center>
-<img src="Lesson11/Images/pizzadata.PNG" alt="Spreadsheet containing pizza sales data" />
+<img src="Lesson11/Images/pizzadata.PNG"
+alt="Spreadsheet containing pizza sales data" />
 </center>
 <p>They want to answer two questions:</p>
 <ul>
@@ -789,22 +966,33 @@ Identify Variables &amp; Assumptions
 <p>Jeff and Lucas identify the following variables:</p>
 <ul>
 <li>The number of pizzas sold each month</li>
-<li>Total cost each month (how much money they have to pay to keep the business open)</li>
-<li>Total revenue each month (the total amount of money they bring in during one month)</li>
+<li>Total cost each month (how much money they have to pay to keep the
+business open)</li>
+<li>Total revenue each month (the total amount of money they bring in
+during one month)</li>
 <li>Total profit each month (total revenue minus total cost)</li>
 </ul>
 <p>They make the following assumptions:</p>
 <ul>
-<li>They will break-even if their monthly revenue is equal to their monthly costs</li>
-<li>If they change the price of the pizza, the number of pizzas sold will stay the same</li>
+<li>They will break-even if their monthly revenue is equal to their
+monthly costs</li>
+<li>If they change the price of the pizza, the number of pizzas sold
+will stay the same</li>
 </ul>
 <hr>
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>Jeff and Lucas create the following scatter plot and trendlines to compare their revenue and costs. The input variable, <span class="math inline">\(x\)</span>, represents the number of pizzas sold in one month. The output variable, <span class="math inline">\(y\)</span>, represents money. We can see the data and the trendline for both the total revenue (orange) and total cost (blue).</p>
+<p>Jeff and Lucas create the following scatter plot and trendlines to
+compare their revenue and costs. The input variable, <span
+class="math inline">\(x\)</span>, represents the number of pizzas sold
+in one month. The output variable, <span
+class="math inline">\(y\)</span>, represents money. We can see the data
+and the trendline for both the total revenue (orange) and total cost
+(blue).</p>
 <center>
-<img src="Lesson11/Images/revenuecosts.png" alt="Scatter plot representing Revenue and Costs" />
+<img src="Lesson11/Images/revenuecosts.png"
+alt="Scatter plot representing Revenue and Costs" />
 </center>
 <p>These two trendlines give them a system of equations:</p>
 <p><span class="math display">\[
@@ -813,7 +1001,10 @@ y&amp;=10.893x + 217.7\\
 y&amp;=5.8929x + 5803.9\\
 \end{align}
 \]</span></p>
-<p>Jeff and Lucas use substitution to solve the system of equations. Because both equations are already solved for <span class="math inline">\(y\)</span>, they can set the equations equal to each other and solve for <span class="math inline">\(x\)</span>:</p>
+<p>Jeff and Lucas use substitution to solve the system of equations.
+Because both equations are already solved for <span
+class="math inline">\(y\)</span>, they can set the equations equal to
+each other and solve for <span class="math inline">\(x\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 10.893x + 217.7 &amp;= 5.8929 x + 5803.90\\
@@ -822,34 +1013,84 @@ y&amp;=5.8929x + 5803.9\\
 x&amp;=\frac{5586.20}{5.0001}\\
 x&amp;=1117.2177\\
 \end{align}
-\]</span> They can then substitute this value of <span class="math inline">\(x\)</span> back into any of the equations to solve for <span class="math inline">\(y\)</span>. They used the first equation:</p>
+\]</span> They can then substitute this value of <span
+class="math inline">\(x\)</span> back into any of the equations to solve
+for <span class="math inline">\(y\)</span>. They used the first
+equation:</p>
 <p><span class="math display">\[
 \begin{align}
 y&amp;=10.893x + 217.7\\
 y&amp;=10.893(1117.2177)+217.7\\
 y&amp;=12387.5524\\
 \end{align}
-\]</span> The solution to the system of equations is <span class="math inline">\(x=1117.2177, y=12387.5524\)</span>.</p>
-<p>Jeff and Lucas know that <span class="math inline">\(x\)</span> represents the number of pizzas sold and <span class="math inline">\(y\)</span> represents a dollar amount. This solution means that if Jeff and Lucas sell 1,117 pizzas they will break-even and their revenue and costs will both be about $12,387.55.</p>
+\]</span> The solution to the system of equations is <span
+class="math inline">\(x=1117.2177, y=12387.5524\)</span>.</p>
+<p>Jeff and Lucas know that <span class="math inline">\(x\)</span>
+represents the number of pizzas sold and <span
+class="math inline">\(y\)</span> represents a dollar amount. This
+solution means that if Jeff and Lucas sell 1,117 pizzas they will
+break-even and their revenue and costs will both be about
+$12,387.55.</p>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>These calculations give Jeff and Lucas the answer to their first question: How many pizzas do they need to sell to break even each month? They need to sell around 1,117 pizzas per month. Because they are closed on Sunday, their pizzeria is open for around 26 days per month. They divide the number of pizzas by the number of days and get 42.96. This means they need to sell an average of 43 pizzas every day in order to break even.</p>
-<p>Looking back at the data, Jeff and Lucas notice that they sold more than 1,117 pizzas in 5 of the past 10 months: May, June, September, October, and November. They are concerned that they sold fewer than 1,117 pizzas in the other 5 months. But they notice that the most recent three months have had good sales. They hope that this upward trend in pizza sales continues as their pizzeria becomes more popular.</p>
-<p>To answer the question of whether they should increase the price of the large pizza, they notice that in the past three months, although they have sold more than 1,117 pizzas their total revenue was not much larger than their total costs. That means their profits were relatively low. They decide to increase the price of the large pizza to $11. They hope the extra revenue will increase their profits.</p>
+<p>These calculations give Jeff and Lucas the answer to their first
+question: How many pizzas do they need to sell to break even each month?
+They need to sell around 1,117 pizzas per month. Because they are closed
+on Sunday, their pizzeria is open for around 26 days per month. They
+divide the number of pizzas by the number of days and get 42.96. This
+means they need to sell an average of 43 pizzas every day in order to
+break even.</p>
+<p>Looking back at the data, Jeff and Lucas notice that they sold more
+than 1,117 pizzas in 5 of the past 10 months: May, June, September,
+October, and November. They are concerned that they sold fewer than
+1,117 pizzas in the other 5 months. But they notice that the most recent
+three months have had good sales. They hope that this upward trend in
+pizza sales continues as their pizzeria becomes more popular.</p>
+<p>To answer the question of whether they should increase the price of
+the large pizza, they notice that in the past three months, although
+they have sold more than 1,117 pizzas their total revenue was not much
+larger than their total costs. That means their profits were relatively
+low. They decide to increase the price of the large pizza to $11. They
+hope the extra revenue will increase their profits.</p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>As Jeff and Lucas evaluate their reasoning, they re-examine their assumptions. One of their assumptions was: “If they change the price of the pizza, the number of pizzas sold will stay the same.” As they think about this assumption, they realize it is probably not very accurate. Reducing prices would probably increase sales, while increasing prices would probably decrease sales. Because their decision was to increase the price of the large pizza to $11, Jeff and Lucas realize they might see a decrease in sales. They decide to try the higher price for three months and then re-evaluate their decision.</p>
-<p>After three more months of sales, Jeff and Lucas reevaluate their decision. In those three months they sold 1410, 1511, and 1620 pizzas. So far, it appears that the increase in their prices has not decreased their sales too much. Their sales remain above the 1,117 pizzas they calculated that they needed to sell in order to break even. Because they raised the price of the large pizza they find that their revenue has increased, so their profits are also increasing. Jeff and Lucas decide to do more advertising. They know that if they can sell more pizzas their profits will continue to increase.</p>
+<p>As Jeff and Lucas evaluate their reasoning, they re-examine their
+assumptions. One of their assumptions was: “If they change the price of
+the pizza, the number of pizzas sold will stay the same.” As they think
+about this assumption, they realize it is probably not very accurate.
+Reducing prices would probably increase sales, while increasing prices
+would probably decrease sales. Because their decision was to increase
+the price of the large pizza to $11, Jeff and Lucas realize they might
+see a decrease in sales. They decide to try the higher price for three
+months and then re-evaluate their decision.</p>
+<p>After three more months of sales, Jeff and Lucas reevaluate their
+decision. In those three months they sold 1410, 1511, and 1620 pizzas.
+So far, it appears that the increase in their prices has not decreased
+their sales too much. Their sales remain above the 1,117 pizzas they
+calculated that they needed to sell in order to break even. Because they
+raised the price of the large pizza they find that their revenue has
+increased, so their profits are also increasing. Jeff and Lucas decide
+to do more advertising. They know that if they can sell more pizzas
+their profits will continue to increase.</p>
 <hr>
 </div>
 <div id="non-linear-systems" class="section level2">
 <h2>Non-linear Systems</h2>
-<p>So far, all of the systems of equations we have encountered in this lesson have involved linear equations. Linear systems are the most common type of system that appear in real life problems. Because a line is simple, both in a graph and in an equation, we often choose to model situations with lines. This can be especially useful when the solution does not have to be precise, like rounding up to the nearest pizza or the nearest dollar.</p>
-<p>However, sometimes situations need more precision or sometimes a line is not a close enough model and it is helpful to use non-linear models. There are ways to solve non-linear systems with algebra, but in this class, we will only solve non-linear systems using graphs.</p>
+<p>So far, all of the systems of equations we have encountered in this
+lesson have involved linear equations. Linear systems are the most
+common type of system that appear in real life problems. Because a line
+is simple, both in a graph and in an equation, we often choose to model
+situations with lines. This can be especially useful when the solution
+does not have to be precise, like rounding up to the nearest pizza or
+the nearest dollar.</p>
+<p>However, sometimes situations need more precision or sometimes a line
+is not a close enough model and it is helpful to use non-linear models.
+There are ways to solve non-linear systems with algebra, but in this
+class, we will only solve non-linear systems using graphs.</p>
 <p>Here is an example of a non-linear system of equations:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -857,9 +1098,17 @@ y&amp;=8x^2+12x+1\\
 y&amp;=2(4)^x+3\\
 \end{align}
 \]</span></p>
-<p>Notice that the first equation is a quadratic function and the second equation is an exponential function. When we graph these functions we get the following:</p>
+<p>Notice that the first equation is a quadratic function and the second
+equation is an exponential function. When we graph these functions we
+get the following:</p>
 <p><img src="Lesson11_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>Notice there are three solutions to this system of equations because the graphs intersect at three different points. It is difficult to determine the exact location of the intersection points from the graph, but we can tell they are somewhere around the points <span class="math inline">\((-1.6,3.5)\)</span>, <span class="math inline">\((0.3,6)\)</span>, and <span class="math inline">\((2.8, 95)\)</span>.</p>
+<p>Notice there are three solutions to this system of equations because
+the graphs intersect at three different points. It is difficult to
+determine the exact location of the intersection points from the graph,
+but we can tell they are somewhere around the points <span
+class="math inline">\((-1.6,3.5)\)</span>, <span
+class="math inline">\((0.3,6)\)</span>, and <span
+class="math inline">\((2.8, 95)\)</span>.</p>
 <hr>
 <p>###Solve a Non-linear System</p>
 <center>
@@ -867,7 +1116,9 @@ y&amp;=2(4)^x+3\\
 <iframe width="780" height="650" frameborder="0" src="./Lesson11/Storyline/Lesson11.Interactive5 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L11 - Interactive 5: Solve a Non-linear System<br> <a href="https://docs.google.com/document/d/e/2PACX-1vSGhGst8n7GmEFcv1eBE_eqipOQaWuqcrJjl6aW6GIVFRANGmnVNOeWJQc5q6P8z_lV0Ww6eId26AtN/pub">(L11-5 ADA Interactive Transcript)</a></p>
+<p>L11 - Interactive 5: Solve a Non-linear System<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vSGhGst8n7GmEFcv1eBE_eqipOQaWuqcrJjl6aW6GIVFRANGmnVNOeWJQc5q6P8z_lV0Ww6eId26AtN/pub">(L11-5
+ADA Interactive Transcript)</a></p>
 </center>
 <hr>
 </div>
@@ -875,9 +1126,12 @@ y&amp;=2(4)^x+3\\
 <h2>Lesson Checklist</h2>
 <p>By the end of this lesson, you should be able to:</p>
 <ul>
-<li>create a system of linear equations from information provided in a written format</li>
-<li>solve a system of two linear equations with two unknowns using graphs</li>
-<li>solve a system of two linear equations with two unknowns using substitution</li>
+<li>create a system of linear equations from information provided in a
+written format</li>
+<li>solve a system of two linear equations with two unknowns using
+graphs</li>
+<li>solve a system of two linear equations with two unknowns using
+substitution</li>
 <li>interpret the solution to a system of equations</li>
 <li>solve a system of equations obtained using trendlines</li>
 <li>solve a non-linear system of two equations using a graph
@@ -925,6 +1179,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

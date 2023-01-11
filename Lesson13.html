@@ -13,12 +13,22 @@
 
 <title>Lesson 13: Applying the Quantitative Reasoning Process</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,12 +36,16 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,32 +58,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -80,10 +70,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -100,40 +86,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -161,7 +123,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -173,7 +135,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -184,10 +146,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -199,7 +174,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -325,7 +299,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -339,12 +313,12 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">The Quantative Reasoning Process</a>
+      <a class="navbar-brand" href="index.html">The Quantitative Reasoning Process</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -352,7 +326,7 @@ div.tocify {
   <a href="index.html">Table of Contents</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit I
      
     <span class="caret"></span>
@@ -376,7 +350,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit II
      
     <span class="caret"></span>
@@ -397,7 +371,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Unit III
      
     <span class="caret"></span>
@@ -425,11 +399,12 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
-<h1 class="title toc-ignore">Lesson 13: Applying the Quantitative Reasoning Process</h1>
+<h1 class="title toc-ignore">Lesson 13: Applying the Quantitative
+Reasoning Process</h1>
 
 </div>
 
@@ -439,45 +414,93 @@ div.tocify {
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/29018071/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_g9s1cwi1&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_n94vp31m" width="608" height="350" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" title="Kaltura Player">
 </iframe>
-<p>Lesson 13 - Opening story<br> <a href="https://docs.google.com/document/d/e/2PACX-1vR2TYwZf-k4fM23nloKk9YMklzdhDKoaZUOOe3FlokN-XAavliY85aKkK74tvj9TsOla7aXkuBJ1oPp/pub">(4:25 mins, L13 Opening Story Transcript)</a></p>
+<p>Lesson 13 - Opening story<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vR2TYwZf-k4fM23nloKk9YMklzdhDKoaZUOOe3FlokN-XAavliY85aKkK74tvj9TsOla7aXkuBJ1oPp/pub">(4:25
+mins, L13 Opening Story Transcript)</a></p>
 </center>
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>As we heard President Hinckley say in the introductory video: “You will be expected to put forth great effort and to use your best talents to make your way to the most wonderful future of which you are capable.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> As you are completing this Math 108X course, we hope that you can see how the Quantitative Reasoning Process can complement your talents and magnify your efforts to improve your own situation in life and bless the lives of those around you.</p>
-<p>The purpose of the Quantitative Reasoning Process is to assist in making good decisions based on a careful consideration of the problem, an analysis of the variables and assumptions that could affect the outcome, and the use of quantitative tools.</p>
-<p><img src="Lesson2/Images/QRProcess.png" alt="image of the Quantitative Reasoning Process Model" /></p>
+<p>As we heard President Hinckley say in the introductory video: “You
+will be expected to put forth great effort and to use your best talents
+to make your way to the most wonderful future of which you are
+capable.”<a href="#fn1" class="footnote-ref"
+id="fnref1"><sup>1</sup></a> As you are completing this Math 108X
+course, we hope that you can see how the Quantitative Reasoning Process
+can complement your talents and magnify your efforts to improve your own
+situation in life and bless the lives of those around you.</p>
+<p>The purpose of the Quantitative Reasoning Process is to assist in
+making good decisions based on a careful consideration of the problem,
+an analysis of the variables and assumptions that could affect the
+outcome, and the use of quantitative tools.</p>
+<p><img src="Lesson2/Images/QRProcess.png"
+alt="image of the Quantitative Reasoning Process Model" /></p>
 <hr>
 </div>
 <div id="quantitative-tools" class="section level2">
 <h2>Quantitative Tools</h2>
-<p>We have learned a variety of tools that can be used to make informed decisions in our personal lives and in our families, church, and community activities. As we conclude the semester, let’s review the quantitative tools we have learned.</p>
+<p>We have learned a variety of tools that can be used to make informed
+decisions in our personal lives and in our families, church, and
+community activities. As we conclude the semester, let’s review the
+quantitative tools we have learned.</p>
 <center>
 <div>
 <iframe width="780" height="600" frameborder="0" src="./Lesson13/Storyline/Lesson13.Interactive1 - Storyline output/story_html5.html" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" align="center">
 </iframe>
 </div>
-<p>L13 - Interactive 1: Quantitative Tools<br> <a href="https://docs.google.com/document/d/e/2PACX-1vQc8ZQ-bfIodkiQ6YDFoau-zCtvIuPW2exDodyqhCiOs61LUxWaZniwLftaG89a-4unTXs4NW-PqhB7/pub">(L13-1 ADA Interactive Transcript)</a></p>
+<p>L13 - Interactive 1: Quantitative Tools<br> <a
+href="https://docs.google.com/document/d/e/2PACX-1vQc8ZQ-bfIodkiQ6YDFoau-zCtvIuPW2exDodyqhCiOs61LUxWaZniwLftaG89a-4unTXs4NW-PqhB7/pub">(L13-1
+ADA Interactive Transcript)</a></p>
 </center>
-<p>This list is just the beginning of the quantitative tools that can be used to make decisions. As you continue your studies, you will learn more specific tools used in your chosen career. Adding more quantitative tools will increase the usefulness of the Quantitative Reasoning Process in making informed decisions in all areas of your life.</p>
+<p>This list is just the beginning of the quantitative tools that can be
+used to make decisions. As you continue your studies, you will learn
+more specific tools used in your chosen career. Adding more quantitative
+tools will increase the usefulness of the Quantitative Reasoning Process
+in making informed decisions in all areas of your life.</p>
 <hr>
 </div>
 <div id="foresight-and-follow-through" class="section level2">
 <h2>Foresight and Follow-Through</h2>
-<p>This week’s lesson focuses on the importance of foresight and follow-through. As we use the Quantitative Reasoning Process to make decisions, it is vital to consider the problem carefully and attempt to foresee the possible obstacles you might encounter. After making a decision it is essential to follow-through with the actions that are part of that decision.</p>
+<p>This week’s lesson focuses on the importance of foresight and
+follow-through. As we use the Quantitative Reasoning Process to make
+decisions, it is vital to consider the problem carefully and attempt to
+foresee the possible obstacles you might encounter. After making a
+decision it is essential to follow-through with the actions that are
+part of that decision.</p>
 <div id="a-lack-of-foresight" class="section level3">
 <h3>A Lack of Foresight</h3>
-<p>In <a href="http://www.byuimath.com/fdmat108/lesson11.html">Lesson 11</a> we saw an example of a lack of foresight. Remember that Sophia and Emmy made a decision to take a motor boat to get back to their hotel from the Amazon jungle. As they used the Quantitative Reasoning Process they failed to consider the fact that the motor boat would not take them all the way to their hotel. This lack of foresight led to them making a less-than-desirable decision as they had to walk 5 extra kilometers to get back to their hotel. Hopefully, Sophia and Emmy, like the rest of us, will learn from their lack of foresight and be better prepared to foresee similar obstacles in the future.</p>
-<p>While it is impossible to consider all future obstacles we might encounter, the Quantitative Reasoning Process helps us spend time considering variables and assumptions. We try to consider which assumptions might not be true, and consider unexpected outcomes that might arise.</p>
-<p>The following case study is an example where lack of foresight affected the quality of the decision made through the Quantitative Reasoning Process.</p>
+<p>In <a href="http://www.byuimath.com/fdmat108/lesson11.html">Lesson
+11</a> we saw an example of a lack of foresight. Remember that Sophia
+and Emmy made a decision to take a motor boat to get back to their hotel
+from the Amazon jungle. As they used the Quantitative Reasoning Process
+they failed to consider the fact that the motor boat would not take them
+all the way to their hotel. This lack of foresight led to them making a
+less-than-desirable decision as they had to walk 5 extra kilometers to
+get back to their hotel. Hopefully, Sophia and Emmy, like the rest of
+us, will learn from their lack of foresight and be better prepared to
+foresee similar obstacles in the future.</p>
+<p>While it is impossible to consider all future obstacles we might
+encounter, the Quantitative Reasoning Process helps us spend time
+considering variables and assumptions. We try to consider which
+assumptions might not be true, and consider unexpected outcomes that
+might arise.</p>
+<p>The following case study is an example where lack of foresight
+affected the quality of the decision made through the Quantitative
+Reasoning Process.</p>
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Johanne loves the thought of traveling around the United States. Because travel can be expensive, a year ago she decided to make it a priority and put a travel category in her monthly budget. After carefully saving and planning, she now has $1,300 she can spend for a trip. Johanne is lives in South Carolina and is deciding among three options:</p>
+<p>Johanne loves the thought of traveling around the United States.
+Because travel can be expensive, a year ago she decided to make it a
+priority and put a travel category in her monthly budget. After
+carefully saving and planning, she now has $1,300 she can spend for a
+trip. Johanne is lives in South Carolina and is deciding among three
+options:</p>
 <ul>
 <li>A trip with three friends to visit the Oregon coast for 7 days.</li>
 <li>A trip alone to visit Washington D.C. for 10 days.</li>
-<li>A trip with her cousin to visit relatives in Miami, Florida for 5 days.
+<li>A trip with her cousin to visit relatives in Miami, Florida for 5
+days.
 <hr></li>
 </ul>
 <h4 class="step two">
@@ -491,7 +514,9 @@ Identify Variables &amp; Assumptions
 <li>Cost of food</li>
 <li>Her interest in the location</li>
 </ul>
-<p>She assumes that she will strictly follow whatever budget she sets for herself. She also makes the following assumptions in comparing the three travel options:</p>
+<p>She assumes that she will strictly follow whatever budget she sets
+for herself. She also makes the following assumptions in comparing the
+three travel options:</p>
 <table>
 <colgroup>
 <col width="6%" />
@@ -512,24 +537,31 @@ Identify Variables &amp; Assumptions
 <tbody>
 <tr class="odd">
 <td><strong>Oregon Coast</strong></td>
-<td>She would fly, then split the cost of a rental car with her friends.</td>
+<td>She would fly, then split the cost of a rental car with her
+friends.</td>
 <td>Inexpensive, because they will camp on the beach.</td>
-<td>Inexpensive, because they are mostly planning to spend time hiking and visiting the beach.</td>
-<td>She will be able to pay for all her meals for $30 per day (7 day trip).</td>
+<td>Inexpensive, because they are mostly planning to spend time hiking
+and visiting the beach.</td>
+<td>She will be able to pay for all her meals for $30 per day (7 day
+trip).</td>
 </tr>
 <tr class="even">
 <td><strong>Washington D.C. </strong></td>
 <td>She can drive from her home.</td>
-<td>Expensive, because she will have to pay for a hotel room by herself.</td>
+<td>Expensive, because she will have to pay for a hotel room by
+herself.</td>
 <td>Inexpensive, most of the locations she wants to visit are free.</td>
-<td>She will be able to pay for all her meals for $30 per day (10 day trip).</td>
+<td>She will be able to pay for all her meals for $30 per day (10 day
+trip).</td>
 </tr>
 <tr class="odd">
 <td><strong>Miami, Florida </strong></td>
 <td>She can ride with her cousin and split the cost of gas.</td>
-<td>Inexpensive, because she can split the cost of a hotel room with her cousin and stay with relatives on some nights.</td>
+<td>Inexpensive, because she can split the cost of a hotel room with her
+cousin and stay with relatives on some nights.</td>
 <td>Inexpensive, she will be spending much of her time with family.</td>
-<td>Because she will be eating some meals with relatives, she will be able to pay for all her meals for $15 per day (5 day trip).</td>
+<td>Because she will be eating some meals with relatives, she will be
+able to pay for all her meals for $15 per day (5 day trip).</td>
 </tr>
 </tbody>
 </table>
@@ -537,7 +569,8 @@ Identify Variables &amp; Assumptions
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>Johanne does careful calculations of the costs for each potential trip. Based on her assumptions, she identifies the following costs:</p>
+<p>Johanne does careful calculations of the costs for each potential
+trip. Based on her assumptions, she identifies the following costs:</p>
 <table>
 <thead>
 <tr class="header">
@@ -576,38 +609,90 @@ Apply Quantitative Tools
 </tr>
 </tbody>
 </table>
-<p>She also considers where she would most like to travel. She decides her first choice is Washington D.C. because she has always wanted to visit the Capital. Her second choice is the Oregon Coast with friends and her last choice is the trip with her cousin. Although Johanne always loves spending time with her family, she has been to Miami many times in the past and wants to see someplace new. She also knows she will have opportunities to travel to Miami with her cousin in the future.</p>
+<p>She also considers where she would most like to travel. She decides
+her first choice is Washington D.C. because she has always wanted to
+visit the Capital. Her second choice is the Oregon Coast with friends
+and her last choice is the trip with her cousin. Although Johanne always
+loves spending time with her family, she has been to Miami many times in
+the past and wants to see someplace new. She also knows she will have
+opportunities to travel to Miami with her cousin in the future.</p>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>After reviewing her options, Johanne decides the cost of paying for her own hotel room in Washington D.C. makes it prohibitively expensive. Although the Florida trip is the least expensive, it is also her last choice.</p>
-<p>She decides to use the money she has saved to travel to Oregon with her friends.</p>
+<p>After reviewing her options, Johanne decides the cost of paying for
+her own hotel room in Washington D.C. makes it prohibitively expensive.
+Although the Florida trip is the least expensive, it is also her last
+choice.</p>
+<p>She decides to use the money she has saved to travel to Oregon with
+her friends.</p>
 <p>What are some things you think Johanne has failed to consider?</p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>As planning for the trip continues everything goes well. Johanne is excited to see the Oregon coast and is excited to travel with her friends. But as they arrive in Oregon, things begin to go differently from Johanne’s plans:</p>
+<p>As planning for the trip continues everything goes well. Johanne is
+excited to see the Oregon coast and is excited to travel with her
+friends. But as they arrive in Oregon, things begin to go differently
+from Johanne’s plans:</p>
 <ul>
-<li>At the car rental agency, the friends want more space in the car so Johanne and her friends decide to rent a more expensive car.</li>
-<li>The weather is very cold and rainy. Camping on the beach seems miserable, so they they decide to stay in a hotel.</li>
-<li>Because of the rain Johanne’s friends want to visit an aquarium and the Columbia River Maritime Museum. When it warms up they want to go on a whale watching excursion and a guided ocean kayaking trip. None of these activities were ones Johanne had planned to pay for.</li>
-<li>Johanne’s friends enjoy eating at expensive restaurants and Johanne spends close to $80 per day on food.</li>
+<li>At the car rental agency, the friends want more space in the car so
+Johanne and her friends decide to rent a more expensive car.</li>
+<li>The weather is very cold and rainy. Camping on the beach seems
+miserable, so they they decide to stay in a hotel.</li>
+<li>Because of the rain Johanne’s friends want to visit an aquarium and
+the Columbia River Maritime Museum. When it warms up they want to go on
+a whale watching excursion and a guided ocean kayaking trip. None of
+these activities were ones Johanne had planned to pay for.</li>
+<li>Johanne’s friends enjoy eating at expensive restaurants and Johanne
+spends close to $80 per day on food.</li>
 </ul>
-<p>Although Johanne enjoyed the trip, she spent $600 more than she planned to spend. This caused her added stress and she realized she could not afford to travel again for a long time. As she made her plans, Johanne did not think enough about her friends’ spending behaviors and she did not ask them about their plans for activities on the trip. This lack of foresight made it hard to her to follow-through with her spending plan. It also affected her travel plans for the future. Hopefully, after reevaluating her assumptions and variables, she will use what she has learned to make better decisions about future trips.</p>
+<p>Although Johanne enjoyed the trip, she spent $600 more than she
+planned to spend. This caused her added stress and she realized she
+could not afford to travel again for a long time. As she made her plans,
+Johanne did not think enough about her friends’ spending behaviors and
+she did not ask them about their plans for activities on the trip. This
+lack of foresight made it hard to her to follow-through with her
+spending plan. It also affected her travel plans for the future.
+Hopefully, after reevaluating her assumptions and variables, she will
+use what she has learned to make better decisions about future
+trips.</p>
 <hr>
-<p>The gospel gives us an important eternal perspective that is helpful in making informed decisions. In a BYU-Idaho devotional, President Russel M. Nelson noted: “You have been reserved for this particular time to accomplish your mission of mortality…You need to understand how really important you are in the eyes of your Maker. Most of you do not fully appreciate who you really are. And most of you do not fully foresee your future potential for greatness.” <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> As we begin to fully understand our divine potential and appreciate the Lord’s plan for us, we can better include foresight in our life decisions.</p>
+<p>The gospel gives us an important eternal perspective that is helpful
+in making informed decisions. In a BYU-Idaho devotional, President
+Russel M. Nelson noted: “You have been reserved for this particular time
+to accomplish your mission of mortality…You need to understand how
+really important you are in the eyes of your Maker. Most of you do not
+fully appreciate who you really are. And most of you do not fully
+foresee your future potential for greatness.” <a href="#fn2"
+class="footnote-ref" id="fnref2"><sup>2</sup></a> As we begin to fully
+understand our divine potential and appreciate the Lord’s plan for us,
+we can better include foresight in our life decisions.</p>
 <hr>
 </div>
 <div id="a-lack-of-follow-through" class="section level3">
 <h3>A Lack of Follow-Through</h3>
-<p>After applying the Quantitative Reasoning Process to make an informed decision, your work will go to waste if you don’t follow-through with the actions and the decision you made. Follow-through usually requires discipline, self-constraint, and financial modesty. As we live by the decisions we make through the Quantitative Reasoning Process we reap benefits from our informed decision-making process.</p>
-<p>The following case study is an example where lack of follow-through affected the quality of the decision made through the Quantitative Reasoning Process.</p>
+<p>After applying the Quantitative Reasoning Process to make an informed
+decision, your work will go to waste if you don’t follow-through with
+the actions and the decision you made. Follow-through usually requires
+discipline, self-constraint, and financial modesty. As we live by the
+decisions we make through the Quantitative Reasoning Process we reap
+benefits from our informed decision-making process.</p>
+<p>The following case study is an example where lack of follow-through
+affected the quality of the decision made through the Quantitative
+Reasoning Process.</p>
 <h4 class="step one">
 Understand the Problem
 </h4>
-<p>Laura and Ian were recently married and just moved into a new apartment with no furniture. After shopping at local thrift stores they have found a few things to furnish their apartment, but they haven’t found a bed or a couch. They decide to spend some extra money to purchase a high quality bed and a comfortable couch that will last for a long time. The local furniture store is offering special financing. If Laura and Ian are approved for the store financing, they pay nothing at the time of the purchase and they won’t have a payment due for six months.</p>
+<p>Laura and Ian were recently married and just moved into a new
+apartment with no furniture. After shopping at local thrift stores they
+have found a few things to furnish their apartment, but they haven’t
+found a bed or a couch. They decide to spend some extra money to
+purchase a high quality bed and a comfortable couch that will last for a
+long time. The local furniture store is offering special financing. If
+Laura and Ian are approved for the store financing, they pay nothing at
+the time of the purchase and they won’t have a payment due for six
+months.</p>
 <HR>
 <h4 class="step two">
 Identify Variables &amp; Assumptions
@@ -628,68 +713,189 @@ Identify Variables &amp; Assumptions
 <h4 class="step three">
 Apply Quantitative Tools
 </h4>
-<p>The total bill for the couch, bed frame, and mattress they select, including taxes and the delivery fee, is $2435.31. Laura and Ian know that taking on debt can have big consequences. After asking more questions about the furniture store financing, they learn the interest rate is 22% and the minimum monthly payment is $50. They also learn that interest begins to accrue at the time of the purchase. This means that interests accrues during the first six months, even though they aren’t required to make payments.</p>
-<p>They use Excel to create the following Amortization Schedule for the store financing:</p>
-<p><img src="Lesson13/Images/furniture1.png" alt="image of a amortization schedule for the store financing" /></p>
-<p>As they looked at the amortization schedule, they noticed that during the first 6 months their account balance would go up from $2435.31 to $2765.57. This is an increase of more than $330. They also noticed that by month 7, the interest payments were slightly higher than the minimum payment of $50. If they only paid the minimum payment, they would never pay off the loan. After two years they would have paid $900, but would still owe $2780.38. They noticed that even after making payments for two years, they would still owe more than they originally borrowed.</p>
-<p>Laura and Ian decide the store’s financing offer was not a good choice. They had a personal credit card with a lower interest rate of 12% that they could use. Using the payment (PMT) function in Excel they found that if they charged the new bed and couch to their credit card and made monthly payments of $114.64 they would have the furniture paid off in two years.</p>
+<p>The total bill for the couch, bed frame, and mattress they select,
+including taxes and the delivery fee, is $2435.31. Laura and Ian know
+that taking on debt can have big consequences. After asking more
+questions about the furniture store financing, they learn the interest
+rate is 22% and the minimum monthly payment is $50. They also learn that
+interest begins to accrue at the time of the purchase. This means that
+interests accrues during the first six months, even though they aren’t
+required to make payments.</p>
+<p>They use Excel to create the following Amortization Schedule for the
+store financing:</p>
+<p><img src="Lesson13/Images/furniture1.png"
+alt="image of a amortization schedule for the store financing" /></p>
+<p>As they looked at the amortization schedule, they noticed that during
+the first 6 months their account balance would go up from $2435.31 to
+$2765.57. This is an increase of more than $330. They also noticed that
+by month 7, the interest payments were slightly higher than the minimum
+payment of $50. If they only paid the minimum payment, they would never
+pay off the loan. After two years they would have paid $900, but would
+still owe $2780.38. They noticed that even after making payments for two
+years, they would still owe more than they originally borrowed.</p>
+<p>Laura and Ian decide the store’s financing offer was not a good
+choice. They had a personal credit card with a lower interest rate of
+12% that they could use. Using the payment (PMT) function in Excel they
+found that if they charged the new bed and couch to their credit card
+and made monthly payments of $114.64 they would have the furniture paid
+off in two years.</p>
 <center>
-<img src="Lesson13/Images/furniture2.png" alt="image showing payment function in excel" />
+<img src="Lesson13/Images/furniture2.png"
+alt="image showing payment function in excel" />
 </center>
 <hr>
 <h4 class="step four">
 Make an Informed Decision
 </h4>
-<p>Based on their calculations, Laura and Ian decided to purchase the new furniture using their credit card. They knew they made a wise decision <em>not</em> to use the store financing and were confident in their ability to pay off the credit card. They felt sure the lower interest rate on their credit card would save them a significant amount of money over the interest they would have paid for the store financing.</p>
+<p>Based on their calculations, Laura and Ian decided to purchase the
+new furniture using their credit card. They knew they made a wise
+decision <em>not</em> to use the store financing and were confident in
+their ability to pay off the credit card. They felt sure the lower
+interest rate on their credit card would save them a significant amount
+of money over the interest they would have paid for the store
+financing.</p>
 <p>They added monthly furniture payments of $114.64 to their budget.</p>
 <hr>
 <h4 class="step five">
 Evaluate Your Reasoning
 </h4>
-<p>In the first few months, as Laura and Ian evaluated their reasoning, they were pleased with their decision.</p>
-<p>Their use of the Quantitative Reasoning Process and their decision to avoid the store financing were good choices.</p>
-<p>However, as time progressed, they did not follow-through with their decision. Here is a summary of what happened in the first year after they made the purchase:</p>
+<p>In the first few months, as Laura and Ian evaluated their reasoning,
+they were pleased with their decision.</p>
+<p>Their use of the Quantitative Reasoning Process and their decision to
+avoid the store financing were good choices.</p>
+<p>However, as time progressed, they did not follow-through with their
+decision. Here is a summary of what happened in the first year after
+they made the purchase:</p>
 <ul>
-<li>For the first two months, they faithfully made the $114.64 payments on their credit card.</li>
-<li>Month #3 was December and they used their credit card to purchase Christmas gifts. In addition to adding to the card balance, they only made the minimum payment on the card instead of the $114.64 they had planned.</li>
-<li>In January Laura noticed that Ian loved the amazing new TV their neighbors got for Christmas. Laura purchased the same TV for Ian’s birthday gift. It was even on sale. She charged the entire cost of the TV to the credit card.</li>
-<li>In February they overspent on eating out and a really expensive Valentines’ day dinner. They were only able to make the minimum payment on their credit card.</li>
-<li>In March they realized they were overspending and were careful to not add any new charges to the card. They made the planned payment of $114.64.</li>
-<li>In April, Ian used the credit card to purchase an expensive birthday gift for Laura. They only made the minimum payment on their credit card.</li>
-<li>For the rest of the year, they continued their pattern of overspending, not following their budget, and making only minimum payments on their credit card.</li>
+<li>For the first two months, they faithfully made the $114.64 payments
+on their credit card.</li>
+<li>Month #3 was December and they used their credit card to purchase
+Christmas gifts. In addition to adding to the card balance, they only
+made the minimum payment on the card instead of the $114.64 they had
+planned.</li>
+<li>In January Laura noticed that Ian loved the amazing new TV their
+neighbors got for Christmas. Laura purchased the same TV for Ian’s
+birthday gift. It was even on sale. She charged the entire cost of the
+TV to the credit card.</li>
+<li>In February they overspent on eating out and a really expensive
+Valentines’ day dinner. They were only able to make the minimum payment
+on their credit card.</li>
+<li>In March they realized they were overspending and were careful to
+not add any new charges to the card. They made the planned payment of
+$114.64.</li>
+<li>In April, Ian used the credit card to purchase an expensive birthday
+gift for Laura. They only made the minimum payment on their credit
+card.</li>
+<li>For the rest of the year, they continued their pattern of
+overspending, not following their budget, and making only minimum
+payments on their credit card.</li>
 </ul>
-<p>Over the first year, the balance on their credit card grew to $4,537. This was over the credit limit on the card and they were no longer able to use the card to make purchases. Because of the high balance, the minimum payment on the card increased. Laura and Ian could no longer even make the minimum payment each month.</p>
-<p>Laura and Ian found themselves in an unfortunate situation with long-term consequences. In addition to financial consequences, like lowering their credit scores, their money situation brought added stress in their marriage. Their uncontrolled debt situation caused them to delay saving for retirement and starting their family. By taking on excess debt, Laura and Ian had made a significant financial mistake.</p>
-<p>As Ian and Laura reviewed their decisions, they began to see what they could have done differently. They agreed that a good-quality bed was important, but the new couch was far less important. They made a mistake in logical reasoning by allowing an appeal to emotion to convince them to purchase expensive gifts and a Valentine’s Day dinner. The more money spent on gifts did not equal more love from the giver. They also saw that they should have pondered council from church leaders who had provided a warning about debt.</p>
-<p>Ian and Laura plan to incorporate what they learned through their mistakes into the Quantitative Reasoning Process to make better decisions in the future.</p>
+<p>Over the first year, the balance on their credit card grew to $4,537.
+This was over the credit limit on the card and they were no longer able
+to use the card to make purchases. Because of the high balance, the
+minimum payment on the card increased. Laura and Ian could no longer
+even make the minimum payment each month.</p>
+<p>Laura and Ian found themselves in an unfortunate situation with
+long-term consequences. In addition to financial consequences, like
+lowering their credit scores, their money situation brought added stress
+in their marriage. Their uncontrolled debt situation caused them to
+delay saving for retirement and starting their family. By taking on
+excess debt, Laura and Ian had made a significant financial mistake.</p>
+<p>As Ian and Laura reviewed their decisions, they began to see what
+they could have done differently. They agreed that a good-quality bed
+was important, but the new couch was far less important. They made a
+mistake in logical reasoning by allowing an appeal to emotion to
+convince them to purchase expensive gifts and a Valentine’s Day dinner.
+The more money spent on gifts did not equal more love from the giver.
+They also saw that they should have pondered council from church leaders
+who had provided a warning about debt.</p>
+<p>Ian and Laura plan to incorporate what they learned through their
+mistakes into the Quantitative Reasoning Process to make better
+decisions in the future.</p>
 <hr>
-<p>President Gordon B. Hinckely said: “Debt can be a terrible thing. It is so easy to incur and so difficult to repay. Borrowed money is had only at a price, and that price can be burdensome.”<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-<p>President Thomas S. Monson counseled: “Avoid the philosophy and excuse that yesterday’s luxuries have become today’s necessities. They aren’t necessities unless we ourselves make them as such. Many of our young couples today…enter into long-term debt…It is essential for us to live within our means”<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
-<p>In this example, Laura and Ian started out on a good path. They used the Quantitative Reasoning Process, they avoided expensive store financing, and they planned for the purchase in their budget. However, Laura and Ian made mistakes both in foresight and in follow-through. They didn’t foresee the difficulty they would have making the monthly payment of $114.64 to their credit card. They didn’t follow-through with their budget or avoid unnecessary purchases.</p>
+<p>President Gordon B. Hinckely said: “Debt can be a terrible thing. It
+is so easy to incur and so difficult to repay. Borrowed money is had
+only at a price, and that price can be burdensome.”<a href="#fn3"
+class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>President Thomas S. Monson counseled: “Avoid the philosophy and
+excuse that yesterday’s luxuries have become today’s necessities. They
+aren’t necessities unless we ourselves make them as such. Many of our
+young couples today…enter into long-term debt…It is essential for us to
+live within our means”<a href="#fn4" class="footnote-ref"
+id="fnref4"><sup>4</sup></a></p>
+<p>In this example, Laura and Ian started out on a good path. They used
+the Quantitative Reasoning Process, they avoided expensive store
+financing, and they planned for the purchase in their budget. However,
+Laura and Ian made mistakes both in foresight and in follow-through.
+They didn’t foresee the difficulty they would have making the monthly
+payment of $114.64 to their credit card. They didn’t follow-through with
+their budget or avoid unnecessary purchases.</p>
 <hr>
 </div>
 </div>
 <div id="a-gospel-perspective" class="section level2">
 <h2>A Gospel Perspective</h2>
-<p>When we use the Quantitative Reasoning Process with a gospel perspective our decision-making becomes better and more insightful.</p>
-<p>As we ponder the problem in Step 1 of the Quantitative Reasoning Process, we should seek guidance from the Lord. Step 5 of the Quantitative Reasoning Process, in particular, provides us with an opportunity to incorporate gospel principles as we ponder, review, and evaluate our decisions.</p>
+<p>When we use the Quantitative Reasoning Process with a gospel
+perspective our decision-making becomes better and more insightful.</p>
+<p>As we ponder the problem in Step 1 of the Quantitative Reasoning
+Process, we should seek guidance from the Lord. Step 5 of the
+Quantitative Reasoning Process, in particular, provides us with an
+opportunity to incorporate gospel principles as we ponder, review, and
+evaluate our decisions.</p>
 <blockquote>
-<p>As we evaluate our reasoning in Step 5 of the Quantitative Reasoning Process, we should pray about our decision and confirm that our decision is consistent with the advice and counsel in the scriptures and from prophets and church leaders.</p>
+<p>As we evaluate our reasoning in Step 5 of the Quantitative Reasoning
+Process, we should pray about our decision and confirm that our decision
+is consistent with the advice and counsel in the scriptures and from
+prophets and church leaders.</p>
 </blockquote>
-<p>The case study about Laura and Ian’s furniture purchase is an example of failing to follow important advice from our church leaders.</p>
-<p>Earlier in the semester, we saw a video of Henry J. Eyring, President of BYU-Idaho, who shared a personal experience where he made a decision to follow advice he heard in conference to get out of debt even though his decision did not align with the best financial council of the day (you can re-watch this video <a href="https://video.byui.edu/media/Lesson+9+-+Get+out+of+debt+-+Eyring/0_1czhwbpr/74478962">here</a>). His story is a good example of the blessings that come from following the advice of our church leaders.</p>
-<p>President Thomas S. Monson said: “Remember that ofttimes the wisdom of God appears as foolishness to men, but the greatest single lesson we can learn in mortality is that when God speaks and a man obeys, that man will always be right.” <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
-<p>It is also essential to seek personal revelation as we make decisions about our life. President Russell M. Nelson said: “We live in a world that is complex and increasingly contentious. The constant availability of social media and a 24-hour news cycle bombard us with relentless messages. If we are to have any hope of sifting through the myriad of voices and the philosophies of men that attack truth, we must learn to receive revelation.”<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
-<p>In step 5 of the Quantitative Reasoning Process we evaluate our reasoning. This step of the process gives us a chance to seek personal revelation and the guidance of the Holy Ghost in order to ensure that the decision we have made is wise and in keeping with the Lord’s will for our lives.</p>
+<p>The case study about Laura and Ian’s furniture purchase is an example
+of failing to follow important advice from our church leaders.</p>
+<p>Earlier in the semester, we saw a video of Henry J. Eyring, President
+of BYU-Idaho, who shared a personal experience where he made a decision
+to follow advice he heard in conference to get out of debt even though
+his decision did not align with the best financial council of the day
+(you can re-watch this video <a
+href="https://video.byui.edu/media/Lesson+9+-+Get+out+of+debt+-+Eyring/0_1czhwbpr/74478962">here</a>).
+His story is a good example of the blessings that come from following
+the advice of our church leaders.</p>
+<p>President Thomas S. Monson said: “Remember that ofttimes the wisdom
+of God appears as foolishness to men, but the greatest single lesson we
+can learn in mortality is that when God speaks and a man obeys, that man
+will always be right.” <a href="#fn5" class="footnote-ref"
+id="fnref5"><sup>5</sup></a></p>
+<p>It is also essential to seek personal revelation as we make decisions
+about our life. President Russell M. Nelson said: “We live in a world
+that is complex and increasingly contentious. The constant availability
+of social media and a 24-hour news cycle bombard us with relentless
+messages. If we are to have any hope of sifting through the myriad of
+voices and the philosophies of men that attack truth, we must learn to
+receive revelation.”<a href="#fn6" class="footnote-ref"
+id="fnref6"><sup>6</sup></a></p>
+<p>In step 5 of the Quantitative Reasoning Process we evaluate our
+reasoning. This step of the process gives us a chance to seek personal
+revelation and the guidance of the Holy Ghost in order to ensure that
+the decision we have made is wise and in keeping with the Lord’s will
+for our lives.</p>
 <hr>
 </div>
-<div id="applying-the-quantitative-reasoning-process" class="section level2">
+<div id="applying-the-quantitative-reasoning-process"
+class="section level2">
 <h2>Applying the Quantitative Reasoning Process</h2>
-<p>Our goal in teaching the Quantitative Reasoning Process is to equip you with a sound way to make better, more informed decisions. As you leave this class we encourage you to think about the decisions you will need to make in the next few years and consider how the Quantitative Reasoning Process might help.</p>
+<p>Our goal in teaching the Quantitative Reasoning Process is to equip
+you with a sound way to make better, more informed decisions. As you
+leave this class we encourage you to think about the decisions you will
+need to make in the next few years and consider how the Quantitative
+Reasoning Process might help.</p>
 <blockquote>
-<p>What decisions do you have coming up in the next few years where the Quantitative Reasoning Process will be helpful?</p>
+<p>What decisions do you have coming up in the next few years where the
+Quantitative Reasoning Process will be helpful?</p>
 </blockquote>
-<p>As you make decisions in your life, both big and small, we encourage you to use foresight and to include a gospel perspective in the Quantitative Reasoning Process. Pray for confirmation about your decisions and ensure that they are consistent with the advice of our church leaders. Finally, as you act on your decisions, remember that follow-through and regular reevaluation are vital.</p>
+<p>As you make decisions in your life, both big and small, we encourage
+you to use foresight and to include a gospel perspective in the
+Quantitative Reasoning Process. Pray for confirmation about your
+decisions and ensure that they are consistent with the advice of our
+church leaders. Finally, as you act on your decisions, remember that
+follow-through and regular reevaluation are vital.</p>
 <hr>
 </div>
 <div id="lesson-checklist" class="section level2">
@@ -697,26 +903,37 @@ Evaluate Your Reasoning
 <p>By the end of this lesson, you should be able to:</p>
 <ul>
 <li>state the steps of the Quantitative Reasoning Process.</li>
-<li>use the quantitative tools taught in this course as part of the Quantitative Reasoning Process.</li>
-<li>explain the importance of foresight in the Quantitative Reasoning Process.</li>
-<li>explain the importance of follow-through in the Quantitative Reasoning Process</li>
-<li>explain the importance of a gospel perspective in the Quantitative Reasoning Process.</li>
+<li>use the quantitative tools taught in this course as part of the
+Quantitative Reasoning Process.</li>
+<li>explain the importance of foresight in the Quantitative Reasoning
+Process.</li>
+<li>explain the importance of follow-through in the Quantitative
+Reasoning Process</li>
+<li>explain the importance of a gospel perspective in the Quantitative
+Reasoning Process.</li>
 <li>plan to apply the Quantitative Reasoning Process in your life.</li>
 </ul>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>April 2004, Stay on the High Road<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>“The Lord Uses the Unlikely to Accomplish the Impossible”, Russell M. Nelson, BYU-Idaho Devotional Address, January 27, 2015.<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>“Though Shalt Not Covet”, <em>Ensign</em>, March 1990, page 4.<a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>“Constant Truths for Changing Times”, April 2005<a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>“Constant Truths for Changing Times”, April 2005<a href="#fnref5" class="footnote-back">↩</a></p></li>
-<li id="fn6">“Revelation for the Church, Revelation for our Lives”, Russell M. Nelson, April 2018 General Conference
+<li id="fn1"><p>April 2004, Stay on the High Road<a href="#fnref1"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>“The Lord Uses the Unlikely to Accomplish the
+Impossible”, Russell M. Nelson, BYU-Idaho Devotional Address, January
+27, 2015.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>“Though Shalt Not Covet”, <em>Ensign</em>, March 1990,
+page 4.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>“Constant Truths for Changing Times”, April 2005<a
+href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>“Constant Truths for Changing Times”, April 2005<a
+href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6">“Revelation for the Church, Revelation for our Lives”,
+Russell M. Nelson, April 2018 General Conference
 <center>
 © 2020 Brigham Young University - Idaho
 </center>
-<a href="#fnref6" class="footnote-back">↩</a></li>
+<a href="#fnref6" class="footnote-back">↩︎</a></li>
 </ol>
 </div>
 
@@ -731,7 +948,7 @@ Evaluate Your Reasoning
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -749,7 +966,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -758,6 +975,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
@@ -770,7 +990,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
