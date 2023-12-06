@@ -13,7 +13,7 @@
 
 <title>Lesson 9: Change Over Time</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -145,11 +145,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -178,8 +182,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -187,16 +191,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -414,7 +411,8 @@ div.tocify {
     e.style.display = (e.style.display == 'block') ? 'none' : 'block';
  }
 </script>
-<p>Please read the opening story here:</p>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/41338032/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_q2g8kz7z&amp;flashvars[localizationCode]=en&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_i9hnu9z3" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Episode_8_(HD_1080_-_WEB_(H264_4000)) (Changed)">
+</iframe>
 <p>Lesson 9 - Opening story<br> <a
 href="https://docs.google.com/document/d/e/2PACX-1vREda9tXP1u8-Oi3CQwnt83hi6MwOXPOp1dgTDqkvi-7t1pGm4M8cGaO1Eg9upztJ9G_V4CVdjq4I0_/pub">(1:10
 mins, L9 Opening Story Transcript)</a></p>
@@ -492,7 +490,7 @@ is optional. If we want to figure out how much to save each month, the
 current balance in our savings account is the present value (PV) and the
 total amount we need to save is the future value (FV).</p>
 <p>Amadi used this command to set up his Excel file.</p>
-<p><img src="Lesson9/Images/AmadiPayment.png"
+<p><img src="Lesson9/Images/AmadiPayment.PNG"
 alt="Excel Calculations" /></p>
 <p>Notice that some numbers were positive and some were negative.
 Remember that a negative number is used for money “leaving your wallet”
@@ -771,7 +769,7 @@ non-linear.</p>
 <p>In Lesson 5 we learned that when we want to create a chart showing a
 trend over time, we use a time series plot. Using Excel, we created the
 following time series plot for church membership.</p>
-<p><img src="Lesson9/Images/Wk9.ChurchMembership.jpg"
+<p><img src="Lesson9/Images/wk9.churchmembership.jpg"
 alt="Graph of Church Membership over Time" /></p>
 <p>This graph is clearly not a line. Because the graph is non-linear, we
 know the slope is not constant and that membership of the church has a
@@ -1057,6 +1055,7 @@ f(35)=44400(1.00625)^{12x}-43200=\$564736.46
 \]</span> Note of caution: If you round during the intermediate steps of
 the calculation above, the final answer may be off some from the error
 introduced by this rounding.<br />
+
 <hr>
 </div>
 <div id="comparing-the-non-interest-and-the-interest-savings-plans"
@@ -1168,7 +1167,7 @@ Apply Quantitative Tools
 <p>Danielle uses the PMT function in Excel to determine what her four
 monthly payments need to be in order to pay each card off in 5
 years.</p>
-<p><img src="Lesson9/Images/Danielle.png"
+<p><img src="Lesson9/Images/danielle.png"
 alt="Example of an Excel spreadsheet using the PMT fucntion for four different credit cards" /></p>
 <p>Now Danielle wants to figure out how much money she will pay in
 interest in the 5 years it takes her to pay off her cards.</p>
