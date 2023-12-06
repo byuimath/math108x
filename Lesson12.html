@@ -13,7 +13,7 @@
 
 <title>Lesson 12: Probability and Confidence Intervals</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -145,11 +145,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -178,8 +182,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -187,16 +191,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -932,7 +929,7 @@ large number of trials. For example, let’s toss a coin 10 times and see
 what happens.</p>
 <p><br> <br></p>
 <center>
-<img src="Lesson12/Images/CoinToss.png"
+<img src="Lesson12/Images/cointoss.png"
 alt="picture of 10 pennies some on heads, some on tails" />
 </center>
 <p><br> <br></p>
@@ -955,7 +952,7 @@ probabilities.</p>
 <p>When we toss the two coins we can represent the possible outcomes
 with the following tree diagram:</p>
 <center>
-<img src="Lesson12/Images/CoinTree.PNG"
+<img src="Lesson12/Images/cointree.png"
 alt="image of a penny tree diagram" />
 </center>
 <p><em>Sample Space:</em></p>
@@ -1006,7 +1003,7 @@ and a theoretical probability in this situation.</p>
 <p>When we toss the two dice and add the numbers on the dice, we can
 represent what could happen with the following chart:</p>
 <center>
-<img src="Lesson12/Images/TossDice2.PNG" />
+<img src="Lesson12/Images/tossdice2.png" />
 </center>
 <p><em>Sample Space:</em></p>
 <p>The sample space of this event is a list of all possible outcomes.
@@ -1467,7 +1464,7 @@ calculations it is easy to predict that the percentage of BYU-Idaho
 students who are from Idaho is between 0% and 100%.</p>
 <p>Here is another example from a Garfield cartoon <a href="#fn5"
 class="footnote-ref" id="fnref5"><sup>5</sup></a>:</p>
-<p><img src="Lesson12/Images/Garfield.jpg"
+<p><img src="Lesson12/Images/garfield.jpg"
 alt="Garfield cartoon showing that with a large margin of error it is easy to make an accurate prediction" /></p>
 <p><br> In order to be useful, confidence intervals need to be narrow,
 which means the margin of error needs to be small. One way to shrink the
@@ -1609,7 +1606,7 @@ $50,000 in student loan debt who are thriving financially is between
 <p><em>Is there a difference?</em></p>
 <p>Let’s graph these intervals on a number line:</p>
 <center>
-<img src="Lesson12/Images/ThrivingFinancially.PNG"
+<img src="Lesson12/Images/thrivingfinancially.png"
 alt="image of the graphed intervals on the number line" />
 </center>
 <p>Because these two confidence intervals do not overlap, there is
@@ -1653,7 +1650,7 @@ and 46.4%.</p>
 <p><em>Is there a difference?</em></p>
 <p>Let’s graph these two confidence intervals:</p>
 <center>
-<img src="Lesson12/Images/ThrivingSocially.PNG" />
+<img src="Lesson12/Images/thrivingsocially.png" />
 </center>
 <p>These two confidence intervals <em>do</em> overlap. This means we
 cannot say there is a statistical difference in the percentage of
