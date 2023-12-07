@@ -1,24 +1,26 @@
 {
-    "id": "7CC90864",
+    "id": "5813A62E",
     "path": "C:/Users/curtisgn/OneDrive - BYU-Idaho/Course Lead/108/GithubTextBookRepository/math108x/Lesson7.Rmd",
     "project_path": "Lesson7.Rmd",
     "type": "r_markdown",
     "hash": "1541157531",
     "contents": "",
     "dirty": false,
-    "created": 1701888160181.0,
+    "created": 1701973910847.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "593,225",
+        "scrollLine": "586"
     },
     "folds": "",
-    "lastKnownWriteTime": 1701298385,
+    "lastKnownWriteTime": 1701973974,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1701298385,
+    "last_content_update": 1701973974903,
     "read_only": false,
     "read_only_alternatives": []
 }
