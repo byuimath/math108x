@@ -275,7 +275,11 @@ When computing empirical probabilities it is important to have a very large numb
 <br>
 
 <center>
+
+
 ![picture of 10 pennies some on heads, some on tails](./Lesson12/images/cointoss.png)
+
+
 </center>
 
 <br>
@@ -296,7 +300,11 @@ Consider an event where you toss two coins and look at whether they are heads or
 When we toss the two coins we can represent the possible outcomes with the following tree diagram:
 
 <center>
+
+
 ![image of a penny tree diagram](./Lesson12/images/cointree.png)
+
+
 </center>
 
 *Sample Space:*

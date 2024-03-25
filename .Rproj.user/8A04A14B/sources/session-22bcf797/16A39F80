@@ -3,7 +3,7 @@
     "path": "~/GitHub/math108x/Lesson12.Rmd",
     "project_path": "Lesson12.Rmd",
     "type": "r_markdown",
-    "hash": "1932255927",
+    "hash": "249655884",
     "contents": "",
     "dirty": false,
     "created": 1701881648348.0,
@@ -11,14 +11,16 @@
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "306,0",
+        "scrollLine": "303"
     },
     "folds": "",
-    "lastKnownWriteTime": 1701881132,
+    "lastKnownWriteTime": 1711391322,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1701881132,
+    "last_content_update": 1711391322215,
     "read_only": false,
     "read_only_alternatives": []
 }
